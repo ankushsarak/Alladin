@@ -12,6 +12,13 @@ on:
     - cron: "30 10 * * 1-5"
     # 02:30 IST — US post-market scoring     (21:00 UTC)
     - cron: "0 21 * * 1-5"
+  # Rebuild when the engine itself changes. The bot's own commits use
+  # GITHUB_TOKEN, which does not re-trigger workflows, so this cannot loop.
+  push:
+    branches: [Alladin]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/update-data.yml"
   workflow_dispatch:
 
 permissions:

@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-04T02:58:09.629213+05:30",
- "generated_utc": "2026-09-03T21:28:24.750462+00:00",
+ "generated": "2026-09-04T03:03:59.052338+05:30",
+ "generated_utc": "2026-09-03T21:34:14.929895+00:00",
  "sources": {
   "prices": "Yahoo Finance chart API (public)",
   "news": "Google News RSS (public)",
@@ -1409,6 +1409,13 @@
     },
     "news": [
      {
+      "h": "Jim Cramer has a strong message for Nvidia stock investors",
+      "src": "thestreet.com",
+      "time": "1d ago",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNVmxCOEUzM05wOEk1aFJRRFYxdDdNbDdoS3JqMlIwZzlBTjFobllvQjVCRW1GcUVGd0x5WnVpMG9NYUVpdkZfR1ZyTjRhS0hROF9PWXNjYlNPTmdNanBMN3VINGkxSXBjVVE3U2RRcnJEQnIyaUpWUDVUWE92YnFWOWdKb0pKcV9GMVlpcy14OGZmN0ZsYzdTNGhOVTluMGp6WDFfYThwVUFQcjRDRnd1dkxmYzdteU10Q1E?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
       "h": "After Earnings, Is Nvidia Stock a Buy, a Sell, or Fairly Valued?",
       "src": "Morningstar",
       "time": "11h ago",
@@ -1416,17 +1423,10 @@
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Stocks edge up as Nvidia leads tech higher following Hugging Face deal announcement: AlphaCheck",
+      "h": "Nvidia Just Broke the Stock Market (Again)",
       "src": "Yahoo Finance",
-      "time": "7h ago",
-      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOTzdEUHZCdVRuM0xXWkNVQk1SWTkwWF82SUNSZ1BScmJYYVNGRWtXOHB2dlpOeGFFZHVsRmpURm9TVkx5bEV6enlBRjJXbkx6cVBEV0xtZXkxbG80YmdibXQxaUhVX3dveHRxVnFYOGJONEVHTmNrY3FZaFk2dDdGaEFzVDcwREpjLUc3Z0N3MzB0UEREU3VnMHlES3JNaUhzNFhnTXo0eVdVcEg2eDlzeG5xUXp5YUc5ZWJaTnB4elNzSmZPSklrUWhTNU9XLVFrcXM2X0hoZjFPZzFVR3g5cjNtenZPQQ?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Nvidia Agrees to Acquire Hugging Face for $12.9 Billion to Expand AI Infrastructure",
-      "src": "TIKR.com",
-      "time": "6h ago",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPVXZlMWhzanQ4akJGQ25CMENHU2UxOG9QSFpsR1pid3ZTWkNTMUhadWFoRGIwMnZfRXQ4UW5RdDQyaTd4R0tJazBxa2R2amdxc1Z3Wm1XUlVxSlVzTC1BRkE4WGxoS01WNkRjZUdBak1vXzlGVlhGTEdJeTZ3YWp4NUUzTm1rZw?oc=5",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPakloY3BUbTNheXNrSWNTMTJleWZvcDdBaVotNGE0YmRyeDNjTDhQZVpkSGtrWmJ6emhZNTJZMm1fLWp2QllJbWVwVG1Gek1GNHhVVUJ0TnFGbGk4eUl4Zm9EM20zVXBOQ3JEQ3JPWDhaTFFIb1RKbkk0Q2tuZXhJQlNKOA?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
@@ -2549,7 +2549,14 @@
  ],
  "analysis": {
   "enabled": false,
-  "reason": "No free LLM key set; showing computed analysis instead. Set GEMINI_API_KEY (aistudio.google.com/apikey) or GROQ_API_KEY (console.groq.com/keys) to enable the analyst."
+  "model": "Google Gemini",
+  "provider": "gemini",
+  "analysed": 0,
+  "failed": [
+   "ICICIBANK: RuntimeError"
+  ],
+  "reason": "The LLM key was rejected; showing computed analysis for the rest. Check the key and its free-tier quota.",
+  "scope": "Google Gemini wrote the thesis, the analysis sections, the bull and bear cases, the news read and the critique. It never chose a stock and never set a price — every level on this page is arithmetic from the rule engine."
  },
  "live": {
   "started": "2026-09-04",
