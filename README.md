@@ -21,12 +21,51 @@ generated data anywhere in the app.
 Google Finance has no public API — it exists only as a Google Sheets function —
 so Yahoo Finance is used as the free equivalent.
 
-## What is *not* here
+## Who decides what
 
-**No LLM is involved.** Setups are chosen by a deterministic rule engine you can
-read in [`scripts/build_data.py`](scripts/build_data.py) and verify by hand. The
-same input always produces the same output. Nothing is inferred, predicted, or
-written by a model.
+The split is deliberate, and enforced by what each side is given.
+
+| | Decided by |
+|---|---|
+| Which names qualify | Deterministic rule engine |
+| Entry, stop, targets, position size | Deterministic rule engine |
+| What the numbers mean | Claude ([`scripts/analyst.py`](scripts/analyst.py)) |
+| Whether the news backs the chart | Claude |
+| The strongest objection to the trade | Claude |
+
+Claude is never asked for a price and never picks a stock, so it cannot
+hallucinate a level into a trade plan. Every number is arithmetic you can
+reproduce from [`scripts/build_data.py`](scripts/build_data.py); the same input
+always gives the same output.
+
+The analyst layer is optional. Set `ANTHROPIC_API_KEY` (as a repository secret
+for CI, or in your shell locally) and `pip install anthropic` to enable it.
+Without it the build falls back to prose computed from the indicators, and the
+site says which one you are reading.
+
+## The forward record
+
+[`docs/ledger.json`](docs/ledger.json) is an append-only log of every call
+Alladin has actually published. The original recommendation is frozen at publish
+time and never edited — performance is always measured against what was said on
+the day.
+
+Each call is settled against real prices by [`scripts/ledger.py`](scripts/ledger.py):
+
+| Status | Meaning |
+|---|---|
+| `PENDING` | Published; entry zone has not traded yet |
+| `NO_FILL` | Entry never traded within 2 sessions — **excluded from returns** |
+| `OPEN` | Filled, still inside the 5-session window |
+| `TARGET_1` | A real session high reached Target 1 |
+| `STOPPED` | A real session low breached the stop |
+| `CLOSED` | Window elapsed; exited at the close |
+
+Only settled calls count toward the live win rate. A call that never filled is
+not quietly counted as a win, and nothing is backfilled — the record starts on
+the day tracking began and grows one session at a time.
+
+This is the number worth trusting. The backtest below is the weaker evidence.
 
 ## How a tip is produced
 
@@ -92,7 +131,10 @@ push.
 ```
 index.html                     the whole front end — no build step
 scripts/build_data.py          fetch, compute, score, backtest
+scripts/analyst.py             Claude writes the analysis (optional)
+scripts/ledger.py              append-only forward record + settlement
 docs/data.json                 generated feed the page reads
+docs/ledger.json               every call ever published, frozen
 .github/workflows/             scheduled rebuild
 ```
 

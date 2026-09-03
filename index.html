@@ -430,10 +430,11 @@ img{max-width:100%}
     <a href="#/today" class="logo">Alladin<i>.</i></a>
     <div class="navlinks" id="navlinks">
       <a href="#/today" data-r="today">Today</a>
+      <a href="#/record" data-r="record">Record</a>
       <a href="#/calendar" data-r="calendar">Calendar</a>
       <a href="#/india" data-r="india">India</a>
       <a href="#/usa" data-r="usa">USA</a>
-      <a href="#/performance" data-r="performance">Performance</a>
+      <a href="#/performance" data-r="performance">Backtest</a>
       <a href="#/watchlist" data-r="watchlist">Watchlist</a>
     </div>
     <div class="navright">
@@ -446,8 +447,8 @@ img{max-width:100%}
 
 <nav id="bnav">
   <a href="#/today" data-r="today">Today</a>
-  <a href="#/calendar" data-r="calendar">Calendar</a>
-  <a href="#/performance" data-r="performance">Perform</a>
+  <a href="#/record" data-r="record">Record</a>
+  <a href="#/performance" data-r="performance">Backtest</a>
   <a href="#/watchlist" data-r="watchlist">Watch</a>
 </nav>
 
@@ -471,6 +472,7 @@ const cls=n=>n>=0?'pos':'neg';
    anywhere in this file. */
 let D=null;                      // the whole payload
 let DAYS=[], DAYMAP={}, TIPS={india:[],usa:[]}, ALLTIPS=[], WATCH=[], PERF=null;
+let LIVE=null, RECENT=[], ANALYSIS={enabled:false};
 let TOTAL_RET=0, ANNUALIZED=null, MAXDD=0;
 
 const dkey=d=>(typeof d==='string'?d:d.toISOString().slice(0,10));
@@ -484,6 +486,9 @@ async function loadData(){
   ALLTIPS=[...TIPS.india,...TIPS.usa];
   WATCH=D.watchlist||[];
   PERF=D.performance||null;
+  LIVE=D.live||null;
+  RECENT=D.recent_calls||[];
+  ANALYSIS=D.analysis||{enabled:false};
 
   if(PERF&&PERF.days&&PERF.days.length){
     DAYS=PERF.days.map(x=>({...x,date:new Date(x.date+'T00:00:00Z')}));
@@ -694,10 +699,77 @@ function briefingHTML(list,market){
 }
 
 function sourceNote(){
+  const a=ANALYSIS.enabled
+    ? `Selection and every price level come from the deterministic rule engine; the written analysis is
+       by ${ANALYSIS.model}, which is shown the computed numbers and the headlines but never chooses a
+       name or sets a price.`
+    : `Selection, levels and the written analysis are all computed from the indicators — no model ran on
+       this build.`;
   return `<p class="notice reveal" style="margin-top:30px">
-    Prices and OHLCV from Yahoo Finance; headlines from Google News. Setups are scored by a deterministic
-    rule engine over computed indicators — trend, momentum, volume and entry location. No language model
-    and no generated data are involved. Last build: ${freshness()}.</p>`;
+    Prices and OHLCV from Yahoo Finance; headlines from Google News. ${a}
+    Last build: ${freshness()}.</p>`;
+}
+
+/* ---------- live record ---------- */
+const STATUS_LABEL={TARGET_1:'Target 1 hit',STOPPED:'Stopped out',CLOSED:'Window closed',
+  NO_FILL:'Never filled',OPEN:'Open',PENDING:'Awaiting entry'};
+const STATUS_CHIP=s=>s==='TARGET_1'?'buy':s==='STOPPED'?'bad':s==='NO_FILL'?'':s==='CLOSED'?'':'acc';
+const gradeOf=r=>r===null||r===undefined?'—':r>=2?'EXCELLENT':r>=0.5?'GOOD':r>=-0.5?'NEUTRAL':r>=-2?'BAD':'WORSE';
+
+function callCard(c){
+  const o=c.original,r=c.result,settled=['TARGET_1','STOPPED','CLOSED'].includes(r.status);
+  return `<div class="card hoverable reveal">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+      <div>
+        <div class="display d-sm">${c.ticker}</div>
+        <div class="eyebrow" style="margin-top:6px">${c.market} · published ${c.published}</div>
+      </div>
+      <div style="text-align:right">
+        ${settled?`<div class="num ${cls(r.ret)}" style="font-size:30px;font-weight:600">${pct(r.ret)}</div>
+          <div class="eyebrow" style="margin-top:4px">${gradeOf(r.ret)}</div>`
+         :`<div class="chip ${STATUS_CHIP(r.status)}">${STATUS_LABEL[r.status]}</div>`}
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin:18px 0;flex-wrap:wrap">
+      <span class="chip ${STATUS_CHIP(r.status)}">${STATUS_LABEL[r.status]}</span>
+      <span class="chip">${o.conviction} · ${o.score}/100</span>
+      <span class="chip">${o.mode}</span>
+    </div>
+    <div class="statrow" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">
+      <div class="cell"><div class="v num" style="font-size:17px">${money(c.cur,o.entry[0])}–${money(c.cur,o.entry[1])}</div><div class="k">Published entry</div></div>
+      <div class="cell"><div class="v num neg" style="font-size:17px">${money(c.cur,o.stop)}</div><div class="k">Published stop</div></div>
+      <div class="cell"><div class="v num pos" style="font-size:17px">${money(c.cur,o.targets[0])}</div><div class="k">Published T1</div></div>
+      ${r.fill_price?`<div class="cell"><div class="v num" style="font-size:17px">${money(c.cur,r.fill_price)}</div><div class="k">Filled ${r.filled_on}</div></div>`:''}
+      ${r.exit_price?`<div class="cell"><div class="v num" style="font-size:17px">${money(c.cur,r.exit_price)}</div><div class="k">Exited ${r.exit_on}</div></div>`:''}
+      ${r.mfe!==null&&r.mfe!==undefined?`<div class="cell"><div class="v num" style="font-size:17px">${pct(r.mfe)} / ${pct(r.mae)}</div><div class="k">Best / worst while held</div></div>`:''}
+    </div>
+    ${r.note?`<p class="notice" style="margin-top:16px">${r.note}</p>`:''}
+  </div>`;
+}
+
+function liveRecordHTML(){
+  if(!LIVE)return '';
+  const L=LIVE;
+  if(!L.published)return `<div class="card reveal" style="text-align:center;padding:clamp(36px,6vw,64px) 24px">
+    <div class="display d-md">NOTHING TO SHOW YET.</div>
+    <p class="sub" style="margin:16px auto 0">Alladin has not published a call yet. The record starts with the first one.</p></div>`;
+  const noSettled=!L.settled;
+  return `
+    <div class="statrow reveal">
+      <div class="cell"><div class="v num">${L.published}</div><div class="k">Calls published</div></div>
+      <div class="cell"><div class="v num">${L.settled}</div><div class="k">Settled</div></div>
+      <div class="cell"><div class="v num">${L.open}</div><div class="k">Still open</div></div>
+      <div class="cell"><div class="v num">${L.no_fill}</div><div class="k">Never filled</div></div>
+      <div class="cell"><div class="v num ${L.winRate!==null?cls(L.winRate-50):''}">${L.winRate!==null?L.winRate+'%':'—'}</div><div class="k">Win rate</div></div>
+      <div class="cell"><div class="v num ${L.avg!==null?cls(L.avg):''}">${L.avg!==null?pct(L.avg):'—'}</div><div class="k">Average per call</div></div>
+    </div>
+    ${noSettled?`<div class="card reveal" style="margin-top:26px;border-color:rgba(227,213,184,.28)">
+      <div class="eyebrow lit">Tracking has started</div>
+      <p class="sub" style="margin-top:12px;max-width:66ch">${L.published} call${L.published>1?'s are':' is'} on the
+      record and not yet settled. Each one is scored automatically once the market gives it an answer — a fill,
+      then a stop, a target, or the end of the ${L.hold}-session window. Until then there is no live win rate to
+      report, and Alladin will not invent one.</p></div>`:''}
+    <p class="notice reveal" style="margin-top:24px">${L.method}</p>`;
 }
 
 /* ---------- VIEWS ---------- */
@@ -739,17 +811,30 @@ VIEWS.today=()=>{
     <div style="display:grid;gap:22px;margin-top:44px">${briefingHTML(TIPS.usa,'US')}</div>
   </section>
 
-  ${p?`<section class="wrap section">
+  ${RECENT.length?`<section class="wrap section">
+    ${head('Post-market · the record',"ALLADIN'S<br>CALL.",
+      'Every call, kept exactly as published and scored against what the market actually did.')}
+    <div style="display:grid;gap:16px;margin-top:44px">
+      ${RECENT.slice(0,3).map(callCard).join('')}
+    </div>
+    <div class="reveal" style="margin-top:30px"><a class="textbtn" href="#/record">See the full record <span class="arr">→</span></a></div>
+  </section>`:''}
+
+  ${LIVE&&LIVE.published?`<section class="wrap section">
     <div class="verdict">
       <div class="reveal">
         ${head('The evidence','DOES THIS<br>ACTUALLY WORK?')}
-        <p class="sub" style="margin-top:22px">Alladin has no live track record yet — it started publishing today.
-        What it does have is an honest backtest of the same rules on real history.</p>
+        <p class="sub" style="margin-top:22px">${LIVE.settled
+          ? `${LIVE.settled} call${LIVE.settled>1?'s have':' has'} settled since tracking began${LIVE.started?' on '+LIVE.started:''}.`
+          : `Tracking began${LIVE.started?' on '+LIVE.started:''}. Nothing has settled yet, so there is no live number to show — only the backtest below.`}</p>
       </div>
       <div class="reveal" style="text-align:right">
-        <div class="heronum num ${cls(p.winRate-50)} cnt" data-v="${p.winRate}" data-d="1" data-s="%">0%</div>
-        <div class="eyebrow" style="margin-top:12px">Backtested win rate · ${p.tips} setups</div>
-        <div style="margin-top:30px"><a class="btn" href="#/performance">See the full record <span class="arr">→</span></a></div>
+        ${LIVE.winRate!==null
+          ? `<div class="heronum num ${cls(LIVE.winRate-50)} cnt" data-v="${LIVE.winRate}" data-d="1" data-s="%">0%</div>
+             <div class="eyebrow" style="margin-top:12px">Live win rate · ${LIVE.settled} settled</div>`
+          : `<div class="heronum num faint">—</div>
+             <div class="eyebrow" style="margin-top:12px">No live result yet · ${LIVE.open} open</div>`}
+        <div style="margin-top:30px"><a class="btn" href="#/record">The record <span class="arr">→</span></a></div>
       </div>
     </div>
   </section>`:''}
@@ -782,6 +867,48 @@ VIEWS.usa=()=>`
     ${sourceNote()}
   </section>
   ${footerHTML()}`;
+
+/* ---------- the live record ---------- */
+VIEWS.record=()=>{
+  const L=LIVE;
+  const settled=RECENT.filter(c=>['TARGET_1','STOPPED','CLOSED'].includes(c.result.status));
+  const open=RECENT.filter(c=>['OPEN','PENDING'].includes(c.result.status));
+  const nofill=RECENT.filter(c=>c.result.status==='NO_FILL');
+  return `
+  <section class="hero wrap">
+    ${head('The forward record','WHAT ALLADIN<br>ACTUALLY SAID.',
+      'Every published call, frozen at the moment it was made, then scored against real prices. Nothing here is rewritten after the fact.')}
+  </section>
+  <section class="wrap section tight" style="padding-top:0">
+    ${liveRecordHTML()}
+  </section>
+  ${open.length?`<section class="wrap section">
+    ${head('In flight','STILL<br>RUNNING.')}
+    <div style="display:grid;gap:16px;margin-top:40px">${open.map(callCard).join('')}</div>
+  </section>`:''}
+  ${settled.length?`<section class="wrap section">
+    ${head('Settled','THE<br>ANSWERS.')}
+    <div style="display:grid;gap:16px;margin-top:40px">${settled.map(callCard).join('')}</div>
+  </section>`:''}
+  ${nofill.length?`<section class="wrap section">
+    ${head('Never filled','THE ONES<br>THAT GOT AWAY.')}
+    <p class="sub reveal" style="margin-top:20px">Price never traded into the published entry zone, so there was no
+    position to take. These are excluded from the win rate rather than quietly counted as wins.</p>
+    <div style="display:grid;gap:16px;margin-top:36px">${nofill.map(callCard).join('')}</div>
+  </section>`:''}
+  <section class="wrap section">
+    <div class="card reveal" style="border-color:rgba(201,155,95,.3)">
+      <div class="eyebrow" style="color:var(--warn)">Why this page matters more than the backtest</div>
+      <p class="sub" style="margin-top:14px;max-width:70ch">A backtest is a claim about the past made with
+      hindsight over a universe chosen today. This page is the opposite: calls published before the outcome was
+      known, scored on real fills. It starts small and grows slowly, and that is the point — it is the only
+      number here that cannot be tuned.</p>
+      <div style="margin-top:24px"><a class="textbtn" href="#/performance">See the backtest too <span class="arr">→</span></a></div>
+    </div>
+    ${sourceNote()}
+  </section>
+  ${footerHTML()}`;
+};
 
 /* ---------- calendar (real backtested sessions) ---------- */
 let calMonth=null;
@@ -1064,7 +1191,7 @@ function tipOverlayHTML(t){
     </section>
 
     <section class="section tight">
-      ${head('What the numbers say','WHY ALLADIN<br>LIKES THIS.')}
+      ${head(t.analyst?`Analysis by ${t.analyst}`:'Computed from the indicators','WHY ALLADIN<br>LIKES THIS.')}
       <div style="margin-top:30px;max-width:860px">${t.thesis.map(s=>`<div class="saying reveal">${s}</div>`).join('')}</div>
       <div class="grid2" style="margin-top:44px">
         <div class="card reveal">
@@ -1121,7 +1248,24 @@ function tipOverlayHTML(t){
           </div>
         </a>`).join('')}</div>`
         :'<p class="notice reveal" style="margin-top:28px">No headlines returned for this name in the latest build.</p>'}
+      ${t.news_read?`
+      <div class="card reveal" style="margin-top:22px;border-color:rgba(227,213,184,.28)">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <span class="eyebrow lit">Does the news back the chart?</span>
+          <span class="chip ${t.news_read.verdict==='CORROBORATES'?'buy':t.news_read.verdict==='CONTRADICTS'?'bad':'acc'}">${t.news_read.verdict}</span>
+        </div>
+        <p class="sub" style="margin-top:14px;max-width:66ch">${t.news_read.detail}</p>
+      </div>`:''}
     </section>
+
+    ${t.critique?`<section class="section tight">
+      <div class="card reveal" style="border-color:rgba(192,98,90,.28)">
+        <div class="eyebrow" style="color:var(--neg)">The strongest objection</div>
+        <p class="saying" style="border:0;padding:12px 0 0">${t.critique}</p>
+        <p class="notice" style="margin-top:16px">Alladin argues against its own setup here on purpose. If this
+        objection lands with you, the right response is to skip the trade.</p>
+      </div>
+    </section>`:''}
 
     <section class="section tight">
       <div class="twocol">

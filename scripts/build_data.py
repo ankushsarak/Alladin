@@ -29,6 +29,10 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import analyst                                                   # noqa: E402
+import ledger                                                    # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "data.json"
 CACHE = ROOT / ".cache"
@@ -733,6 +737,7 @@ def build_tip(sym, meta, ind, score, reasons, against, idx):
 
     return {
         "id": ticker.lower(),
+        "symbol": sym,
         "ticker": ticker,
         "name": meta["name"],
         "market": meta["market"],
@@ -861,6 +866,34 @@ def main():
             "score": round(score / 10, 1),
         })
 
+    # ---- Claude writes the analysis around the computed numbers
+    all_tips = tips["india"] + tips["usa"]
+    print("Analysing setups…")
+    analysis = analyst.analyse(all_tips)
+    if analysis.get("enabled"):
+        print(f"  {analysis['analysed']} analysed by {analysis['model']}")
+    else:
+        print(f"  computed analysis retained — {analysis.get('reason','')}")
+
+    # ---- forward record: publish today's calls, settle older ones
+    print("Updating the live ledger…")
+    led = ledger.load()
+    today = now_ist.strftime("%Y-%m-%d")
+    added = ledger.publish(led, all_tips, today, now_ist.isoformat())
+
+    def rows_for(symbol):
+        if symbol in universe:
+            return universe[symbol]["rows"]
+        d = fetch_ohlcv(symbol, rng="6mo")
+        return d["rows"] if d else None
+
+    settled = ledger.settle(led, rows_for, now_ist.isoformat())
+    ledger.save(led)
+    live = ledger.summarise(led)
+    print(f"  {added} published, {settled} newly settled · "
+          f"{live['settled']} settled of {live['published']} total"
+          + (f" · win {live['winRate']}%" if live["winRate"] is not None else " · no settled calls yet"))
+
     # ---- backtest the same rules on real history
     print("Backtesting the rule engine on real history…")
     bt = backtest(universe)
@@ -873,11 +906,16 @@ def main():
         "sources": {
             "prices": "Yahoo Finance chart API (public)",
             "news": "Google News RSS (public)",
-            "engine": "Deterministic rule engine over computed indicators — no LLM, no random data",
+            "engine": "Deterministic rule engine over computed indicators — selection and every price level",
+            "analysis": (f"Written by {analysis['model']}" if analysis.get("enabled")
+                         else "Computed from the indicators (no model available this build)"),
         },
         "indices": indices,
         "tips": tips,
         "watchlist": watch,
+        "analysis": analysis,
+        "live": live,
+        "recent_calls": ledger.recent(led),
         "performance": bt,
         "universe_size": len(universe),
     }
