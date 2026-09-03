@@ -30,7 +30,7 @@ import urllib.request
 
 # Sensible free defaults per provider; override with ALLADIN_MODEL.
 DEFAULT_MODEL = {
-    "gemini": "gemini-2.0-flash",
+    "gemini": "gemini-flash-latest",
     "groq": "llama-3.3-70b-versatile",
     "openrouter": "meta-llama/llama-3.3-70b-instruct:free",
     "anthropic": "claude-opus-5",
@@ -150,6 +150,56 @@ def _post(url, headers, body, tries=3):
     raise RuntimeError(str(last))
 
 
+GEMINI_FALLBACKS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-2.5-flash-lite",
+                    "gemini-pro-latest", "gemini-2.0-flash-001"]
+
+
+def _get(url, headers):
+    req = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(req, timeout=30, context=_CTX) as r:
+        return json.loads(r.read())
+
+
+def _rank_gemini(names):
+    """Prefer a current, free-tier-friendly flash model over anything else."""
+    def score(n):
+        s = 0
+        if "flash" in n:
+            s += 100                     # flash is the free tier's workhorse
+        if "lite" in n:
+            s -= 12                      # weaker; only if nothing better
+        if any(w in n for w in ("preview", "exp")):
+            s -= 30                      # unstable names churn
+        if n.endswith("-latest"):
+            s += 18                      # self-updating alias, survives retirement
+        m = re.search(r"(\d+)\.(\d+)", n)
+        if m:
+            s += int(m.group(1)) * 10 + int(m.group(2))
+        return s
+    return sorted(set(names), key=score, reverse=True)
+
+
+def _gemini_candidates(key, verbose=True):
+    """
+    Ask Google which models this key can actually use. Model names get retired,
+    so discovering beats hardcoding; the static list is only a safety net.
+    """
+    try:
+        d = _get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
+                 {"x-goog-api-key": key})
+        usable = [m["name"].split("/", 1)[-1] for m in d.get("models", [])
+                  if "generateContent" in (m.get("supportedGenerationMethods") or [])]
+        ranked = _rank_gemini(usable)
+        if verbose and ranked:
+            print(f"  discovered {len(ranked)} usable Gemini models; trying {ranked[0]}")
+        return ranked + [m for m in GEMINI_FALLBACKS if m not in ranked]
+    except Exception as e:                                      # noqa: BLE001
+        if verbose:
+            print(f"  ~ model discovery failed ({_redact(e, 90)}); using fallbacks",
+                  file=sys.stderr)
+        return list(GEMINI_FALLBACKS)
+
+
 def _call_gemini(model, key, system, user):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     body = {
@@ -183,6 +233,25 @@ def _call_anthropic(model, key, system, user):
     d = _post("https://api.anthropic.com/v1/messages",
               {"x-api-key": key, "anthropic-version": "2023-06-01"}, body)
     return "".join(b.get("text", "") for b in d.get("content", []) if b.get("type") == "text")
+
+
+def _dispatch_resilient(provider, candidates, current, key, system, user, verbose=True):
+    """
+    Call `current`; if the model name is gone (404), walk the candidate list.
+    Returns (raw_text, model_that_worked) so the rest of the run skips ahead.
+    """
+    order = [current] + [m for m in candidates if m != current]
+    last = None
+    for m in order:
+        try:
+            return _dispatch(provider, m, key, system, user), m
+        except Exception as e:                                  # noqa: BLE001
+            last = e
+            if "404" not in str(e) and "no longer available" not in str(e).lower():
+                raise                     # a real failure, not a retired name
+            if verbose:
+                print(f"  ~ {m} unavailable; trying the next model", file=sys.stderr)
+    raise RuntimeError(str(last))
 
 
 def _dispatch(provider, model, key, system, user):
@@ -312,14 +381,22 @@ def analyse(tips, verbose=True):
             print(f"  ~ credential vars present: {env['present'] or 'none'}", file=sys.stderr)
         return {"enabled": False, "reason": msg, "env": env}
 
-    model = os.environ.get("ALLADIN_MODEL") or DEFAULT_MODEL.get(provider, "")
+    forced = os.environ.get("ALLADIN_MODEL")
+    if forced:
+        candidates = [forced]
+    elif provider == "gemini":
+        candidates = _gemini_candidates(key, verbose)
+    else:
+        candidates = [DEFAULT_MODEL.get(provider, "")]
+    model = candidates[0]
     if verbose:
         print(f"  using {DISPLAY.get(provider, provider)} · {model}")
 
     done, failed = 0, []
     for t in tips:
         try:
-            raw = _dispatch(provider, model, key, SYSTEM, _prompt(t))
+            raw, model = _dispatch_resilient(provider, candidates, model, key,
+                                             SYSTEM, _prompt(t), verbose)
             _apply(t, _extract(raw), provider, model)
             done += 1
             if verbose:
