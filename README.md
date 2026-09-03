@@ -38,10 +38,22 @@ hallucinate a level into a trade plan. Every number is arithmetic you can
 reproduce from [`scripts/build_data.py`](scripts/build_data.py); the same input
 always gives the same output.
 
-The analyst layer is optional. Set `ANTHROPIC_API_KEY` (as a repository secret
-for CI, or in your shell locally) and `pip install anthropic` to enable it.
-Without it the build falls back to prose computed from the indicators, and the
-site says which one you are reading.
+The analyst layer is optional and works with any of several LLM keys — **use a
+free one**; there is no paid dependency. It needs no SDK (standard-library HTTP)
+and is checked in this order:
+
+| Env var | Provider | Cost | Get a key |
+|---|---|---|---|
+| `GEMINI_API_KEY` | Google Gemini | **Free tier** | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+| `GROQ_API_KEY` | Groq (Llama 3.3) | **Free tier** | [console.groq.com/keys](https://console.groq.com/keys) |
+| `OPENROUTER_API_KEY` | OpenRouter (free models) | **Free tier** | [openrouter.ai/keys](https://openrouter.ai/keys) |
+| `ANTHROPIC_API_KEY` | Claude | Paid | [console.anthropic.com](https://console.anthropic.com) |
+
+Set one as a repository secret (Settings → Secrets and variables → Actions) for
+CI, or export it in your shell locally. Force a provider with
+`ALLADIN_PROVIDER=gemini|groq|openrouter|anthropic` and override the model with
+`ALLADIN_MODEL`. Without any key the build falls back to prose computed from the
+indicators, and the site says which one you are reading.
 
 ## The forward record
 
@@ -131,7 +143,7 @@ push.
 ```
 index.html                     the whole front end — no build step
 scripts/build_data.py          fetch, compute, score, backtest
-scripts/analyst.py             Claude writes the analysis (optional)
+scripts/analyst.py             LLM writes the analysis (optional, free-tier)
 scripts/ledger.py              append-only forward record + settlement
 docs/data.json                 generated feed the page reads
 docs/ledger.json               every call ever published, frozen

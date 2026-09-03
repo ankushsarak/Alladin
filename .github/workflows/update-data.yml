@@ -31,16 +31,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Only needed for the analyst layer; the build runs fine without it.
-      - name: Install the Anthropic SDK
-        run: pip install --quiet anthropic
-
       - name: Build data from live sources
         run: python scripts/build_data.py
         env:
           ALLADIN_CACHE_TTL: "0"
-          # Optional. Without it the site falls back to computed analysis
-          # and says so; every price level is unaffected either way.
+          # All optional. Set whichever you have as a repository secret to turn
+          # the analyst on; without any, the site falls back to computed prose
+          # and says so. Every price level is unaffected either way.
+          #   GEMINI_API_KEY  — free  · aistudio.google.com/apikey
+          #   GROQ_API_KEY    — free  · console.groq.com/keys
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Commit if anything changed
