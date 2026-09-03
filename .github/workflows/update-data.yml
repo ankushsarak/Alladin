@@ -1,0 +1,49 @@
+name: Update market data
+
+# Pulls real prices from Yahoo Finance and headlines from Google News,
+# rebuilds docs/data.json, and commits it. GitHub Pages redeploys on push.
+on:
+  schedule:
+    # 07:30 IST — India pre-market briefing  (02:00 UTC)
+    - cron: "0 2 * * 1-5"
+    # 13:30 IST — US pre-market briefing     (08:00 UTC)
+    - cron: "0 8 * * 1-5"
+    # 16:00 IST — India post-market scoring  (10:30 UTC)
+    - cron: "30 10 * * 1-5"
+    # 02:30 IST — US post-market scoring     (21:00 UTC)
+    - cron: "0 21 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: alladin-data
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build data from live sources
+        run: python scripts/build_data.py
+        env:
+          ALLADIN_CACHE_TTL: "0"
+
+      - name: Commit if data changed
+        run: |
+          git config user.name  "alladin-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- docs/data.json; then
+            echo "No change in market data."
+            exit 0
+          fi
+          git add docs/data.json
+          git commit -m "Update market data — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

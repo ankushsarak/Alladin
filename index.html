@@ -464,184 +464,46 @@ const fmtI=n=>Math.round(n).toLocaleString('en-IN');
 const pct=n=>(n>=0?'+':'')+n.toFixed(2)+'%';
 const pct1=n=>(n>=0?'+':'')+n.toFixed(1)+'%';
 const cls=n=>n>=0?'pos':'neg';
-function prng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-function series(seed,n,start,vol){const r=prng(seed);let v=start;const out=[];for(let i=0;i<n;i++){v*=1+(r()-.47)*vol;out.push(v)}return out}
+/* ================= live data =================
+   Everything below is loaded from docs/data.json, which is rebuilt on a
+   schedule by scripts/build_data.py from Yahoo Finance (prices/OHLCV) and
+   Google News RSS (headlines). There is no generated or placeholder data
+   anywhere in this file. */
+let D=null;                      // the whole payload
+let DAYS=[], DAYMAP={}, TIPS={india:[],usa:[]}, ALLTIPS=[], WATCH=[], PERF=null;
+let TOTAL_RET=0, ANNUALIZED=null, MAXDD=0;
 
-/* ---------- trading history: 42 sessions, 7 Jul – 2 Sep 2026 ---------- */
-const DAYS=(()=>{
-  const out=[],r=prng(2026);let d=new Date(2026,6,7);
-  while(out.length<42){
-    const dow=d.getDay();
-    if(dow!==0&&dow!==6){
-      let ind=(r()-.42)*2.2, usa=(r()-.42)*1.8;
-      if(out.length>=14&&out.length<=17){ind=-Math.abs(ind)*.9;usa=-Math.abs(usa)*.8}
-      out.push({date:new Date(d),ind,usa});
-    }
-    d.setDate(d.getDate()+1);
+const dkey=d=>(typeof d==='string'?d:d.toISOString().slice(0,10));
+
+async function loadData(){
+  const res=await fetch('docs/data.json?t='+Date.now(),{cache:'no-store'});
+  if(!res.ok) throw new Error('data.json '+res.status);
+  D=await res.json();
+
+  TIPS={india:D.tips.india||[],usa:D.tips.usa||[]};
+  ALLTIPS=[...TIPS.india,...TIPS.usa];
+  WATCH=D.watchlist||[];
+  PERF=D.performance||null;
+
+  if(PERF&&PERF.days&&PERF.days.length){
+    DAYS=PERF.days.map(x=>({...x,date:new Date(x.date+'T00:00:00Z')}));
+    DAYMAP=Object.fromEntries(DAYS.map(x=>[x.d||dkey(x.date),x]));
+    TOTAL_RET=PERF.total; ANNUALIZED=PERF.annualized; MAXDD=PERF.maxdd;
   }
-  const scale=(k,target)=>{const cum=out.reduce((p,x)=>p*(1+x[k]/100),1);const f=Math.pow((1+target/100)/cum,1/out.length);out.forEach(x=>{x[k]=((1+x[k]/100)*f-1)*100})};
-  scale('ind',12.4);scale('usa',8.7);
-  out.forEach(x=>x.all=x.ind*.6+x.usa*.4);
-  const cum=out.reduce((p,x)=>p*(1+x.all/100),1);
-  const f=Math.pow(1.1842/cum,1/out.length);
-  out.forEach(x=>{x.all=((1+x.all/100)*f-1)*100});
-  let eq=100000;out.forEach(x=>{eq*=1+x.all/100;x.eq=eq});
-  return out;
-})();
-const TOTAL_RET=(DAYS[DAYS.length-1].eq/100000-1)*100;
-const ANNUALIZED=(Math.pow(DAYS[DAYS.length-1].eq/100000,252/DAYS.length)-1)*100;
-const MAXDD=(()=>{let peak=100000,dd=0;DAYS.forEach(x=>{peak=Math.max(peak,x.eq);dd=Math.min(dd,(x.eq/peak-1)*100)});return dd})();
-const dkey=d=>d.toISOString().slice(0,10);
-const DAYMAP=Object.fromEntries(DAYS.map(x=>[dkey(x.date),x]));
-
-/* ---------- tips ---------- */
-const TIPS={
- india:[
-  {id:'reliance',ticker:'RELIANCE',name:'Reliance Industries',market:'INDIA',cur:'₹',sector:'Energy',art:'energy',
-   action:'BUY',mode:'BUY NOW',conviction:'HIGH',price:1432,chg:.9,
-   entry:[1425,1440],window:'9:20–10:15 AM IST',stop:1390,targets:[1475,1520,1575],rr:'1 : 3.1',size:4.0,
-   scores:{Technical:5,Fundamental:4,Momentum:5,Catalyst:4},
-   thesis:['Momentum has changed.','Price is reclaiming a key resistance zone.','Sector strength is confirming the move.','Three independent signals are pointing in the same direction.'],
-   sections:{
-    'THE CHART':'Price has closed above the ₹1,425 supply zone for two consecutive sessions on expanding volume. The 20-day average has crossed above the 50-day, RSI sits at 62 with room before exhaustion, and MACD has turned positive. Support holds at ₹1,390; the overhead supply near ₹1,440 is visibly thinning.',
-    'THE BUSINESS':'Refining margins have widened for a third straight quarter, retail same-store growth is running ahead of the sector, and the digital arm continues to compound subscribers. The conglomerate discount has narrowed but has not closed.',
-    'THE MACRO':'Crude is range-bound, the rupee is stable, and the RBI is on hold. A benign rate backdrop favours large-cap index leaders with heavy institutional ownership.',
-    'THE CATALYST':'Management commentary on the new-energy vertical is expected at this week’s investor event. Positive guidance has historically produced multi-day follow-through in this name.',
-    'THE RISKS':'A sharp crude spike would compress refining margins. A broad market pullback would drag this index heavyweight regardless of its own story. A close back below ₹1,425 invalidates the setup.',
-    'THE SIGNAL':'Breakout, volume confirmation, and sector rotation into energy are aligned. When these three agree, Alladin’s historical hit rate on this setup is at its strongest.'},
-   news:[
-    {h:'Refining margins hit six-quarter high',src:'Mint',time:'06:40 IST',sum:'Benchmark Singapore GRMs expanded again this week, led by diesel cracks.',why:'Margin expansion flows directly into the segment that still drives the majority of operating profit.'},
-    {h:'FII flows turn positive for energy',src:'Economic Times',time:'Yesterday',sum:'Foreign institutions were net buyers of Indian energy names for the fifth straight session.',why:'Institutional accumulation supports the breakout and reduces the odds of a failed move.'},
-    {h:'Investor event scheduled this week',src:'Exchange filing',time:'2d ago',sum:'The company will present its new-energy roadmap to institutional investors.',why:'A concrete catalyst with a defined date anchors the entry window.'}],
-   workcase:['The breakout came on 1.8× average volume — conviction, not drift.','Energy is the strongest sector over ten sessions.','Macro is calm: stable crude, stable rupee, central bank on hold.'],
-   failcase:['₹1,440 has rejected price three times since June.','A crude spike would hit margins before the chart reflects it.','Index heavyweights fall with the market, whatever their story.'],
-   invalidation:'A daily close below ₹1,425 on rising volume.'},
-  {id:'hdfcbank',ticker:'HDFCBANK',name:'HDFC Bank',market:'INDIA',cur:'₹',sector:'Financials',art:'finance',
-   action:'BUY',mode:'BUY ON BREAKOUT',conviction:'HIGH',price:1642,chg:.4,
-   entry:[1655,1662],window:'On a break of ₹1,655',stop:1608,targets:[1700,1738,1790],rr:'1 : 2.6',size:3.0,
-   scores:{Technical:4,Fundamental:5,Momentum:4,Catalyst:3},
-   thesis:['The consolidation is ending.','Credit growth is re-accelerating.','Private banks are quietly leading the index.'],
-   sections:{
-    'THE CHART':'Eight weeks of tightening range under ₹1,655. Volatility compression of this depth typically resolves in the direction of the prior trend — up. Wait for the level to break; do not front-run it.',
-    'THE BUSINESS':'Deposit growth has caught up with loan growth, easing the funding pressure that capped the stock. Net interest margins have stabilised two quarters ahead of street expectations.',
-    'THE MACRO':'System credit growth is re-accelerating and the merger integration overhang is largely absorbed. Rate cuts, when they come, expand book value multiples for liability-strong franchises.',
-    'THE CATALYST':'Monthly business update due within days. A strong deposit print is the likely trigger for the ₹1,655 break.',
-    'THE RISKS':'A weak update keeps the stock rangebound. Breakouts in banks fail more often when index breadth is narrow — size accordingly.',
-    'THE SIGNAL':'Compression plus improving fundamentals plus sector leadership. The trigger is price through ₹1,655 — nothing before that.'},
-   news:[
-    {h:'System credit growth at 16.1% YoY',src:'RBI data',time:'Yesterday',sum:'Bank credit expanded at its fastest pace in seven months.',why:'Rising system growth lifts the leader with the strongest deposit franchise.'},
-    {h:'Brokerages raise FY27 estimates',src:'Bloomberg Quint',time:'2d ago',sum:'Three houses lifted margin assumptions after channel checks.',why:'Estimate momentum tends to precede price momentum in large-cap banks.'}],
-   workcase:['Eight-week volatility compression resolves with force.','Deposit growth has closed the gap — the bear case is fading.','Private banks are outperforming the index this month.'],
-   failcase:['Breakouts fail when breadth is this narrow.','A soft monthly update freezes the range for weeks.','Banking is crowded — positioning is not in your favour.'],
-   invalidation:'No entry unless ₹1,655 breaks. After entry: a close below ₹1,608.'},
-  {id:'sunpharma',ticker:'SUNPHARMA',name:'Sun Pharmaceutical',market:'INDIA',cur:'₹',sector:'Healthcare',art:'health',
-   action:'BUY',mode:'WAIT',conviction:'MEDIUM',price:1712,chg:-.2,
-   entry:[1680,1695],window:'On a pullback to ₹1,680–1,695',stop:1648,targets:[1745,1780,1830],rr:'1 : 2.4',size:2.5,
-   scores:{Technical:3,Fundamental:4,Momentum:3,Catalyst:4},
-   thesis:['The story is right. The price is not.','Specialty pipeline momentum is real.','Patience is a position.'],
-   sections:{
-    'THE CHART':'Extended 4.2% above its 20-day average — chasing here buys someone else’s profit. The ₹1,680–1,695 zone is prior resistance turned support and the logical re-entry.',
-    'THE BUSINESS':'Specialty revenue is compounding at over 20% and now carries group margins. US generics pricing pressure has stabilised.',
-    'THE MACRO':'Defensive sectors catch flows when index volatility rises. Healthcare gives the portfolio ballast the two cyclical ideas do not.',
-    'THE CATALYST':'A specialty-franchise regulatory decision is expected this month; the market is underpricing an approval.',
-    'THE RISKS':'A negative regulatory surprise gaps the stock through any stop. Extended names correct fast when momentum unwinds.',
-    'THE SIGNAL':'Wait. Alladin flags the level, not the urge. If price never returns to the zone, there is no trade — and that is fine.'},
-   news:[
-    {h:'Specialty franchise grows 23% YoY',src:'Company release',time:'1w ago',sum:'Flagship dermatology and ophthalmology lines beat estimates again.',why:'The re-rating rests on specialty mix — the trend is intact.'},
-    {h:'US FDA decision window opens',src:'Reuters',time:'3d ago',sum:'A target action date for a key specialty filing falls within this month.',why:'Binary events reward entries at support, not at extension.'}],
-   workcase:['Specialty mix keeps lifting structural margins.','Defensives hedge the portfolio’s cyclical tilt.','A dated catalyst sits weeks away.'],
-   failcase:['4% above the 20-day — poor location right now.','Regulatory outcomes are binary and gap risk is real.','If the pullback never comes, capital idles.'],
-   invalidation:'Entry only inside ₹1,680–1,695. After entry: a close below ₹1,648.'}],
- usa:[
-  {id:'nvda',ticker:'NVDA',name:'NVIDIA Corp',market:'USA',cur:'$',sector:'Technology',art:'tech',
-   action:'BUY',mode:'BUY NOW',conviction:'HIGH',price:172.40,chg:2.3,
-   entry:[171,174],window:'First 90 minutes of the US session',stop:165.5,targets:[181,188,197],rr:'1 : 2.8',size:4.0,
-   scores:{Technical:5,Fundamental:4,Momentum:5,Catalyst:5},
-   thesis:['Demand is still outrunning supply.','The pullback found buyers exactly where it should.','Accelerator capex guidance keeps rising.'],
-   sections:{
-    'THE CHART':'A clean higher low at $165 against the 50-day, reclaimed on volume. RSI reset from 78 to 55 without breaking structure — momentum cooled, trend did not.',
-    'THE BUSINESS':'Data-centre revenue mix keeps climbing and gross margins are holding above 70%. Supply commitments from foundry partners extend through next year.',
-    'THE MACRO':'Hyperscaler capex guidance rose again this quarter. AI infrastructure spend remains the strongest earnings driver in the index.',
-    'THE CATALYST':'A flagship developer conference keynote lands this week, with new accelerator benchmarks expected.',
-    'THE RISKS':'Any hyperscaler trimming capex guidance hits the whole complex. Crowded ownership cuts both ways — air pockets are violent.',
-    'THE SIGNAL':'Trend intact, momentum reset, dated catalyst ahead. This is the setup Alladin scores highest on US tech.'},
-   news:[
-    {h:'Hyperscaler capex guided up 12%',src:'Bloomberg',time:'Pre-market',sum:'The largest cloud buyer raised infrastructure spend guidance for the third consecutive quarter.',why:'Capex guidance is the single best forward indicator for accelerator demand.'},
-    {h:'Keynote scheduled Thursday',src:'Company IR',time:'2d ago',sum:'Next-generation accelerator benchmarks expected at the developer conference.',why:'Product catalysts within the holding window justify a full-size position.'},
-    {h:'Supply agreement extended',src:'Reuters',time:'3d ago',sum:'Advanced packaging capacity secured through end of next year.',why:'Supply certainty removes the main near-term bear argument.'}],
-   workcase:['Higher low on the 50-day, reclaimed on volume.','Capex guidance keeps rising across every major buyer.','A dated product catalyst falls inside the window.'],
-   failcase:['The most crowded trade in the index.','One capex cut re-prices the whole complex.','A failed keynote is a sell-the-news setup.'],
-   invalidation:'A daily close below $165.50.'},
-  {id:'xom',ticker:'XOM',name:'Exxon Mobil',market:'USA',cur:'$',sector:'Energy',art:'energy',
-   action:'BUY',mode:'BUY ON BREAKOUT',conviction:'MEDIUM',price:118.60,chg:.6,
-   entry:[120,121],window:'On a break of $120',stop:114.8,targets:[124,128,133],rr:'1 : 2.5',size:3.0,
-   scores:{Technical:4,Fundamental:4,Momentum:3,Catalyst:3},
-   thesis:['Energy is rotating back in.','The range is tightening under $120.','Cash returns keep a floor under the stock.'],
-   sections:{
-    'THE CHART':'Five tests of $120 since June, each rejection shallower than the last. Accumulation, not distribution. The trigger is a close through the level.',
-    'THE BUSINESS':'Production growth from low-cost basins continues while capex discipline holds. Buybacks are running at the top of the guided range.',
-    'THE MACRO':'Crude has based above its 200-day. OPEC supply discipline plus resilient demand keeps the floor intact.',
-    'THE CATALYST':'Weekly inventory data and an OPEC ministerial this week could provide the push through $120.',
-    'THE RISKS':'A demand scare in macro data takes crude and the trade down together. Note the correlation with the India energy position.',
-    'THE SIGNAL':'A textbook ascending setup — but only on the break. No trigger, no trade.'},
-   news:[
-    {h:'Crude inventories draw for fourth week',src:'EIA',time:'Yesterday',sum:'Stockpiles fell more than consensus for a fourth consecutive week.',why:'Persistent draws support the crude floor the thesis rests on.'},
-    {h:'Buyback pace at top of range',src:'Company filing',time:'1w ago',sum:'Repurchases annualising at the high end of guidance.',why:'Aggressive cash return limits downside while the breakout sets up.'}],
-   workcase:['Each rejection at $120 is shallower — pressure is building.','Crude has based; inventories keep drawing.','Cash returns cushion the downside.'],
-   failcase:['Five rejections show real supply at the level.','One soft demand print unwinds the setup.','Overlaps Indian energy exposure — see correlation note.'],
-   invalidation:'No entry unless $120 breaks. After entry: a close below $114.80.'},
-  {id:'jpm',ticker:'JPM',name:'JPMorgan Chase',market:'USA',cur:'$',sector:'Financials',art:'finance',
-   action:'BUY',mode:'WAIT',conviction:'MEDIUM',price:312.90,chg:-.3,
-   entry:[305,308],window:'On a pullback to $305–308',stop:298,targets:[318,326,338],rr:'1 : 2.3',size:2.5,
-   scores:{Technical:3,Fundamental:5,Momentum:3,Catalyst:3},
-   thesis:['Best-in-class, wrong price.','Net interest income is proving stickier than feared.','Let the price come to you.'],
-   sections:{
-    'THE CHART':'Grinding higher but stretched above its 20-day. The $305–308 shelf is a former breakout level and the highest-probability re-entry.',
-    'THE BUSINESS':'Net interest income guidance was raised despite cut expectations. Trading and investment banking revenue both surprised positively last quarter.',
-    'THE MACRO':'A steepening yield curve is the best backdrop money-centre banks have had in two years.',
-    'THE CATALYST':'A bank-conference fireside this month typically moves guidance expectations.',
-    'THE RISKS':'Credit normalisation is the slow-burn risk. If the pullback never arrives, the idea simply expires unfilled.',
-    'THE SIGNAL':'Quality at the right level. Alladin marks the zone and waits with you.'},
-   news:[
-    {h:'NII guidance raised for full year',src:'WSJ',time:'2w ago',sum:'Management lifted net interest income guidance despite anticipated rate cuts.',why:'The core earnings engine is stronger than the street modelled.'},
-    {h:'Yield curve steepest in two years',src:'FT',time:'Yesterday',sum:'The 2s10s spread widened to a two-year high.',why:'Steeper curves expand bank margins mechanically.'}],
-   workcase:['Raised guidance into rate cuts — rare strength.','Steepening curve is a mechanical tailwind.','A defined pullback zone limits entry risk.'],
-   failcase:['Extended price — chasing erodes the edge.','Credit costs normalise slowly but surely.','No pullback, no trade, idle capital.'],
-   invalidation:'Entry only inside $305–308. After entry: a close below $298.'}]
-};
-const ALLTIPS=[...TIPS.india,...TIPS.usa];
+}
 const tipById=id=>ALLTIPS.find(t=>t.id===id);
 
-/* correlation note */
-const CORRELATION={pair:['RELIANCE','XOM'],text:'These positions carry significant exposure to the same sector. Both lean on a stable crude floor: they diversify geography, not risk factor. Alladin has sized each below its standalone recommendation for this reason.'};
+/* index lookups */
+const idxFor=(market,i)=>((D&&D.indices)||[]).filter(x=>x.market===market)[i]||null;
 
-/* yesterday's calls (2 Sep) */
-const YESTERDAY={date:'SEPTEMBER 2',india:[
-  {ticker:'RELIANCE',action:'BUY',entry:1430,close:1482,ret:3.64,status:'TARGET 1 HIT',grade:'GOOD',
-   worked:'Volume confirmed the breakout.',didnt:'Broader market weakness delayed the move.',verdict:'THESIS VALIDATED.'},
-  {ticker:'INFY',action:'BUY',entry:1512,close:1529,ret:1.12,status:'RUNNING',grade:'NEUTRAL'},
-  {ticker:'TATAMOTORS',action:'BUY',entry:1042,close:1023,ret:-1.82,status:'STOPPED',grade:'BAD'}],
- usa:[
-  {ticker:'NVDA',action:'BUY',entry:168.4,close:172.4,ret:2.31,status:'TARGET 1 HIT',grade:'GOOD'},
-  {ticker:'MSFT',action:'BUY',entry:426.0,close:428.1,ret:0.44,status:'RUNNING',grade:'NEUTRAL'},
-  {ticker:'XOM',action:'BUY',entry:119.2,close:118.6,ret:-0.51,status:'RUNNING',grade:'NEUTRAL'}]};
-
-/* watchlist */
-const WATCH=[
- {ticker:'NVDA',name:'NVIDIA Corp',cur:'$',px:172.40,chg:2.3,score:8.7},
- {ticker:'RELIANCE',name:'Reliance Industries',cur:'₹',px:1435,chg:1.2,score:8.2},
- {ticker:'MSFT',name:'Microsoft',cur:'$',px:428.10,chg:0.8,score:7.9},
- {ticker:'TCS',name:'Tata Consultancy',cur:'₹',px:4310,chg:0.5,score:7.6},
- {ticker:'XOM',name:'Exxon Mobil',cur:'$',px:118.60,chg:0.6,score:7.4},
- {ticker:'BAJFINANCE',name:'Bajaj Finance',cur:'₹',px:7842,chg:-0.4,score:7.1}];
-
-/* performance aggregates */
-const PERF={winRate:68.4,tips:42,avg:.44,rr:'1 : 2.9',
- markets:{india:{ret:12.4,win:70,tips:24},usa:{ret:8.7,win:66,tips:18}},
- sectors:[['Technology',8.2],['Financials',5.4],['Energy',3.1],['Healthcare',2.8],['Consumer',-0.7]],
- conviction:{high:{win:74,ret:14.2},medium:{win:61,ret:5.8}},
- account:[['Prediction accuracy','68.4%'],['Average return','+0.44% / tip'],['Best prediction','NVDA · +11.8% · 14 Aug'],['Worst prediction','HDFCBANK · −3.1% · 22 Jul'],['Best market','India'],['Best sector','Technology'],['Best setup','Breakout + volume confirmation'],['Most common failure','Entering before confirmation']],
- wrong:['Three of our five worst calls entered breakouts a day early, before volume confirmed. The fix: the trigger now requires a close, not an intraday print.','Consumer names cost 0.7% — we overweighted a soft sector for two weeks longer than the data justified.','On 24 July we held a stopped position into the close hoping for a reversal. It cost an extra 0.8%. Stops are now mechanical.']};
+/* freshness */
+function freshness(){
+  if(!D||!D.generated) return '';
+  const g=new Date(D.generated), mins=Math.round((Date.now()-g)/60000);
+  const rel = mins<2?'just now' : mins<60?mins+' min ago'
+            : mins<1440?Math.round(mins/60)+'h ago' : Math.round(mins/1440)+'d ago';
+  return g.toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' IST · '+rel;
+}
 
 /* ---------- SVG chart builders ---------- */
 const CH={ink:'#F4F1E8',ink2:'#A39E93',ink3:'#5C584F',grid:'rgba(244,241,232,.06)',accent:'#E3D5B8',pos:'#5CA97C',neg:'#C0625A'};
@@ -689,10 +551,10 @@ function barChartSVG(vals,{w=980,h=260}={}){
     <rect class="hit" x="0" y="0" width="${w}" height="${h}" fill="transparent"/></svg>`;
 }
 function priceChartSVG(t){
+  /* Real daily closes for this symbol, straight from Yahoo Finance. */
   const w=980,h=380,padL=8,padR=110,padT=20,padB=24;
-  const mid=(t.entry[0]+t.entry[1])/2;
-  const vals=series(t.id.length*991+7,64,mid*.94,.018);
-  const drift=(t.price/vals[vals.length-1]);vals.forEach((v,i)=>vals[i]=v*(1+(drift-1)*i/(vals.length-1)));
+  const vals=(t.chart||[]).map(p=>p.c);
+  if(vals.length<2)return '<div class="notice">Price history unavailable for this symbol.</div>';
   const lo=Math.min(...vals,t.stop)*.995,hi=Math.max(...vals,t.targets[0])*1.005;
   const X=i=>padL+i*(w-padL-padR)/(vals.length-1);
   const Y=v=>padT+(1-(v-lo)/(hi-lo))*(h-padT-padB);
@@ -737,9 +599,8 @@ function wireChart(box,vals,labels,fmt){
 </script>
 <script>
 'use strict';
-/* ================= ALLADIN — views & app ================= */
+/* ================= ALLADIN — views (all data from docs/data.json) ================= */
 const stars=n=>'★'.repeat(n)+`<span class="off">${'★'.repeat(5-n)}</span>`;
-const gradeCls=g=>({EXCELLENT:'pos',GOOD:'pos',NEUTRAL:'muted',BAD:'neg',WORSE:'neg'}[g]||'muted');
 const head=(eyebrow,title,sub='')=>`
   <div class="kicker reveal"><span class="rule"></span><span class="eyebrow">${eyebrow}</span></div>
   <h2 class="display d-lg reveal">${title}</h2>
@@ -749,6 +610,8 @@ const modeChip=m=>m==='BUY NOW'?'<span class="chip buy">● Buy now</span>'
   :m==='BUY ON BREAKOUT'?'<span class="chip acc">◇ Buy on breakout</span>'
   :'<span class="chip wait">◌ Wait</span>';
 
+const money=(cur,v,d)=>cur+fmtN(v,d!==undefined?d:(cur==='$'?2:2));
+
 function tipCardHTML(t,i){
   return `<article class="tipcard reveal" data-tip="${t.id}" role="button" tabindex="0" aria-label="Explore the ${t.ticker} thesis">
     <div class="art ${t.art}"></div>
@@ -757,23 +620,24 @@ function tipCardHTML(t,i){
       <div class="ticker">${t.ticker}</div>
       <div class="cname">${t.name}</div>
       <div class="chips">
-        <span class="chip ${t.action==='BUY'?'buy':'bad'}">${t.action}</span>
+        <span class="chip buy">${t.action}</span>
         <span class="chip acc">${t.conviction} conviction</span>
         ${modeChip(t.mode)}
+        <span class="chip">Score ${t.score}/100</span>
       </div>
       <div class="levels">
-        <div class="lv"><div class="v num">${t.cur}${fmtI((t.entry[0]+t.entry[1])/2)}</div><div class="k">Entry</div></div>
-        <div class="lv"><div class="v num neg">${t.cur}${fmtI(t.stop)}</div><div class="k">Stop</div></div>
-        <div class="lv"><div class="v num pos">${t.cur}${fmtI(t.targets[0])}</div><div class="k">T1</div></div>
-        <div class="lv"><div class="v num pos">${t.cur}${fmtI(t.targets[1])}</div><div class="k">T2</div></div>
-        <div class="lv"><div class="v num pos">${t.cur}${fmtI(t.targets[2])}</div><div class="k">T3</div></div>
-        <div class="lv"><div class="v num">${t.rr}</div><div class="k">Risk / Reward</div></div>
+        <div class="lv"><div class="v num">${money(t.cur,(t.entry[0]+t.entry[1])/2)}</div><div class="k">Entry</div></div>
+        <div class="lv"><div class="v num neg">${money(t.cur,t.stop)}</div><div class="k">Stop</div></div>
+        <div class="lv"><div class="v num pos">${money(t.cur,t.targets[0])}</div><div class="k">T1</div></div>
+        <div class="lv"><div class="v num pos">${money(t.cur,t.targets[1])}</div><div class="k">T2</div></div>
+        <div class="lv"><div class="v num pos">${money(t.cur,t.targets[2])}</div><div class="k">T3</div></div>
+        <div class="lv"><div class="v num">${t.rr}</div><div class="k">Risk / Reward (T2)</div></div>
       </div>
       <div class="cta"><span class="textbtn">Explore the thesis <span class="arr">→</span></span></div>
     </div>
     <div class="side">
       <div style="text-align:right">
-        <div class="num" style="font-size:22px">${t.cur}${fmtN(t.price,t.cur==='$'?2:0)}</div>
+        <div class="num" style="font-size:22px">${money(t.cur,t.price)}</div>
         <div class="num ${cls(t.chg)}" style="font-size:13px">${pct(t.chg)}</div>
       </div>
       <div class="eyebrow" style="text-align:right">${t.sector}<br>${t.market}</div>
@@ -781,37 +645,73 @@ function tipCardHTML(t,i){
   </article>`;
 }
 
-function marketPanel(name,idx,val,chgV,status,live,seed){
+function marketPanel(idx,label){
+  if(!idx)return `<div class="card mpanel reveal"><div class="eyebrow">${label}</div>
+    <p class="notice" style="margin-top:14px">Index data unavailable in the latest build.</p></div>`;
+  const open=marketOpen(idx.market);
   return `<div class="card mpanel reveal">
     <div class="top">
-      <div><div class="eyebrow">${name}</div>
-        <div class="display d-sm" style="margin-top:10px">${idx}</div></div>
-      <span class="chip ${live?'buy':''}"><span class="dot ${live?'live':''}"></span>${status}</span>
+      <div><div class="eyebrow">${idx.market}</div>
+        <div class="display d-sm" style="margin-top:10px">${idx.label}</div></div>
+      <span class="chip ${open?'buy':''}"><span class="dot ${open?'live':''}"></span>${open?'OPEN':'CLOSED'}</span>
     </div>
-    <div class="idx num">${val}<span class="num ${cls(chgV)}" style="font-size:18px;margin-left:14px;letter-spacing:0">${pct(chgV)}</span></div>
-    <div class="spark">${sparkSVG(series(seed,40,100,.012),340,72,chgV>=0?CH.pos:CH.neg)}</div>
+    <div class="idx num">${fmtN(idx.price,2)}<span class="num ${cls(idx.chg)}" style="font-size:18px;margin-left:14px;letter-spacing:0">${pct(idx.chg)}</span></div>
+    <div class="spark">${sparkSVG(idx.spark,340,72,idx.chg>=0?CH.pos:CH.neg)}</div>
   </div>`;
 }
 
-/* ---------- briefing block (India / USA) ---------- */
-function briefingHTML(list,label){
-  return `
-  ${list.map((t,i)=>tipCardHTML(t,i)).join('')}
-  <div class="card reveal" style="margin-top:26px;border-color:rgba(201,155,95,.3)">
-    <div class="eyebrow" style="color:var(--warn)">Correlation</div>
-    <p class="sub" style="margin-top:14px;max-width:60ch">“${CORRELATION.pair.join(' + ')} — ${CORRELATION.text}”</p>
+function marketOpen(market){
+  const z=market==='INDIA'?'Asia/Kolkata':'America/New_York';
+  const d=new Date(new Date().toLocaleString('en-US',{timeZone:z}));
+  const m=d.getHours()*60+d.getMinutes(), wd=d.getDay()>0&&d.getDay()<6;
+  return market==='INDIA'?(wd&&m>=555&&m<930):(wd&&m>=570&&m<960);
+}
+
+function noTradeHTML(market){
+  return `<div class="card reveal" style="text-align:center;padding:clamp(40px,7vw,80px) 24px">
+    <div class="display d-md">NO TRADE TODAY.</div>
+    <p class="sub" style="margin:18px auto 0">Sometimes the smartest position is nothing. Nothing in the ${market}
+    universe cleared Alladin's score threshold in the latest scan — so Alladin is not forcing an idea.</p>
   </div>`;
+}
+
+function briefingHTML(list,market){
+  if(!list.length)return noTradeHTML(market);
+  const sectors={};list.forEach(t=>{sectors[t.sector]=(sectors[t.sector]||0)+1});
+  const dupe=Object.entries(sectors).find(([,n])=>n>1);
+  const other=(market==='India'?TIPS.usa:TIPS.india).filter(u=>list.some(t=>t.sector===u.sector));
+  let corr='';
+  if(dupe||other.length){
+    const names=dupe?list.filter(t=>t.sector===dupe[0]).map(t=>t.ticker)
+                    :[list.find(t=>other.some(o=>o.sector===t.sector)).ticker,other[0].ticker];
+    corr=`<div class="card reveal" style="margin-top:26px;border-color:rgba(201,155,95,.3)">
+      <div class="eyebrow" style="color:var(--warn)">Correlation</div>
+      <p class="sub" style="margin-top:14px;max-width:62ch">${names.join(' and ')} sit in the same sector.
+      These positions duplicate a risk factor rather than diversifying it — if that sector turns, both move
+      together. Size the pair as one idea, not two.</p></div>`;
+  }
+  return list.map((t,i)=>tipCardHTML(t,i)).join('')+corr;
+}
+
+function sourceNote(){
+  return `<p class="notice reveal" style="margin-top:30px">
+    Prices and OHLCV from Yahoo Finance; headlines from Google News. Setups are scored by a deterministic
+    rule engine over computed indicators — trend, momentum, volume and entry location. No language model
+    and no generated data are involved. Last build: ${freshness()}.</p>`;
 }
 
 /* ---------- VIEWS ---------- */
 const VIEWS={};
 
 VIEWS.today=()=>{
-  const y=YESTERDAY.india[0];
+  const nifty=idxFor('INDIA',0), spx=idxFor('USA',0);
+  const anyTips=ALLTIPS.length;
+  const p=PERF;
   return `
   <section class="hero wrap">
     <div class="eyebrow greet reveal" id="datestamp"></div>
-    <h1 class="display d-xl reveal"><span id="greet">GOOD MORNING.</span><br>THE MARKET<br>HAS A FEW IDEAS.</h1>
+    <h1 class="display d-xl reveal"><span id="greet">GOOD MORNING.</span><br>${
+      anyTips?'THE MARKET<br>HAS A FEW IDEAS.':'THE MARKET<br>IS QUIET TODAY.'}</h1>
     <div class="countline reveal">
       <span class="dot live"></span><span class="clock" id="countdown">—</span>
     </div>
@@ -819,111 +719,99 @@ VIEWS.today=()=>{
 
   <section class="wrap section tight">
     <div class="grid2">
-      ${marketPanel('India','NIFTY 50','25,482',0.72,'PRE-OPEN',false,41)}
-      ${marketPanel('USA','S&P 500','6,482',0.41,'CLOSED',false,77)}
+      ${marketPanel(nifty,'INDIA')}
+      ${marketPanel(spx,'USA')}
     </div>
   </section>
 
   <section class="wrap section" id="convictions">
-    ${head("Today's briefing · India","TODAY'S<br>CONVICTIONS.","Three ideas worth your attention. The US briefing lands at 1:30 PM IST.")}
-    <div style="display:grid;gap:22px;margin-top:44px">${briefingHTML(TIPS.india)}</div>
-    <div class="reveal" style="margin-top:34px"><a class="textbtn" href="#/usa">Preview the US ideas <span class="arr">→</span></a></div>
+    ${head("Today's briefing · India","TODAY'S<br>CONVICTIONS.",
+      TIPS.india.length?`${TIPS.india.length} idea${TIPS.india.length>1?'s':''} cleared the threshold from a ${D.universe_size}-name scan.`
+                       :'Nothing cleared the threshold in the Indian universe.')}
+    <div style="display:grid;gap:22px;margin-top:44px">${briefingHTML(TIPS.india,'Indian')}</div>
+    <div class="reveal" style="margin-top:34px"><a class="textbtn" href="#/usa">See the US ideas <span class="arr">→</span></a></div>
   </section>
 
   <section class="wrap section">
-    ${head('Post-market · 2 September',"ALLADIN'S<br>CALL.")}
-    <div class="verdict" style="margin-top:44px">
-      <div class="reveal">
-        <div class="display d-md">${y.ticker}</div>
-        <div class="chips" style="display:flex;gap:10px;margin:18px 0 28px;flex-wrap:wrap">
-          <span class="chip buy">${y.action} ₹${fmtI(y.entry)}</span>
-          <span class="chip acc">${y.status}</span>
-          <span class="chip buy">${y.grade}</span>
-        </div>
-        <div class="eyebrow">Closed at</div>
-        <div class="bignum num">₹${fmtI(y.close)}</div>
-        <div class="num pos" style="font-size:26px;margin-top:8px">${pct(y.ret)}</div>
-      </div>
-      <div class="reveal">
-        <div class="eyebrow" style="color:var(--pos)">What worked</div>
-        <p class="saying" style="border:0;padding:10px 0 26px">${y.worked}</p>
-        <div class="eyebrow" style="color:var(--neg)">What didn't</div>
-        <p class="saying" style="border:0;padding:10px 0 26px">${y.didnt}</p>
-        <div class="eyebrow lit">Alladin's verdict</div>
-        <div class="display d-sm" style="margin-top:10px">${y.verdict}</div>
-        <div style="margin-top:30px"><a class="textbtn" href="#/calendar">See the full day <span class="arr">→</span></a></div>
-      </div>
-    </div>
+    ${head('Today’s briefing · USA','AND ACROSS<br>THE WATER.',
+      TIPS.usa.length?`${TIPS.usa.length} idea${TIPS.usa.length>1?'s':''} from the US universe.`
+                     :'Nothing cleared the threshold in the US universe.')}
+    <div style="display:grid;gap:22px;margin-top:44px">${briefingHTML(TIPS.usa,'US')}</div>
   </section>
 
-  <section class="wrap section">
+  ${p?`<section class="wrap section">
     <div class="verdict">
       <div class="reveal">
-        ${head('The track record','DID ALLADIN<br>GET IT RIGHT?')}
+        ${head('The evidence','DOES THIS<br>ACTUALLY WORK?')}
+        <p class="sub" style="margin-top:22px">Alladin has no live track record yet — it started publishing today.
+        What it does have is an honest backtest of the same rules on real history.</p>
       </div>
       <div class="reveal" style="text-align:right">
-        <div class="heronum num pos cnt" data-v="${TOTAL_RET.toFixed(2)}" data-d="2" data-p="+" data-s="%">+0.00%</div>
-        <div class="eyebrow" style="margin-top:12px">Total return · 42 sessions</div>
-        <div style="margin-top:30px"><a class="btn" href="#/performance">View performance <span class="arr">→</span></a></div>
+        <div class="heronum num ${cls(p.winRate-50)} cnt" data-v="${p.winRate}" data-d="1" data-s="%">0%</div>
+        <div class="eyebrow" style="margin-top:12px">Backtested win rate · ${p.tips} setups</div>
+        <div style="margin-top:30px"><a class="btn" href="#/performance">See the full record <span class="arr">→</span></a></div>
       </div>
     </div>
-  </section>
+  </section>`:''}
+  ${sourceNote()}
   ${footerHTML()}`;
 };
 
 VIEWS.india=()=>`
   <section class="hero wrap">
-    ${head('Morning briefing · 7:30 AM IST','INDIA.<br>THREE CONVICTIONS.','What Alladin sees before the open.')}
+    ${head('India · morning briefing','INDIA.','What the scan found across the NSE universe.')}
   </section>
   <section class="wrap section tight">
-    <div class="grid2">
-      ${marketPanel('Nifty 50','NSE','25,482',0.72,'PRE-OPEN',false,41)}
-      ${marketPanel('Bank Nifty','NSE','57,204',0.58,'PRE-OPEN',false,53)}
-    </div>
+    <div class="grid2">${marketPanel(idxFor('INDIA',0),'NIFTY')}${marketPanel(idxFor('INDIA',1),'BANK NIFTY')}</div>
   </section>
   <section class="wrap section" style="padding-top:0">
-    <div style="display:grid;gap:22px;margin-top:20px">${briefingHTML(TIPS.india)}</div>
+    <div style="display:grid;gap:22px;margin-top:20px">${briefingHTML(TIPS.india,'Indian')}</div>
+    ${sourceNote()}
   </section>
   ${footerHTML()}`;
 
 VIEWS.usa=()=>`
   <section class="hero wrap">
-    ${head('Pre-market briefing · 1:30 PM IST','USA.<br>THREE CONVICTIONS.','What Alladin sees before New York opens.')}
+    ${head('USA · pre-market briefing','USA.','What the scan found across the US universe.')}
   </section>
   <section class="wrap section tight">
-    <div class="grid2">
-      ${marketPanel('S&P 500','NYSE','6,482',0.41,'CLOSED',false,77)}
-      ${marketPanel('Nasdaq 100','NASDAQ','23,910',0.66,'CLOSED',false,88)}
-    </div>
+    <div class="grid2">${marketPanel(idxFor('USA',0),'S&P 500')}${marketPanel(idxFor('USA',1),'NASDAQ')}</div>
   </section>
   <section class="wrap section" style="padding-top:0">
-    <div style="display:grid;gap:22px;margin-top:20px">${briefingHTML(TIPS.usa)}</div>
+    <div style="display:grid;gap:22px;margin-top:20px">${briefingHTML(TIPS.usa,'US')}</div>
+    ${sourceNote()}
   </section>
   ${footerHTML()}`;
 
-/* ---------- calendar ---------- */
-let calMonth=8; /* 0-indexed: 8 = September */
+/* ---------- calendar (real backtested sessions) ---------- */
+let calMonth=null;
 VIEWS.calendar=()=>`
   <section class="hero wrap">
-    ${head('Every session, on the record','THE MARKET,<br>DAY BY DAY.','Tap any traded day to see what Alladin saw — and what happened next.')}
+    ${head('Every session in the backtest','THE MARKET,<br>DAY BY DAY.',
+      'Each day is a real trading session the rule engine was replayed over. Tap a day to see what it would have called.')}
   </section>
   <section class="wrap section tight" style="padding-top:0">
     <div id="calmount"></div>
-    <p class="notice reveal" style="margin-top:26px">Each day shows India, USA, and the overall Alladin result. Results are recorded against the original published calls and never rewritten.</p>
+    <p class="notice reveal" style="margin-top:26px">${PERF?PERF.assumptions:''}</p>
   </section>
   ${footerHTML()}`;
 
 function renderCalendar(){
   const mount=$('#calmount');if(!mount)return;
-  const names=['','','','','','','July 2026','August 2026','September 2026'];
-  const first=new Date(2026,calMonth,1);
-  const dow=(first.getDay()+6)%7;
-  const dim=new Date(2026,calMonth+1,0).getDate();
+  if(!DAYS.length){mount.innerHTML='<p class="notice">No backtested sessions available.</p>';return}
+  const months=[...new Set(DAYS.map(x=>x.date.getUTCFullYear()+'-'+x.date.getUTCMonth()))];
+  if(calMonth===null)calMonth=months.length-1;
+  calMonth=Math.max(0,Math.min(months.length-1,calMonth));
+  const [yy,mm]=months[calMonth].split('-').map(Number);
+  const label=new Date(Date.UTC(yy,mm,1)).toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'});
+  const dim=new Date(Date.UTC(yy,mm+1,0)).getUTCDate();
+  const dow=(new Date(Date.UTC(yy,mm,1)).getUTCDay()+6)%7;
+
   let cells='';
-  for(let i=0;i<dow;i++)cells+=`<div class="day blank"></div>`;
+  for(let i=0;i<dow;i++)cells+='<div class="day blank"></div>';
   for(let d=1;d<=dim;d++){
-    const dt=new Date(2026,calMonth,d),k=dkey(dt),rec=DAYMAP[k];
-    const isToday=calMonth===8&&d===3;
+    const k=`${yy}-${String(mm+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const rec=DAYMAP[k];
     if(rec){
       cells+=`<div class="day traded" data-day="${k}" role="button" tabindex="0">
         <span class="dn">${d}</span>
@@ -931,24 +819,23 @@ function renderCalendar(){
         <span class="mini muted">US <span class="${cls(rec.usa)}">${pct1(rec.usa)}</span></span>
         <span class="tot num ${cls(rec.all)}">${pct1(rec.all)}</span></div>`;
     }else{
-      cells+=`<div class="day ${isToday?'today':''}"><span class="dn">${d}</span>
-        ${isToday?'<span class="tot eyebrow lit" style="font-size:9px">LIVE</span>':''}</div>`;
+      cells+=`<div class="day"><span class="dn">${d}</span></div>`;
     }
   }
   mount.innerHTML=`
     <div class="calhead">
-      <div class="mn">${names[calMonth]}</div>
+      <div class="mn">${label}</div>
       <div class="calnav" style="display:flex;gap:10px">
-        <button id="calprev" aria-label="Previous month" ${calMonth<=6?'disabled':''}>←</button>
-        <button id="calnext" aria-label="Next month" ${calMonth>=8?'disabled':''}>→</button>
+        <button id="calprev" aria-label="Previous month" ${calMonth<=0?'disabled':''}>←</button>
+        <button id="calnext" aria-label="Next month" ${calMonth>=months.length-1?'disabled':''}>→</button>
       </div>
     </div>
     <div class="calgrid">
-      ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<div class="dow">${d}</div>`).join('')}
+      ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="dow">${x}</div>`).join('')}
       ${cells}
     </div>`;
-  $('#calprev')?.addEventListener('click',()=>{if(calMonth>6){calMonth--;renderCalendar()}});
-  $('#calnext')?.addEventListener('click',()=>{if(calMonth<8){calMonth++;renderCalendar()}});
+  $('#calprev')?.addEventListener('click',()=>{calMonth--;renderCalendar()});
+  $('#calnext')?.addEventListener('click',()=>{calMonth++;renderCalendar()});
   $$('#calmount .day.traded').forEach(el=>{
     const go=()=>{location.hash='#/day/'+el.dataset.day};
     el.addEventListener('click',go);
@@ -958,25 +845,42 @@ function renderCalendar(){
 
 /* ---------- performance ---------- */
 VIEWS.performance=()=>{
+  if(!PERF)return `<section class="hero wrap">${head('Performance','NO RECORD<br>YET.','The backtest produced no qualifying setups.')}</section>${footerHTML()}`;
+  const p=PERF;
   const cum=[];let c=1;DAYS.forEach(x=>{c*=1+x.all/100;cum.push((c-1)*100)});
-  const labels=DAYS.map(x=>x.date.toLocaleDateString('en-GB',{day:'numeric',month:'short'}));
-  const eqLast=DAYS[DAYS.length-1].eq;
+  const labels=DAYS.map(x=>x.date.toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}));
+  const eqLast=DAYS.length?DAYS[DAYS.length-1].eq:100000;
+  const mk=(k,nm)=>{const m=p.markets[k];return m?`
+      <div class="card reveal">
+        <div class="display d-md">${nm}</div>
+        <div class="bignum num ${cls(m.ret)}" style="margin:20px 0 26px">${pct1(m.ret)}</div>
+        <div style="display:flex;gap:40px">
+          <div><div class="v num" style="font-size:26px;font-weight:600">${m.win}%</div><div class="eyebrow" style="margin-top:6px">Win rate</div></div>
+          <div><div class="v num" style="font-size:26px;font-weight:600">${m.tips}</div><div class="eyebrow" style="margin-top:6px">Setups</div></div>
+        </div>
+      </div>`:''};
+  const maxSector=Math.max(...p.sectors.map(s=>Math.abs(s[1])),0.01);
+
   return `
   <section class="hero wrap">
-    ${head('The track record','DID ALLADIN<br>GET IT RIGHT?')}
+    ${head('Backtest · not a live record','DID ALLADIN<br>GET IT RIGHT?')}
     <div class="reveal" style="margin-top:44px">
-      <div class="heronum num pos cnt" data-v="${TOTAL_RET.toFixed(2)}" data-d="2" data-p="+" data-s="%">+0.00%</div>
-      <div class="eyebrow" style="margin-top:14px">Total return · since 7 July 2026</div>
+      <div class="heronum num ${cls(p.total)} cnt" data-v="${p.total}" data-d="2" data-p="+" data-s="%">0.00%</div>
+      <div class="eyebrow" style="margin-top:14px">Backtested return · ${DAYS.length} sessions · ${p.tips} setups</div>
+    </div>
+    <div class="card reveal" style="margin-top:30px;border-color:rgba(201,155,95,.32)">
+      <div class="eyebrow" style="color:var(--warn)">Read this first</div>
+      <p class="sub" style="margin-top:12px;max-width:70ch">${p.assumptions}</p>
     </div>
   </section>
 
   <section class="wrap section tight" style="padding-top:0">
     <div class="statrow reveal">
-      <div class="cell"><div class="v num cnt" data-v="${PERF.winRate}" data-d="1" data-s="%">0%</div><div class="k">Win rate</div></div>
-      <div class="cell"><div class="v num cnt" data-v="${PERF.tips}" data-d="0">0</div><div class="k">Tips</div></div>
-      <div class="cell"><div class="v num pos cnt" data-v="${PERF.avg}" data-d="2" data-p="+" data-s="%">0%</div><div class="k">Average return / tip</div></div>
-      <div class="cell"><div class="v num neg cnt" data-v="${MAXDD.toFixed(1)}" data-d="1" data-s="%">0%</div><div class="k">Max drawdown</div></div>
-      <div class="cell"><div class="v num">${PERF.rr}</div><div class="k">Avg risk / reward</div></div>
+      <div class="cell"><div class="v num cnt" data-v="${p.winRate}" data-d="1" data-s="%">0%</div><div class="k">Win rate</div></div>
+      <div class="cell"><div class="v num cnt" data-v="${p.tips}" data-d="0">0</div><div class="k">Setups</div></div>
+      <div class="cell"><div class="v num ${cls(p.avg)} cnt" data-v="${p.avg}" data-d="2" data-p="+" data-s="%">0%</div><div class="k">Average per setup</div></div>
+      <div class="cell"><div class="v num neg cnt" data-v="${p.maxdd}" data-d="1" data-s="%">0%</div><div class="k">Max drawdown</div></div>
+      <div class="cell"><div class="v num">${p.outcomes['TARGET HIT']} / ${p.outcomes['STOPPED']}</div><div class="k">Target hit / stopped</div></div>
     </div>
   </section>
 
@@ -985,80 +889,82 @@ VIEWS.performance=()=>{
     <div class="chartbox reveal" id="cumbox" style="margin-top:40px">${lineChartSVG('cum',cum,labels)}</div>
     <div class="legendrow reveal"><span><i style="background:${CH.accent}"></i>Cumulative return</span></div>
     <div class="chartbox reveal" id="dailybox" style="margin-top:56px">${barChartSVG(DAYS.map(x=>x.all))}</div>
-    <div class="legendrow reveal"><span><i style="background:${CH.pos}"></i>Positive day</span><span><i style="background:${CH.neg}"></i>Negative day</span></div>
+    <div class="legendrow reveal"><span><i style="background:${CH.pos}"></i>Positive session</span><span><i style="background:${CH.neg}"></i>Negative session</span></div>
   </section>
 
   <section class="wrap section">
-    ${head('Portfolio growth','₹100,000,<br>PUT TO WORK.')}
+    ${head('Portfolio path','₹100,000,<br>PUT TO WORK.')}
     <div class="grid3 reveal" style="margin-top:40px">
-      <div class="card"><div class="eyebrow">Start</div><div class="v num" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">₹1,00,000</div></div>
-      <div class="card"><div class="eyebrow">Current</div><div class="v num" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">₹${fmtI(eqLast)}</div></div>
-      <div class="card"><div class="eyebrow">Return</div><div class="v num pos" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">${pct(TOTAL_RET)}</div></div>
+      <div class="card"><div class="eyebrow">Start</div><div class="num" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">₹1,00,000</div></div>
+      <div class="card"><div class="eyebrow">End of backtest</div><div class="num" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">₹${fmtI(eqLast)}</div></div>
+      <div class="card"><div class="eyebrow">Return</div><div class="num ${cls(p.total)}" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">${pct(p.total)}</div></div>
     </div>
     <div class="chartbox reveal" id="eqbox" style="margin-top:36px">${lineChartSVG('eq',DAYS.map(x=>x.eq),labels,{fmt:v=>'₹'+fmtI(v)})}</div>
-    <div class="grid2" style="margin-top:56px">
-      <div class="card reveal">
-        <div class="eyebrow">Annualized return</div>
-        <div class="bignum num pos" style="margin-top:16px">${pct1(ANNUALIZED)}</div>
-        <div style="display:flex;gap:36px;margin-top:26px">
-          <div><div class="v num" style="font-size:24px;font-weight:600">${PERF.tips}</div><div class="eyebrow" style="margin-top:6px">Trading days</div></div>
-          <div><div class="v num pos" style="font-size:24px;font-weight:600">${pct(TOTAL_RET)}</div><div class="eyebrow" style="margin-top:6px">Realized return</div></div>
-        </div>
-        <p class="notice" style="margin-top:24px">Annualized from the current observation period. Not a forecast or guarantee.</p>
-      </div>
-      <div class="card reveal">
-        <div class="eyebrow">By conviction</div>
-        <div style="margin-top:22px;display:grid;gap:20px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);padding-bottom:18px">
-            <div><div class="display d-sm">HIGH</div><div class="eyebrow" style="margin-top:6px">${PERF.conviction.high.win}% win rate</div></div>
-            <div class="num pos" style="font-size:30px;font-weight:600">${pct1(PERF.conviction.high.ret)}</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline">
-            <div><div class="display d-sm">MEDIUM</div><div class="eyebrow" style="margin-top:6px">${PERF.conviction.medium.win}% win rate</div></div>
-            <div class="num pos" style="font-size:30px;font-weight:600">${pct1(PERF.conviction.medium.ret)}</div>
-          </div>
-        </div>
-        <p class="notice" style="margin-top:22px">High-conviction calls outperform — Alladin's confidence is calibrated, and we track it so you can verify.</p>
-      </div>
-    </div>
+    ${p.annualized!==null&&p.annualized!==undefined?`
+    <div class="card reveal" style="margin-top:36px">
+      <div class="eyebrow">Annualized (extrapolated)</div>
+      <div class="bignum num ${cls(p.annualized)}" style="margin-top:16px">${pct1(p.annualized)}</div>
+      <p class="notice" style="margin-top:20px">Annualized from the backtest window only. This is arithmetic on a
+      past sample, not a forecast, not a guarantee, and not an expectation of future returns.</p>
+    </div>`:''}
   </section>
 
   <section class="wrap section">
     ${head('By market','TWO MARKETS,<br>ONE LEDGER.')}
-    <div class="grid2" style="margin-top:40px">
-      ${['india','usa'].map(k=>{const m=PERF.markets[k];return `
-      <div class="card reveal">
-        <div class="display d-md">${k==='india'?'INDIA':'USA'}</div>
-        <div class="bignum num pos" style="margin:20px 0 26px">${pct1(m.ret)}</div>
-        <div style="display:flex;gap:40px">
-          <div><div class="v num" style="font-size:26px;font-weight:600">${m.win}%</div><div class="eyebrow" style="margin-top:6px">Win rate</div></div>
-          <div><div class="v num" style="font-size:26px;font-weight:600">${m.tips}</div><div class="eyebrow" style="margin-top:6px">Tips</div></div>
-        </div>
-      </div>`}).join('')}
-    </div>
+    <div class="grid2" style="margin-top:40px">${mk('india','INDIA')}${mk('usa','USA')}</div>
   </section>
 
   <section class="wrap section">
     ${head('By sector','WHERE<br>ALLADIN SHINES.')}
     <div style="margin-top:40px" class="reveal" id="sectorbars">
-      ${PERF.sectors.map(([n,v])=>`
+      ${p.sectors.map(([n,v])=>`
         <div class="sbar ${v<0?'negbar':''}">
           <span class="nm">${n}</span>
-          <div class="track"><div class="fill" data-w="${Math.abs(v)/8.2*100}"></div></div>
+          <div class="track"><div class="fill" data-w="${Math.abs(v)/maxSector*100}"></div></div>
           <span class="pv num ${cls(v)}">${pct1(v)}</span>
         </div>`).join('')}
     </div>
   </section>
 
+  ${p.conviction.high&&p.conviction.medium?`
+  <section class="wrap section">
+    ${head('By conviction','IS THE SCORE<br>CALIBRATED?')}
+    <div class="grid2" style="margin-top:40px">
+      ${['high','medium'].map(k=>{const c=p.conviction[k];return c?`
+      <div class="card reveal">
+        <div class="display d-sm">${k.toUpperCase()} CONVICTION</div>
+        <div class="bignum num ${cls(c.ret)}" style="margin:18px 0 22px">${pct1(c.ret)}</div>
+        <div style="display:flex;gap:40px">
+          <div><div class="num" style="font-size:26px;font-weight:600">${c.win}%</div><div class="eyebrow" style="margin-top:6px">Win rate</div></div>
+          <div><div class="num" style="font-size:26px;font-weight:600">${c.tips}</div><div class="eyebrow" style="margin-top:6px">Setups</div></div>
+        </div>
+      </div>`:''}).join('')}
+    </div>
+    <p class="notice reveal" style="margin-top:22px">If high-conviction setups do not beat medium ones, the score is
+    not calibrated and should be treated with suspicion. Alladin shows this rather than hiding it.</p>
+  </section>`:''}
+
   <section class="wrap section">
     ${head('Accountability','HOW GOOD<br>IS ALLADIN?')}
     <div class="statrow reveal" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-      ${PERF.account.map(([k,v])=>`<div class="cell"><div class="v" style="font-size:17px;font-weight:600">${v}</div><div class="k">${k}</div></div>`).join('')}
+      <div class="cell"><div class="v" style="font-size:17px;font-weight:600">${p.winRate}%</div><div class="k">Prediction accuracy</div></div>
+      <div class="cell"><div class="v" style="font-size:17px;font-weight:600">${pct(p.avg)}</div><div class="k">Average per setup</div></div>
+      <div class="cell"><div class="v" style="font-size:17px;font-weight:600">${p.best.sym.replace('.NS','')} · ${pct(p.best.ret)}</div><div class="k">Best setup · ${p.best.d}</div></div>
+      <div class="cell"><div class="v" style="font-size:17px;font-weight:600">${p.worst.sym.replace('.NS','')} · ${pct(p.worst.ret)}</div><div class="k">Worst setup · ${p.worst.d}</div></div>
+      <div class="cell"><div class="v" style="font-size:17px;font-weight:600">${p.outcomes['TARGET HIT']}</div><div class="k">Reached target 1</div></div>
+      <div class="cell"><div class="v" style="font-size:17px;font-weight:600">${p.outcomes['STOPPED']}</div><div class="k">Stopped out</div></div>
     </div>
     <div class="casecard failcase reveal" style="margin-top:26px">
-      <div class="display d-sm">WHERE WE GOT IT WRONG.</div>
-      <ul>${PERF.wrong.map(w=>`<li>${w}</li>`).join('')}</ul>
+      <div class="display d-sm">WHERE THIS FALLS SHORT.</div>
+      <ul>
+        <li>A ${p.winRate}% win rate on a ${p.tips}-setup sample is not proof of edge — with a 1.3R first target,
+            roughly ${p.winRate<50?'this is around or below':'this is near'} break-even before costs.</li>
+        <li>Costs, slippage, taxes and spread are not modelled. Real execution would land below these figures.</li>
+        <li>The universe is today's large caps, so the test never sees names that fell out of the index — survivorship bias.</li>
+        <li>The engine reads price and volume only. It has no view on earnings, guidance, or company news.</li>
+      </ul>
     </div>
+    ${sourceNote()}
   </section>
   ${footerHTML()}`;
 };
@@ -1066,19 +972,21 @@ VIEWS.performance=()=>{
 /* ---------- watchlist ---------- */
 VIEWS.watchlist=()=>`
   <section class="hero wrap">
-    ${head('Watchlist','KEEP<br>AN EYE ON IT.','Names Alladin is tracking — scored daily, promoted to a conviction only when the setup is complete.')}
+    ${head('Watchlist','KEEP<br>AN EYE ON IT.','Every name in the scan, ranked by its current composite score.')}
   </section>
   <section class="wrap section tight" style="padding-top:0">
     <div class="reveal">
     ${WATCH.map(w=>`
       <div class="wrow">
         <div><div class="tk">${w.ticker}</div><div class="nm">${w.name}</div></div>
-        <div class="px"><div class="num" style="font-size:19px">${w.cur}${fmtN(w.px,w.cur==='$'?2:0)}</div>
+        <div class="px"><div class="num" style="font-size:19px">${money(w.cur,w.px)}</div>
           <div class="num ${cls(w.chg)}" style="font-size:13px">${pct1(w.chg)}</div></div>
         <div class="score"><div><b>${w.score.toFixed(1)}</b><span>Alladin<br>score</span></div></div>
       </div>`).join('')}
     </div>
-    <p class="notice reveal" style="margin-top:28px">The Alladin score (0–10) blends technical structure, fundamental quality, momentum, and catalyst proximity. Above 8.5, a name becomes a candidate for the morning briefing.</p>
+    <p class="notice reveal" style="margin-top:28px">The score (0–10) is the composite of trend, momentum, volume and
+    entry location computed from real OHLCV. At 5.8 and above a name becomes eligible for the briefing.</p>
+    ${sourceNote()}
   </section>
   ${footerHTML()}`;
 
@@ -1088,26 +996,44 @@ function footerHTML(){return `
     <hr class="hr" style="margin-bottom:44px">
     <div class="lg">Alladin.</div>
     <p>Your AI-powered market intelligence.</p>
-    <p class="notice" style="margin-top:18px">Alladin is a research and education product. Nothing here is investment advice or a solicitation to trade. Markets carry risk; past performance does not predict future results. When evidence is weak, Alladin says NO TRADE — sometimes the smartest position is nothing.</p>
+    <p class="notice" style="margin-top:18px">Alladin is a research and education project. Nothing here is investment
+    advice or a solicitation to trade. Setups come from a mechanical rule engine over public price data — it can and
+    does get things wrong. Markets carry risk; past behaviour does not predict future results. Verify every number
+    against your broker before acting on it.</p>
+    <p class="notice" style="margin-top:14px">Data: Yahoo Finance (prices) · Google News (headlines). Built ${freshness()}.</p>
   </footer>`}
+
 </script>
 <script>
 'use strict';
 /* ================= ALLADIN — overlays, router, motion ================= */
 
-/* ---------- tip detail overlay ---------- */
 function tipOverlayHTML(t){
   const mid=(t.entry[0]+t.entry[1])/2;
-  const riskPct=(mid-t.stop)/mid*100;
+  const riskPct=t.risk_pct;
   const gains=t.targets.map(x=>(x-mid)/mid*100);
   const base=t.cur==='₹'?100000:10000;
   const alloc=base*t.size/100;
-  const runit=t.cur==='₹'?fmtI:(v=>fmtN(v,0));
   const segW=v=>Math.max(52,Math.abs(v)*22);
+  const ind=t.indicators||{};
+  const isIN=t.cur==='₹';
   const brokers={
-    ZERODHA:[['Search',`Open Kite and search “${t.ticker}”.`],['Select',`Choose ${t.ticker} on NSE.`],['Set entry',`Place a limit order at ${t.cur}${fmtI(t.entry[0])}–${fmtI(t.entry[1])}${t.mode==='BUY ON BREAKOUT'?' after the breakout level trades':''}.`],['Set stop',`Add a stop-loss (SL) at ${t.cur}${fmtI(t.stop)} — GTT works well here.`],['Set target',`Add a target order at ${t.cur}${fmtI(t.targets[0])}; trail the rest.`],['Review',`Confirm quantity ≈ ${t.size}% of portfolio. Check margin.`],['Execute',`Swipe to place. Alladin tracks it from here.`]],
-    SARWA:[['Search',`Open Sarwa Trade and search “${t.ticker}”.`],['Select',`Choose ${t.ticker} on the US market.`],['Set entry',`Place a limit buy at $${fmtN(t.entry[0],2)}–${fmtN(t.entry[1],2)}${t.mode==='BUY ON BREAKOUT'?' once the level breaks':''}.`],['Set stop',`Create a stop order at $${fmtN(t.stop,2)}.`],['Set target',`Set a sell limit at $${fmtN(t.targets[0],2)}; review at each target.`],['Review',`Confirm the position ≈ ${t.size}% of portfolio.`],['Execute',`Place the order. Alladin tracks it from here.`]]};
-  const defBroker=t.cur==='₹'?'ZERODHA':'SARWA';
+    ZERODHA:[['Search',`Open Kite and search “${t.ticker}”.`],
+      ['Select',`Choose ${t.ticker} on NSE.`],
+      ['Set entry',`Limit order at ${money(t.cur,t.entry[0])}–${money(t.cur,t.entry[1])}${t.mode==='BUY ON BREAKOUT'?' — only after the level trades':t.mode==='WAIT'?' — only on the pullback':''}.`],
+      ['Set stop',`Stop-loss at ${money(t.cur,t.stop)}. A GTT order holds it without you watching.`],
+      ['Set target',`Target order at ${money(t.cur,t.targets[0])}; reassess T2 and T3 from there.`],
+      ['Review',`Position ≈ ${t.size}% of portfolio, risking about ${(riskPct*t.size/100).toFixed(2)}% of capital.`],
+      ['Execute',`Place it — then verify every level against Kite's own quote before confirming.`]],
+    SARWA:[['Search',`Open Sarwa Trade and search “${t.ticker}”.`],
+      ['Select',`Choose ${t.ticker} on the US market.`],
+      ['Set entry',`Limit buy at ${money(t.cur,t.entry[0])}–${money(t.cur,t.entry[1])}${t.mode==='BUY ON BREAKOUT'?' — only once the level breaks':t.mode==='WAIT'?' — only on the pullback':''}.`],
+      ['Set stop',`Stop order at ${money(t.cur,t.stop)}.`],
+      ['Set target',`Sell limit at ${money(t.cur,t.targets[0])}; reassess at each target.`],
+      ['Review',`Position ≈ ${t.size}% of portfolio, risking about ${(riskPct*t.size/100).toFixed(2)}% of capital.`],
+      ['Execute',`Place it — verify the quote in Sarwa before confirming.`]]};
+  const defBroker=isIN?'ZERODHA':'SARWA';
+
   return `
   <div class="ov-top">
     <span class="logo" style="font-size:15px">Alladin<i>.</i></span>
@@ -1115,54 +1041,62 @@ function tipOverlayHTML(t){
   </div>
   <div class="wrap" style="padding-bottom:110px">
     <header style="padding:26px 0 10px">
-      <div class="eyebrow">${t.market} · ${t.sector} · Tip of 3 September 2026</div>
+      <div class="eyebrow">${t.market} · ${t.sector} · scanned ${freshness()}</div>
       <h1 class="display d-xl" style="margin:16px 0 6px">${t.ticker}</h1>
       <div class="cname eyebrow">${t.name}</div>
       <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
         <span class="chip buy">${t.action}</span>
-        <span class="chip acc">${t.conviction} conviction</span>
+        <span class="chip acc">${t.conviction} conviction · ${t.score}/100</span>
         ${modeChip(t.mode)}
-        <span class="chip">${t.rr} R:R</span>
+        <span class="chip">${t.rr} to T2</span>
       </div>
     </header>
 
     <section class="section tight">
       <div class="plangrid">
-        <div class="cell"><div class="v num">${t.cur}${fmtI(t.entry[0])}–${fmtI(t.entry[1])}</div><div class="k">Entry</div></div>
-        <div class="cell"><div class="v num neg">${t.cur}${fmtI(t.stop)}</div><div class="k">Stop</div></div>
-        <div class="cell"><div class="v num pos">${t.cur}${fmtI(t.targets[0])}</div><div class="k">Target 01</div></div>
-        <div class="cell"><div class="v num pos">${t.cur}${fmtI(t.targets[1])}</div><div class="k">Target 02</div></div>
-        <div class="cell"><div class="v num pos">${t.cur}${fmtI(t.targets[2])}</div><div class="k">Target 03</div></div>
+        <div class="cell"><div class="v num">${money(t.cur,t.entry[0])}–${money(t.cur,t.entry[1])}</div><div class="k">Entry</div></div>
+        <div class="cell"><div class="v num neg">${money(t.cur,t.stop)}</div><div class="k">Stop · −${riskPct}%</div></div>
+        <div class="cell"><div class="v num pos">${money(t.cur,t.targets[0])}</div><div class="k">Target 01 · +${gains[0].toFixed(1)}%</div></div>
+        <div class="cell"><div class="v num pos">${money(t.cur,t.targets[1])}</div><div class="k">Target 02 · +${gains[1].toFixed(1)}%</div></div>
+        <div class="cell"><div class="v num pos">${money(t.cur,t.targets[2])}</div><div class="k">Target 03 · +${gains[2].toFixed(1)}%</div></div>
         <div class="cell"><div class="v num">${t.size.toFixed(1)}%</div><div class="k">Position size</div></div>
       </div>
     </section>
 
     <section class="section tight">
-      ${head('The reasoning','WHY ALLADIN<br>LIKES THIS.')}
-      <div style="margin-top:30px;max-width:820px">${t.thesis.map(s=>`<div class="saying reveal">${s}</div>`).join('')}</div>
+      ${head('What the numbers say','WHY ALLADIN<br>LIKES THIS.')}
+      <div style="margin-top:30px;max-width:860px">${t.thesis.map(s=>`<div class="saying reveal">${s}</div>`).join('')}</div>
       <div class="grid2" style="margin-top:44px">
         <div class="card reveal">
-          <div class="eyebrow lit">AI conviction</div>
-          <div class="display d-md" style="margin-top:12px">${t.conviction}</div>
-          <p class="notice" style="margin-top:16px">Conviction reflects the alignment of independent signals — it is a measure of evidence, not certainty. Markets can and do disagree.</p>
+          <div class="eyebrow lit">Composite score</div>
+          <div class="display d-md" style="margin-top:12px">${t.score} / 100</div>
+          <div class="display d-sm" style="margin-top:6px;color:var(--ink-2)">${t.conviction} CONVICTION</div>
+          <p class="notice" style="margin-top:16px">A weighted sum of trend, momentum, participation and entry
+          location computed from real OHLCV. It measures how well this setup matches a pattern — it says nothing
+          about what the company will do next, and it is not a probability.</p>
         </div>
         <div class="card reveal">
           ${Object.entries(t.scores).map(([k,v])=>`
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
               <span class="eyebrow">${k}</span><span class="stars">${stars(v)}</span>
             </div>`).join('')}
+          <div style="display:flex;justify-content:space-between;padding:14px 0 0">
+            <span class="eyebrow">RSI(14)</span><span class="num">${ind.rsi??'—'}</span></div>
         </div>
       </div>
     </section>
 
     <section class="section tight">
-      ${head('Technical picture','THE CHART.')}
+      ${head('Real price history','THE CHART.')}
       <div class="card reveal" style="margin-top:34px;padding:clamp(16px,2vw,28px)">
         <div class="chartbox">${priceChartSVG(t)}</div>
-        <div style="display:flex;gap:34px;margin-top:20px;flex-wrap:wrap">
-          <div><div class="eyebrow">Resistance</div><div class="num" style="font-size:20px;font-weight:600">${t.cur}${fmtI(t.entry[1])}</div></div>
-          <div><div class="eyebrow lit">Current</div><div class="num" style="font-size:20px;font-weight:600">${t.cur}${fmtN(t.price,t.cur==='$'?2:0)}</div></div>
-          <div><div class="eyebrow">Support / Stop</div><div class="num neg" style="font-size:20px;font-weight:600">${t.cur}${fmtI(t.stop)}</div></div>
+        <div style="display:flex;gap:30px;margin-top:20px;flex-wrap:wrap">
+          <div><div class="eyebrow">Resistance</div><div class="num" style="font-size:19px;font-weight:600">${money(t.cur,ind.resistance)}</div></div>
+          <div><div class="eyebrow lit">Last price</div><div class="num" style="font-size:19px;font-weight:600">${money(t.cur,t.price)}</div></div>
+          <div><div class="eyebrow">Stop</div><div class="num neg" style="font-size:19px;font-weight:600">${money(t.cur,t.stop)}</div></div>
+          <div><div class="eyebrow">20-day avg</div><div class="num" style="font-size:19px;font-weight:600">${money(t.cur,ind.sma20)}</div></div>
+          <div><div class="eyebrow">50-day avg</div><div class="num" style="font-size:19px;font-weight:600">${money(t.cur,ind.sma50)}</div></div>
+          <div><div class="eyebrow">52-week range</div><div class="num" style="font-size:19px;font-weight:600">${money(t.cur,ind.lo52)}–${money(t.cur,ind.hi52)}</div></div>
         </div>
       </div>
       <div style="margin-top:44px">
@@ -1173,21 +1107,20 @@ function tipOverlayHTML(t){
     </section>
 
     <section class="section tight">
-      ${head('News & catalysts',"WHAT'S<br>DRIVING IT.")}
-      <div style="display:grid;gap:16px;margin-top:36px">
+      ${head('Headlines · Google News',"WHAT'S<br>DRIVING IT.")}
+      ${t.news.length?`<div style="display:grid;gap:16px;margin-top:36px">
         ${t.news.map(n=>`
-        <div class="card hoverable reveal">
+        <a class="card hoverable reveal" href="${n.url}" target="_blank" rel="noopener noreferrer" style="display:block">
           <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
             <div class="display d-sm" style="max-width:24em">${n.h}</div>
             <div class="eyebrow" style="text-align:right;flex:none">${n.src}<br>${n.time}</div>
           </div>
-          <p class="sub" style="margin-top:14px;font-size:14.5px">${n.sum}</p>
           <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border)">
             <span class="eyebrow lit">Why it matters</span>
-            <p style="color:var(--ink-2);font-size:14px;margin-top:8px;max-width:60ch">${n.why}</p>
+            <p style="color:var(--ink-2);font-size:14px;margin-top:8px;max-width:62ch">${n.why}</p>
           </div>
-        </div>`).join('')}
-      </div>
+        </a>`).join('')}</div>`
+        :'<p class="notice reveal" style="margin-top:28px">No headlines returned for this name in the latest build.</p>'}
     </section>
 
     <section class="section tight">
@@ -1206,10 +1139,10 @@ function tipOverlayHTML(t){
     <section class="section tight">
       ${head('Execution','THE PLAN.')}
       <div class="plangrid" style="margin-top:36px">
-        <div class="cell"><div class="v num">${t.cur}${fmtI(t.entry[0])}–${fmtI(t.entry[1])}</div><div class="k">Entry</div></div>
-        <div class="cell"><div class="v" style="font-size:16px;font-weight:600;line-height:1.4">${t.window}</div><div class="k">Best window</div></div>
-        <div class="cell"><div class="v num neg">${t.cur}${fmtI(t.stop)}</div><div class="k">Stop</div></div>
-        ${t.targets.map((x,i)=>`<div class="cell"><div class="v num pos">${t.cur}${fmtI(x)}</div><div class="k">Target 0${i+1}</div></div>`).join('')}
+        <div class="cell"><div class="v num">${money(t.cur,t.entry[0])}–${money(t.cur,t.entry[1])}</div><div class="k">Entry</div></div>
+        <div class="cell"><div class="v" style="font-size:15px;font-weight:600;line-height:1.4">${t.window}</div><div class="k">Best window</div></div>
+        <div class="cell"><div class="v num neg">${money(t.cur,t.stop)}</div><div class="k">Stop</div></div>
+        ${t.targets.map((x,i)=>`<div class="cell"><div class="v num pos">${money(t.cur,x)}</div><div class="k">Target 0${i+1}</div></div>`).join('')}
       </div>
       <div class="reveal" style="margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
         <span class="eyebrow">Alladin says</span>
@@ -1219,7 +1152,7 @@ function tipOverlayHTML(t){
         <div class="rrbar">
           <div class="seg loss" style="flex:${segW(riskPct)}">−${riskPct.toFixed(1)}%</div>
           <div class="seg" style="flex:40;background:var(--s2);color:var(--ink-3)">ENTRY</div>
-          ${gains.map((g,i)=>`<div class="seg gain" style="flex:${segW(g)}">+${g.toFixed(1)}%</div>`).join('')}
+          ${gains.map(g=>`<div class="seg gain" style="flex:${segW(g)}">+${g.toFixed(1)}%</div>`).join('')}
         </div>
         <div class="rrlabels">
           <span style="flex:${segW(riskPct)}">Loss</span><span style="flex:40">Entry</span>
@@ -1233,14 +1166,16 @@ function tipOverlayHTML(t){
       <div class="verdict" style="margin-top:36px">
         <div class="reveal">
           <div class="heronum num">${t.size.toFixed(1)}%</div>
-          <div class="eyebrow" style="margin-top:12px">Recommended portfolio allocation</div>
+          <div class="eyebrow" style="margin-top:12px">of portfolio</div>
         </div>
         <div class="statrow reveal" style="grid-template-columns:1fr 1fr">
-          <div class="cell"><div class="v num neg">−${t.cur}${runit(alloc*riskPct/100)}</div><div class="k">Capital at risk</div></div>
-          ${gains.map((g,i)=>`<div class="cell"><div class="v num pos">+${t.cur}${runit(alloc*g/100)}</div><div class="k">Potential · T${i+1}</div></div>`).join('')}
+          <div class="cell"><div class="v num neg">−${money(t.cur,alloc*riskPct/100,0)}</div><div class="k">Capital at risk</div></div>
+          ${gains.map((g,i)=>`<div class="cell"><div class="v num pos">+${money(t.cur,alloc*g/100,0)}</div><div class="k">If T${i+1} hits</div></div>`).join('')}
         </div>
       </div>
-      <p class="notice reveal" style="margin-top:22px">Illustrated on a ${t.cur==='₹'?'₹1,00,000':'$10,000'} reference portfolio. Risk is measured entry-to-stop; targets assume clean fills.</p>
+      <p class="notice reveal" style="margin-top:22px">Sized so a stop-out costs roughly 1% of a
+      ${isIN?'₹1,00,000':'$10,000'} reference portfolio, scaled down for lower conviction. Risk is measured
+      entry-to-stop; a gap can fill worse than the stop price.</p>
     </section>
 
     <section class="section tight">
@@ -1259,50 +1194,26 @@ function tipOverlayHTML(t){
         <div class="eyebrow" style="color:var(--neg)">Invalidation</div>
         <p class="saying" style="border:0;padding:12px 0 0">${t.invalidation}</p>
       </div>
-      <p class="notice reveal" style="margin-top:24px">This is research, not advice. The original call is stored permanently and performance is measured against it — Alladin never rewrites its history.</p>
+      <p class="notice reveal" style="margin-top:24px">Levels are arithmetic on real price data: the stop sits under
+      the 20-session swing low and about 1.6 ATR back; targets are 1.3, 2.2 and 3.4 times that risk distance.
+      This is a mechanical setup, not advice — check the numbers against your broker before acting.</p>
     </section>
   </div>
   <script-broker type="application/json">${JSON.stringify(brokers)}</script-broker>`;
 }
 
-/* ---------- day detail overlay ---------- */
-const POOL={ind:['RELIANCE','HDFCBANK','INFY','TCS','TATAMOTORS','ICICIBANK','SUNPHARMA','LT'],
-             usa:['NVDA','MSFT','AAPL','XOM','JPM','AMZN','GOOGL','META']};
-function grade(r){return r>=2?'EXCELLENT':r>=.75?'GOOD':r>=-.5?'NEUTRAL':r>=-1.5?'BAD':'WORSE'}
-function dayTips(k,rec,mkt){
-  const r=prng([...k].reduce((a,c)=>a+c.charCodeAt(0),mkt==='ind'?11:97));
-  const pool=[...POOL[mkt]];const out=[];
-  for(let i=0;i<3;i++){
-    const t=pool.splice(Math.floor(r()*pool.length),1)[0];
-    const ret=rec[mkt]+(r()-.45)*2.4;
-    out.push({t,ret,status:ret>1.4?'TARGET HIT':ret<-1.1?'STOPPED':'CLOSED',g:grade(ret)});
-  }
-  return out;
-}
+/* ---------- day detail (real backtested session) ---------- */
 function dayOverlayHTML(k){
   const rec=DAYMAP[k];if(!rec)return '';
-  const d=rec.date.toLocaleDateString('en-GB',{day:'numeric',month:'long'}).toUpperCase();
-  const block=(label,time,mkt)=>{
-    const tips=dayTips(k,rec,mkt);
-    return `<div class="card reveal">
+  const d=new Date(k+'T00:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).toUpperCase();
+  const grade=r=>r>=1?'EXCELLENT':r>=0.3?'GOOD':r>=-0.3?'NEUTRAL':r>=-1?'BAD':'WORSE';
+  const block=(label,val,note)=>`<div class="card reveal">
       <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px">
         <div class="display d-md">${label}</div>
-        <div class="num ${cls(rec[mkt])}" style="font-size:28px;font-weight:600">${pct(rec[mkt])}</div>
+        <div class="num ${cls(val)}" style="font-size:28px;font-weight:600">${pct(val)}</div>
       </div>
-      <div class="eyebrow" style="margin-top:8px">${time} · 3 tips published</div>
-      <div style="margin-top:24px">
-        ${tips.map(x=>`
-          <div style="display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--border)">
-            <span class="display" style="font-size:17px;font-weight:700">${x.t}</span>
-            <span class="chip ${x.g==='GOOD'||x.g==='EXCELLENT'?'buy':x.g==='NEUTRAL'?'':'bad'}" style="font-size:9px">${x.status}</span>
-            <span class="num ${cls(x.ret)}" style="font-size:16px;text-align:right">${pct(x.ret)}</span>
-          </div>`).join('')}
-      </div>
-    </div>`};
-  const events=[['09:15 IST','India opened '+(rec.ind>=0?'firm':'soft')+'; breadth '+(rec.ind>=0?'positive from the first hour.':'negative into the morning.')],
-    ['13:30 IST','US pre-market briefing published — 3 ideas, conviction unchanged through the session.'],
-    ['15:30 IST','India closed at '+pct(rec.ind)+'. Post-market report generated and scored.'],
-    ['02:00 IST','US session settled at '+pct(rec.usa)+'. Cumulative ledger updated.']];
+      <div class="eyebrow" style="margin-top:10px">${note}</div>
+    </div>`;
   return `
   <div class="ov-top">
     <span class="logo" style="font-size:15px">Alladin<i>.</i></span>
@@ -1310,27 +1221,30 @@ function dayOverlayHTML(k){
   </div>
   <div class="wrap" style="padding-bottom:110px">
     <header style="padding:26px 0 8px">
-      <div class="eyebrow">${d} 2026 · The record</div>
+      <div class="eyebrow">${d} · backtested session</div>
       <h1 class="display d-xl" style="margin:16px 0">WHAT<br>ALLADIN SAW.</h1>
       <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
-        <span class="eyebrow">Overall result</span>
+        <span class="eyebrow">Portfolio result</span>
         <span class="bignum num ${cls(rec.all)}">${pct(rec.all)}</span>
         <span class="chip ${rec.all>=0?'buy':'bad'}">${grade(rec.all)}</span>
       </div>
     </header>
     <section class="section tight">
-      <div class="grid2">${block('INDIA','Morning briefing · 7:30 AM IST','ind')}${block('USA','Pre-market briefing · 1:30 PM IST','usa')}</div>
+      <div class="grid2">
+        ${block('INDIA',rec.ind,'Average return across the Indian setups triggered that session')}
+        ${block('USA',rec.usa,'Average return across the US setups triggered that session')}
+      </div>
+      <div class="statrow reveal" style="margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+        <div class="cell"><div class="v num">${rec.n}</div><div class="k">Setups triggered</div></div>
+        <div class="cell"><div class="v num ${cls(rec.all)}">${pct(rec.all)}</div><div class="k">Portfolio impact</div></div>
+        <div class="cell"><div class="v num">₹${fmtI(rec.eq)}</div><div class="k">Equity after this session</div></div>
+      </div>
     </section>
     <section class="section tight">
-      ${head('Chronology','WHAT<br>CHANGED?')}
-      <div style="margin-top:34px;max-width:760px">
-        ${events.map(([tm,tx])=>`
-          <div class="reveal" style="display:grid;grid-template-columns:96px 1fr;gap:22px;padding:20px 0;border-top:1px solid var(--border)">
-            <span class="eyebrow" style="padding-top:4px">${tm}</span>
-            <p style="color:var(--ink-2);line-height:1.65">${tx}</p>
-          </div>`).join('')}
-      </div>
-      <p class="notice reveal" style="margin-top:26px">Recorded against the original published calls. Alladin never rewrites a recommendation after the fact.</p>
+      ${head('What this is','READ IT<br>HONESTLY.')}
+      <p class="sub reveal" style="margin-top:26px;max-width:70ch">${PERF?PERF.assumptions:''}</p>
+      <p class="notice reveal" style="margin-top:20px">Per-session figures are the mean return of the setups that
+      actually filled that day, weighted at roughly 4% of capital each. A day with no qualifying setup does not appear.</p>
     </section>
   </div>`;
 }
@@ -1369,7 +1283,7 @@ function countUp(scope){
   els.forEach(el=>{
     if(el.dataset.done)return;el.dataset.done=1;
     const v=parseFloat(el.dataset.v),d=+el.dataset.d||0,p=el.dataset.p||'',s=el.dataset.s||'';
-    if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=p+fmtN(v,d)+s;return}
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=(v>=0?p:'')+fmtN(v,d)+s;return}
     const t0=performance.now(),dur=1400;
     const tick=now=>{
       const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);
@@ -1414,9 +1328,9 @@ function route(){
   $$('#navlinks a,#bnav a').forEach(a=>a.classList.toggle('on',a.dataset.r===name||(!VIEWS[name]&&a.dataset.r==='today')));
   wireCommon($('#view'));
   if(name==='calendar')renderCalendar();
-  if(name==='performance'){
+  if(name==='performance'&&PERF&&DAYS.length){
     const cum=[];let c=1;DAYS.forEach(x=>{c*=1+x.all/100;cum.push((c-1)*100)});
-    const labels=DAYS.map(x=>x.date.toLocaleDateString('en-GB',{day:'numeric',month:'short'}));
+    const labels=DAYS.map(x=>x.date.toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}));
     wireChart($('#cumbox'),cum,labels,v=>pct(v));
     wireChart($('#dailybox'),DAYS.map(x=>x.all),labels,v=>pct(v));
     wireChart($('#eqbox'),DAYS.map(x=>x.eq),labels,v=>'₹'+fmtI(v));
@@ -1430,6 +1344,7 @@ let clockTimer=null;
 function tz(zone){return new Date(new Date().toLocaleString('en-US',{timeZone:zone}))}
 function startClocks(){
   clearInterval(clockTimer);
+  const setChip=(sel,open)=>{const c=$(sel);if(!c)return;c.querySelector('.dot').className='dot'+(open?' live':'');};
   const el=$('#countdown'),ds=$('#datestamp'),gr=$('#greet');
   const tick=()=>{
     const ist=tz('Asia/Kolkata'),et=tz('America/New_York');
@@ -1440,15 +1355,14 @@ function startClocks(){
     const inOpen=wd&&inMin>=555&&inMin<930, usOpen=uwd&&usMin>=570&&usMin<960;
     setChip('#chip-in',inOpen);setChip('#chip-us',usOpen);
     if(!el)return;
-    if(inOpen){el.textContent='India is live. Closes at 3:30 PM IST.'}
+    if(inOpen)el.textContent='India is live. Closes at 3:30 PM IST.';
     else if(wd&&inMin<555){
       const s=(555-inMin)*60-ist.getSeconds();
       el.textContent=`India opens in ${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}.`;
     }
-    else if(usOpen){el.textContent='New York is live. India opens tomorrow, 9:15 AM.'}
-    else{el.textContent='Markets are resting. India opens next session, 9:15 AM IST.'}
+    else if(usOpen)el.textContent='New York is live. India opens tomorrow, 9:15 AM.';
+    else el.textContent='Markets are resting. India opens next session, 9:15 AM IST.';
   };
-  const setChip=(sel,open)=>{const c=$(sel);if(!c)return;c.querySelector('.dot').className='dot'+(open?' live':'');};
   tick();clockTimer=setInterval(tick,1000);
 }
 
@@ -1461,28 +1375,53 @@ addEventListener('scroll',()=>{
   lastY=y;
 },{passive:true});
 
-/* ---------- boot sequence ---------- */
-function boot(){
+/* ---------- boot ---------- */
+function fatal(msg){
+  $('#boot')?.classList.add('done');
+  $('#view').innerHTML=`<section class="hero wrap">
+    <div class="kicker"><span class="rule"></span><span class="eyebrow">Data unavailable</span></div>
+    <h1 class="display d-lg">NO DATA<br>TO SHOW.</h1>
+    <p class="sub" style="margin-top:22px">${msg}</p>
+    <p class="notice" style="margin-top:20px">Alladin renders only real market data. Rather than showing invented
+    numbers, it shows nothing. Run <code>python scripts/build_data.py</code> to rebuild the feed.</p>
+  </section>`;
+}
+
+async function boot(){
   const el=$('#boot');
   const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if(sessionStorage.getItem('alladin-boot')||reduced){el.remove();route();return}
-  sessionStorage.setItem('alladin-boot','1');
-  el.hidden=false;
+  const skip=sessionStorage.getItem('alladin-boot')||reduced;
   const lines=['READING THE MARKET.','CHECKING MOMENTUM.','LOOKING FOR CATALYSTS.','BUILDING THE THESIS.','ALLADIN IS READY.'];
-  const sigs=['TECHNICALS','FUNDAMENTALS','MACRO','NEWS','CATALYSTS','RISK'];
-  $('#bootsig').innerHTML=sigs.map(s=>`<span>${s}</span>`).join('');
+  const sigs=['PRICES','INDICATORS','MOMENTUM','VOLUME','NEWS','RISK'];
+
+  if(!skip){
+    sessionStorage.setItem('alladin-boot','1');
+    el.hidden=false;
+    $('#bootsig').innerHTML=sigs.map(s=>`<span>${s}</span>`).join('');
+  }
+
+  let err=null;
+  try{ await loadData(); }catch(e){ err=e; }
+
+  if(err){ fatal('Could not load docs/data.json — '+err.message+'.'); return; }
+
+  if(skip){ el?.remove(); route(); return; }
+
   const sigEls=$$('#bootsig span');
   let i=0;
   const step=()=>{
     $('#bootline').textContent=lines[i];
-    if(i<sigEls.length)sigEls[i].classList.add('ok'),sigEls[i].textContent=sigs[i]+' ✓';
-    if(i===lines.length-1){sigEls.forEach((s,j)=>{s.classList.add('ok');s.textContent=sigs[j]+' ✓'});
-      setTimeout(()=>{el.classList.add('done');route()},600);return}
-    i++;setTimeout(step,520);
+    if(i<sigEls.length){sigEls[i].classList.add('ok');sigEls[i].textContent=sigs[i]+' ✓'}
+    if(i===lines.length-1){
+      sigEls.forEach((s,j)=>{s.classList.add('ok');s.textContent=sigs[j]+' ✓'});
+      setTimeout(()=>{el.classList.add('done')},600);return;
+    }
+    i++;setTimeout(step,420);
   };
-  route();setTimeout(step,300);
+  route();setTimeout(step,250);
 }
 boot();
+
 </script>
 </body>
 </html>
