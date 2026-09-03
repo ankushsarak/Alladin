@@ -29,14 +29,16 @@ The split is deliberate, and enforced by what each side is given.
 |---|---|
 | Which names qualify | Deterministic rule engine |
 | Entry, stop, targets, position size | Deterministic rule engine |
-| What the numbers mean | Claude ([`scripts/analyst.py`](scripts/analyst.py)) |
-| Whether the news backs the chart | Claude |
-| The strongest objection to the trade | Claude |
+| What the numbers mean | The LLM ([`scripts/analyst.py`](scripts/analyst.py)) |
+| Whether the news backs the chart | The LLM |
+| The strongest objection to the trade | The LLM |
 
-Claude is never asked for a price and never picks a stock, so it cannot
-hallucinate a level into a trade plan. Every number is arithmetic you can
-reproduce from [`scripts/build_data.py`](scripts/build_data.py); the same input
-always gives the same output.
+The model is never asked for a price and never picks a stock, so it cannot
+hallucinate a level into a trade plan — the levels are passed to it labelled as
+fixed, and a test asserts they survive the round trip unchanged. Every number is
+arithmetic you can reproduce from
+[`scripts/build_data.py`](scripts/build_data.py); the same input always gives the
+same output.
 
 The analyst layer is optional and works with any of several LLM keys — **use a
 free one**; there is no paid dependency. It needs no SDK (standard-library HTTP)
