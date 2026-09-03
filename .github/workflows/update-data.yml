@@ -47,10 +47,13 @@ jobs:
           # and says so. Every price level is unaffected either way.
           #   GEMINI_API_KEY  — free  · aistudio.google.com/apikey
           #   GROQ_API_KEY    — free  · console.groq.com/keys
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # `secrets` is the right place for a key. `vars` is accepted too,
+          # because pasting into Settings → Variables instead of Secrets is an
+          # easy mistake and the failure it causes is silent.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || vars.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY || vars.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY || vars.OPENROUTER_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY || vars.ANTHROPIC_API_KEY }}
 
       - name: Commit if anything changed
         run: |

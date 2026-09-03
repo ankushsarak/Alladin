@@ -269,19 +269,31 @@ def _select():
     return None, None
 
 
+def _env_report():
+    """
+    Which credential variables arrived non-empty. Names only — never values,
+    never lengths — so it is safe to publish and safe to log.
+    """
+    names = ("GEMINI_API_KEY", "GROQ_API_KEY", "OPENROUTER_API_KEY", "ANTHROPIC_API_KEY")
+    return {"present": [n for n in names if (os.environ.get(n) or "").strip()],
+            "absent": [n for n in names if not (os.environ.get(n) or "").strip()]}
+
+
 def analyse(tips, verbose=True):
     """Enrich each tip in place. Returns a status dict the site displays."""
     if not tips:
         return {"enabled": False, "reason": "No qualifying setups to analyse."}
 
+    env = _env_report()
     provider, key = _select()
     if not provider or not key:
-        msg = ("No free LLM key set; showing computed analysis instead. "
+        msg = ("No free LLM key reached the build; showing computed analysis instead. "
                "Set GEMINI_API_KEY (aistudio.google.com/apikey) or GROQ_API_KEY "
-               "(console.groq.com/keys) to enable the analyst.")
+               "(console.groq.com/keys) as a repository *secret*.")
         if verbose:
             print(f"  ~ analyst skipped: {msg}", file=sys.stderr)
-        return {"enabled": False, "reason": msg}
+            print(f"  ~ credential vars present: {env['present'] or 'none'}", file=sys.stderr)
+        return {"enabled": False, "reason": msg, "env": env}
 
     model = os.environ.get("ALLADIN_MODEL") or DEFAULT_MODEL.get(provider, "")
     if verbose:
