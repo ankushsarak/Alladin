@@ -269,6 +269,23 @@ def _select():
     return None, None
 
 
+_SECRETISH = re.compile(
+    r"AIza[0-9A-Za-z_\-]{10,}"          # Google API keys
+    r"|AQ\.[0-9A-Za-z_\-.]{10,}"        # Google OAuth / session tokens
+    r"|sk-[0-9A-Za-z_\-]{10,}"          # OpenAI-style keys
+    r"|gsk_[0-9A-Za-z_\-]{10,}"         # Groq keys
+    r"|[A-Za-z0-9_\-]{40,}"             # any long opaque run
+)
+
+
+def _redact(e, limit=200):
+    """
+    A provider error message, safe to publish. Anything key-shaped is masked —
+    error bodies occasionally echo the request, and this feed is public.
+    """
+    return _SECRETISH.sub("[redacted]", " ".join(str(e).split()))[:limit]
+
+
 def _env_report():
     """
     Which credential variables arrived non-empty. Names only — never values,
@@ -308,9 +325,9 @@ def analyse(tips, verbose=True):
             if verbose:
                 print(f"  ✓ {t['ticker']} ({t['news_read']['verdict'].lower()})")
         except Exception as e:                                  # noqa: BLE001
-            failed.append(f"{t['ticker']}: {e.__class__.__name__}")
+            failed.append(f"{t['ticker']}: {e.__class__.__name__}: {_redact(e)}")
             if verbose:
-                print(f"  ! {t['ticker']} failed: {e}", file=sys.stderr)
+                print(f"  ! {t['ticker']} failed: {_redact(e)}", file=sys.stderr)
             # Auth / bad-model errors apply to every call — stop early.
             s = str(e).lower()
             if any(w in s for w in ("401", "403", "invalid api key", "api key not valid",
