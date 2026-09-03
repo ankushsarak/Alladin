@@ -1,0 +1,1488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alladin</title>
+<meta name="description" content="Your AI-powered market intelligence.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ================= ALLADIN — design tokens ================= */
+:root{
+  --page:#0A0A0A;
+  --s1:#111111;
+  --s2:#171717;
+  --s3:#1D1D1D;
+  --border:rgba(244,241,232,.08);
+  --border-strong:rgba(244,241,232,.16);
+  --ink:#F4F1E8;
+  --ink-2:#A39E93;
+  --ink-3:#5C584F;
+  --pos:#5CA97C;
+  --neg:#C0625A;
+  --warn:#C99B5F;
+  --accent:#E3D5B8;
+  --accent-dim:rgba(227,213,184,.12);
+  --display:'Archivo',ui-sans-serif,system-ui,sans-serif;
+  --body:'Inter',ui-sans-serif,system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --r-lg:24px;
+  --r-md:16px;
+  --maxw:1240px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--page);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--accent);color:#0A0A0A}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+svg{display:block}
+img{max-width:100%}
+
+/* ---------- typography ---------- */
+.display{
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  letter-spacing:-.02em;line-height:.95;text-wrap:balance;
+}
+.d-xl{font-size:clamp(44px,8vw,88px)}
+.d-lg{font-size:clamp(36px,5.5vw,64px)}
+.d-md{font-size:clamp(26px,3.4vw,40px)}
+.d-sm{font-size:clamp(20px,2.4vw,28px)}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);
+}
+.eyebrow.lit{color:var(--accent)}
+.sub{color:var(--ink-2);font-size:clamp(15px,1.6vw,18px);max-width:34em;line-height:1.65}
+.num{font-family:var(--body);font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:-.02em}
+.pos{color:var(--pos)}.neg{color:var(--neg)}.warn{color:var(--warn)}
+.muted{color:var(--ink-2)}.faint{color:var(--ink-3)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.section{padding-block:clamp(64px,9vw,128px)}
+.section.tight{padding-block:clamp(40px,6vw,72px)}
+.hr{border:0;border-top:1px solid var(--border)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px)}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* ---------- nav ---------- */
+#nav{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  transition:transform .45s var(--ease),background .3s;
+  background:linear-gradient(rgba(10,10,10,.92),rgba(10,10,10,.75) 70%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+#nav.hide{transform:translateY(-100%)}
+#nav .bar{
+  max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;gap:32px;
+  padding:20px clamp(20px,4vw,48px);
+  transition:padding .35s var(--ease);
+}
+#nav.compact .bar{padding-top:12px;padding-bottom:12px}
+.logo{
+  font-family:var(--display);font-weight:800;font-size:19px;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--ink);
+  display:inline-flex;align-items:baseline;
+}
+.logo i{font-style:normal;color:var(--accent);letter-spacing:0;margin-left:2px}
+.navlinks{display:flex;gap:6px;margin-left:12px}
+.navlinks a{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);padding:8px 12px;border-radius:99px;
+  transition:color .2s,background .2s;
+}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a.on{color:var(--ink);background:var(--s2)}
+.navright{margin-left:auto;display:flex;align-items:center;gap:18px}
+.mkt-chip{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-2)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ink-3);flex:none}
+.dot.live{background:var(--pos);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(92,169,124,.45)}70%{box-shadow:0 0 0 9px rgba(92,169,124,0)}100%{box-shadow:0 0 0 0 rgba(92,169,124,0)}}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--s3);border:1px solid var(--border-strong);
+  display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+@media(max-width:960px){.navlinks,.mkt-chip{display:none}}
+
+/* mobile bottom nav */
+#bnav{display:none}
+@media(max-width:960px){
+  #bnav{
+    display:flex;position:fixed;inset:auto 0 0 0;z-index:60;
+    background:rgba(13,13,13,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-top:1px solid var(--border);
+    padding:10px max(10px,env(safe-area-inset-left)) max(12px,env(safe-area-inset-bottom));
+  }
+  #bnav a{flex:1;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-3);padding:8px 2px;border-radius:12px}
+  #bnav a.on{color:var(--accent)}
+  main{padding-bottom:76px}
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  padding:16px 26px;border-radius:99px;
+  background:var(--accent);color:#0C0B09;
+  transition:transform .25s var(--ease),background .2s;
+}
+.btn:hover{transform:translateY(-1px);background:#EFE4CC}
+.btn .arr{transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(5px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--border-strong)}
+.btn.ghost:hover{background:var(--s2)}
+.textbtn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);
+  padding:6px 0;border-bottom:1px solid transparent;transition:color .2s;
+}
+.textbtn:hover{color:var(--accent)}
+.textbtn .arr{transition:transform .25s var(--ease)}
+.textbtn:hover .arr{transform:translateX(5px)}
+
+/* ---------- cards & surfaces ---------- */
+.card{
+  background:var(--s1);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:clamp(22px,3vw,36px);
+  transition:transform .35s var(--ease),border-color .3s,background .3s;
+  position:relative;overflow:hidden;
+}
+.card.hoverable:hover{transform:translateY(-3px);border-color:var(--border-strong);background:var(--s2)}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  padding:6px 12px;border-radius:99px;border:1px solid var(--border-strong);color:var(--ink-2);
+}
+.chip.buy{color:var(--pos);border-color:rgba(92,169,124,.4)}
+.chip.wait{color:var(--warn);border-color:rgba(201,155,95,.4)}
+.chip.acc{color:var(--accent);border-color:rgba(227,213,184,.35)}
+.chip.bad{color:var(--neg);border-color:rgba(192,98,90,.4)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(150px,20vh,220px) clamp(56px,8vw,96px)}
+.hero .greet{color:var(--ink-3)}
+.hero h1{margin:14px 0 26px}
+.countline{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.countline .clock{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--accent)}
+
+/* market panels */
+.mpanel{min-height:230px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
+.mpanel .top{display:flex;justify-content:space-between;align-items:flex-start}
+.mpanel .idx{font-family:var(--display);font-weight:700;font-size:clamp(34px,4.5vw,54px);letter-spacing:-.02em;line-height:1}
+.mpanel .spark{margin:0 -8px}
+.mpanel .foot{display:flex;justify-content:space-between;align-items:center}
+
+/* ---------- tip cards ---------- */
+.tipcard{
+  display:grid;grid-template-columns:1fr auto;gap:24px;
+  background:var(--s1);border:1px solid var(--border);border-radius:28px;
+  padding:clamp(26px,3.4vw,44px);position:relative;overflow:hidden;
+  transition:transform .4s var(--ease),border-color .3s;cursor:pointer;
+}
+.tipcard:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+.tipcard .index{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--ink-3)}
+.tipcard .ticker{font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(34px,4.6vw,58px);letter-spacing:-.02em;line-height:.95;margin:10px 0 4px}
+.tipcard .cname{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.tipcard .chips{display:flex;gap:10px;margin:20px 0 26px;flex-wrap:wrap}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(86px,1fr));gap:18px 26px;max-width:620px}
+.levels .lv .v{font-size:clamp(19px,2vw,26px);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.levels .lv .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:4px}
+.tipcard .cta{margin-top:30px}
+.tipcard .art{position:absolute;inset:0;pointer-events:none;opacity:.8}
+.tipcard>*{position:relative;z-index:1}
+.tipcard .side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;min-width:120px}
+@media(max-width:760px){.tipcard{grid-template-columns:1fr}.tipcard .side{flex-direction:row;align-items:center;justify-content:space-between;order:-1}}
+
+/* sector art — abstract, low-key */
+.art.tech{background:
+  radial-gradient(420px 220px at 88% 8%,rgba(227,213,184,.08),transparent 60%),
+  repeating-linear-gradient(90deg,rgba(244,241,232,.025) 0 1px,transparent 1px 56px),
+  repeating-linear-gradient(0deg,rgba(244,241,232,.02) 0 1px,transparent 1px 56px)}
+.art.energy{background:
+  radial-gradient(500px 260px at 85% 110%,rgba(201,155,95,.09),transparent 65%),
+  radial-gradient(380px 200px at 100% 0%,rgba(227,213,184,.05),transparent 60%)}
+.art.finance{background:
+  linear-gradient(115deg,transparent 55%,rgba(244,241,232,.028) 55.2% 62%,transparent 62.2%),
+  linear-gradient(115deg,transparent 68%,rgba(244,241,232,.02) 68.2% 80%,transparent 80.2%),
+  radial-gradient(400px 240px at 92% 4%,rgba(227,213,184,.06),transparent 60%)}
+.art.health{background:
+  radial-gradient(circle at 90% 15%,rgba(92,169,124,.07) 0 8%,transparent 9%),
+  radial-gradient(circle at 96% 42%,rgba(92,169,124,.05) 0 5%,transparent 6%),
+  radial-gradient(circle at 82% 55%,rgba(227,213,184,.04) 0 4%,transparent 5%)}
+
+/* stars */
+.stars{letter-spacing:3px;color:var(--accent);font-size:13px}
+.stars .off{color:var(--ink-3)}
+
+/* ---------- overlay (thesis / day detail) ---------- */
+#overlay{
+  position:fixed;inset:0;z-index:80;background:var(--page);
+  overflow-y:auto;overscroll-behavior:contain;
+  transform:translateY(4%);opacity:0;pointer-events:none;
+  transition:transform .5s var(--ease),opacity .4s;
+}
+#overlay.open{transform:none;opacity:1;pointer-events:auto}
+.ov-top{
+  position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;
+  padding:18px clamp(20px,4vw,48px);
+  background:linear-gradient(rgba(10,10,10,.94),rgba(10,10,10,.8) 70%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.closebtn{
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--border-strong);
+  display:grid;place-items:center;color:var(--ink-2);font-size:18px;
+  transition:background .2s,color .2s;
+}
+.closebtn:hover{background:var(--s2);color:var(--ink)}
+
+/* expandable analysis rows */
+.xrow{border-top:1px solid var(--border)}
+.xrow:last-child{border-bottom:1px solid var(--border)}
+.xrow>button{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:26px 0;text-align:left;
+}
+.xrow .xt{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(19px,2.4vw,27px);transition:color .25s}
+.xrow>button:hover .xt{color:var(--accent)}
+.xrow .xi{font-family:var(--mono);color:var(--ink-3);font-size:16px;transition:transform .35s var(--ease)}
+.xrow.open .xi{transform:rotate(45deg)}
+.xbody{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.xbody .inner{padding:0 0 30px;color:var(--ink-2);max-width:62ch;line-height:1.7}
+
+/* thesis statements */
+.saying{font-family:var(--display);font-weight:600;font-size:clamp(21px,2.6vw,30px);
+  letter-spacing:-.01em;line-height:1.25;padding:22px 0;border-top:1px solid var(--border)}
+.saying:first-child{border-top:0}
+.saying::before{content:'“';color:var(--ink-3);margin-right:2px}
+.saying::after{content:'”';color:var(--ink-3)}
+
+/* plan grid */
+.plangrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+@media(max-width:640px){.plangrid{grid-template-columns:repeat(2,1fr)}}
+.plangrid .cell{background:var(--s1);padding:26px 22px}
+.plangrid .cell .v{font-size:clamp(20px,2.2vw,28px);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.plangrid .cell .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+
+/* risk/reward bar */
+.rrviz{margin-top:26px}
+.rrbar{display:flex;height:64px;border-radius:14px;overflow:hidden;gap:2px}
+.rrbar .seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+  font-size:11px;letter-spacing:.12em;min-width:52px}
+.rrbar .loss{background:rgba(192,98,90,.16);color:var(--neg)}
+.rrbar .gain{background:rgba(92,169,124,.13);color:var(--pos)}
+.rrlabels{display:flex;gap:2px;margin-top:10px}
+.rrlabels span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+  min-width:52px;text-align:center}
+
+/* steps (zerodha/sarwa) */
+.tabs{display:inline-flex;border:1px solid var(--border-strong);border-radius:99px;padding:4px;gap:4px;margin-bottom:34px}
+.tabs button{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);padding:10px 22px;border-radius:99px;transition:all .25s}
+.tabs button.on{background:var(--accent);color:#0C0B09}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.step{background:var(--s1);border:1px solid var(--border);border-radius:var(--r-md);padding:22px}
+.step .n{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--accent)}
+.step .t{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:17px;margin:10px 0 6px}
+.step .d{font-size:13px;color:var(--ink-2);line-height:1.55}
+
+/* ---------- calendar ---------- */
+.calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.calhead .mn{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(20px,2.6vw,28px);letter-spacing:-.01em}
+.calnav button{width:42px;height:42px;border-radius:50%;border:1px solid var(--border-strong);color:var(--ink-2);transition:background .2s}
+.calnav button:hover:not(:disabled){background:var(--s2);color:var(--ink)}
+.calnav button:disabled{opacity:.3;cursor:default}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.calgrid .dow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+  text-align:center;padding:8px 0}
+.day{
+  aspect-ratio:.9;border-radius:14px;border:1px solid transparent;background:var(--s1);
+  padding:10px 10px 8px;display:flex;flex-direction:column;gap:2px;
+  font-variant-numeric:tabular-nums;transition:transform .3s var(--ease),border-color .25s,background .25s;
+}
+.day.blank{background:transparent}
+.day.traded{cursor:pointer;border-color:var(--border)}
+.day.traded:hover{transform:translateY(-3px);border-color:var(--border-strong);background:var(--s2)}
+.day.today{border-color:rgba(227,213,184,.5)}
+.day .dn{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.day .mini{font-size:10.5px;line-height:1.5;font-family:var(--mono);letter-spacing:.02em}
+.day .tot{margin-top:auto;font-weight:600;font-size:clamp(11px,1.4vw,15px);letter-spacing:-.01em}
+@media(max-width:760px){.day .mini{display:none}.day{aspect-ratio:.85;padding:8px}}
+
+/* ---------- performance ---------- */
+.heronum{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:.9;
+  font-size:clamp(72px,14vw,170px)}
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+.statrow .cell{background:var(--s1);padding:28px 24px}
+.statrow .cell .v{font-size:clamp(24px,3vw,38px);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.statrow .cell .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+
+/* charts */
+.chartbox{position:relative}
+.chartbox svg{width:100%;height:auto}
+.tt{
+  position:absolute;pointer-events:none;z-index:4;opacity:0;transition:opacity .15s;
+  background:var(--s3);border:1px solid var(--border-strong);border-radius:12px;
+  padding:10px 14px;font-size:12.5px;white-space:nowrap;transform:translate(-50%,-115%);
+  font-variant-numeric:tabular-nums;
+}
+.tt .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.legendrow{display:flex;gap:22px;margin-top:14px;flex-wrap:wrap}
+.legendrow span{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+.legendrow i{width:16px;height:3px;border-radius:2px;display:inline-block}
+
+/* sector bars */
+.sbar{display:grid;grid-template-columns:130px 1fr 80px;gap:18px;align-items:center;padding:16px 0;border-top:1px solid var(--border)}
+.sbar:last-child{border-bottom:1px solid var(--border)}
+.sbar .nm{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+.sbar .track{height:6px;border-radius:3px;background:var(--s2);position:relative;overflow:hidden}
+.sbar .fill{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--accent);width:0;
+  transition:width 1.1s var(--ease)}
+.sbar.negbar .fill{background:var(--neg)}
+.sbar .pv{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+@media(max-width:600px){.sbar{grid-template-columns:96px 1fr 66px;gap:10px}}
+
+/* watchlist */
+.wrow{
+  display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;
+  padding:26px 0;border-top:1px solid var(--border);cursor:default;
+  transition:padding .25s var(--ease);
+}
+.wrow:last-child{border-bottom:1px solid var(--border)}
+.wrow:hover{padding-left:8px}
+.wrow .tk{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(20px,2.6vw,30px);letter-spacing:-.01em}
+.wrow .nm{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.wrow .px{text-align:right;font-variant-numeric:tabular-nums}
+.score{
+  width:64px;height:64px;border-radius:50%;border:1px solid var(--border-strong);
+  display:grid;place-items:center;flex-direction:column;text-align:center;
+}
+.score b{font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.score span{display:block;font-family:var(--mono);font-size:7.5px;letter-spacing:.14em;color:var(--ink-3)}
+
+/* verdict / post-market */
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+@media(max-width:860px){.verdict{grid-template-columns:1fr}}
+.bignum{font-family:var(--display);font-weight:800;letter-spacing:-.03em;font-size:clamp(52px,8vw,104px);line-height:.9}
+
+/* ---------- boot sequence ---------- */
+#boot{
+  position:fixed;inset:0;z-index:100;background:var(--page);
+  display:grid;place-items:center;transition:opacity .6s,visibility .6s;
+}
+#boot.done{opacity:0;visibility:hidden;pointer-events:none}
+#boot .line{font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(24px,4.5vw,44px);text-align:center;min-height:1.2em}
+#boot .sig{margin-top:34px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;padding:0 20px}
+#boot .sig span{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-3);transition:color .3s}
+#boot .sig span.ok{color:var(--pos)}
+
+/* ---------- motion ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* misc */
+.kicker{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.kicker .rule{height:1px;width:44px;background:var(--border-strong)}
+.footer{padding-block:60px 90px;color:var(--ink-3);font-size:12.5px;line-height:1.7}
+.footer .lg{font-family:var(--display);font-weight:800;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px}
+.notice{font-size:12px;color:var(--ink-3);max-width:56ch;line-height:1.7}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px)}
+@media(max-width:860px){.twocol{grid-template-columns:1fr}}
+.casecard{border-radius:var(--r-lg);border:1px solid var(--border);padding:clamp(22px,3vw,34px);background:var(--s1)}
+.casecard.workcase{border-color:rgba(92,169,124,.25)}
+.casecard.failcase{border-color:rgba(192,98,90,.25)}
+.casecard ul{list-style:none;margin-top:18px}
+.casecard li{padding:12px 0;border-top:1px solid var(--border);color:var(--ink-2);font-size:14.5px;line-height:1.6}
+.hscroll{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin:0 -20px;padding-left:20px;padding-right:20px}
+.hscroll>*{scroll-snap-align:start;flex:none}
+</style>
+</head>
+<body>
+<div id="boot" hidden>
+  <div>
+    <div class="line" id="bootline">READING THE MARKET.</div>
+    <div class="sig" id="bootsig"></div>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="bar">
+    <a href="#/today" class="logo">Alladin<i>.</i></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#/today" data-r="today">Today</a>
+      <a href="#/calendar" data-r="calendar">Calendar</a>
+      <a href="#/india" data-r="india">India</a>
+      <a href="#/usa" data-r="usa">USA</a>
+      <a href="#/performance" data-r="performance">Performance</a>
+      <a href="#/watchlist" data-r="watchlist">Watchlist</a>
+    </div>
+    <div class="navright">
+      <span class="mkt-chip" id="chip-in"><span class="dot"></span>IN</span>
+      <span class="mkt-chip" id="chip-us"><span class="dot"></span>US</span>
+      <span class="avatar">AS</span>
+    </div>
+  </div>
+</nav>
+
+<nav id="bnav">
+  <a href="#/today" data-r="today">Today</a>
+  <a href="#/calendar" data-r="calendar">Calendar</a>
+  <a href="#/performance" data-r="performance">Perform</a>
+  <a href="#/watchlist" data-r="watchlist">Watch</a>
+</nav>
+
+<main id="view"></main>
+
+<div id="overlay" aria-modal="true" role="dialog"></div>
+
+<script>
+'use strict';
+/* ================= ALLADIN — data & helpers ================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const fmtN=(n,d=2)=>n.toLocaleString('en-IN',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fmtI=n=>Math.round(n).toLocaleString('en-IN');
+const pct=n=>(n>=0?'+':'')+n.toFixed(2)+'%';
+const pct1=n=>(n>=0?'+':'')+n.toFixed(1)+'%';
+const cls=n=>n>=0?'pos':'neg';
+function prng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function series(seed,n,start,vol){const r=prng(seed);let v=start;const out=[];for(let i=0;i<n;i++){v*=1+(r()-.47)*vol;out.push(v)}return out}
+
+/* ---------- trading history: 42 sessions, 7 Jul – 2 Sep 2026 ---------- */
+const DAYS=(()=>{
+  const out=[],r=prng(2026);let d=new Date(2026,6,7);
+  while(out.length<42){
+    const dow=d.getDay();
+    if(dow!==0&&dow!==6){
+      let ind=(r()-.42)*2.2, usa=(r()-.42)*1.8;
+      if(out.length>=14&&out.length<=17){ind=-Math.abs(ind)*.9;usa=-Math.abs(usa)*.8}
+      out.push({date:new Date(d),ind,usa});
+    }
+    d.setDate(d.getDate()+1);
+  }
+  const scale=(k,target)=>{const cum=out.reduce((p,x)=>p*(1+x[k]/100),1);const f=Math.pow((1+target/100)/cum,1/out.length);out.forEach(x=>{x[k]=((1+x[k]/100)*f-1)*100})};
+  scale('ind',12.4);scale('usa',8.7);
+  out.forEach(x=>x.all=x.ind*.6+x.usa*.4);
+  const cum=out.reduce((p,x)=>p*(1+x.all/100),1);
+  const f=Math.pow(1.1842/cum,1/out.length);
+  out.forEach(x=>{x.all=((1+x.all/100)*f-1)*100});
+  let eq=100000;out.forEach(x=>{eq*=1+x.all/100;x.eq=eq});
+  return out;
+})();
+const TOTAL_RET=(DAYS[DAYS.length-1].eq/100000-1)*100;
+const ANNUALIZED=(Math.pow(DAYS[DAYS.length-1].eq/100000,252/DAYS.length)-1)*100;
+const MAXDD=(()=>{let peak=100000,dd=0;DAYS.forEach(x=>{peak=Math.max(peak,x.eq);dd=Math.min(dd,(x.eq/peak-1)*100)});return dd})();
+const dkey=d=>d.toISOString().slice(0,10);
+const DAYMAP=Object.fromEntries(DAYS.map(x=>[dkey(x.date),x]));
+
+/* ---------- tips ---------- */
+const TIPS={
+ india:[
+  {id:'reliance',ticker:'RELIANCE',name:'Reliance Industries',market:'INDIA',cur:'₹',sector:'Energy',art:'energy',
+   action:'BUY',mode:'BUY NOW',conviction:'HIGH',price:1432,chg:.9,
+   entry:[1425,1440],window:'9:20–10:15 AM IST',stop:1390,targets:[1475,1520,1575],rr:'1 : 3.1',size:4.0,
+   scores:{Technical:5,Fundamental:4,Momentum:5,Catalyst:4},
+   thesis:['Momentum has changed.','Price is reclaiming a key resistance zone.','Sector strength is confirming the move.','Three independent signals are pointing in the same direction.'],
+   sections:{
+    'THE CHART':'Price has closed above the ₹1,425 supply zone for two consecutive sessions on expanding volume. The 20-day average has crossed above the 50-day, RSI sits at 62 with room before exhaustion, and MACD has turned positive. Support holds at ₹1,390; the overhead supply near ₹1,440 is visibly thinning.',
+    'THE BUSINESS':'Refining margins have widened for a third straight quarter, retail same-store growth is running ahead of the sector, and the digital arm continues to compound subscribers. The conglomerate discount has narrowed but has not closed.',
+    'THE MACRO':'Crude is range-bound, the rupee is stable, and the RBI is on hold. A benign rate backdrop favours large-cap index leaders with heavy institutional ownership.',
+    'THE CATALYST':'Management commentary on the new-energy vertical is expected at this week’s investor event. Positive guidance has historically produced multi-day follow-through in this name.',
+    'THE RISKS':'A sharp crude spike would compress refining margins. A broad market pullback would drag this index heavyweight regardless of its own story. A close back below ₹1,425 invalidates the setup.',
+    'THE SIGNAL':'Breakout, volume confirmation, and sector rotation into energy are aligned. When these three agree, Alladin’s historical hit rate on this setup is at its strongest.'},
+   news:[
+    {h:'Refining margins hit six-quarter high',src:'Mint',time:'06:40 IST',sum:'Benchmark Singapore GRMs expanded again this week, led by diesel cracks.',why:'Margin expansion flows directly into the segment that still drives the majority of operating profit.'},
+    {h:'FII flows turn positive for energy',src:'Economic Times',time:'Yesterday',sum:'Foreign institutions were net buyers of Indian energy names for the fifth straight session.',why:'Institutional accumulation supports the breakout and reduces the odds of a failed move.'},
+    {h:'Investor event scheduled this week',src:'Exchange filing',time:'2d ago',sum:'The company will present its new-energy roadmap to institutional investors.',why:'A concrete catalyst with a defined date anchors the entry window.'}],
+   workcase:['The breakout came on 1.8× average volume — conviction, not drift.','Energy is the strongest sector over ten sessions.','Macro is calm: stable crude, stable rupee, central bank on hold.'],
+   failcase:['₹1,440 has rejected price three times since June.','A crude spike would hit margins before the chart reflects it.','Index heavyweights fall with the market, whatever their story.'],
+   invalidation:'A daily close below ₹1,425 on rising volume.'},
+  {id:'hdfcbank',ticker:'HDFCBANK',name:'HDFC Bank',market:'INDIA',cur:'₹',sector:'Financials',art:'finance',
+   action:'BUY',mode:'BUY ON BREAKOUT',conviction:'HIGH',price:1642,chg:.4,
+   entry:[1655,1662],window:'On a break of ₹1,655',stop:1608,targets:[1700,1738,1790],rr:'1 : 2.6',size:3.0,
+   scores:{Technical:4,Fundamental:5,Momentum:4,Catalyst:3},
+   thesis:['The consolidation is ending.','Credit growth is re-accelerating.','Private banks are quietly leading the index.'],
+   sections:{
+    'THE CHART':'Eight weeks of tightening range under ₹1,655. Volatility compression of this depth typically resolves in the direction of the prior trend — up. Wait for the level to break; do not front-run it.',
+    'THE BUSINESS':'Deposit growth has caught up with loan growth, easing the funding pressure that capped the stock. Net interest margins have stabilised two quarters ahead of street expectations.',
+    'THE MACRO':'System credit growth is re-accelerating and the merger integration overhang is largely absorbed. Rate cuts, when they come, expand book value multiples for liability-strong franchises.',
+    'THE CATALYST':'Monthly business update due within days. A strong deposit print is the likely trigger for the ₹1,655 break.',
+    'THE RISKS':'A weak update keeps the stock rangebound. Breakouts in banks fail more often when index breadth is narrow — size accordingly.',
+    'THE SIGNAL':'Compression plus improving fundamentals plus sector leadership. The trigger is price through ₹1,655 — nothing before that.'},
+   news:[
+    {h:'System credit growth at 16.1% YoY',src:'RBI data',time:'Yesterday',sum:'Bank credit expanded at its fastest pace in seven months.',why:'Rising system growth lifts the leader with the strongest deposit franchise.'},
+    {h:'Brokerages raise FY27 estimates',src:'Bloomberg Quint',time:'2d ago',sum:'Three houses lifted margin assumptions after channel checks.',why:'Estimate momentum tends to precede price momentum in large-cap banks.'}],
+   workcase:['Eight-week volatility compression resolves with force.','Deposit growth has closed the gap — the bear case is fading.','Private banks are outperforming the index this month.'],
+   failcase:['Breakouts fail when breadth is this narrow.','A soft monthly update freezes the range for weeks.','Banking is crowded — positioning is not in your favour.'],
+   invalidation:'No entry unless ₹1,655 breaks. After entry: a close below ₹1,608.'},
+  {id:'sunpharma',ticker:'SUNPHARMA',name:'Sun Pharmaceutical',market:'INDIA',cur:'₹',sector:'Healthcare',art:'health',
+   action:'BUY',mode:'WAIT',conviction:'MEDIUM',price:1712,chg:-.2,
+   entry:[1680,1695],window:'On a pullback to ₹1,680–1,695',stop:1648,targets:[1745,1780,1830],rr:'1 : 2.4',size:2.5,
+   scores:{Technical:3,Fundamental:4,Momentum:3,Catalyst:4},
+   thesis:['The story is right. The price is not.','Specialty pipeline momentum is real.','Patience is a position.'],
+   sections:{
+    'THE CHART':'Extended 4.2% above its 20-day average — chasing here buys someone else’s profit. The ₹1,680–1,695 zone is prior resistance turned support and the logical re-entry.',
+    'THE BUSINESS':'Specialty revenue is compounding at over 20% and now carries group margins. US generics pricing pressure has stabilised.',
+    'THE MACRO':'Defensive sectors catch flows when index volatility rises. Healthcare gives the portfolio ballast the two cyclical ideas do not.',
+    'THE CATALYST':'A specialty-franchise regulatory decision is expected this month; the market is underpricing an approval.',
+    'THE RISKS':'A negative regulatory surprise gaps the stock through any stop. Extended names correct fast when momentum unwinds.',
+    'THE SIGNAL':'Wait. Alladin flags the level, not the urge. If price never returns to the zone, there is no trade — and that is fine.'},
+   news:[
+    {h:'Specialty franchise grows 23% YoY',src:'Company release',time:'1w ago',sum:'Flagship dermatology and ophthalmology lines beat estimates again.',why:'The re-rating rests on specialty mix — the trend is intact.'},
+    {h:'US FDA decision window opens',src:'Reuters',time:'3d ago',sum:'A target action date for a key specialty filing falls within this month.',why:'Binary events reward entries at support, not at extension.'}],
+   workcase:['Specialty mix keeps lifting structural margins.','Defensives hedge the portfolio’s cyclical tilt.','A dated catalyst sits weeks away.'],
+   failcase:['4% above the 20-day — poor location right now.','Regulatory outcomes are binary and gap risk is real.','If the pullback never comes, capital idles.'],
+   invalidation:'Entry only inside ₹1,680–1,695. After entry: a close below ₹1,648.'}],
+ usa:[
+  {id:'nvda',ticker:'NVDA',name:'NVIDIA Corp',market:'USA',cur:'$',sector:'Technology',art:'tech',
+   action:'BUY',mode:'BUY NOW',conviction:'HIGH',price:172.40,chg:2.3,
+   entry:[171,174],window:'First 90 minutes of the US session',stop:165.5,targets:[181,188,197],rr:'1 : 2.8',size:4.0,
+   scores:{Technical:5,Fundamental:4,Momentum:5,Catalyst:5},
+   thesis:['Demand is still outrunning supply.','The pullback found buyers exactly where it should.','Accelerator capex guidance keeps rising.'],
+   sections:{
+    'THE CHART':'A clean higher low at $165 against the 50-day, reclaimed on volume. RSI reset from 78 to 55 without breaking structure — momentum cooled, trend did not.',
+    'THE BUSINESS':'Data-centre revenue mix keeps climbing and gross margins are holding above 70%. Supply commitments from foundry partners extend through next year.',
+    'THE MACRO':'Hyperscaler capex guidance rose again this quarter. AI infrastructure spend remains the strongest earnings driver in the index.',
+    'THE CATALYST':'A flagship developer conference keynote lands this week, with new accelerator benchmarks expected.',
+    'THE RISKS':'Any hyperscaler trimming capex guidance hits the whole complex. Crowded ownership cuts both ways — air pockets are violent.',
+    'THE SIGNAL':'Trend intact, momentum reset, dated catalyst ahead. This is the setup Alladin scores highest on US tech.'},
+   news:[
+    {h:'Hyperscaler capex guided up 12%',src:'Bloomberg',time:'Pre-market',sum:'The largest cloud buyer raised infrastructure spend guidance for the third consecutive quarter.',why:'Capex guidance is the single best forward indicator for accelerator demand.'},
+    {h:'Keynote scheduled Thursday',src:'Company IR',time:'2d ago',sum:'Next-generation accelerator benchmarks expected at the developer conference.',why:'Product catalysts within the holding window justify a full-size position.'},
+    {h:'Supply agreement extended',src:'Reuters',time:'3d ago',sum:'Advanced packaging capacity secured through end of next year.',why:'Supply certainty removes the main near-term bear argument.'}],
+   workcase:['Higher low on the 50-day, reclaimed on volume.','Capex guidance keeps rising across every major buyer.','A dated product catalyst falls inside the window.'],
+   failcase:['The most crowded trade in the index.','One capex cut re-prices the whole complex.','A failed keynote is a sell-the-news setup.'],
+   invalidation:'A daily close below $165.50.'},
+  {id:'xom',ticker:'XOM',name:'Exxon Mobil',market:'USA',cur:'$',sector:'Energy',art:'energy',
+   action:'BUY',mode:'BUY ON BREAKOUT',conviction:'MEDIUM',price:118.60,chg:.6,
+   entry:[120,121],window:'On a break of $120',stop:114.8,targets:[124,128,133],rr:'1 : 2.5',size:3.0,
+   scores:{Technical:4,Fundamental:4,Momentum:3,Catalyst:3},
+   thesis:['Energy is rotating back in.','The range is tightening under $120.','Cash returns keep a floor under the stock.'],
+   sections:{
+    'THE CHART':'Five tests of $120 since June, each rejection shallower than the last. Accumulation, not distribution. The trigger is a close through the level.',
+    'THE BUSINESS':'Production growth from low-cost basins continues while capex discipline holds. Buybacks are running at the top of the guided range.',
+    'THE MACRO':'Crude has based above its 200-day. OPEC supply discipline plus resilient demand keeps the floor intact.',
+    'THE CATALYST':'Weekly inventory data and an OPEC ministerial this week could provide the push through $120.',
+    'THE RISKS':'A demand scare in macro data takes crude and the trade down together. Note the correlation with the India energy position.',
+    'THE SIGNAL':'A textbook ascending setup — but only on the break. No trigger, no trade.'},
+   news:[
+    {h:'Crude inventories draw for fourth week',src:'EIA',time:'Yesterday',sum:'Stockpiles fell more than consensus for a fourth consecutive week.',why:'Persistent draws support the crude floor the thesis rests on.'},
+    {h:'Buyback pace at top of range',src:'Company filing',time:'1w ago',sum:'Repurchases annualising at the high end of guidance.',why:'Aggressive cash return limits downside while the breakout sets up.'}],
+   workcase:['Each rejection at $120 is shallower — pressure is building.','Crude has based; inventories keep drawing.','Cash returns cushion the downside.'],
+   failcase:['Five rejections show real supply at the level.','One soft demand print unwinds the setup.','Overlaps Indian energy exposure — see correlation note.'],
+   invalidation:'No entry unless $120 breaks. After entry: a close below $114.80.'},
+  {id:'jpm',ticker:'JPM',name:'JPMorgan Chase',market:'USA',cur:'$',sector:'Financials',art:'finance',
+   action:'BUY',mode:'WAIT',conviction:'MEDIUM',price:312.90,chg:-.3,
+   entry:[305,308],window:'On a pullback to $305–308',stop:298,targets:[318,326,338],rr:'1 : 2.3',size:2.5,
+   scores:{Technical:3,Fundamental:5,Momentum:3,Catalyst:3},
+   thesis:['Best-in-class, wrong price.','Net interest income is proving stickier than feared.','Let the price come to you.'],
+   sections:{
+    'THE CHART':'Grinding higher but stretched above its 20-day. The $305–308 shelf is a former breakout level and the highest-probability re-entry.',
+    'THE BUSINESS':'Net interest income guidance was raised despite cut expectations. Trading and investment banking revenue both surprised positively last quarter.',
+    'THE MACRO':'A steepening yield curve is the best backdrop money-centre banks have had in two years.',
+    'THE CATALYST':'A bank-conference fireside this month typically moves guidance expectations.',
+    'THE RISKS':'Credit normalisation is the slow-burn risk. If the pullback never arrives, the idea simply expires unfilled.',
+    'THE SIGNAL':'Quality at the right level. Alladin marks the zone and waits with you.'},
+   news:[
+    {h:'NII guidance raised for full year',src:'WSJ',time:'2w ago',sum:'Management lifted net interest income guidance despite anticipated rate cuts.',why:'The core earnings engine is stronger than the street modelled.'},
+    {h:'Yield curve steepest in two years',src:'FT',time:'Yesterday',sum:'The 2s10s spread widened to a two-year high.',why:'Steeper curves expand bank margins mechanically.'}],
+   workcase:['Raised guidance into rate cuts — rare strength.','Steepening curve is a mechanical tailwind.','A defined pullback zone limits entry risk.'],
+   failcase:['Extended price — chasing erodes the edge.','Credit costs normalise slowly but surely.','No pullback, no trade, idle capital.'],
+   invalidation:'Entry only inside $305–308. After entry: a close below $298.'}]
+};
+const ALLTIPS=[...TIPS.india,...TIPS.usa];
+const tipById=id=>ALLTIPS.find(t=>t.id===id);
+
+/* correlation note */
+const CORRELATION={pair:['RELIANCE','XOM'],text:'These positions carry significant exposure to the same sector. Both lean on a stable crude floor: they diversify geography, not risk factor. Alladin has sized each below its standalone recommendation for this reason.'};
+
+/* yesterday's calls (2 Sep) */
+const YESTERDAY={date:'SEPTEMBER 2',india:[
+  {ticker:'RELIANCE',action:'BUY',entry:1430,close:1482,ret:3.64,status:'TARGET 1 HIT',grade:'GOOD',
+   worked:'Volume confirmed the breakout.',didnt:'Broader market weakness delayed the move.',verdict:'THESIS VALIDATED.'},
+  {ticker:'INFY',action:'BUY',entry:1512,close:1529,ret:1.12,status:'RUNNING',grade:'NEUTRAL'},
+  {ticker:'TATAMOTORS',action:'BUY',entry:1042,close:1023,ret:-1.82,status:'STOPPED',grade:'BAD'}],
+ usa:[
+  {ticker:'NVDA',action:'BUY',entry:168.4,close:172.4,ret:2.31,status:'TARGET 1 HIT',grade:'GOOD'},
+  {ticker:'MSFT',action:'BUY',entry:426.0,close:428.1,ret:0.44,status:'RUNNING',grade:'NEUTRAL'},
+  {ticker:'XOM',action:'BUY',entry:119.2,close:118.6,ret:-0.51,status:'RUNNING',grade:'NEUTRAL'}]};
+
+/* watchlist */
+const WATCH=[
+ {ticker:'NVDA',name:'NVIDIA Corp',cur:'$',px:172.40,chg:2.3,score:8.7},
+ {ticker:'RELIANCE',name:'Reliance Industries',cur:'₹',px:1435,chg:1.2,score:8.2},
+ {ticker:'MSFT',name:'Microsoft',cur:'$',px:428.10,chg:0.8,score:7.9},
+ {ticker:'TCS',name:'Tata Consultancy',cur:'₹',px:4310,chg:0.5,score:7.6},
+ {ticker:'XOM',name:'Exxon Mobil',cur:'$',px:118.60,chg:0.6,score:7.4},
+ {ticker:'BAJFINANCE',name:'Bajaj Finance',cur:'₹',px:7842,chg:-0.4,score:7.1}];
+
+/* performance aggregates */
+const PERF={winRate:68.4,tips:42,avg:.44,rr:'1 : 2.9',
+ markets:{india:{ret:12.4,win:70,tips:24},usa:{ret:8.7,win:66,tips:18}},
+ sectors:[['Technology',8.2],['Financials',5.4],['Energy',3.1],['Healthcare',2.8],['Consumer',-0.7]],
+ conviction:{high:{win:74,ret:14.2},medium:{win:61,ret:5.8}},
+ account:[['Prediction accuracy','68.4%'],['Average return','+0.44% / tip'],['Best prediction','NVDA · +11.8% · 14 Aug'],['Worst prediction','HDFCBANK · −3.1% · 22 Jul'],['Best market','India'],['Best sector','Technology'],['Best setup','Breakout + volume confirmation'],['Most common failure','Entering before confirmation']],
+ wrong:['Three of our five worst calls entered breakouts a day early, before volume confirmed. The fix: the trigger now requires a close, not an intraday print.','Consumer names cost 0.7% — we overweighted a soft sector for two weeks longer than the data justified.','On 24 July we held a stopped position into the close hoping for a reversal. It cost an extra 0.8%. Stops are now mechanical.']};
+
+/* ---------- SVG chart builders ---------- */
+const CH={ink:'#F4F1E8',ink2:'#A39E93',ink3:'#5C584F',grid:'rgba(244,241,232,.06)',accent:'#E3D5B8',pos:'#5CA97C',neg:'#C0625A'};
+function sparkSVG(vals,w=340,h=90,color=CH.accent){
+  const min=Math.min(...vals),max=Math.max(...vals),pad=6;
+  const X=i=>pad+i*(w-2*pad)/(vals.length-1);
+  const Y=v=>h-pad-(v-min)/(max-min||1)*(h-2*pad);
+  const pts=vals.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
+  const last=vals[vals.length-1];
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="${pts} ${w-pad},${h} ${pad},${h}" fill="${color}" opacity=".07"/>
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="${X(vals.length-1)}" cy="${Y(last)}" r="4" fill="${color}"/></svg>`;
+}
+function lineChartSVG(id,vals,labels,{w=980,h=340,color=CH.accent,fmt=v=>v.toFixed(2)+'%'}={}){
+  const min=Math.min(...vals),max=Math.max(...vals),padL=8,padR=64,padT=18,padB=26;
+  const X=i=>padL+i*(w-padL-padR)/(vals.length-1);
+  const Y=v=>padT+(1-(v-min)/(max-min||1))*(h-padT-padB);
+  const pts=vals.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
+  const gl=[0,.5,1].map(t=>{const v=min+(max-min)*t,y=Y(v);
+    return `<line x1="${padL}" y1="${y}" x2="${w-padR}" y2="${y}" stroke="${CH.grid}"/>
+      <text x="${w-padR+10}" y="${y+4}" fill="${CH.ink3}" font-size="11" font-family="IBM Plex Mono">${fmt(v)}</text>`}).join('');
+  const li=vals.length-1;
+  return `<svg viewBox="0 0 ${w} ${h}" data-chart="${id}">
+    ${gl}
+    <polyline points="${pts} ${X(li)},${h-padB} ${X(0)},${h-padB}" fill="${color}" opacity=".06"/>
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round"/>
+    <line class="xh" x1="0" y1="${padT}" x2="0" y2="${h-padB}" stroke="${CH.ink3}" stroke-dasharray="3 4" opacity="0"/>
+    <circle class="xd" r="5" fill="${color}" opacity="0"/>
+    <circle cx="${X(li)}" cy="${Y(vals[li])}" r="5" fill="${color}"/>
+    <rect class="hit" x="0" y="0" width="${w}" height="${h}" fill="transparent"/></svg>`;
+}
+function barChartSVG(vals,{w=980,h=260}={}){
+  const max=Math.max(...vals.map(Math.abs)),padT=14,padB=14;
+  const zero=padT+(h-padT-padB)*(max/(2*max));
+  const mid=(h-padT-padB)/2,bw=Math.max(4,(w-40)/vals.length-4);
+  const bars=vals.map((v,i)=>{
+    const x=8+i*((w-40)/vals.length),bh=Math.max(2,Math.abs(v)/max*mid);
+    const y=v>=0?padT+mid-bh:padT+mid;
+    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="3"
+      fill="${v>=0?CH.pos:CH.neg}" opacity=".85" data-i="${i}"/>`}).join('');
+  return `<svg viewBox="0 0 ${w} ${h}" data-chart="daily">
+    <line x1="8" y1="${padT+mid}" x2="${w-8}" y2="${padT+mid}" stroke="${CH.grid}"/>
+    ${bars}
+    <rect class="hit" x="0" y="0" width="${w}" height="${h}" fill="transparent"/></svg>`;
+}
+function priceChartSVG(t){
+  const w=980,h=380,padL=8,padR=110,padT=20,padB=24;
+  const mid=(t.entry[0]+t.entry[1])/2;
+  const vals=series(t.id.length*991+7,64,mid*.94,.018);
+  const drift=(t.price/vals[vals.length-1]);vals.forEach((v,i)=>vals[i]=v*(1+(drift-1)*i/(vals.length-1)));
+  const lo=Math.min(...vals,t.stop)*.995,hi=Math.max(...vals,t.targets[0])*1.005;
+  const X=i=>padL+i*(w-padL-padR)/(vals.length-1);
+  const Y=v=>padT+(1-(v-lo)/(hi-lo))*(h-padT-padB);
+  const pts=vals.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
+  const lvl=(v,label,color,dash)=>`<line x1="${padL}" y1="${Y(v)}" x2="${w-padR}" y2="${Y(v)}" stroke="${color}" stroke-width="1" ${dash?'stroke-dasharray="5 5"':''} opacity=".55"/>
+    <text x="${w-padR+10}" y="${Y(v)+4}" fill="${color}" font-size="11" font-family="IBM Plex Mono" letter-spacing="1">${label}</text>`;
+  return `<svg viewBox="0 0 ${w} ${h}">
+    ${[0,.33,.66,1].map(tt=>`<line x1="${padL}" y1="${padT+tt*(h-padT-padB)}" x2="${w-padR}" y2="${padT+tt*(h-padT-padB)}" stroke="${CH.grid}"/>`).join('')}
+    ${lvl(t.targets[0],'T1 '+t.cur+fmtI(t.targets[0]),CH.pos,true)}
+    ${lvl(t.entry[1],'RESIST '+t.cur+fmtI(t.entry[1]),CH.ink3,true)}
+    ${lvl(t.stop,'STOP '+t.cur+fmtI(t.stop),CH.neg,true)}
+    <polyline points="${pts} ${X(vals.length-1)},${h-padB} ${X(0)},${h-padB}" fill="${CH.accent}" opacity=".05"/>
+    <polyline points="${pts}" fill="none" stroke="${CH.accent}" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="${X(vals.length-1)}" cy="${Y(vals[vals.length-1])}" r="5" fill="${CH.accent}"/>
+    <text x="${w-padR+10}" y="${Y(vals[vals.length-1])+4}" fill="${CH.ink}" font-size="12" font-weight="600" font-family="Inter">${t.cur}${fmtI(t.price)}</text>
+  </svg>`;
+}
+/* hover wiring for line/bar charts */
+function wireChart(box,vals,labels,fmt){
+  const svg=box.querySelector('svg'),hit=svg.querySelector('.hit');if(!hit)return;
+  let tt=box.querySelector('.tt');
+  if(!tt){tt=document.createElement('div');tt.className='tt';box.appendChild(tt)}
+  const xh=svg.querySelector('.xh'),xd=svg.querySelector('.xd');
+  const vb=svg.viewBox.baseVal;
+  const min=Math.min(...vals),max=Math.max(...vals);
+  const padL=8,padR=xh?64:8,padT=xh?18:14,padB=xh?26:14;
+  hit.addEventListener('mousemove',e=>{
+    const r=svg.getBoundingClientRect();
+    const mx=(e.clientX-r.left)/r.width*vb.width;
+    const i=Math.max(0,Math.min(vals.length-1,Math.round((mx-padL)/((vb.width-padL-padR)/(vals.length-1)))));
+    const X=padL+i*(vb.width-padL-padR)/(vals.length-1);
+    const Y=padT+(1-(vals[i]-min)/(max-min||1))*(vb.height-padT-padB);
+    if(xh){xh.setAttribute('x1',X);xh.setAttribute('x2',X);xh.style.opacity=1}
+    if(xd){xd.setAttribute('cx',X);xd.setAttribute('cy',Y);xd.style.opacity=1}
+    tt.style.opacity=1;
+    tt.style.left=(X/vb.width*100)+'%';
+    tt.style.top=(Y/vb.height*100)+'%';
+    tt.innerHTML=`<div class="l">${labels[i]}</div><div class="${vals[i]>=0?'pos':''}">${fmt(vals[i])}</div>`;
+  });
+  hit.addEventListener('mouseleave',()=>{tt.style.opacity=0;if(xh)xh.style.opacity=0;if(xd)xd.style.opacity=0});
+}
+</script>
+<script>
+'use strict';
+/* ================= ALLADIN — views & app ================= */
+const stars=n=>'★'.repeat(n)+`<span class="off">${'★'.repeat(5-n)}</span>`;
+const gradeCls=g=>({EXCELLENT:'pos',GOOD:'pos',NEUTRAL:'muted',BAD:'neg',WORSE:'neg'}[g]||'muted');
+const head=(eyebrow,title,sub='')=>`
+  <div class="kicker reveal"><span class="rule"></span><span class="eyebrow">${eyebrow}</span></div>
+  <h2 class="display d-lg reveal">${title}</h2>
+  ${sub?`<p class="sub reveal" style="margin-top:20px">${sub}</p>`:''}`;
+
+const modeChip=m=>m==='BUY NOW'?'<span class="chip buy">● Buy now</span>'
+  :m==='BUY ON BREAKOUT'?'<span class="chip acc">◇ Buy on breakout</span>'
+  :'<span class="chip wait">◌ Wait</span>';
+
+function tipCardHTML(t,i){
+  return `<article class="tipcard reveal" data-tip="${t.id}" role="button" tabindex="0" aria-label="Explore the ${t.ticker} thesis">
+    <div class="art ${t.art}"></div>
+    <div>
+      <div class="index">0${i+1}</div>
+      <div class="ticker">${t.ticker}</div>
+      <div class="cname">${t.name}</div>
+      <div class="chips">
+        <span class="chip ${t.action==='BUY'?'buy':'bad'}">${t.action}</span>
+        <span class="chip acc">${t.conviction} conviction</span>
+        ${modeChip(t.mode)}
+      </div>
+      <div class="levels">
+        <div class="lv"><div class="v num">${t.cur}${fmtI((t.entry[0]+t.entry[1])/2)}</div><div class="k">Entry</div></div>
+        <div class="lv"><div class="v num neg">${t.cur}${fmtI(t.stop)}</div><div class="k">Stop</div></div>
+        <div class="lv"><div class="v num pos">${t.cur}${fmtI(t.targets[0])}</div><div class="k">T1</div></div>
+        <div class="lv"><div class="v num pos">${t.cur}${fmtI(t.targets[1])}</div><div class="k">T2</div></div>
+        <div class="lv"><div class="v num pos">${t.cur}${fmtI(t.targets[2])}</div><div class="k">T3</div></div>
+        <div class="lv"><div class="v num">${t.rr}</div><div class="k">Risk / Reward</div></div>
+      </div>
+      <div class="cta"><span class="textbtn">Explore the thesis <span class="arr">→</span></span></div>
+    </div>
+    <div class="side">
+      <div style="text-align:right">
+        <div class="num" style="font-size:22px">${t.cur}${fmtN(t.price,t.cur==='$'?2:0)}</div>
+        <div class="num ${cls(t.chg)}" style="font-size:13px">${pct(t.chg)}</div>
+      </div>
+      <div class="eyebrow" style="text-align:right">${t.sector}<br>${t.market}</div>
+    </div>
+  </article>`;
+}
+
+function marketPanel(name,idx,val,chgV,status,live,seed){
+  return `<div class="card mpanel reveal">
+    <div class="top">
+      <div><div class="eyebrow">${name}</div>
+        <div class="display d-sm" style="margin-top:10px">${idx}</div></div>
+      <span class="chip ${live?'buy':''}"><span class="dot ${live?'live':''}"></span>${status}</span>
+    </div>
+    <div class="idx num">${val}<span class="num ${cls(chgV)}" style="font-size:18px;margin-left:14px;letter-spacing:0">${pct(chgV)}</span></div>
+    <div class="spark">${sparkSVG(series(seed,40,100,.012),340,72,chgV>=0?CH.pos:CH.neg)}</div>
+  </div>`;
+}
+
+/* ---------- briefing block (India / USA) ---------- */
+function briefingHTML(list,label){
+  return `
+  ${list.map((t,i)=>tipCardHTML(t,i)).join('')}
+  <div class="card reveal" style="margin-top:26px;border-color:rgba(201,155,95,.3)">
+    <div class="eyebrow" style="color:var(--warn)">Correlation</div>
+    <p class="sub" style="margin-top:14px;max-width:60ch">“${CORRELATION.pair.join(' + ')} — ${CORRELATION.text}”</p>
+  </div>`;
+}
+
+/* ---------- VIEWS ---------- */
+const VIEWS={};
+
+VIEWS.today=()=>{
+  const y=YESTERDAY.india[0];
+  return `
+  <section class="hero wrap">
+    <div class="eyebrow greet reveal" id="datestamp"></div>
+    <h1 class="display d-xl reveal"><span id="greet">GOOD MORNING.</span><br>THE MARKET<br>HAS A FEW IDEAS.</h1>
+    <div class="countline reveal">
+      <span class="dot live"></span><span class="clock" id="countdown">—</span>
+    </div>
+  </section>
+
+  <section class="wrap section tight">
+    <div class="grid2">
+      ${marketPanel('India','NIFTY 50','25,482',0.72,'PRE-OPEN',false,41)}
+      ${marketPanel('USA','S&P 500','6,482',0.41,'CLOSED',false,77)}
+    </div>
+  </section>
+
+  <section class="wrap section" id="convictions">
+    ${head("Today's briefing · India","TODAY'S<br>CONVICTIONS.","Three ideas worth your attention. The US briefing lands at 1:30 PM IST.")}
+    <div style="display:grid;gap:22px;margin-top:44px">${briefingHTML(TIPS.india)}</div>
+    <div class="reveal" style="margin-top:34px"><a class="textbtn" href="#/usa">Preview the US ideas <span class="arr">→</span></a></div>
+  </section>
+
+  <section class="wrap section">
+    ${head('Post-market · 2 September',"ALLADIN'S<br>CALL.")}
+    <div class="verdict" style="margin-top:44px">
+      <div class="reveal">
+        <div class="display d-md">${y.ticker}</div>
+        <div class="chips" style="display:flex;gap:10px;margin:18px 0 28px;flex-wrap:wrap">
+          <span class="chip buy">${y.action} ₹${fmtI(y.entry)}</span>
+          <span class="chip acc">${y.status}</span>
+          <span class="chip buy">${y.grade}</span>
+        </div>
+        <div class="eyebrow">Closed at</div>
+        <div class="bignum num">₹${fmtI(y.close)}</div>
+        <div class="num pos" style="font-size:26px;margin-top:8px">${pct(y.ret)}</div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow" style="color:var(--pos)">What worked</div>
+        <p class="saying" style="border:0;padding:10px 0 26px">${y.worked}</p>
+        <div class="eyebrow" style="color:var(--neg)">What didn't</div>
+        <p class="saying" style="border:0;padding:10px 0 26px">${y.didnt}</p>
+        <div class="eyebrow lit">Alladin's verdict</div>
+        <div class="display d-sm" style="margin-top:10px">${y.verdict}</div>
+        <div style="margin-top:30px"><a class="textbtn" href="#/calendar">See the full day <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="verdict">
+      <div class="reveal">
+        ${head('The track record','DID ALLADIN<br>GET IT RIGHT?')}
+      </div>
+      <div class="reveal" style="text-align:right">
+        <div class="heronum num pos cnt" data-v="${TOTAL_RET.toFixed(2)}" data-d="2" data-p="+" data-s="%">+0.00%</div>
+        <div class="eyebrow" style="margin-top:12px">Total return · 42 sessions</div>
+        <div style="margin-top:30px"><a class="btn" href="#/performance">View performance <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </section>
+  ${footerHTML()}`;
+};
+
+VIEWS.india=()=>`
+  <section class="hero wrap">
+    ${head('Morning briefing · 7:30 AM IST','INDIA.<br>THREE CONVICTIONS.','What Alladin sees before the open.')}
+  </section>
+  <section class="wrap section tight">
+    <div class="grid2">
+      ${marketPanel('Nifty 50','NSE','25,482',0.72,'PRE-OPEN',false,41)}
+      ${marketPanel('Bank Nifty','NSE','57,204',0.58,'PRE-OPEN',false,53)}
+    </div>
+  </section>
+  <section class="wrap section" style="padding-top:0">
+    <div style="display:grid;gap:22px;margin-top:20px">${briefingHTML(TIPS.india)}</div>
+  </section>
+  ${footerHTML()}`;
+
+VIEWS.usa=()=>`
+  <section class="hero wrap">
+    ${head('Pre-market briefing · 1:30 PM IST','USA.<br>THREE CONVICTIONS.','What Alladin sees before New York opens.')}
+  </section>
+  <section class="wrap section tight">
+    <div class="grid2">
+      ${marketPanel('S&P 500','NYSE','6,482',0.41,'CLOSED',false,77)}
+      ${marketPanel('Nasdaq 100','NASDAQ','23,910',0.66,'CLOSED',false,88)}
+    </div>
+  </section>
+  <section class="wrap section" style="padding-top:0">
+    <div style="display:grid;gap:22px;margin-top:20px">${briefingHTML(TIPS.usa)}</div>
+  </section>
+  ${footerHTML()}`;
+
+/* ---------- calendar ---------- */
+let calMonth=8; /* 0-indexed: 8 = September */
+VIEWS.calendar=()=>`
+  <section class="hero wrap">
+    ${head('Every session, on the record','THE MARKET,<br>DAY BY DAY.','Tap any traded day to see what Alladin saw — and what happened next.')}
+  </section>
+  <section class="wrap section tight" style="padding-top:0">
+    <div id="calmount"></div>
+    <p class="notice reveal" style="margin-top:26px">Each day shows India, USA, and the overall Alladin result. Results are recorded against the original published calls and never rewritten.</p>
+  </section>
+  ${footerHTML()}`;
+
+function renderCalendar(){
+  const mount=$('#calmount');if(!mount)return;
+  const names=['','','','','','','July 2026','August 2026','September 2026'];
+  const first=new Date(2026,calMonth,1);
+  const dow=(first.getDay()+6)%7;
+  const dim=new Date(2026,calMonth+1,0).getDate();
+  let cells='';
+  for(let i=0;i<dow;i++)cells+=`<div class="day blank"></div>`;
+  for(let d=1;d<=dim;d++){
+    const dt=new Date(2026,calMonth,d),k=dkey(dt),rec=DAYMAP[k];
+    const isToday=calMonth===8&&d===3;
+    if(rec){
+      cells+=`<div class="day traded" data-day="${k}" role="button" tabindex="0">
+        <span class="dn">${d}</span>
+        <span class="mini muted">IN <span class="${cls(rec.ind)}">${pct1(rec.ind)}</span></span>
+        <span class="mini muted">US <span class="${cls(rec.usa)}">${pct1(rec.usa)}</span></span>
+        <span class="tot num ${cls(rec.all)}">${pct1(rec.all)}</span></div>`;
+    }else{
+      cells+=`<div class="day ${isToday?'today':''}"><span class="dn">${d}</span>
+        ${isToday?'<span class="tot eyebrow lit" style="font-size:9px">LIVE</span>':''}</div>`;
+    }
+  }
+  mount.innerHTML=`
+    <div class="calhead">
+      <div class="mn">${names[calMonth]}</div>
+      <div class="calnav" style="display:flex;gap:10px">
+        <button id="calprev" aria-label="Previous month" ${calMonth<=6?'disabled':''}>←</button>
+        <button id="calnext" aria-label="Next month" ${calMonth>=8?'disabled':''}>→</button>
+      </div>
+    </div>
+    <div class="calgrid">
+      ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<div class="dow">${d}</div>`).join('')}
+      ${cells}
+    </div>`;
+  $('#calprev')?.addEventListener('click',()=>{if(calMonth>6){calMonth--;renderCalendar()}});
+  $('#calnext')?.addEventListener('click',()=>{if(calMonth<8){calMonth++;renderCalendar()}});
+  $$('#calmount .day.traded').forEach(el=>{
+    const go=()=>{location.hash='#/day/'+el.dataset.day};
+    el.addEventListener('click',go);
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+  });
+}
+
+/* ---------- performance ---------- */
+VIEWS.performance=()=>{
+  const cum=[];let c=1;DAYS.forEach(x=>{c*=1+x.all/100;cum.push((c-1)*100)});
+  const labels=DAYS.map(x=>x.date.toLocaleDateString('en-GB',{day:'numeric',month:'short'}));
+  const eqLast=DAYS[DAYS.length-1].eq;
+  return `
+  <section class="hero wrap">
+    ${head('The track record','DID ALLADIN<br>GET IT RIGHT?')}
+    <div class="reveal" style="margin-top:44px">
+      <div class="heronum num pos cnt" data-v="${TOTAL_RET.toFixed(2)}" data-d="2" data-p="+" data-s="%">+0.00%</div>
+      <div class="eyebrow" style="margin-top:14px">Total return · since 7 July 2026</div>
+    </div>
+  </section>
+
+  <section class="wrap section tight" style="padding-top:0">
+    <div class="statrow reveal">
+      <div class="cell"><div class="v num cnt" data-v="${PERF.winRate}" data-d="1" data-s="%">0%</div><div class="k">Win rate</div></div>
+      <div class="cell"><div class="v num cnt" data-v="${PERF.tips}" data-d="0">0</div><div class="k">Tips</div></div>
+      <div class="cell"><div class="v num pos cnt" data-v="${PERF.avg}" data-d="2" data-p="+" data-s="%">0%</div><div class="k">Average return / tip</div></div>
+      <div class="cell"><div class="v num neg cnt" data-v="${MAXDD.toFixed(1)}" data-d="1" data-s="%">0%</div><div class="k">Max drawdown</div></div>
+      <div class="cell"><div class="v num">${PERF.rr}</div><div class="k">Avg risk / reward</div></div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    ${head('Cumulative','EVERY DAY<br>COUNTS.')}
+    <div class="chartbox reveal" id="cumbox" style="margin-top:40px">${lineChartSVG('cum',cum,labels)}</div>
+    <div class="legendrow reveal"><span><i style="background:${CH.accent}"></i>Cumulative return</span></div>
+    <div class="chartbox reveal" id="dailybox" style="margin-top:56px">${barChartSVG(DAYS.map(x=>x.all))}</div>
+    <div class="legendrow reveal"><span><i style="background:${CH.pos}"></i>Positive day</span><span><i style="background:${CH.neg}"></i>Negative day</span></div>
+  </section>
+
+  <section class="wrap section">
+    ${head('Portfolio growth','₹100,000,<br>PUT TO WORK.')}
+    <div class="grid3 reveal" style="margin-top:40px">
+      <div class="card"><div class="eyebrow">Start</div><div class="v num" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">₹1,00,000</div></div>
+      <div class="card"><div class="eyebrow">Current</div><div class="v num" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">₹${fmtI(eqLast)}</div></div>
+      <div class="card"><div class="eyebrow">Return</div><div class="v num pos" style="font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:10px">${pct(TOTAL_RET)}</div></div>
+    </div>
+    <div class="chartbox reveal" id="eqbox" style="margin-top:36px">${lineChartSVG('eq',DAYS.map(x=>x.eq),labels,{fmt:v=>'₹'+fmtI(v)})}</div>
+    <div class="grid2" style="margin-top:56px">
+      <div class="card reveal">
+        <div class="eyebrow">Annualized return</div>
+        <div class="bignum num pos" style="margin-top:16px">${pct1(ANNUALIZED)}</div>
+        <div style="display:flex;gap:36px;margin-top:26px">
+          <div><div class="v num" style="font-size:24px;font-weight:600">${PERF.tips}</div><div class="eyebrow" style="margin-top:6px">Trading days</div></div>
+          <div><div class="v num pos" style="font-size:24px;font-weight:600">${pct(TOTAL_RET)}</div><div class="eyebrow" style="margin-top:6px">Realized return</div></div>
+        </div>
+        <p class="notice" style="margin-top:24px">Annualized from the current observation period. Not a forecast or guarantee.</p>
+      </div>
+      <div class="card reveal">
+        <div class="eyebrow">By conviction</div>
+        <div style="margin-top:22px;display:grid;gap:20px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);padding-bottom:18px">
+            <div><div class="display d-sm">HIGH</div><div class="eyebrow" style="margin-top:6px">${PERF.conviction.high.win}% win rate</div></div>
+            <div class="num pos" style="font-size:30px;font-weight:600">${pct1(PERF.conviction.high.ret)}</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div><div class="display d-sm">MEDIUM</div><div class="eyebrow" style="margin-top:6px">${PERF.conviction.medium.win}% win rate</div></div>
+            <div class="num pos" style="font-size:30px;font-weight:600">${pct1(PERF.conviction.medium.ret)}</div>
+          </div>
+        </div>
+        <p class="notice" style="margin-top:22px">High-conviction calls outperform — Alladin's confidence is calibrated, and we track it so you can verify.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    ${head('By market','TWO MARKETS,<br>ONE LEDGER.')}
+    <div class="grid2" style="margin-top:40px">
+      ${['india','usa'].map(k=>{const m=PERF.markets[k];return `
+      <div class="card reveal">
+        <div class="display d-md">${k==='india'?'INDIA':'USA'}</div>
+        <div class="bignum num pos" style="margin:20px 0 26px">${pct1(m.ret)}</div>
+        <div style="display:flex;gap:40px">
+          <div><div class="v num" style="font-size:26px;font-weight:600">${m.win}%</div><div class="eyebrow" style="margin-top:6px">Win rate</div></div>
+          <div><div class="v num" style="font-size:26px;font-weight:600">${m.tips}</div><div class="eyebrow" style="margin-top:6px">Tips</div></div>
+        </div>
+      </div>`}).join('')}
+    </div>
+  </section>
+
+  <section class="wrap section">
+    ${head('By sector','WHERE<br>ALLADIN SHINES.')}
+    <div style="margin-top:40px" class="reveal" id="sectorbars">
+      ${PERF.sectors.map(([n,v])=>`
+        <div class="sbar ${v<0?'negbar':''}">
+          <span class="nm">${n}</span>
+          <div class="track"><div class="fill" data-w="${Math.abs(v)/8.2*100}"></div></div>
+          <span class="pv num ${cls(v)}">${pct1(v)}</span>
+        </div>`).join('')}
+    </div>
+  </section>
+
+  <section class="wrap section">
+    ${head('Accountability','HOW GOOD<br>IS ALLADIN?')}
+    <div class="statrow reveal" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      ${PERF.account.map(([k,v])=>`<div class="cell"><div class="v" style="font-size:17px;font-weight:600">${v}</div><div class="k">${k}</div></div>`).join('')}
+    </div>
+    <div class="casecard failcase reveal" style="margin-top:26px">
+      <div class="display d-sm">WHERE WE GOT IT WRONG.</div>
+      <ul>${PERF.wrong.map(w=>`<li>${w}</li>`).join('')}</ul>
+    </div>
+  </section>
+  ${footerHTML()}`;
+};
+
+/* ---------- watchlist ---------- */
+VIEWS.watchlist=()=>`
+  <section class="hero wrap">
+    ${head('Watchlist','KEEP<br>AN EYE ON IT.','Names Alladin is tracking — scored daily, promoted to a conviction only when the setup is complete.')}
+  </section>
+  <section class="wrap section tight" style="padding-top:0">
+    <div class="reveal">
+    ${WATCH.map(w=>`
+      <div class="wrow">
+        <div><div class="tk">${w.ticker}</div><div class="nm">${w.name}</div></div>
+        <div class="px"><div class="num" style="font-size:19px">${w.cur}${fmtN(w.px,w.cur==='$'?2:0)}</div>
+          <div class="num ${cls(w.chg)}" style="font-size:13px">${pct1(w.chg)}</div></div>
+        <div class="score"><div><b>${w.score.toFixed(1)}</b><span>Alladin<br>score</span></div></div>
+      </div>`).join('')}
+    </div>
+    <p class="notice reveal" style="margin-top:28px">The Alladin score (0–10) blends technical structure, fundamental quality, momentum, and catalyst proximity. Above 8.5, a name becomes a candidate for the morning briefing.</p>
+  </section>
+  ${footerHTML()}`;
+
+/* ---------- footer ---------- */
+function footerHTML(){return `
+  <footer class="wrap footer">
+    <hr class="hr" style="margin-bottom:44px">
+    <div class="lg">Alladin.</div>
+    <p>Your AI-powered market intelligence.</p>
+    <p class="notice" style="margin-top:18px">Alladin is a research and education product. Nothing here is investment advice or a solicitation to trade. Markets carry risk; past performance does not predict future results. When evidence is weak, Alladin says NO TRADE — sometimes the smartest position is nothing.</p>
+  </footer>`}
+</script>
+<script>
+'use strict';
+/* ================= ALLADIN — overlays, router, motion ================= */
+
+/* ---------- tip detail overlay ---------- */
+function tipOverlayHTML(t){
+  const mid=(t.entry[0]+t.entry[1])/2;
+  const riskPct=(mid-t.stop)/mid*100;
+  const gains=t.targets.map(x=>(x-mid)/mid*100);
+  const base=t.cur==='₹'?100000:10000;
+  const alloc=base*t.size/100;
+  const runit=t.cur==='₹'?fmtI:(v=>fmtN(v,0));
+  const segW=v=>Math.max(52,Math.abs(v)*22);
+  const brokers={
+    ZERODHA:[['Search',`Open Kite and search “${t.ticker}”.`],['Select',`Choose ${t.ticker} on NSE.`],['Set entry',`Place a limit order at ${t.cur}${fmtI(t.entry[0])}–${fmtI(t.entry[1])}${t.mode==='BUY ON BREAKOUT'?' after the breakout level trades':''}.`],['Set stop',`Add a stop-loss (SL) at ${t.cur}${fmtI(t.stop)} — GTT works well here.`],['Set target',`Add a target order at ${t.cur}${fmtI(t.targets[0])}; trail the rest.`],['Review',`Confirm quantity ≈ ${t.size}% of portfolio. Check margin.`],['Execute',`Swipe to place. Alladin tracks it from here.`]],
+    SARWA:[['Search',`Open Sarwa Trade and search “${t.ticker}”.`],['Select',`Choose ${t.ticker} on the US market.`],['Set entry',`Place a limit buy at $${fmtN(t.entry[0],2)}–${fmtN(t.entry[1],2)}${t.mode==='BUY ON BREAKOUT'?' once the level breaks':''}.`],['Set stop',`Create a stop order at $${fmtN(t.stop,2)}.`],['Set target',`Set a sell limit at $${fmtN(t.targets[0],2)}; review at each target.`],['Review',`Confirm the position ≈ ${t.size}% of portfolio.`],['Execute',`Place the order. Alladin tracks it from here.`]]};
+  const defBroker=t.cur==='₹'?'ZERODHA':'SARWA';
+  return `
+  <div class="ov-top">
+    <span class="logo" style="font-size:15px">Alladin<i>.</i></span>
+    <button class="closebtn" data-close aria-label="Close">✕</button>
+  </div>
+  <div class="wrap" style="padding-bottom:110px">
+    <header style="padding:26px 0 10px">
+      <div class="eyebrow">${t.market} · ${t.sector} · Tip of 3 September 2026</div>
+      <h1 class="display d-xl" style="margin:16px 0 6px">${t.ticker}</h1>
+      <div class="cname eyebrow">${t.name}</div>
+      <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
+        <span class="chip buy">${t.action}</span>
+        <span class="chip acc">${t.conviction} conviction</span>
+        ${modeChip(t.mode)}
+        <span class="chip">${t.rr} R:R</span>
+      </div>
+    </header>
+
+    <section class="section tight">
+      <div class="plangrid">
+        <div class="cell"><div class="v num">${t.cur}${fmtI(t.entry[0])}–${fmtI(t.entry[1])}</div><div class="k">Entry</div></div>
+        <div class="cell"><div class="v num neg">${t.cur}${fmtI(t.stop)}</div><div class="k">Stop</div></div>
+        <div class="cell"><div class="v num pos">${t.cur}${fmtI(t.targets[0])}</div><div class="k">Target 01</div></div>
+        <div class="cell"><div class="v num pos">${t.cur}${fmtI(t.targets[1])}</div><div class="k">Target 02</div></div>
+        <div class="cell"><div class="v num pos">${t.cur}${fmtI(t.targets[2])}</div><div class="k">Target 03</div></div>
+        <div class="cell"><div class="v num">${t.size.toFixed(1)}%</div><div class="k">Position size</div></div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      ${head('The reasoning','WHY ALLADIN<br>LIKES THIS.')}
+      <div style="margin-top:30px;max-width:820px">${t.thesis.map(s=>`<div class="saying reveal">${s}</div>`).join('')}</div>
+      <div class="grid2" style="margin-top:44px">
+        <div class="card reveal">
+          <div class="eyebrow lit">AI conviction</div>
+          <div class="display d-md" style="margin-top:12px">${t.conviction}</div>
+          <p class="notice" style="margin-top:16px">Conviction reflects the alignment of independent signals — it is a measure of evidence, not certainty. Markets can and do disagree.</p>
+        </div>
+        <div class="card reveal">
+          ${Object.entries(t.scores).map(([k,v])=>`
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
+              <span class="eyebrow">${k}</span><span class="stars">${stars(v)}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      ${head('Technical picture','THE CHART.')}
+      <div class="card reveal" style="margin-top:34px;padding:clamp(16px,2vw,28px)">
+        <div class="chartbox">${priceChartSVG(t)}</div>
+        <div style="display:flex;gap:34px;margin-top:20px;flex-wrap:wrap">
+          <div><div class="eyebrow">Resistance</div><div class="num" style="font-size:20px;font-weight:600">${t.cur}${fmtI(t.entry[1])}</div></div>
+          <div><div class="eyebrow lit">Current</div><div class="num" style="font-size:20px;font-weight:600">${t.cur}${fmtN(t.price,t.cur==='$'?2:0)}</div></div>
+          <div><div class="eyebrow">Support / Stop</div><div class="num neg" style="font-size:20px;font-weight:600">${t.cur}${fmtI(t.stop)}</div></div>
+        </div>
+      </div>
+      <div style="margin-top:44px">
+        ${Object.entries(t.sections).map(([k,v])=>`
+          <div class="xrow reveal"><button aria-expanded="false"><span class="xt">${k}</span><span class="xi">＋</span></button>
+          <div class="xbody"><div class="inner">${v}</div></div></div>`).join('')}
+      </div>
+    </section>
+
+    <section class="section tight">
+      ${head('News & catalysts',"WHAT'S<br>DRIVING IT.")}
+      <div style="display:grid;gap:16px;margin-top:36px">
+        ${t.news.map(n=>`
+        <div class="card hoverable reveal">
+          <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+            <div class="display d-sm" style="max-width:24em">${n.h}</div>
+            <div class="eyebrow" style="text-align:right;flex:none">${n.src}<br>${n.time}</div>
+          </div>
+          <p class="sub" style="margin-top:14px;font-size:14.5px">${n.sum}</p>
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border)">
+            <span class="eyebrow lit">Why it matters</span>
+            <p style="color:var(--ink-2);font-size:14px;margin-top:8px;max-width:60ch">${n.why}</p>
+          </div>
+        </div>`).join('')}
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="twocol">
+        <div class="casecard workcase reveal">
+          <div class="display d-sm pos">WHY IT COULD WORK.</div>
+          <ul>${t.workcase.map(x=>`<li>${x}</li>`).join('')}</ul>
+        </div>
+        <div class="casecard failcase reveal">
+          <div class="display d-sm neg">WHY IT COULD FAIL.</div>
+          <ul>${t.failcase.map(x=>`<li>${x}</li>`).join('')}</ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      ${head('Execution','THE PLAN.')}
+      <div class="plangrid" style="margin-top:36px">
+        <div class="cell"><div class="v num">${t.cur}${fmtI(t.entry[0])}–${fmtI(t.entry[1])}</div><div class="k">Entry</div></div>
+        <div class="cell"><div class="v" style="font-size:16px;font-weight:600;line-height:1.4">${t.window}</div><div class="k">Best window</div></div>
+        <div class="cell"><div class="v num neg">${t.cur}${fmtI(t.stop)}</div><div class="k">Stop</div></div>
+        ${t.targets.map((x,i)=>`<div class="cell"><div class="v num pos">${t.cur}${fmtI(x)}</div><div class="k">Target 0${i+1}</div></div>`).join('')}
+      </div>
+      <div class="reveal" style="margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <span class="eyebrow">Alladin says</span>
+        <span class="display d-sm ${t.mode==='WAIT'?'warn':''}">${t.mode}.</span>
+      </div>
+      <div class="rrviz reveal">
+        <div class="rrbar">
+          <div class="seg loss" style="flex:${segW(riskPct)}">−${riskPct.toFixed(1)}%</div>
+          <div class="seg" style="flex:40;background:var(--s2);color:var(--ink-3)">ENTRY</div>
+          ${gains.map((g,i)=>`<div class="seg gain" style="flex:${segW(g)}">+${g.toFixed(1)}%</div>`).join('')}
+        </div>
+        <div class="rrlabels">
+          <span style="flex:${segW(riskPct)}">Loss</span><span style="flex:40">Entry</span>
+          ${gains.map((g,i)=>`<span style="flex:${segW(g)}">Target ${i+1}</span>`).join('')}
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      ${head('Position sizing','HOW MUCH?')}
+      <div class="verdict" style="margin-top:36px">
+        <div class="reveal">
+          <div class="heronum num">${t.size.toFixed(1)}%</div>
+          <div class="eyebrow" style="margin-top:12px">Recommended portfolio allocation</div>
+        </div>
+        <div class="statrow reveal" style="grid-template-columns:1fr 1fr">
+          <div class="cell"><div class="v num neg">−${t.cur}${runit(alloc*riskPct/100)}</div><div class="k">Capital at risk</div></div>
+          ${gains.map((g,i)=>`<div class="cell"><div class="v num pos">+${t.cur}${runit(alloc*g/100)}</div><div class="k">Potential · T${i+1}</div></div>`).join('')}
+        </div>
+      </div>
+      <p class="notice reveal" style="margin-top:22px">Illustrated on a ${t.cur==='₹'?'₹1,00,000':'$10,000'} reference portfolio. Risk is measured entry-to-stop; targets assume clean fills.</p>
+    </section>
+
+    <section class="section tight">
+      ${head('Broker walkthrough','MAKE<br>THE MOVE.')}
+      <div style="margin-top:34px" class="reveal">
+        <div class="tabs" role="tablist">
+          <button data-broker="ZERODHA" class="${defBroker==='ZERODHA'?'on':''}">Zerodha</button>
+          <button data-broker="SARWA" class="${defBroker==='SARWA'?'on':''}">Sarwa</button>
+        </div>
+        <div class="steps" id="brokersteps"></div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="card reveal" style="border-color:rgba(192,98,90,.3)">
+        <div class="eyebrow" style="color:var(--neg)">Invalidation</div>
+        <p class="saying" style="border:0;padding:12px 0 0">${t.invalidation}</p>
+      </div>
+      <p class="notice reveal" style="margin-top:24px">This is research, not advice. The original call is stored permanently and performance is measured against it — Alladin never rewrites its history.</p>
+    </section>
+  </div>
+  <script-broker type="application/json">${JSON.stringify(brokers)}</script-broker>`;
+}
+
+/* ---------- day detail overlay ---------- */
+const POOL={ind:['RELIANCE','HDFCBANK','INFY','TCS','TATAMOTORS','ICICIBANK','SUNPHARMA','LT'],
+             usa:['NVDA','MSFT','AAPL','XOM','JPM','AMZN','GOOGL','META']};
+function grade(r){return r>=2?'EXCELLENT':r>=.75?'GOOD':r>=-.5?'NEUTRAL':r>=-1.5?'BAD':'WORSE'}
+function dayTips(k,rec,mkt){
+  const r=prng([...k].reduce((a,c)=>a+c.charCodeAt(0),mkt==='ind'?11:97));
+  const pool=[...POOL[mkt]];const out=[];
+  for(let i=0;i<3;i++){
+    const t=pool.splice(Math.floor(r()*pool.length),1)[0];
+    const ret=rec[mkt]+(r()-.45)*2.4;
+    out.push({t,ret,status:ret>1.4?'TARGET HIT':ret<-1.1?'STOPPED':'CLOSED',g:grade(ret)});
+  }
+  return out;
+}
+function dayOverlayHTML(k){
+  const rec=DAYMAP[k];if(!rec)return '';
+  const d=rec.date.toLocaleDateString('en-GB',{day:'numeric',month:'long'}).toUpperCase();
+  const block=(label,time,mkt)=>{
+    const tips=dayTips(k,rec,mkt);
+    return `<div class="card reveal">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px">
+        <div class="display d-md">${label}</div>
+        <div class="num ${cls(rec[mkt])}" style="font-size:28px;font-weight:600">${pct(rec[mkt])}</div>
+      </div>
+      <div class="eyebrow" style="margin-top:8px">${time} · 3 tips published</div>
+      <div style="margin-top:24px">
+        ${tips.map(x=>`
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--border)">
+            <span class="display" style="font-size:17px;font-weight:700">${x.t}</span>
+            <span class="chip ${x.g==='GOOD'||x.g==='EXCELLENT'?'buy':x.g==='NEUTRAL'?'':'bad'}" style="font-size:9px">${x.status}</span>
+            <span class="num ${cls(x.ret)}" style="font-size:16px;text-align:right">${pct(x.ret)}</span>
+          </div>`).join('')}
+      </div>
+    </div>`};
+  const events=[['09:15 IST','India opened '+(rec.ind>=0?'firm':'soft')+'; breadth '+(rec.ind>=0?'positive from the first hour.':'negative into the morning.')],
+    ['13:30 IST','US pre-market briefing published — 3 ideas, conviction unchanged through the session.'],
+    ['15:30 IST','India closed at '+pct(rec.ind)+'. Post-market report generated and scored.'],
+    ['02:00 IST','US session settled at '+pct(rec.usa)+'. Cumulative ledger updated.']];
+  return `
+  <div class="ov-top">
+    <span class="logo" style="font-size:15px">Alladin<i>.</i></span>
+    <button class="closebtn" data-close aria-label="Close">✕</button>
+  </div>
+  <div class="wrap" style="padding-bottom:110px">
+    <header style="padding:26px 0 8px">
+      <div class="eyebrow">${d} 2026 · The record</div>
+      <h1 class="display d-xl" style="margin:16px 0">WHAT<br>ALLADIN SAW.</h1>
+      <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
+        <span class="eyebrow">Overall result</span>
+        <span class="bignum num ${cls(rec.all)}">${pct(rec.all)}</span>
+        <span class="chip ${rec.all>=0?'buy':'bad'}">${grade(rec.all)}</span>
+      </div>
+    </header>
+    <section class="section tight">
+      <div class="grid2">${block('INDIA','Morning briefing · 7:30 AM IST','ind')}${block('USA','Pre-market briefing · 1:30 PM IST','usa')}</div>
+    </section>
+    <section class="section tight">
+      ${head('Chronology','WHAT<br>CHANGED?')}
+      <div style="margin-top:34px;max-width:760px">
+        ${events.map(([tm,tx])=>`
+          <div class="reveal" style="display:grid;grid-template-columns:96px 1fr;gap:22px;padding:20px 0;border-top:1px solid var(--border)">
+            <span class="eyebrow" style="padding-top:4px">${tm}</span>
+            <p style="color:var(--ink-2);line-height:1.65">${tx}</p>
+          </div>`).join('')}
+      </div>
+      <p class="notice reveal" style="margin-top:26px">Recorded against the original published calls. Alladin never rewrites a recommendation after the fact.</p>
+    </section>
+  </div>`;
+}
+
+/* ---------- overlay control ---------- */
+const overlay=$('#overlay');
+let lastRoute='#/today';
+function openOverlay(html){
+  overlay.innerHTML=html;
+  overlay.scrollTop=0;
+  requestAnimationFrame(()=>{overlay.classList.add('open');document.body.style.overflow='hidden'});
+  overlay.querySelector('[data-close]').addEventListener('click',()=>{history.length>1?history.back():location.hash=lastRoute});
+  wireCommon(overlay);
+  const bj=overlay.querySelector('script-broker');
+  if(bj){
+    const brokers=JSON.parse(bj.textContent);
+    const renderSteps=b=>{
+      $('#brokersteps').innerHTML=brokers[b].map(([tt,dd],i)=>`
+        <div class="step"><div class="n">0${i+1}</div><div class="t">${tt}</div><div class="d">${dd}</div></div>`).join('');
+    };
+    const tabs=overlay.querySelectorAll('[data-broker]');
+    tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('on'));b.classList.add('on');renderSteps(b.dataset.broker)}));
+    renderSteps(overlay.querySelector('[data-broker].on').dataset.broker);
+  }
+}
+function closeOverlay(){overlay.classList.remove('open');document.body.style.overflow='';setTimeout(()=>{if(!overlay.classList.contains('open'))overlay.innerHTML=''},450)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))(history.length>1?history.back():location.hash=lastRoute)});
+
+/* ---------- shared wiring ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);
+  if(e.target.classList.contains('cnt')||e.target.querySelector?.('.cnt'))countUp(e.target);
+  if(e.target.id==='sectorbars')e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');
+}}),{threshold:.12,rootMargin:'0px 0px -30px'});
+function countUp(scope){
+  const els=scope.classList.contains('cnt')?[scope]:scope.querySelectorAll('.cnt');
+  els.forEach(el=>{
+    if(el.dataset.done)return;el.dataset.done=1;
+    const v=parseFloat(el.dataset.v),d=+el.dataset.d||0,p=el.dataset.p||'',s=el.dataset.s||'';
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=p+fmtN(v,d)+s;return}
+    const t0=performance.now(),dur=1400;
+    const tick=now=>{
+      const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);
+      el.textContent=(v>=0?p:'')+fmtN(v*e,d)+s;
+      if(k<1)requestAnimationFrame(tick)};
+    requestAnimationFrame(tick);
+  });
+}
+function wireCommon(root){
+  root.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  root.querySelectorAll('.xrow>button').forEach(b=>b.addEventListener('click',()=>{
+    const row=b.parentElement,body=row.querySelector('.xbody'),open=row.classList.toggle('open');
+    b.setAttribute('aria-expanded',open);
+    body.style.maxHeight=open?body.scrollHeight+'px':'0px';
+  }));
+  root.querySelectorAll('[data-tip]').forEach(el=>{
+    const go=()=>{location.hash='#/tip/'+el.dataset.tip};
+    el.addEventListener('click',go);
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+  });
+}
+
+/* ---------- router ---------- */
+function route(){
+  const h=location.hash||'#/today';
+  const m=h.match(/^#\/(tip|day)\/(.+)$/);
+  if(m){
+    if(!$('#view').innerHTML){
+      $('#view').innerHTML=VIEWS.today();wireCommon($('#view'));startClocks();
+      $$('#navlinks a,#bnav a').forEach(a=>a.classList.toggle('on',a.dataset.r==='today'));
+    }
+    if(m[1]==='tip'){const t=tipById(m[2]);if(t){openOverlay(tipOverlayHTML(t));return}}
+    if(m[1]==='day'&&DAYMAP[m[2]]){openOverlay(dayOverlayHTML(m[2]));return}
+    location.hash='#/today';return;
+  }
+  if(overlay.classList.contains('open'))closeOverlay();
+  const name=h.replace('#/','')||'today';
+  const v=VIEWS[name]||VIEWS.today;
+  lastRoute='#/'+(VIEWS[name]?name:'today');
+  $('#view').innerHTML=v();
+  window.scrollTo(0,0);
+  $$('#navlinks a,#bnav a').forEach(a=>a.classList.toggle('on',a.dataset.r===name||(!VIEWS[name]&&a.dataset.r==='today')));
+  wireCommon($('#view'));
+  if(name==='calendar')renderCalendar();
+  if(name==='performance'){
+    const cum=[];let c=1;DAYS.forEach(x=>{c*=1+x.all/100;cum.push((c-1)*100)});
+    const labels=DAYS.map(x=>x.date.toLocaleDateString('en-GB',{day:'numeric',month:'short'}));
+    wireChart($('#cumbox'),cum,labels,v=>pct(v));
+    wireChart($('#dailybox'),DAYS.map(x=>x.all),labels,v=>pct(v));
+    wireChart($('#eqbox'),DAYS.map(x=>x.eq),labels,v=>'₹'+fmtI(v));
+  }
+  if(name==='today')startClocks();
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- clocks & market status ---------- */
+let clockTimer=null;
+function tz(zone){return new Date(new Date().toLocaleString('en-US',{timeZone:zone}))}
+function startClocks(){
+  clearInterval(clockTimer);
+  const el=$('#countdown'),ds=$('#datestamp'),gr=$('#greet');
+  const tick=()=>{
+    const ist=tz('Asia/Kolkata'),et=tz('America/New_York');
+    if(ds)ds.textContent=ist.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}).toUpperCase()+' · '+ist.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})+' IST';
+    if(gr){const hh=ist.getHours();gr.textContent=hh<12?'GOOD MORNING.':hh<17?'GOOD AFTERNOON.':'GOOD EVENING.'}
+    const inMin=ist.getHours()*60+ist.getMinutes(),wd=ist.getDay()>0&&ist.getDay()<6;
+    const usMin=et.getHours()*60+et.getMinutes(),uwd=et.getDay()>0&&et.getDay()<6;
+    const inOpen=wd&&inMin>=555&&inMin<930, usOpen=uwd&&usMin>=570&&usMin<960;
+    setChip('#chip-in',inOpen);setChip('#chip-us',usOpen);
+    if(!el)return;
+    if(inOpen){el.textContent='India is live. Closes at 3:30 PM IST.'}
+    else if(wd&&inMin<555){
+      const s=(555-inMin)*60-ist.getSeconds();
+      el.textContent=`India opens in ${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}.`;
+    }
+    else if(usOpen){el.textContent='New York is live. India opens tomorrow, 9:15 AM.'}
+    else{el.textContent='Markets are resting. India opens next session, 9:15 AM IST.'}
+  };
+  const setChip=(sel,open)=>{const c=$(sel);if(!c)return;c.querySelector('.dot').className='dot'+(open?' live':'');};
+  tick();clockTimer=setInterval(tick,1000);
+}
+
+/* ---------- nav scroll behaviour ---------- */
+let lastY=0;
+addEventListener('scroll',()=>{
+  const y=scrollY,nav=$('#nav');
+  nav.classList.toggle('compact',y>24);
+  nav.classList.toggle('hide',y>360&&y>lastY&&!overlay.classList.contains('open'));
+  lastY=y;
+},{passive:true});
+
+/* ---------- boot sequence ---------- */
+function boot(){
+  const el=$('#boot');
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(sessionStorage.getItem('alladin-boot')||reduced){el.remove();route();return}
+  sessionStorage.setItem('alladin-boot','1');
+  el.hidden=false;
+  const lines=['READING THE MARKET.','CHECKING MOMENTUM.','LOOKING FOR CATALYSTS.','BUILDING THE THESIS.','ALLADIN IS READY.'];
+  const sigs=['TECHNICALS','FUNDAMENTALS','MACRO','NEWS','CATALYSTS','RISK'];
+  $('#bootsig').innerHTML=sigs.map(s=>`<span>${s}</span>`).join('');
+  const sigEls=$$('#bootsig span');
+  let i=0;
+  const step=()=>{
+    $('#bootline').textContent=lines[i];
+    if(i<sigEls.length)sigEls[i].classList.add('ok'),sigEls[i].textContent=sigs[i]+' ✓';
+    if(i===lines.length-1){sigEls.forEach((s,j)=>{s.classList.add('ok');s.textContent=sigs[j]+' ✓'});
+      setTimeout(()=>{el.classList.add('done');route()},600);return}
+    i++;setTimeout(step,520);
+  };
+  route();setTimeout(step,300);
+}
+boot();
+</script>
+</body>
+</html>
