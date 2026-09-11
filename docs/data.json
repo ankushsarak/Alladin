@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-11T12:38:34.251597+05:30",
- "generated_utc": "2026-09-11T07:11:47.739392+00:00",
+ "generated": "2026-09-11T17:56:43.296791+05:30",
+ "generated_utc": "2026-09-11T12:30:33.871133+00:00",
  "sources": {
   "prices": "Yahoo Finance chart API (public)",
   "news": "Google News RSS (public)",
@@ -12,8 +12,8 @@
    "symbol": "^NSEI",
    "label": "NIFTY 50",
    "market": "INDIA",
-   "price": 23351.9,
-   "chg": -0.54,
+   "price": 23398.1,
+   "chg": -0.34,
    "spark": [
     24238.5,
     24187.7,
@@ -54,15 +54,15 @@
     23635.1,
     23431.5,
     23477.8,
-    23351.9
+    23398.1
    ]
   },
   {
    "symbol": "^NSEBANK",
    "label": "BANK NIFTY",
    "market": "INDIA",
-   "price": 56241.3,
-   "chg": -0.41,
+   "price": 56606.55,
+   "chg": 0.24,
    "spark": [
     57945.0,
     57835.35,
@@ -103,7 +103,7 @@
     56777.55,
     56295.55,
     56471.95,
-    56241.3
+    56606.55
    ]
   },
   {
@@ -217,24 +217,24 @@
     "art": "finance",
     "cur": "₹",
     "action": "BUY",
-    "mode": "BUY NOW",
+    "mode": "BUY ON BREAKOUT",
     "conviction": "HIGH",
-    "score": 72,
-    "price": 417.3,
-    "chg": 0.18,
+    "score": 77,
+    "price": 419.0,
+    "chg": 0.59,
     "entry": [
-     416.05,
-     419.39
+     429.53,
+     432.53
     ],
-    "window": "First 60–90 minutes of the session",
-    "stop": 385.98,
+    "window": "On a close above 429.10",
+    "stop": 400.86,
     "targets": [
-     458.99,
-     487.56,
-     525.65
+     470.25,
+     497.41,
+     533.62
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 7.6,
+    "risk_pct": 7.0,
     "size": 5.0,
     "scores": {
      "Technical": 5,
@@ -243,13 +243,13 @@
      "Location": 4
     },
     "indicators": {
-     "rsi": 64.6,
-     "sma20": 412.06,
-     "sma50": 396.71,
+     "rsi": 65.7,
+     "sma20": 412.14,
+     "sma50": 396.75,
      "sma200": 400.54,
-     "macd_hist": -0.771,
+     "macd_hist": -0.662,
      "atr": 7.26,
-     "vol_ratio": 0.79,
+     "vol_ratio": 0.87,
      "resistance": 429.1,
      "support": 386.75,
      "hi52": 460.38,
@@ -257,31 +257,31 @@
     },
     "thesis": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "RSI at 65 — strength with room left before exhaustion.",
-     "Price sits +1.3% from its 20-day average — a reasonable entry zone.",
+     "RSI at 66 — strength with room left before exhaustion.",
+     "Price sits +1.7% from its 20-day average — a reasonable entry zone.",
      "The long-term 200-day trend is still up."
     ],
     "sections": {
-     "THE CHART": "Last price 417.30. The 20-day average sits at 412.06 and the 50-day at 396.71, putting price +1.3% from its short-term mean. RSI(14) reads 65 and the MACD histogram is -0.77. Nearest resistance from the last 60 sessions is 429.10; the 20-session swing low is 386.75. Average true range is 7.26 (1.7% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 419.00. The 20-day average sits at 412.14 and the 50-day at 396.75, putting price +1.7% from its short-term mean. RSI(14) reads 66 and the MACD histogram is -0.66. Nearest resistance from the last 60 sessions is 429.10; the 20-session swing low is 386.75. Average true range is 7.26 (1.7% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Kotak Mahindra Bank sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +6.7% against its own trend, and -1.7% over the last five. Its 52-week range is 335.81 to 460.38, so price is currently 65% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +7.1% against its own trend, and -1.3% over the last five. Its 52-week range is 335.81 to 460.38, so price is currently 67% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 385.98, which is 7.6% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 400.86, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
-      "h": "Buzzing Stocks: Kotak Bank slips on Group President resignation; Canara HSBC Life falls on IRDAI penalty",
-      "src": "Moneycontrol.com",
-      "time": "3h ago",
-      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQbXZEXzFhLVJ4NS1vZ2V1YnFCaFZ6cWRxdVhKdXAtMjVXM1lvYnJvcFlOTUd4bktHcVU0cGhtT0JVZFBUZHV0ZkhmdUk1R2VlRHpjejVTMjhYWG1BSWtqOGdVMVFBbUNRTnhaZWROWXpseGRubWlYUHBmdU5IWFFGYXRYclpRdlR1SHBkSTdCT3lGRGZiZ05KTWZHZ2ZuMTdvTWkzam9NMU8tQjJYVFYzWXBHUmEtV2hlclRTZ3BsbmpuRGZBTUhabzNIUFMxaF81U1F6QUU1SGpvOEpOX1VYNHpOVlpEZ2ViRlF6S0VEZ3VhOGZFWkVINk1HZ9IBgAJBVV95cUxNbHF3d0MwQkY0RVdWaFRVd1gyYlpGTnhqV29zNnhrZkN3UVpxeXp1U1BBWGFQQjFWRjlwTmhLNHRxbzJldFk5RzQ2a25ET0JjV3c2aWhWNmljclBBVTI5RE1BZmJSSjRWYUNXcHFiWnNoNGt4dnJpWFJKck82ZlJFYUFfZVRob3VCdlRpaHpsZEpfdUc0R2N1NVppMlA1ckVqdDdGM2Eza2poT1YxRjZiVG9WTmxjeWVnQzZMRmhpV3pTOXpTOWhIMFBzUHg5dHBVeEhzQkRBMDkxdElHaFhtQVlWYXQtMUViZUtucjl5VVpPem1TVTN1M2lxZjl0aU5p?oc=5",
+      "h": "Kotak Mahindra Bank: Group President to Resign Sept 30",
+      "src": "Univest",
+      "time": "5h ago",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBlZ0FyZXZJeGhhbU5LdGNGWG1JZEZmTnllX3l3V1NXWXF3eHZmbGp3MUlkdHB2TzJGY2JMUXRVVDBPN2tJRmRfWlIxZE55OGs3eXJUZU5TY01WT2thTmRjRHlIblZ0RE9ycEhGRW15Vk9ieFVPdXBZ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Top stocks in news: HDFC Bank, Voda Idea, Kotak Bank, Premier Energies, Bharat Forge, Juniper Green",
-      "src": "Business Today",
-      "time": "5h ago",
-      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOblZaVnhNSHVxbWlEekNqUjlfN3NjNUxnZ2F4b3F0VkVwRE44dTdWVFlOcnZEX2t0Sm4yWWZPYXVzX0JfQkY4clpDb3JUeE5teEdJU244N2Q4Rk5lQU1jbzlmaXhzUUZiZFRNdDNseW1PbW0xWUpTLURNS3QtUXhpYzEyajFGZ3U4RVgxUmhxRUp3YjZLYzBFcWFMVzBmUFRiUVRfcEFhMW1YT3hndlJEdzlqVUhnNDg5Yk5RcFNxQ2dMcTl3bm9yS2g2RzlWUzRBX3V3a1RVQlVrWGluZ2ZNWWJuaFE2ZjhCblo0Z0RFR01XLUXSAfgBQVVfeXFMTzRJZVZSaFBrZjZhaHdaMTZMQkk0c1pTc0lfOENUVjVoNHlyd0pJeE9RX2lWdGMwUVR5bmREdVBmQzhXU0RybTlYdDQ2R3d6d0duQkpXVFdfOUwxR2tjRjhWWnhrbG9fSmZ0RF9laXdIQ3ZZX05fbTcwMVpPYW95V25uSjhDWDRMMUp0aVJ0TENqbEJFdzJCaXpJVm1xeVVZNVF3Y0JXM0NLNnoxUldMeTdZSVI1MkVKeXpiTUZ3U1poZUhEVEdlOXVHRGFzemNkMzBsajh1QVNFVlUyTTBLUjBiOHhBTW5KazlzdFM0M0x1TnpvRkdrSkI?oc=5",
+      "h": "Buzzing Stocks: Kotak Bank slips on Group President resignation; Canara HSBC Life falls on IRDAI penalty",
+      "src": "Moneycontrol.com",
+      "time": "8h ago",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQbXZEXzFhLVJ4NS1vZ2V1YnFCaFZ6cWRxdVhKdXAtMjVXM1lvYnJvcFlOTUd4bktHcVU0cGhtT0JVZFBUZHV0ZkhmdUk1R2VlRHpjejVTMjhYWG1BSWtqOGdVMVFBbUNRTnhaZWROWXpseGRubWlYUHBmdU5IWFFGYXRYclpRdlR1SHBkSTdCT3lGRGZiZ05KTWZHZ2ZuMTdvTWkzam9NMU8tQjJYVFYzWXBHUmEtV2hlclRTZ3BsbmpuRGZBTUhabzNIUFMxaF81U1F6QUU1SGpvOEpOX1VYNHpOVlpEZ2ViRlF6S0VEZ3VhOGZFWkVINk1HZ9IBgAJBVV95cUxNbHF3d0MwQkY0RVdWaFRVd1gyYlpGTnhqV29zNnhrZkN3UVpxeXp1U1BBWGFQQjFWRjlwTmhLNHRxbzJldFk5RzQ2a25ET0JjV3c2aWhWNmljclBBVTI5RE1BZmJSSjRWYUNXcHFiWnNoNGt4dnJpWFJKck82ZlJFYUFfZVRob3VCdlRpaHpsZEpfdUc0R2N1NVppMlA1ckVqdDdGM2Eza2poT1YxRjZiVG9WTmxjeWVnQzZMRmhpV3pTOXpTOWhIMFBzUHg5dHBVeEhzQkRBMDkxdElHaFhtQVlWYXQtMUViZUtucjl5VVpPem1TVTN1M2lxZjl0aU5p?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
@@ -295,14 +295,13 @@
     "workcase": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "The long-term 200-day trend is still up.",
-     "RSI at 65 — strength with room left before exhaustion.",
-     "Price sits +1.3% from its 20-day average — a reasonable entry zone."
+     "RSI at 66 — strength with room left before exhaustion.",
+     "Price sits +1.7% from its 20-day average — a reasonable entry zone."
     ],
     "failcase": [
-     "MACD remains below its signal line.",
-     "Volume is only 0.79× average — conviction behind the move is thin."
+     "MACD remains below its signal line."
     ],
-    "invalidation": "A daily close below ₹385.98.",
+    "invalidation": "A daily close below ₹400.86.",
     "chart": [
      {
       "d": "2026-06-08",
@@ -582,7 +581,7 @@
      },
      {
       "d": "2026-09-11",
-      "c": 417.3
+      "c": 419.0
      }
     ]
    }
@@ -654,14 +653,14 @@
      {
       "h": "XOM|Exxon Mobil Corp|Price:165.230|Chg%:+1.000",
       "src": "TradingKey",
-      "time": "13h ago",
+      "time": "18h ago",
       "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9EUVp6SkhNYzJmOUo2WFIzY1NSU01EWGxlY1ZnLTdTS3VWbmZ1NHJLTFlpbXZ4bnhvVFJ3eVg4UjhBS093QXR2a3o5dXp2c1J2bU8wYzBLc3k?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "ExxonMobil Stock at a Premium: Opportunity or Reason to Stay Cautious?",
       "src": "Yahoo Finance",
-      "time": "15h ago",
+      "time": "21h ago",
       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQ2RMZi1FRUVtd29yLXB2LXlVOU9HcW9KUHdvSmFVS21BbEtMU0lRTHJPZXVJRUkyWkdYOHNrYVVyQUJIa2RwVzhtYVN6dm9ZbDR1TXFZVHNRaXBZN2trNVZPNGtYZzdNX1YtZWFQVllPZm8zbmhDSGVjTmMxRS1Sd1NjMG5NaHhBLVRZOVYzekNzQzdPTlgydURQMW5DbHlyRHAyWGVJTjdyckls?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
@@ -1044,10 +1043,10 @@
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Apple event live: iPhone Duo, iPhone 18 Pro & watches announced",
-      "src": "Yahoo Finance",
-      "time": "1d ago",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNTk8zOG10RndOaXBFMTFjT1ZaZ3NCUHNEVlR6NmNNUkhSbHU3bFhUZnd1THNkS0tGRlZJLUxJVm1LQ09kN0RWYm1CSjZzZnEyMVJ6VWlxS1UzQ0xEbGNDUmJaN1RxRGE5a0U1SzY1MW1iT09YZVpCY2FaVTZfSWx0LWdJaFFta0s2dnNQUkxlVlpkaUk4SnR4azFJX1ZscVJ1d1owQ1h1bmJaWmNDZlhabGE0ZU1jaFZ2YVdaaWFn?oc=5",
+      "h": "Why the new foldable iPhone could be a game-changer for Apple stock",
+      "src": "Yahoo Finance UK",
+      "time": "1h ago",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQU0xna3hFaG9SUTVIRjF2QXd4b0ZEemtfTmw0dFoyMk1OVU9JV3RaVk1fbGR4eHU2ZEwta2JheElMTnFISDR4dnpkV2g5MThmVE04cElUS2JLUGZWSjVrQ1dQMkNOWG5KXzhzMmtfZy01LVVYampHSU5BUjJHczB2dVdFRzFmUQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
@@ -1415,17 +1414,17 @@
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "AMD Stock’s 10-Year, 6,800% Rally Was Just the Beginning. Here’s Where AMD Could Be Headed Next",
+      "h": "Advanced Micro Devices vs. Nvidia: Which Semiconductor Stock Is a Better Buy in 2026?",
       "src": "Yahoo Finance",
       "time": "17h ago",
-      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOU0llWVlnblRmZ0ZialVVQkNiWjhNMUFFUFFhcFJmMGRrWmpwb180akk0YVl2RllVOGo0UDB5TVRMUWZFcXJwaGxGU1p1dmN0ZTB2SUFBM01FNkpqYVhBelF4dUp1dFdIUm82c0VxWThvNnRFX3p3OWtOSGF1TDZ6VnRJRmYzWGlPUVZV?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPUGZiQ0N3VE9LZGozSVpjY2hfSkY1MURuTDJZY3I3UzJRb2tKYS1tU2RfLWtDSk9BTUpPMDdjNnV4ODNpbFF5ODBZU2JFTXl1Ri01Z2RxamJKaG52NVhXOGtrS0hxcHBMcndtTDZCQjNSeWp0cHBXTlJSalZnNkplRWl5WmNRS3NEeVVXQWV4Z2NzLWM2UWVCV0o1OXlyQQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Nvidia Has the AI Hype. AMD Has the Valuation. I’d Buy This Stock.",
-      "src": "24/7 Wall St.",
-      "time": "15h ago",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQby04ZVB0OUxJTFVKZ085VVdnbU11cFpMRFBwVTNOUmdBaFpvaGYtdkFxMEtzbmpTQzNxWHBOMWkyeFduUGlRM3dBdGE3WUMyeEp1aGdNUnd3UDBnV280TzlTRFQxS3lGQUJMcmJmclNfSE5HU0xZS05iZ1dGTHFRUXFEUGp0M2pWalBwRlZMdC1KSE9tTElUak9HOGtXemlHU3k1elV2Q2NVZw?oc=5",
+      "h": "AMD and Nvidia Just Experienced an Unprecedented Valuation Split",
+      "src": "The Motley Fool",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNbzlvVmt2bzZjbzZodXktWkNLVWRhTkg4VWJzQ0dGTEVwV1pmdzJobjFkQVFVNzE4YVJ1ZGVKdGRNeWpnOHhpdlc3YUx1cElfQktyMmExMkcwWVRlRkh3a2Q0TXMxclMxU0lPYkFnVlc3eTF1UHprVm5pblpVQlJNTGJKMUhNeDBxRENJdVhXVnhTNXpwV0hUMg?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
@@ -1726,20 +1725,20 @@
  },
  "watchlist": [
   {
+   "ticker": "KOTAKBANK",
+   "name": "Kotak Mahindra Bank",
+   "cur": "₹",
+   "px": 419.0,
+   "chg": 0.59,
+   "score": 7.7
+  },
+  {
    "ticker": "XOM",
    "name": "Exxon Mobil",
    "cur": "$",
    "px": 165.23,
    "chg": 0.61,
    "score": 7.6
-  },
-  {
-   "ticker": "KOTAKBANK",
-   "name": "Kotak Mahindra Bank",
-   "cur": "₹",
-   "px": 417.3,
-   "chg": 0.18,
-   "score": 7.2
   },
   {
    "ticker": "AAPL",
@@ -1797,7 +1796,7 @@
    "KOTAKBANK: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
    "XOM: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
    "AAPL: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
-   "AMD: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }"
+   "AMD: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a"
   ]
  },
  "live": {
@@ -2348,7 +2347,7 @@
     "mae": -2.29,
     "bars_held": 1,
     "note": null,
-    "last_checked": "2026-09-11T12:38:34.251597+05:30"
+    "last_checked": "2026-09-11T17:56:43.296791+05:30"
    }
   },
   {
@@ -4835,10 +4834,10 @@
    },
    {
     "date": "2026-09-03",
-    "ind": -2.662,
+    "ind": -2.753,
     "usa": 0.0,
-    "all": -0.106,
-    "eq": 99332.32,
+    "all": -0.11,
+    "eq": 99328.72,
     "n": 2
    }
   ],
@@ -4854,7 +4853,7 @@
     "tips": 863,
     "win": 39.2,
     "avg": -0.53,
-    "ret": -18.23
+    "ret": -18.24
    },
    "usa": {
     "tips": 874,
@@ -4874,7 +4873,7 @@
    ],
    [
     "Financials",
-    -1.35
+    -1.36
    ],
    [
     "Communication",
@@ -4900,7 +4899,7 @@
     "tips": 853,
     "win": 44.0,
     "avg": -0.17,
-    "ret": -5.74
+    "ret": -5.75
    }
   },
   "best": {
