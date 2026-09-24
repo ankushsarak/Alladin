@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-24T04:53:41.236631+05:30",
- "generated_utc": "2026-09-23T23:25:51.519153+00:00",
+ "generated": "2026-09-24T12:56:01.409696+05:30",
+ "generated_utc": "2026-09-24T07:27:27.553790+00:00",
  "sources": {
   "prices": "Yahoo Finance chart API (public)",
   "news": "Google News RSS (public)",
@@ -12,11 +12,9 @@
    "symbol": "^NSEI",
    "label": "NIFTY 50",
    "market": "INDIA",
-   "price": 23446.8,
-   "chg": 0.14,
+   "price": 23167.05,
+   "chg": -1.19,
    "spark": [
-    23995.95,
-    23985.35,
     24250.2,
     24317.15,
     24383.6,
@@ -54,18 +52,18 @@
     23217.6,
     23270.6,
     23346.4,
-    23414.3
+    23414.3,
+    23446.8,
+    23167.05
    ]
   },
   {
    "symbol": "^NSEBANK",
    "label": "BANK NIFTY",
    "market": "INDIA",
-   "price": 56548.9,
-   "chg": 0.14,
+   "price": 55573.25,
+   "chg": -1.73,
    "spark": [
-    57087.2,
-    56755.6,
     57205.9,
     57147.5,
     57264.85,
@@ -103,7 +101,9 @@
     56292.45,
     56055.75,
     56358.7,
-    56470.65
+    56470.65,
+    56548.9,
+    55573.25
    ]
   },
   {
@@ -217,39 +217,39 @@
     "art": "finance",
     "cur": "₹",
     "action": "BUY",
-    "mode": "BUY ON BREAKOUT",
-    "conviction": "MEDIUM",
-    "score": 65,
-    "price": 738.6,
-    "chg": -0.18,
+    "mode": "BUY NOW",
+    "conviction": "HIGH",
+    "score": 75,
+    "price": 729.95,
+    "chg": -0.99,
     "entry": [
-     750.05,
-     755.29
+     727.76,
+     733.6
     ],
-    "window": "On a close above 749.30",
-    "stop": 699.98,
+    "window": "First 60–90 minutes of the session",
+    "stop": 680.54,
     "targets": [
-     821.16,
-     868.58,
-     931.81
+     795.87,
+     841.0,
+     901.17
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 7.0,
+    "risk_pct": 6.86,
     "size": 5.0,
     "scores": {
      "Technical": 3,
      "Momentum": 4,
      "Volume": 3,
-     "Location": 2
+     "Location": 3
     },
     "indicators": {
-     "rsi": 67.7,
-     "sma20": 713.5,
-     "sma50": 732.75,
-     "sma200": 821.44,
-     "macd_hist": 5.588,
-     "atr": 12.65,
-     "vol_ratio": 1.02,
+     "rsi": 58.6,
+     "sma20": 714.95,
+     "sma50": 729.62,
+     "sma200": 818.77,
+     "macd_hist": 4.778,
+     "atr": 12.77,
+     "vol_ratio": 1.01,
      "resistance": 749.3,
      "support": 681.9,
      "hi52": 1020.5,
@@ -258,59 +258,51 @@
     "thesis": [
      "Price holds above the 50-day average, though the short-term average has not confirmed.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Volume is 1.02× its 20-day average — steady participation."
+     "Volume is 1.01× its 20-day average — steady participation.",
+     "Price sits +2.1% from its 20-day average — a reasonable entry zone."
     ],
     "sections": {
-     "THE CHART": "Last price 738.60. The 20-day average sits at 713.50 and the 50-day at 732.75, putting price +3.5% from its short-term mean. RSI(14) reads 68 and the MACD histogram is +5.59. Nearest resistance from the last 60 sessions is 749.30; the 20-session swing low is 681.90. Average true range is 12.65 (1.7% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 729.95. The 20-day average sits at 714.95 and the 50-day at 729.62, putting price +2.1% from its short-term mean. RSI(14) reads 59 and the MACD histogram is +4.78. Nearest resistance from the last 60 sessions is 749.30; the 20-session swing low is 681.90. Average true range is 12.77 (1.7% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "HDFC Bank sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +1.5% against its own trend, and +3.1% over the last five. Its 52-week range is 681.90 to 1,020.50, so price is currently 17% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +2.7% against its own trend, and +2.4% over the last five. Its 52-week range is 681.90 to 1,020.50, so price is currently 14% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 699.98, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 680.54, which is 6.9% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
-      "h": "HDFC Bank shares rise on UBS buy call; Q2 Results in focus",
-      "src": "BusinessLine",
-      "time": "16h ago",
-      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPaEVRcHFyU213Y3Rhc2ltbzhNTmtHeTBmemQ3dXRPamlOTUZYekZZYzdHajFWQ3hONnFDaUxTaERaVldrOU02Rjh0V3RxNFVxWmVIUXlYWTEwLW5YRW4wSlkycDBrMmZuYjRMTzRHa0Njb2xhc21LZl9SVEhFU1RRR01DcHdZdEdBaHlLS0NQSVVYYzBPRWZ6MGpCbjg3OHk3U1E1UmRYaGM3YnQyYXBncWhQdG9rQWlvTnJrZ0JYZ01VWExRc21wZVZLelJUdmNVeUpsaFlIVXdETknSAeIBQVVfeXFMUGs4QjJVQ1RXQ0VTZjUxeXlPcnB5cUdrTktkVlV1UGFtd0h6NVEya1JQMWYwX2pnUVlkUjRodENfd2pzbWtmSzliZlViVld1NzJ6SllmZkdrRGYyUUZHT2NZUFF1SlNpYUtYTVFhdWNlNDhqeDlHRWxpX1Z5a2F5Sy1LRWdDMUhSU0xvd2lKcFBTQ1BIcTRYTnlOampSMHVDTmNhczluYXE5c1R0UWdaREFVaWctRElCZWo4cU9lZXJRekxOdERxY0xWM1gxemNvVHFpcGRyNTFJaWZYWEpZcldPUQ?oc=5",
+      "h": "HDFC Bank shares hit 7-week high as RBI weighs Anup Bagchi for CEO post. What lies ahead?",
+      "src": "economictimes.com",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNWlk5YlRxQkZ6dEpDUDE2a2FZTG83dXhiVkZBTjFPSzFFaDVQSmVhVHhfV3dnYXRlTXpXNzJSWEFsYzVqYmdpenRXNHVMWXlXMkNfLUxsTlB6YlhmRkdOX1BpaWxkSkxOVENiSHNjVjNVUXFYNnBTb0xTaGVfV29FV003WmJmODVHMHRaeXZ6Y1dIYWpya0Yzdldmd2FVMExCQnZQUkl2RG1TSENLY3ZkQXZEc2N0SWYwQnRLdmFpVG9vVnhaWXNuYnRGYU1HaldVWGRYVWNZdkxRU1FIaDZnU2Q2QmpnWTZiN2N0cEpYN3ktcWfSAfgBQVVfeXFMUHkxMjg5a29fVlFoZXNla0h6YmwyWW56MjhsSnF0MTlPVnp4dnN1OXF2enpOMHl2ZU8xU2pTbmNTek9IdUswZlRxZllYOXZEaE53aENPUkNmeklKbnJTSDJ2VWl4N2w3SVNfWlg3MlRvbTk0TFBHckFPbGI4NEFUalZuQVZjcENpSjFKdGlnd3BaVV9sU1FrdFpubWt4TjY2VWt3X2hHck4wdTVOWi1NaVExTE5ZVnFha0Jsd1VnNWtoWFJkWmhjUTBGLUNMemlRRkdVTmhKOGI5Qk5Db3Zralg0bkdnVTJaRTBNSktGRmQtTEZESkFUYjI?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "HDFC Bank shares rise for second day as CEO search progresses; Anup Bagchi seen as frontrunner",
-      "src": "Moneycontrol.com",
-      "time": "1d ago",
-      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQQjA1TFFxbWZBX05GTWpiUVRqRFAxWkRaX3dQbTlMbEwyTTU1QktxTTN5V0R6dWFvWm1FRDZhOS0tMkEtejk2ODlaMnhMSUVoaEd6UUZhaGU5VnlmSkotUm5rT3lCcjg0eTFKdkV2Q1JycmpyVDcyT1ZLb1k2NW5EYnlGQVNITVBFZkJJaEJQSlFEb0xvdmF1ZWhQZk0yeS01UC1WdDhJTVFDRjBRZE4zTVFvXzBlOU9rUko4QktfeklYbllOaDRBSHVvUTdCaDVOZDNnaFpqWEpEUVpNRTVlc1NXbGo4MVRMVjEtVUVTRdIB9AFBVV95cUxQMGpZV1liRUNYMHU2WjVyZVlnRGpQRTdDc3QzLWJ6dFZmSVBYVTd6a1l4MGRoSW9pTXNwbmUtVG9lZnVFMU9IcTFETlNvZnBKUUNTRk1ONTdmamg0RFA0WVlMNnJPaldXYkZBTW0ycFVhZHNjZ0VtSVVHUGQxQklGNnh3d3NUcnpaYXZicHFUb3ZzSmR5dS1JSFpnSC1hVEZLVlJ5b29ud2pObzlKVnFkd05HbXNhcmpKTnI0dWZVS3E4TEc1S01qenRZMGRnaXJUeTJ6UjVfdDJHMThxSjF6NEY1SDkyTEVNLUJPbXZRZFZkdEVk?oc=5",
+      "h": "HDFC Bank Shares Rise On UBS Buy Call; Q2 Results In Focus",
+      "src": "BW Businessworld",
+      "time": "20h ago",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNMndvZEctVmtlN0VzUTBiM2dBZEJuajFJQktraVdIMm5uS1V1eXNscFJWV3YwUmxPeWtIWHJnTmJfYTNLSUhGWHJSSXlObXVRZ0t3R3FGZnRTYXUtVjBnMDhVTVd1ZjV1V3dGOEctQWUwTjJ4WGtpWjBVclZXSmlsTTExSkE2Uk9oUVZkYzdNd3VEWGFOWWtSUkRTTWwzRVJIb2FV?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Where Will HDFC Bank Share Price be in the Next 5 Years?",
-      "src": "Equitymaster",
-      "time": "1d ago",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMXl5dWJncEVHTVpkYXB0dk0wNGEzM3pRYm96MUY3LW40aVJCVEEwZlZLbTYtT001QW5pSVFCeVhIdEhrcktyQThLSjBMb2d1VUhGdExYZnVKSHZWbl9HUmRHcWlGbU4wMFRCVnh0MTRKOHdjX3EzSlg5cWxkRTc5eV9LUFJYbGZZcnVDMlRjaU91QWFEamRpLVNCMkg2MTFJdVdiM3hQRHJ3c1Q3WEtFVTNuS1lVbEw5N3JXd1BfUTVaZlE?oc=5",
+      "h": "HDFC Bank Prediction for Tomorrow: 24 Sept 2026",
+      "src": "Univest",
+      "time": "20h ago",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPZUU3bC1ZdnM4SGpPWEZxNDh1QUNUdUZUSFByLUxyRDNTRWttam9OSUlRbGxRMVpOWGRnbXRwRDJJVk44aDczNVBzOWJ4UlJfTC1BYncyMWYwa1dBUENMWDVxVWJGVjlVNWZ6T0RvTExpSmdiT1A5T0VvVFc3UnY1RFFJckY1OV9VdkZqS1paVkdySm81Zk0zdV9DRGwxUQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
     "workcase": [
      "Price holds above the 50-day average, though the short-term average has not confirmed.",
-     "RSI at 68 — strength with room left before exhaustion.",
+     "RSI at 59 — strength with room left before exhaustion.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Volume is 1.02× its 20-day average — steady participation."
+     "Volume is 1.01× its 20-day average — steady participation."
     ],
     "failcase": [
-     "Price is below its 200-day average — the primary trend is not supportive.",
-     "Price is 3.5% extended above its 20-day average."
+     "Price is below its 200-day average — the primary trend is not supportive."
     ],
-    "invalidation": "A daily close below ₹699.98.",
+    "invalidation": "A daily close below ₹680.54.",
     "chart": [
-     {
-      "d": "2026-06-17",
-      "c": 787.1
-     },
-     {
-      "d": "2026-06-18",
-      "c": 799.0
-     },
      {
       "d": "2026-06-19",
       "c": 779.8
@@ -582,6 +574,14 @@
      {
       "d": "2026-09-22",
       "c": 738.6
+     },
+     {
+      "d": "2026-09-23",
+      "c": 737.25
+     },
+     {
+      "d": "2026-09-24",
+      "c": 729.95
      }
     ]
    }
@@ -611,7 +611,7 @@
     "targets": [
      523.7,
      539.35,
-     560.22
+     560.23
     ],
     "rr": "1 : 2.2",
     "risk_pct": 3.47,
@@ -659,15 +659,15 @@
      },
      {
       "h": "A rare Microsoft bear warms up to the stock. Here's what changed their mind",
-      "src": "cnbc.com",
-      "time": "3h ago",
+      "src": "CNBC",
+      "time": "11h ago",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPbU5HVzlPVFhtQmN0MnlCSUJmZ0hCQ2hnZVRjdXZudjBSMm91WnhFUFE4eWZCNWRrWU5TdTRNcmpvX3NnSjVFWGNEamlHdDM1SEVnNk4wMHYwdDR1OHJHZVBfaTRPX1U4VDlaTVUyaTdrZ1RJNzBWZXNPeS0wVEFoVnFaVjNpNjM0MXNuSzQ4bnNpTk4zRE5qTGF0SjVLS0E5aDlZMmJZbm95LVBLNmRJ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "Top Analyst Has Stark Message for Microsoft Stock Investors",
       "src": "Yahoo Finance",
-      "time": "7h ago",
+      "time": "15h ago",
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOT0FUOVM3bWtpcWw5QlRCd1Npc2ZfbmF6Uzd1N2NrTzVFTF83TkY3TEZ3TGxTeE1hNGdDT2V2ejYyMEZIZWlnTDU5WUNQMXpVNThpQURRd3NLUHZnbUhpTnNIbVFUTmZTTk0xMzZXbnRLTHpFQkhfS0dCTWpicnZOWGtKX0ZTX3JhcmdQaTYxaDR5QkF4dEExZ080QnA3bEZW?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
@@ -1029,23 +1029,23 @@
     },
     "news": [
      {
-      "h": "Jensen Huang Defends Nvidia as ‘The World’s First and Only Growth Value Stock’ as Apple Stock Reaches $5T Market Cap",
-      "src": "TipRanks",
-      "time": "8h ago",
-      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNYlNnNTVWWDduU0o0eEpDUVBxUDFac2FjMUVWVFVPd1lDQmVMZFo5SDNYZG45UHJiN0lkZW94MmFHeHd5ZlZmaFVJYXB1ZDVhOVExN0FVdTN6MGRTZGtDQmp4Wjg5eGs1LVB2UDB3SS11aUgybVZZLUtUeXNYNHRzNE5mWUs3cm1vMV9XZDhZSlFZdTZWNTNRR3cwTVplUnZDZ0w5YlFqWTRmd1FrTG5lbUR4TDVoNTZPVURhSDNtNTBxNy1VajdiRkw5MHdMeXdHYUViYXdPMG1pQQ?oc=5",
+      "h": "Apple (AAPL) Stock Could Be 32% Overpriced After Fresh AI Cost Warnings",
+      "src": "Yahoo Finance",
+      "time": "2h ago",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNZTJYNko0cmVmdm1sRjNOWGZwRzdGUzhqODR6SWd0YXhvcjk3SW1mYzVZMDRCQzllX1R0UFhWaGN4dEhjaFJHZjZlVVpnQnhCdC1aWVZNbGlSZGlQVEFLWEY2TVRnRDJlVlJ6YXBOSVJvVUVrQkY4WU4zdUhHb2Y1UVZqdTMxODdCR0pOYlhQWk5JVEhl?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Why Apple's stock chart is probably putting a smile on the face of new CEO John Ternus",
-      "src": "Yahoo Finance",
-      "time": "9h ago",
-      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPZGp0YWl6UkpLU3NkMjBJNEVjRGM1OU5HZUxSaHdzVnhiTEhTMWhrR0ExdFEwOGRmSTF6NW1Pbk9OQy1aN2c2bi1uRDNBUndoeUIyVmx5UXhEcl9BTkJRTkp0dUtldXVqRENQVlpfeTBWQWNxNVhMUnF2VE41UWx0V0ViaWptNkFPQ2lBZXpKdFdPRDFwcjlCcGVxTW9Sd0ktQW5Ha1hiVU9JT095WGdEYWJaSktYUDZkVllhdzNUZ3F3c1l5aHdEb3dfT2xRblFJNndlVXNucTlSMkVrdG95amI1RQ?oc=5",
+      "h": "Stocks to Watch Recap: Meta, Schwab, Shopify, Apple",
+      "src": "WSJ",
+      "time": "1d ago",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQV2ZPOTBDUUYyMFREMlZpd2V1cUQ4N0dBSjJkTmxwSVBoTXFtZmNjdUJPYXJVeDBmQ0U2QV9FMElfNm9PaTlaTUZWeWxTUk1zVUFmSG9tOFlPSkNuby1zb0MzUXh2Qll5WWc1eVNyOWtZQUNxMkxtSlRBOGZQVm1MU3VIZFBVbVpDTnpOT0M0dG5ZY1ZXMmZsZ1haSHBGLXVheEx3U3Bmc0RPTjEwQVQxZmMtbVN2cEh4TU1pYlUzWHpQUldoNGxVcHc1dmtPR1lKaHJoSnk1MVg?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "Apple Stock Is Trading Near Record Highs. Can It Climb Further?",
       "src": "Morningstar",
-      "time": "13h ago",
+      "time": "21h ago",
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaFdBRzhyb2pKMmJNOE9OdE9BcHotSWZHYjN5ZWg4cUFWNnhnTTE5ZGJScUlGd2pweDNJMTMweEJTUmcyZkRkc09xdU5FcjlyNVh5bldwVE1RRHZyR1Ywclg5SUFJREppOXgwWEdQcmd3VXhPa2luZm5XWEh5dnZ0VlJsT3hVa1k0aWNxM080Q1d4YWY1WnhKWmZmTG45ZmgxenFLb0gxNXE?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
@@ -1407,23 +1407,23 @@
     },
     "news": [
      {
-      "h": "Nvidia’s Stock Is Flashing a Warning Sign as Valuation Drops",
+      "h": "Nvidia’s Immense Dividend Hike Puts Dividend Growth Stocks in the Spotlight",
+      "src": "Morningstar",
+      "time": "23h ago",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNdVV4dEg1UDVVUEUtcU91WXRCZFI3Zm5pQU5tMTF2Q0tqZThjQjV6Nk5QdEt1NGJHMzBhRmpUV0lQS093MVVXOTdPNHdvRTE3RWFTMGM4Y21VNmhfQ0gtREdkeW9ES3BhMDh3UDJxcFV4aE16M0hNZmtSb0x4RnVKdC0xZmEyZjAzMV9ud0xMcXlGSktJZnRENGpmVmtJeURFVFFGRA?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "Nvidia’s Stock Is Flashing a Warning Sign as Valuation Falls",
       "src": "Bloomberg.com",
       "time": "1d ago",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOMmZza3lFQmV4Y3NTNVlkOThiYTlkUWFGY1lPUWF1SEpPRkRNXy1GRnpNYWlDa1JqdEJRejYyVF9mSlQ2eldpbGR0dFRRM1dWVS1oY1RmMGNqRy1aVExud1duUXhTZHdZTW9SU2J6aVBrMTVUVmNubDlQc3F6TjNHem4zWTM1dlp6dWFtbzd6d3ZOOE43NDNXYkpGMzMwR1NqQ2VfT3FPVGMtbEJHdzFMNQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Nvidia’s Immense Dividend Hike Puts Dividend Growth Stocks in the Spotlight",
-      "src": "Morningstar",
-      "time": "15h ago",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNdVV4dEg1UDVVUEUtcU91WXRCZFI3Zm5pQU5tMTF2Q0tqZThjQjV6Nk5QdEt1NGJHMzBhRmpUV0lQS093MVVXOTdPNHdvRTE3RWFTMGM4Y21VNmhfQ0gtREdkeW9ES3BhMDh3UDJxcFV4aE16M0hNZmtSb0x4RnVKdC0xZmEyZjAzMV9ud0xMcXlGSktJZnRENGpmVmtJeURFVFFGRA?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
       "h": "IonQ is in 'the beginning of an exciting era,' CEO says as Nvidia deal lifts stock",
       "src": "Yahoo Finance",
-      "time": "7h ago",
+      "time": "15h ago",
       "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOMG01RzNvclpvWlpPUlBzZmc3WndDUmo5VVF0MHRZWXFQTG9DS0JPQjJBWWhFRk9EbUF2eVdzU1F6UEJPWG9haEdXZS1DNWtIQ2JtcGdnOERCOHdudzI5WTdRekNtaEMtS0J3eFNGQml4bkoyRWJMczFHaTlRVGlScE03Y2pEcFdOT3Z4Qk9XVVk0cEZZOXlDRDJWWU9TZGdhNEF5M2Z3cWJMZWtiam9mNmltM3kyVFRYWUlmcEtQVGJXNEVVYkQ0dTJkT2hhenZmaWc?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
@@ -1749,6 +1749,14 @@
    "score": 8.0
   },
   {
+   "ticker": "HDFCBANK",
+   "name": "HDFC Bank",
+   "cur": "₹",
+   "px": 729.95,
+   "chg": -0.99,
+   "score": 7.5
+  },
+  {
    "ticker": "CAT",
    "name": "Caterpillar",
    "cur": "$",
@@ -1773,48 +1781,40 @@
    "score": 6.8
   },
   {
-   "ticker": "HDFCBANK",
-   "name": "HDFC Bank",
+   "ticker": "ITC",
+   "name": "ITC Limited",
    "cur": "₹",
-   "px": 738.6,
-   "chg": -0.18,
-   "score": 6.5
-  },
-  {
-   "ticker": "XOM",
-   "name": "Exxon Mobil",
-   "cur": "$",
-   "px": 161.23,
-   "chg": 1.59,
-   "score": 5.5
+   "px": 268.05,
+   "chg": -0.78,
+   "score": 5.6
   }
  ],
  "analysis": {
   "enabled": false,
   "reason": "Every analysis attempt failed; showing computed analysis instead.",
   "errors": [
-   "HDFCBANK: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-   "MSFT: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
-   "AAPL: ValueError: no JSON object in response",
-   "NVDA: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a"
+   "HDFCBANK: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
+   "MSFT: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
+   "AAPL: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
+   "NVDA: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }"
   ]
  },
  "live": {
   "started": "2026-09-04",
   "published": 113,
-  "settled": 31,
-  "open": 37,
-  "no_fill": 45,
+  "settled": 33,
+  "open": 34,
+  "no_fill": 46,
   "outcomes": {
    "TARGET_1": 2,
-   "STOPPED": 2,
-   "CLOSED": 27,
-   "NO_FILL": 45,
-   "OPEN": 19,
-   "PENDING": 18
+   "STOPPED": 3,
+   "CLOSED": 28,
+   "NO_FILL": 46,
+   "OPEN": 17,
+   "PENDING": 17
   },
-  "winRate": 45.2,
-  "avg": 0.53,
+  "winRate": 45.5,
+  "avg": 0.49,
   "total": 0.21,
   "days": [
    {
@@ -1888,14 +1888,23 @@
     "usa": 0.6,
     "eq": 100212.12,
     "n": 2
+   },
+   {
+    "date": "2026-09-24",
+    "d": "2026-09-24",
+    "all": -0.003,
+    "ind": -0.085,
+    "usa": 0.0,
+    "eq": 100208.71,
+    "n": 2
    }
   ],
   "markets": {
    "india": {
-    "n": 7,
-    "win": 42.9,
+    "n": 9,
+    "win": 44.4,
     "avg": -0.07,
-    "sum": -0.49
+    "sum": -0.66
    },
    "usa": {
     "n": 24,
@@ -1912,10 +1921,10 @@
     "sum": 1.0
    },
    "medium": {
-    "n": 12,
+    "n": 14,
     "win": 50.0,
-    "avg": 1.28,
-    "sum": 15.37
+    "avg": 1.09,
+    "sum": 15.2
    }
   },
   "sectors": [
@@ -1925,7 +1934,7 @@
    ],
    [
     "Financials",
-    -0.27
+    -0.24
    ],
    [
     "Energy",
@@ -2507,19 +2516,11 @@
  "performance": {
   "days": [
    {
-    "date": "2025-07-14",
-    "ind": -3.81,
-    "usa": 0.0,
-    "all": -0.152,
-    "eq": 99847.6,
-    "n": 1
-   },
-   {
     "date": "2025-07-15",
     "ind": -4.307,
     "usa": -0.372,
     "all": -0.041,
-    "eq": 99806.54,
+    "eq": 99958.88,
     "n": 6
    },
    {
@@ -2527,7 +2528,7 @@
     "ind": -2.755,
     "usa": 0.613,
     "all": -0.043,
-    "eq": 99763.79,
+    "eq": 99916.06,
     "n": 8
    },
    {
@@ -2535,7 +2536,7 @@
     "ind": 0.0,
     "usa": 1.701,
     "all": 0.068,
-    "eq": 99831.68,
+    "eq": 99984.06,
     "n": 2
    },
    {
@@ -2543,7 +2544,7 @@
     "ind": 0.0,
     "usa": 1.378,
     "all": 0.055,
-    "eq": 99886.69,
+    "eq": 100039.15,
     "n": 1
    },
    {
@@ -2551,7 +2552,7 @@
     "ind": -0.483,
     "usa": 1.241,
     "all": 0.015,
-    "eq": 99901.82,
+    "eq": 100054.3,
     "n": 6
    },
    {
@@ -2559,7 +2560,7 @@
     "ind": -0.442,
     "usa": -0.122,
     "all": -0.011,
-    "eq": 99890.55,
+    "eq": 100043.02,
     "n": 4
    },
    {
@@ -2567,7 +2568,7 @@
     "ind": -1.314,
     "usa": -0.326,
     "all": -0.031,
-    "eq": 99859.97,
+    "eq": 100012.39,
     "n": 9
    },
    {
@@ -2575,7 +2576,7 @@
     "ind": 1.148,
     "usa": 4.202,
     "all": 0.119,
-    "eq": 99979.02,
+    "eq": 100131.62,
     "n": 5
    },
    {
@@ -2583,7 +2584,7 @@
     "ind": 0.0,
     "usa": 0.185,
     "all": 0.007,
-    "eq": 99986.4,
+    "eq": 100139.01,
     "n": 2
    },
    {
@@ -2591,7 +2592,7 @@
     "ind": 1.567,
     "usa": -0.296,
     "all": 0.018,
-    "eq": 100004.36,
+    "eq": 100156.99,
     "n": 5
    },
    {
@@ -2599,7 +2600,7 @@
     "ind": 1.837,
     "usa": -6.806,
     "all": -0.099,
-    "eq": 99904.97,
+    "eq": 100057.46,
     "n": 4
    },
    {
@@ -2607,7 +2608,7 @@
     "ind": 0.75,
     "usa": -1.764,
     "all": -0.02,
-    "eq": 99884.71,
+    "eq": 100037.16,
     "n": 4
    },
    {
@@ -2615,7 +2616,7 @@
     "ind": -3.078,
     "usa": 2.306,
     "all": -0.051,
-    "eq": 99833.43,
+    "eq": 99985.81,
     "n": 3
    },
    {
@@ -2623,7 +2624,7 @@
     "ind": -0.895,
     "usa": 0.606,
     "all": 0.0,
-    "eq": 99833.65,
+    "eq": 99986.03,
     "n": 5
    },
    {
@@ -2631,7 +2632,7 @@
     "ind": -1.505,
     "usa": 0.0,
     "all": -0.06,
-    "eq": 99773.56,
+    "eq": 99925.84,
     "n": 2
    },
    {
@@ -2639,7 +2640,7 @@
     "ind": -2.277,
     "usa": 1.078,
     "all": -0.024,
-    "eq": 99749.62,
+    "eq": 99901.87,
     "n": 6
    },
    {
@@ -2647,7 +2648,7 @@
     "ind": -1.68,
     "usa": 0.416,
     "all": -0.017,
-    "eq": 99732.76,
+    "eq": 99884.98,
     "n": 10
    },
    {
@@ -2655,7 +2656,7 @@
     "ind": -1.564,
     "usa": 2.137,
     "all": 0.056,
-    "eq": 99788.48,
+    "eq": 99940.79,
     "n": 5
    },
    {
@@ -2663,7 +2664,7 @@
     "ind": 2.179,
     "usa": 0.897,
     "all": 0.065,
-    "eq": 99853.53,
+    "eq": 100005.93,
     "n": 7
    },
    {
@@ -2671,7 +2672,7 @@
     "ind": 2.287,
     "usa": 0.575,
     "all": 0.062,
-    "eq": 99915.57,
+    "eq": 100068.07,
     "n": 7
    },
    {
@@ -2679,7 +2680,7 @@
     "ind": 5.059,
     "usa": -2.311,
     "all": 0.006,
-    "eq": 99921.4,
+    "eq": 100073.91,
     "n": 3
    },
    {
@@ -2687,7 +2688,7 @@
     "ind": 3.639,
     "usa": -2.968,
     "all": 0.013,
-    "eq": 99934.82,
+    "eq": 100087.35,
     "n": 4
    },
    {
@@ -2695,7 +2696,7 @@
     "ind": 2.003,
     "usa": -3.181,
     "all": -0.058,
-    "eq": 99876.74,
+    "eq": 100029.18,
     "n": 3
    },
    {
@@ -2703,7 +2704,7 @@
     "ind": 0.0,
     "usa": -4.793,
     "all": -0.192,
-    "eq": 99685.26,
+    "eq": 99837.41,
     "n": 2
    },
    {
@@ -2711,7 +2712,7 @@
     "ind": 0.695,
     "usa": -1.932,
     "all": -0.007,
-    "eq": 99678.07,
+    "eq": 99830.21,
     "n": 3
    },
    {
@@ -2719,7 +2720,7 @@
     "ind": -1.298,
     "usa": 0.248,
     "all": -0.04,
-    "eq": 99638.65,
+    "eq": 99790.73,
     "n": 5
    },
    {
@@ -2727,7 +2728,7 @@
     "ind": -2.515,
     "usa": 3.13,
     "all": -0.025,
-    "eq": 99613.42,
+    "eq": 99765.46,
     "n": 6
    },
    {
@@ -2735,7 +2736,7 @@
     "ind": -1.684,
     "usa": 2.963,
     "all": 0.057,
-    "eq": 99669.76,
+    "eq": 99821.89,
     "n": 6
    },
    {
@@ -2743,7 +2744,7 @@
     "ind": 0.645,
     "usa": -0.21,
     "all": 0.003,
-    "eq": 99672.76,
+    "eq": 99824.89,
     "n": 3
    },
    {
@@ -2751,7 +2752,7 @@
     "ind": -0.052,
     "usa": -1.591,
     "all": -0.043,
-    "eq": 99629.79,
+    "eq": 99781.86,
     "n": 6
    },
    {
@@ -2759,7 +2760,7 @@
     "ind": 0.0,
     "usa": -1.176,
     "all": -0.047,
-    "eq": 99582.93,
+    "eq": 99734.93,
     "n": 2
    },
    {
@@ -2767,7 +2768,7 @@
     "ind": 0.0,
     "usa": 1.611,
     "all": 0.064,
-    "eq": 99647.09,
+    "eq": 99799.18,
     "n": 2
    },
    {
@@ -2775,7 +2776,7 @@
     "ind": -1.106,
     "usa": -2.715,
     "all": -0.066,
-    "eq": 99581.64,
+    "eq": 99733.63,
     "n": 3
    },
    {
@@ -2783,7 +2784,7 @@
     "ind": -1.39,
     "usa": 0.756,
     "all": -0.021,
-    "eq": 99560.46,
+    "eq": 99712.42,
     "n": 5
    },
    {
@@ -2791,7 +2792,7 @@
     "ind": -1.847,
     "usa": 0.0,
     "all": -0.074,
-    "eq": 99486.92,
+    "eq": 99638.77,
     "n": 5
    },
    {
@@ -2799,7 +2800,7 @@
     "ind": -0.913,
     "usa": 0.778,
     "all": 0.002,
-    "eq": 99489.05,
+    "eq": 99640.9,
     "n": 7
    },
    {
@@ -2807,7 +2808,7 @@
     "ind": -1.824,
     "usa": -2.095,
     "all": -0.078,
-    "eq": 99411.07,
+    "eq": 99562.8,
     "n": 6
    },
    {
@@ -2815,7 +2816,7 @@
     "ind": -1.037,
     "usa": -1.244,
     "all": -0.047,
-    "eq": 99364.34,
+    "eq": 99516.0,
     "n": 6
    },
    {
@@ -2823,7 +2824,7 @@
     "ind": -2.107,
     "usa": 0.761,
     "all": 0.002,
-    "eq": 99366.1,
+    "eq": 99517.76,
     "n": 4
    },
    {
@@ -2831,7 +2832,7 @@
     "ind": -1.733,
     "usa": 1.186,
     "all": 0.018,
-    "eq": 99384.23,
+    "eq": 99535.92,
     "n": 4
    },
    {
@@ -2839,7 +2840,7 @@
     "ind": -2.264,
     "usa": 2.015,
     "all": 0.012,
-    "eq": 99396.29,
+    "eq": 99548.0,
     "n": 5
    },
    {
@@ -2847,7 +2848,7 @@
     "ind": -1.774,
     "usa": 1.378,
     "all": 0.008,
-    "eq": 99404.08,
+    "eq": 99555.8,
     "n": 8
    },
    {
@@ -2855,7 +2856,7 @@
     "ind": -0.942,
     "usa": 2.476,
     "all": 0.082,
-    "eq": 99485.54,
+    "eq": 99637.39,
     "n": 8
    },
    {
@@ -2863,7 +2864,7 @@
     "ind": 1.368,
     "usa": 2.567,
     "all": 0.087,
-    "eq": 99571.8,
+    "eq": 99723.78,
     "n": 9
    },
    {
@@ -2871,7 +2872,7 @@
     "ind": 1.368,
     "usa": 1.119,
     "all": 0.048,
-    "eq": 99619.68,
+    "eq": 99771.73,
     "n": 9
    },
    {
@@ -2879,7 +2880,7 @@
     "ind": -1.697,
     "usa": 0.623,
     "all": -0.016,
-    "eq": 99603.41,
+    "eq": 99755.43,
     "n": 9
    },
    {
@@ -2887,7 +2888,7 @@
     "ind": -2.902,
     "usa": -1.284,
     "all": -0.08,
-    "eq": 99523.59,
+    "eq": 99675.49,
     "n": 9
    },
    {
@@ -2895,7 +2896,7 @@
     "ind": -1.81,
     "usa": -1.096,
     "all": -0.051,
-    "eq": 99472.86,
+    "eq": 99624.69,
     "n": 8
    },
    {
@@ -2903,7 +2904,7 @@
     "ind": -1.904,
     "usa": 0.197,
     "all": -0.034,
-    "eq": 99438.9,
+    "eq": 99590.68,
     "n": 4
    },
    {
@@ -2911,7 +2912,7 @@
     "ind": -0.907,
     "usa": -0.578,
     "all": -0.027,
-    "eq": 99411.56,
+    "eq": 99563.29,
     "n": 6
    },
    {
@@ -2919,7 +2920,7 @@
     "ind": -2.082,
     "usa": -0.193,
     "all": -0.04,
-    "eq": 99371.69,
+    "eq": 99523.36,
     "n": 7
    },
    {
@@ -2927,7 +2928,7 @@
     "ind": -1.995,
     "usa": 0.389,
     "all": -0.025,
-    "eq": 99346.53,
+    "eq": 99498.16,
     "n": 7
    },
    {
@@ -2935,7 +2936,7 @@
     "ind": 0.194,
     "usa": -0.411,
     "all": -0.012,
-    "eq": 99335.01,
+    "eq": 99486.63,
     "n": 5
    },
    {
@@ -2943,7 +2944,7 @@
     "ind": 0.901,
     "usa": 2.387,
     "all": 0.072,
-    "eq": 99406.25,
+    "eq": 99557.98,
     "n": 5
    },
    {
@@ -2951,7 +2952,7 @@
     "ind": 2.137,
     "usa": 1.94,
     "all": 0.081,
-    "eq": 99486.75,
+    "eq": 99638.6,
     "n": 7
    },
    {
@@ -2959,7 +2960,7 @@
     "ind": 1.951,
     "usa": 3.399,
     "all": 0.114,
-    "eq": 99600.41,
+    "eq": 99752.44,
     "n": 8
    },
    {
@@ -2967,7 +2968,7 @@
     "ind": 1.188,
     "usa": 0.269,
     "all": 0.029,
-    "eq": 99629.43,
+    "eq": 99781.5,
     "n": 8
    },
    {
@@ -2975,7 +2976,7 @@
     "ind": 0.0,
     "usa": -1.216,
     "all": -0.049,
-    "eq": 99580.95,
+    "eq": 99732.95,
     "n": 4
    },
    {
@@ -2983,7 +2984,7 @@
     "ind": 1.24,
     "usa": -2.746,
     "all": -0.057,
-    "eq": 99524.49,
+    "eq": 99676.39,
     "n": 6
    },
    {
@@ -2991,7 +2992,7 @@
     "ind": 0.606,
     "usa": -1.034,
     "all": -0.019,
-    "eq": 99505.09,
+    "eq": 99656.96,
     "n": 6
    },
    {
@@ -2999,7 +3000,7 @@
     "ind": 0.0,
     "usa": -1.987,
     "all": -0.079,
-    "eq": 99426.02,
+    "eq": 99577.77,
     "n": 2
    },
    {
@@ -3007,7 +3008,7 @@
     "ind": -0.269,
     "usa": -2.212,
     "all": -0.024,
-    "eq": 99402.43,
+    "eq": 99554.15,
     "n": 6
    },
    {
@@ -3015,7 +3016,7 @@
     "ind": -0.001,
     "usa": -5.426,
     "all": -0.031,
-    "eq": 99371.55,
+    "eq": 99523.23,
     "n": 7
    },
    {
@@ -3023,7 +3024,7 @@
     "ind": -1.695,
     "usa": 0.212,
     "all": -0.03,
-    "eq": 99342.07,
+    "eq": 99493.7,
     "n": 4
    },
    {
@@ -3031,7 +3032,7 @@
     "ind": -0.389,
     "usa": 0.977,
     "all": 0.012,
-    "eq": 99353.76,
+    "eq": 99505.41,
     "n": 4
    },
    {
@@ -3039,7 +3040,7 @@
     "ind": 2.268,
     "usa": 1.143,
     "all": 0.073,
-    "eq": 99426.0,
+    "eq": 99577.76,
     "n": 10
    },
    {
@@ -3047,7 +3048,7 @@
     "ind": 0.706,
     "usa": -0.261,
     "all": 0.015,
-    "eq": 99441.27,
+    "eq": 99593.05,
     "n": 12
    },
    {
@@ -3055,7 +3056,7 @@
     "ind": -0.457,
     "usa": -0.3,
     "all": -0.017,
-    "eq": 99424.66,
+    "eq": 99576.42,
     "n": 12
    },
    {
@@ -3063,7 +3064,7 @@
     "ind": 0.516,
     "usa": 1.415,
     "all": 0.033,
-    "eq": 99457.1,
+    "eq": 99608.9,
     "n": 12
    },
    {
@@ -3071,7 +3072,7 @@
     "ind": -0.773,
     "usa": 2.114,
     "all": 0.019,
-    "eq": 99475.57,
+    "eq": 99627.4,
     "n": 14
    },
    {
@@ -3079,7 +3080,7 @@
     "ind": -1.237,
     "usa": 3.96,
     "all": 0.02,
-    "eq": 99495.28,
+    "eq": 99647.14,
     "n": 12
    },
    {
@@ -3087,7 +3088,7 @@
     "ind": 0.0,
     "usa": 2.896,
     "all": 0.116,
-    "eq": 99610.53,
+    "eq": 99762.57,
     "n": 7
    },
    {
@@ -3095,7 +3096,7 @@
     "ind": 0.628,
     "usa": 1.032,
     "all": 0.037,
-    "eq": 99647.25,
+    "eq": 99799.34,
     "n": 11
    },
    {
@@ -3103,7 +3104,7 @@
     "ind": -1.354,
     "usa": -0.094,
     "all": -0.031,
-    "eq": 99616.46,
+    "eq": 99768.51,
     "n": 13
    },
    {
@@ -3111,7 +3112,7 @@
     "ind": -1.492,
     "usa": 0.741,
     "all": -0.009,
-    "eq": 99607.86,
+    "eq": 99759.89,
     "n": 14
    },
    {
@@ -3119,7 +3120,7 @@
     "ind": -2.349,
     "usa": 3.172,
     "all": -0.006,
-    "eq": 99602.27,
+    "eq": 99754.29,
     "n": 5
    },
    {
@@ -3127,7 +3128,7 @@
     "ind": -3.502,
     "usa": -0.588,
     "all": -0.117,
-    "eq": 99485.97,
+    "eq": 99637.82,
     "n": 5
    },
    {
@@ -3135,7 +3136,7 @@
     "ind": -2.64,
     "usa": -4.046,
     "all": -0.115,
-    "eq": 99371.59,
+    "eq": 99523.26,
     "n": 6
    },
    {
@@ -3143,7 +3144,7 @@
     "ind": -0.98,
     "usa": -3.05,
     "all": -0.056,
-    "eq": 99316.17,
+    "eq": 99467.76,
     "n": 5
    },
    {
@@ -3151,7 +3152,7 @@
     "ind": -1.265,
     "usa": 0.259,
     "all": -0.03,
-    "eq": 99286.12,
+    "eq": 99437.66,
     "n": 9
    },
    {
@@ -3159,7 +3160,7 @@
     "ind": 0.041,
     "usa": -0.646,
     "all": -0.011,
-    "eq": 99275.33,
+    "eq": 99426.85,
     "n": 11
    },
    {
@@ -3167,7 +3168,7 @@
     "ind": 0.0,
     "usa": 0.039,
     "all": 0.002,
-    "eq": 99276.86,
+    "eq": 99428.39,
     "n": 4
    },
    {
@@ -3175,7 +3176,7 @@
     "ind": 1.557,
     "usa": 0.453,
     "all": 0.036,
-    "eq": 99312.38,
+    "eq": 99463.96,
     "n": 5
    },
    {
@@ -3183,7 +3184,7 @@
     "ind": 3.13,
     "usa": 0.239,
     "all": 0.067,
-    "eq": 99379.3,
+    "eq": 99530.98,
     "n": 6
    },
    {
@@ -3191,7 +3192,7 @@
     "ind": 1.32,
     "usa": -1.709,
     "all": 0.009,
-    "eq": 99387.98,
+    "eq": 99539.68,
     "n": 11
    },
    {
@@ -3199,7 +3200,7 @@
     "ind": -0.263,
     "usa": -5.003,
     "all": -0.058,
-    "eq": 99330.42,
+    "eq": 99482.03,
     "n": 8
    },
    {
@@ -3207,7 +3208,7 @@
     "ind": 2.473,
     "usa": -3.571,
     "all": 0.038,
-    "eq": 99368.65,
+    "eq": 99520.32,
     "n": 4
    },
    {
@@ -3215,7 +3216,7 @@
     "ind": 0.465,
     "usa": -1.585,
     "all": -0.036,
-    "eq": 99332.82,
+    "eq": 99484.43,
     "n": 6
    },
    {
@@ -3223,7 +3224,7 @@
     "ind": 1.344,
     "usa": -3.875,
     "all": 0.002,
-    "eq": 99334.39,
+    "eq": 99486.0,
     "n": 8
    },
    {
@@ -3231,7 +3232,7 @@
     "ind": 0.44,
     "usa": 2.968,
     "all": 0.058,
-    "eq": 99392.06,
+    "eq": 99543.76,
     "n": 10
    },
    {
@@ -3239,7 +3240,7 @@
     "ind": -0.713,
     "usa": 0.0,
     "all": -0.029,
-    "eq": 99363.73,
+    "eq": 99515.39,
     "n": 7
    },
    {
@@ -3247,7 +3248,7 @@
     "ind": -0.034,
     "usa": -2.298,
     "all": -0.014,
-    "eq": 99349.51,
+    "eq": 99501.15,
     "n": 7
    },
    {
@@ -3255,7 +3256,7 @@
     "ind": -0.645,
     "usa": -1.041,
     "all": -0.028,
-    "eq": 99321.61,
+    "eq": 99473.21,
     "n": 7
    },
    {
@@ -3263,7 +3264,7 @@
     "ind": -0.661,
     "usa": 0.57,
     "all": -0.012,
-    "eq": 99309.33,
+    "eq": 99460.9,
     "n": 7
    },
    {
@@ -3271,7 +3272,7 @@
     "ind": -0.11,
     "usa": 2.037,
     "all": 0.028,
-    "eq": 99336.95,
+    "eq": 99488.57,
     "n": 8
    },
    {
@@ -3279,7 +3280,7 @@
     "ind": -0.808,
     "usa": 4.287,
     "all": -0.007,
-    "eq": 99330.16,
+    "eq": 99481.77,
     "n": 8
    },
    {
@@ -3287,7 +3288,7 @@
     "ind": -0.71,
     "usa": 1.257,
     "all": 0.008,
-    "eq": 99338.02,
+    "eq": 99489.64,
     "n": 13
    },
    {
@@ -3295,7 +3296,7 @@
     "ind": -0.941,
     "usa": 0.0,
     "all": -0.038,
-    "eq": 99300.63,
+    "eq": 99452.19,
     "n": 6
    },
    {
@@ -3303,7 +3304,7 @@
     "ind": -0.701,
     "usa": 0.048,
     "all": -0.013,
-    "eq": 99287.64,
+    "eq": 99439.18,
     "n": 8
    },
    {
@@ -3311,7 +3312,7 @@
     "ind": 0.155,
     "usa": 1.482,
     "all": 0.033,
-    "eq": 99320.15,
+    "eq": 99471.74,
     "n": 6
    },
    {
@@ -3319,7 +3320,7 @@
     "ind": -0.039,
     "usa": -0.722,
     "all": -0.008,
-    "eq": 99312.56,
+    "eq": 99464.15,
     "n": 9
    },
    {
@@ -3327,7 +3328,7 @@
     "ind": -0.585,
     "usa": 0.314,
     "all": -0.016,
-    "eq": 99296.46,
+    "eq": 99448.01,
     "n": 10
    },
    {
@@ -3335,7 +3336,7 @@
     "ind": -0.333,
     "usa": 0.447,
     "all": -0.006,
-    "eq": 99290.96,
+    "eq": 99442.51,
     "n": 8
    },
    {
@@ -3343,7 +3344,7 @@
     "ind": 0.86,
     "usa": 2.312,
     "all": 0.063,
-    "eq": 99353.95,
+    "eq": 99505.6,
     "n": 4
    },
    {
@@ -3351,7 +3352,7 @@
     "ind": 1.12,
     "usa": -3.272,
     "all": -0.043,
-    "eq": 99311.19,
+    "eq": 99462.76,
     "n": 4
    },
    {
@@ -3359,7 +3360,7 @@
     "ind": 0.701,
     "usa": -2.818,
     "all": -0.032,
-    "eq": 99279.11,
+    "eq": 99430.65,
     "n": 7
    },
    {
@@ -3367,7 +3368,7 @@
     "ind": 0.379,
     "usa": -1.213,
     "all": -0.013,
-    "eq": 99266.06,
+    "eq": 99417.57,
     "n": 9
    },
    {
@@ -3375,7 +3376,7 @@
     "ind": -0.503,
     "usa": -3.826,
     "all": -0.126,
-    "eq": 99140.54,
+    "eq": 99291.86,
     "n": 5
    },
    {
@@ -3383,7 +3384,7 @@
     "ind": -2.846,
     "usa": -1.916,
     "all": -0.084,
-    "eq": 99057.19,
+    "eq": 99208.38,
     "n": 5
    },
    {
@@ -3391,7 +3392,7 @@
     "ind": -2.913,
     "usa": -0.177,
     "all": -0.034,
-    "eq": 99023.07,
+    "eq": 99174.21,
     "n": 4
    },
    {
@@ -3399,7 +3400,7 @@
     "ind": 0.721,
     "usa": -1.677,
     "all": -0.043,
-    "eq": 98980.38,
+    "eq": 99131.45,
     "n": 4
    },
    {
@@ -3407,7 +3408,7 @@
     "ind": 0.374,
     "usa": 2.919,
     "all": 0.049,
-    "eq": 99028.77,
+    "eq": 99179.92,
     "n": 6
    },
    {
@@ -3415,7 +3416,7 @@
     "ind": 0.298,
     "usa": 1.878,
     "all": 0.044,
-    "eq": 99071.87,
+    "eq": 99223.08,
     "n": 8
    },
    {
@@ -3423,7 +3424,7 @@
     "ind": -1.195,
     "usa": 0.169,
     "all": -0.017,
-    "eq": 99054.54,
+    "eq": 99205.73,
     "n": 9
    },
    {
@@ -3431,7 +3432,7 @@
     "ind": -0.815,
     "usa": -0.367,
     "all": -0.022,
-    "eq": 99032.39,
+    "eq": 99183.55,
     "n": 7
    },
    {
@@ -3439,7 +3440,7 @@
     "ind": -0.041,
     "usa": -1.057,
     "all": -0.032,
-    "eq": 99000.58,
+    "eq": 99151.69,
     "n": 8
    },
    {
@@ -3447,7 +3448,7 @@
     "ind": 1.748,
     "usa": -0.439,
     "all": -0.008,
-    "eq": 98992.82,
+    "eq": 99143.91,
     "n": 9
    },
    {
@@ -3455,7 +3456,7 @@
     "ind": 0.53,
     "usa": 1.309,
     "all": 0.041,
-    "eq": 99033.08,
+    "eq": 99184.23,
     "n": 8
    },
    {
@@ -3463,7 +3464,7 @@
     "ind": 0.151,
     "usa": 0.851,
     "all": 0.022,
-    "eq": 99054.91,
+    "eq": 99206.09,
     "n": 7
    },
    {
@@ -3471,7 +3472,7 @@
     "ind": 0.079,
     "usa": 0.233,
     "all": 0.006,
-    "eq": 99060.56,
+    "eq": 99211.76,
     "n": 12
    },
    {
@@ -3479,7 +3480,7 @@
     "ind": -0.012,
     "usa": -0.42,
     "all": -0.007,
-    "eq": 99053.88,
+    "eq": 99205.07,
     "n": 13
    },
    {
@@ -3487,7 +3488,7 @@
     "ind": -1.813,
     "usa": 0.0,
     "all": -0.073,
-    "eq": 98982.06,
+    "eq": 99133.14,
     "n": 8
    },
    {
@@ -3495,7 +3496,7 @@
     "ind": -2.42,
     "usa": 0.452,
     "all": -0.044,
-    "eq": 98938.73,
+    "eq": 99089.74,
     "n": 13
    },
    {
@@ -3503,7 +3504,7 @@
     "ind": -0.265,
     "usa": -1.691,
     "all": -0.039,
-    "eq": 98900.02,
+    "eq": 99050.97,
     "n": 12
    },
    {
@@ -3511,7 +3512,7 @@
     "ind": -1.068,
     "usa": 1.961,
     "all": 0.027,
-    "eq": 98926.23,
+    "eq": 99077.23,
     "n": 7
    },
    {
@@ -3519,7 +3520,7 @@
     "ind": -3.247,
     "usa": 1.221,
     "all": -0.002,
-    "eq": 98924.03,
+    "eq": 99075.02,
     "n": 7
    },
    {
@@ -3527,7 +3528,7 @@
     "ind": -3.255,
     "usa": 3.304,
     "all": 0.001,
-    "eq": 98925.01,
+    "eq": 99076.0,
     "n": 4
    },
    {
@@ -3535,7 +3536,7 @@
     "ind": -0.232,
     "usa": 1.983,
     "all": 0.035,
-    "eq": 98959.66,
+    "eq": 99110.7,
     "n": 6
    },
    {
@@ -3543,7 +3544,7 @@
     "ind": -2.555,
     "usa": -1.365,
     "all": -0.078,
-    "eq": 98882.08,
+    "eq": 99033.0,
     "n": 8
    },
    {
@@ -3551,7 +3552,7 @@
     "ind": 1.037,
     "usa": 3.899,
     "all": 0.11,
-    "eq": 98991.01,
+    "eq": 99142.1,
     "n": 5
    },
    {
@@ -3559,7 +3560,7 @@
     "ind": 0.516,
     "usa": 2.233,
     "all": 0.066,
-    "eq": 99056.76,
+    "eq": 99207.95,
     "n": 3
    },
    {
@@ -3567,7 +3568,7 @@
     "ind": 0.011,
     "usa": 1.847,
     "all": 0.044,
-    "eq": 99100.84,
+    "eq": 99252.09,
     "n": 5
    },
    {
@@ -3575,7 +3576,7 @@
     "ind": -2.346,
     "usa": 3.222,
     "all": -0.02,
-    "eq": 99081.41,
+    "eq": 99232.64,
     "n": 6
    },
    {
@@ -3583,7 +3584,7 @@
     "ind": -2.91,
     "usa": 0.0,
     "all": -0.116,
-    "eq": 98966.08,
+    "eq": 99117.14,
     "n": 3
    },
    {
@@ -3591,7 +3592,7 @@
     "ind": -0.252,
     "usa": 0.009,
     "all": -0.005,
-    "eq": 98961.28,
+    "eq": 99112.32,
     "n": 6
    },
    {
@@ -3599,7 +3600,7 @@
     "ind": 0.199,
     "usa": -2.389,
     "all": -0.033,
-    "eq": 98928.18,
+    "eq": 99079.17,
     "n": 5
    },
    {
@@ -3607,7 +3608,7 @@
     "ind": 2.808,
     "usa": 5.067,
     "all": 0.18,
-    "eq": 99106.35,
+    "eq": 99257.62,
     "n": 4
    },
    {
@@ -3615,7 +3616,7 @@
     "ind": 0.0,
     "usa": 3.713,
     "all": 0.149,
-    "eq": 99253.56,
+    "eq": 99405.05,
     "n": 5
    },
    {
@@ -3623,7 +3624,7 @@
     "ind": 0.0,
     "usa": 4.721,
     "all": 0.189,
-    "eq": 99440.98,
+    "eq": 99592.76,
     "n": 4
    },
    {
@@ -3631,7 +3632,7 @@
     "ind": 1.269,
     "usa": 2.863,
     "all": 0.102,
-    "eq": 99542.19,
+    "eq": 99694.13,
     "n": 5
    },
    {
@@ -3639,7 +3640,7 @@
     "ind": 0.46,
     "usa": -5.747,
     "all": -0.106,
-    "eq": 99436.93,
+    "eq": 99588.7,
     "n": 4
    },
    {
@@ -3647,7 +3648,7 @@
     "ind": 0.0,
     "usa": -3.836,
     "all": -0.153,
-    "eq": 99284.35,
+    "eq": 99435.89,
     "n": 4
    },
    {
@@ -3655,7 +3656,7 @@
     "ind": 3.456,
     "usa": -0.841,
     "all": 0.031,
-    "eq": 99314.94,
+    "eq": 99466.53,
     "n": 8
    },
    {
@@ -3663,7 +3664,7 @@
     "ind": 0.0,
     "usa": -5.8,
     "all": -0.232,
-    "eq": 99084.53,
+    "eq": 99235.76,
     "n": 2
    },
    {
@@ -3671,7 +3672,7 @@
     "ind": 1.065,
     "usa": -4.236,
     "all": -0.021,
-    "eq": 99063.71,
+    "eq": 99214.91,
     "n": 10
    },
    {
@@ -3679,7 +3680,7 @@
     "ind": 0.487,
     "usa": -2.74,
     "all": -0.016,
-    "eq": 99048.13,
+    "eq": 99199.31,
     "n": 11
    },
    {
@@ -3687,7 +3688,7 @@
     "ind": 0.593,
     "usa": -4.976,
     "all": -0.032,
-    "eq": 99016.47,
+    "eq": 99167.6,
     "n": 8
    },
    {
@@ -3695,7 +3696,7 @@
     "ind": -1.754,
     "usa": -3.635,
     "all": -0.092,
-    "eq": 98925.72,
+    "eq": 99076.71,
     "n": 14
    },
    {
@@ -3703,7 +3704,7 @@
     "ind": -2.116,
     "usa": -7.0,
     "all": -0.117,
-    "eq": 98809.77,
+    "eq": 98960.59,
     "n": 6
    },
    {
@@ -3711,7 +3712,7 @@
     "ind": -2.4,
     "usa": -2.799,
     "all": -0.104,
-    "eq": 98707.03,
+    "eq": 98857.69,
     "n": 8
    },
    {
@@ -3719,7 +3720,7 @@
     "ind": -1.337,
     "usa": -2.728,
     "all": -0.077,
-    "eq": 98630.71,
+    "eq": 98781.25,
     "n": 7
    },
    {
@@ -3727,7 +3728,7 @@
     "ind": 1.138,
     "usa": 1.44,
     "all": 0.052,
-    "eq": 98681.56,
+    "eq": 98832.18,
     "n": 2
    },
    {
@@ -3735,7 +3736,7 @@
     "ind": 0.618,
     "usa": 0.0,
     "all": 0.025,
-    "eq": 98705.96,
+    "eq": 98856.62,
     "n": 4
    },
    {
@@ -3743,7 +3744,7 @@
     "ind": 2.039,
     "usa": 0.0,
     "all": 0.082,
-    "eq": 98786.45,
+    "eq": 98937.23,
     "n": 2
    },
    {
@@ -3751,7 +3752,7 @@
     "ind": 0.548,
     "usa": 4.156,
     "all": 0.058,
-    "eq": 98843.74,
+    "eq": 98994.61,
     "n": 4
    },
    {
@@ -3759,7 +3760,7 @@
     "ind": 0.921,
     "usa": 3.927,
     "all": 0.067,
-    "eq": 98909.88,
+    "eq": 99060.85,
     "n": 4
    },
    {
@@ -3767,7 +3768,7 @@
     "ind": 1.484,
     "usa": -1.701,
     "all": 0.038,
-    "eq": 98947.6,
+    "eq": 99098.63,
     "n": 6
    },
    {
@@ -3775,7 +3776,7 @@
     "ind": -0.202,
     "usa": 0.0,
     "all": -0.008,
-    "eq": 98939.61,
+    "eq": 99090.62,
     "n": 4
    },
    {
@@ -3783,7 +3784,7 @@
     "ind": -2.34,
     "usa": -2.403,
     "all": -0.094,
-    "eq": 98846.16,
+    "eq": 98997.03,
     "n": 6
    },
    {
@@ -3791,7 +3792,7 @@
     "ind": -3.593,
     "usa": -2.853,
     "all": -0.126,
-    "eq": 98721.66,
+    "eq": 98872.34,
     "n": 5
    },
    {
@@ -3799,7 +3800,7 @@
     "ind": -6.154,
     "usa": 0.409,
     "all": -0.181,
-    "eq": 98543.42,
+    "eq": 98693.83,
     "n": 4
    },
    {
@@ -3807,7 +3808,7 @@
     "ind": -5.903,
     "usa": -0.9,
     "all": -0.116,
-    "eq": 98429.06,
+    "eq": 98579.3,
     "n": 5
    },
    {
@@ -3815,7 +3816,7 @@
     "ind": 3.949,
     "usa": -3.972,
     "all": -0.053,
-    "eq": 98376.65,
+    "eq": 98526.8,
     "n": 3
    },
    {
@@ -3823,7 +3824,7 @@
     "ind": -0.289,
     "usa": -2.549,
     "all": -0.042,
-    "eq": 98335.63,
+    "eq": 98485.72,
     "n": 3
    },
    {
@@ -3831,7 +3832,7 @@
     "ind": 0.0,
     "usa": -2.533,
     "all": -0.101,
-    "eq": 98235.99,
+    "eq": 98385.93,
     "n": 1
    },
    {
@@ -3839,7 +3840,7 @@
     "ind": -1.074,
     "usa": -6.21,
     "all": -0.094,
-    "eq": 98143.32,
+    "eq": 98293.12,
     "n": 4
    },
    {
@@ -3847,7 +3848,7 @@
     "ind": -0.891,
     "usa": -0.255,
     "all": -0.023,
-    "eq": 98120.84,
+    "eq": 98270.61,
     "n": 4
    },
    {
@@ -3855,7 +3856,7 @@
     "ind": -2.59,
     "usa": -0.977,
     "all": -0.065,
-    "eq": 98057.19,
+    "eq": 98206.85,
     "n": 5
    },
    {
@@ -3863,7 +3864,7 @@
     "ind": -2.16,
     "usa": 0.36,
     "all": -0.026,
-    "eq": 98031.78,
+    "eq": 98181.41,
     "n": 5
    },
    {
@@ -3871,7 +3872,7 @@
     "ind": -2.825,
     "usa": -2.341,
     "all": -0.1,
-    "eq": 97933.68,
+    "eq": 98083.15,
     "n": 6
    },
    {
@@ -3879,7 +3880,7 @@
     "ind": 0.0,
     "usa": -1.519,
     "all": -0.061,
-    "eq": 97874.18,
+    "eq": 98023.57,
     "n": 5
    },
    {
@@ -3887,7 +3888,7 @@
     "ind": 0.0,
     "usa": -0.19,
     "all": -0.008,
-    "eq": 97866.75,
+    "eq": 98016.13,
     "n": 2
    },
    {
@@ -3895,7 +3896,7 @@
     "ind": 0.0,
     "usa": -0.412,
     "all": -0.016,
-    "eq": 97850.64,
+    "eq": 97999.99,
     "n": 1
    },
    {
@@ -3903,7 +3904,7 @@
     "ind": -1.489,
     "usa": 0.499,
     "all": -0.02,
-    "eq": 97831.25,
+    "eq": 97980.58,
     "n": 2
    },
    {
@@ -3911,7 +3912,7 @@
     "ind": -2.388,
     "usa": -5.767,
     "all": -0.163,
-    "eq": 97671.7,
+    "eq": 97820.77,
     "n": 2
    },
    {
@@ -3919,7 +3920,7 @@
     "ind": 0.861,
     "usa": 1.297,
     "all": 0.043,
-    "eq": 97713.84,
+    "eq": 97862.98,
     "n": 2
    },
    {
@@ -3927,7 +3928,7 @@
     "ind": 0.0,
     "usa": 0.907,
     "all": 0.036,
-    "eq": 97749.28,
+    "eq": 97898.47,
     "n": 2
    },
    {
@@ -3935,7 +3936,7 @@
     "ind": -1.219,
     "usa": 6.811,
     "all": 0.165,
-    "eq": 97910.94,
+    "eq": 98060.38,
     "n": 3
    },
    {
@@ -3943,7 +3944,7 @@
     "ind": -1.798,
     "usa": -3.371,
     "all": -0.103,
-    "eq": 97809.7,
+    "eq": 97958.99,
     "n": 2
    },
    {
@@ -3951,7 +3952,7 @@
     "ind": -3.249,
     "usa": -1.141,
     "all": -0.074,
-    "eq": 97737.56,
+    "eq": 97886.74,
     "n": 3
    },
    {
@@ -3959,7 +3960,7 @@
     "ind": -4.931,
     "usa": 0.677,
     "all": -0.048,
-    "eq": 97690.95,
+    "eq": 97840.06,
     "n": 3
    },
    {
@@ -3967,7 +3968,7 @@
     "ind": 0.0,
     "usa": 6.631,
     "all": 0.265,
-    "eq": 97950.06,
+    "eq": 98099.56,
     "n": 1
    },
    {
@@ -3975,7 +3976,7 @@
     "ind": -4.835,
     "usa": 9.224,
     "all": 0.088,
-    "eq": 98036.03,
+    "eq": 98185.66,
     "n": 2
    },
    {
@@ -3983,7 +3984,7 @@
     "ind": 0.0,
     "usa": 9.171,
     "all": 0.367,
-    "eq": 98395.65,
+    "eq": 98545.83,
     "n": 2
    },
    {
@@ -3991,7 +3992,7 @@
     "ind": 6.546,
     "usa": 3.665,
     "all": 0.17,
-    "eq": 98562.58,
+    "eq": 98713.01,
     "n": 5
    },
    {
@@ -3999,7 +4000,7 @@
     "ind": 3.955,
     "usa": 3.417,
     "all": 0.146,
-    "eq": 98706.39,
+    "eq": 98857.05,
     "n": 7
    },
    {
@@ -4007,7 +4008,7 @@
     "ind": 1.731,
     "usa": 3.222,
     "all": 0.095,
-    "eq": 98799.96,
+    "eq": 98950.76,
     "n": 7
    },
    {
@@ -4015,7 +4016,7 @@
     "ind": 4.648,
     "usa": 6.065,
     "all": 0.214,
-    "eq": 99011.63,
+    "eq": 99162.75,
     "n": 2
    },
    {
@@ -4023,7 +4024,7 @@
     "ind": -0.383,
     "usa": 9.102,
     "all": 0.111,
-    "eq": 99121.69,
+    "eq": 99272.98,
     "n": 3
    },
    {
@@ -4031,7 +4032,7 @@
     "ind": 1.343,
     "usa": 7.743,
     "all": 0.139,
-    "eq": 99259.53,
+    "eq": 99411.03,
     "n": 3
    },
    {
@@ -4039,7 +4040,7 @@
     "ind": 0.527,
     "usa": 0.0,
     "all": 0.021,
-    "eq": 99280.46,
+    "eq": 99431.99,
     "n": 3
    },
    {
@@ -4047,7 +4048,7 @@
     "ind": 3.291,
     "usa": 3.675,
     "all": 0.137,
-    "eq": 99416.25,
+    "eq": 99567.99,
     "n": 3
    },
    {
@@ -4055,7 +4056,7 @@
     "ind": 0.0,
     "usa": -0.13,
     "all": -0.005,
-    "eq": 99411.08,
+    "eq": 99562.81,
     "n": 2
    },
    {
@@ -4063,7 +4064,7 @@
     "ind": 2.317,
     "usa": 2.216,
     "all": 0.091,
-    "eq": 99501.87,
+    "eq": 99653.74,
     "n": 3
    },
    {
@@ -4071,7 +4072,7 @@
     "ind": 0.445,
     "usa": -0.898,
     "all": -0.009,
-    "eq": 99492.85,
+    "eq": 99644.71,
     "n": 6
    },
    {
@@ -4079,7 +4080,7 @@
     "ind": -4.992,
     "usa": 0.0,
     "all": -0.2,
-    "eq": 99294.17,
+    "eq": 99445.73,
     "n": 2
    },
    {
@@ -4087,7 +4088,7 @@
     "ind": -3.873,
     "usa": 0.0,
     "all": -0.155,
-    "eq": 99140.34,
+    "eq": 99291.66,
     "n": 3
    },
    {
@@ -4095,7 +4096,7 @@
     "ind": 0.0,
     "usa": 0.649,
     "all": 0.026,
-    "eq": 99166.08,
+    "eq": 99317.44,
     "n": 2
    },
    {
@@ -4103,7 +4104,7 @@
     "ind": 0.0,
     "usa": 7.636,
     "all": 0.305,
-    "eq": 99468.99,
+    "eq": 99620.81,
     "n": 1
    },
    {
@@ -4111,7 +4112,7 @@
     "ind": 0.0,
     "usa": 3.536,
     "all": 0.141,
-    "eq": 99609.67,
+    "eq": 99761.7,
     "n": 2
    },
    {
@@ -4119,7 +4120,7 @@
     "ind": 1.821,
     "usa": 4.077,
     "all": 0.118,
-    "eq": 99727.17,
+    "eq": 99879.38,
     "n": 4
    },
    {
@@ -4127,7 +4128,7 @@
     "ind": 0.431,
     "usa": 2.984,
     "all": 0.051,
-    "eq": 99778.32,
+    "eq": 99930.61,
     "n": 9
    },
    {
@@ -4135,7 +4136,7 @@
     "ind": 0.398,
     "usa": -0.759,
     "all": 0.009,
-    "eq": 99787.61,
+    "eq": 99939.92,
     "n": 7
    },
    {
@@ -4143,7 +4144,7 @@
     "ind": -2.923,
     "usa": 1.725,
     "all": -0.055,
-    "eq": 99732.78,
+    "eq": 99885.0,
     "n": 3
    },
    {
@@ -4151,7 +4152,7 @@
     "ind": -0.882,
     "usa": 1.477,
     "all": 0.012,
-    "eq": 99744.65,
+    "eq": 99896.89,
     "n": 6
    },
    {
@@ -4159,7 +4160,7 @@
     "ind": -1.083,
     "usa": 1.238,
     "all": 0.026,
-    "eq": 99770.91,
+    "eq": 99923.19,
     "n": 4
    },
    {
@@ -4167,7 +4168,7 @@
     "ind": -0.502,
     "usa": 1.819,
     "all": 0.046,
-    "eq": 99817.03,
+    "eq": 99969.38,
     "n": 7
    },
    {
@@ -4175,7 +4176,7 @@
     "ind": -2.449,
     "usa": -0.812,
     "all": -0.059,
-    "eq": 99758.47,
+    "eq": 99910.73,
     "n": 5
    },
    {
@@ -4183,7 +4184,7 @@
     "ind": -2.247,
     "usa": 2.421,
     "all": 0.05,
-    "eq": 99808.49,
+    "eq": 99960.83,
     "n": 4
    },
    {
@@ -4191,7 +4192,7 @@
     "ind": -2.191,
     "usa": 0.285,
     "all": -0.063,
-    "eq": 99745.72,
+    "eq": 99897.96,
     "n": 4
    },
    {
@@ -4199,7 +4200,7 @@
     "ind": -0.114,
     "usa": 2.082,
     "all": 0.025,
-    "eq": 99770.39,
+    "eq": 99922.67,
     "n": 3
    },
    {
@@ -4207,7 +4208,7 @@
     "ind": -3.273,
     "usa": 2.608,
     "all": -0.072,
-    "eq": 99698.45,
+    "eq": 99850.62,
     "n": 4
    },
    {
@@ -4215,7 +4216,7 @@
     "ind": 0.0,
     "usa": -2.535,
     "all": -0.101,
-    "eq": 99597.36,
+    "eq": 99749.37,
     "n": 1
    },
    {
@@ -4223,7 +4224,7 @@
     "ind": 0.0,
     "usa": 1.388,
     "all": 0.056,
-    "eq": 99652.67,
+    "eq": 99804.77,
     "n": 3
    },
    {
@@ -4231,7 +4232,7 @@
     "ind": -1.115,
     "usa": 0.74,
     "all": -0.007,
-    "eq": 99645.2,
+    "eq": 99797.29,
     "n": 6
    },
    {
@@ -4239,7 +4240,7 @@
     "ind": -2.858,
     "usa": -0.089,
     "all": -0.04,
-    "eq": 99604.86,
+    "eq": 99756.89,
     "n": 6
    },
    {
@@ -4247,7 +4248,7 @@
     "ind": 0.0,
     "usa": 1.057,
     "all": 0.042,
-    "eq": 99646.97,
+    "eq": 99799.06,
     "n": 3
    },
    {
@@ -4255,7 +4256,7 @@
     "ind": -0.442,
     "usa": -1.4,
     "all": -0.045,
-    "eq": 99602.06,
+    "eq": 99754.09,
     "n": 7
    },
    {
@@ -4263,7 +4264,7 @@
     "ind": -1.486,
     "usa": -0.843,
     "all": -0.042,
-    "eq": 99559.93,
+    "eq": 99711.89,
     "n": 9
    },
    {
@@ -4271,7 +4272,7 @@
     "ind": -0.599,
     "usa": -0.748,
     "all": -0.028,
-    "eq": 99531.76,
+    "eq": 99683.68,
     "n": 11
    },
    {
@@ -4279,7 +4280,7 @@
     "ind": -1.787,
     "usa": -0.235,
     "all": -0.035,
-    "eq": 99496.64,
+    "eq": 99648.51,
     "n": 12
    },
    {
@@ -4287,7 +4288,7 @@
     "ind": -0.967,
     "usa": 0.0,
     "all": -0.039,
-    "eq": 99458.17,
+    "eq": 99609.97,
     "n": 4
    },
    {
@@ -4295,7 +4296,7 @@
     "ind": -1.013,
     "usa": -0.294,
     "all": -0.015,
-    "eq": 99442.9,
+    "eq": 99594.68,
     "n": 8
    },
    {
@@ -4303,7 +4304,7 @@
     "ind": -3.751,
     "usa": -1.707,
     "all": -0.103,
-    "eq": 99340.15,
+    "eq": 99491.78,
     "n": 7
    },
    {
@@ -4311,7 +4312,7 @@
     "ind": -4.031,
     "usa": 1.505,
     "all": -0.003,
-    "eq": 99337.1,
+    "eq": 99488.72,
     "n": 7
    },
    {
@@ -4319,7 +4320,7 @@
     "ind": -1.855,
     "usa": 0.759,
     "all": -0.004,
-    "eq": 99332.64,
+    "eq": 99484.25,
     "n": 3
    },
    {
@@ -4327,7 +4328,7 @@
     "ind": -2.345,
     "usa": -1.177,
     "all": -0.067,
-    "eq": 99266.0,
+    "eq": 99417.51,
     "n": 7
    },
    {
@@ -4335,7 +4336,7 @@
     "ind": -2.604,
     "usa": -4.613,
     "all": -0.158,
-    "eq": 99109.42,
+    "eq": 99260.69,
     "n": 3
    },
    {
@@ -4343,7 +4344,7 @@
     "ind": 0.38,
     "usa": -6.212,
     "all": -0.143,
-    "eq": 98967.69,
+    "eq": 99118.74,
     "n": 5
    },
    {
@@ -4351,7 +4352,7 @@
     "ind": -2.797,
     "usa": -3.546,
     "all": -0.127,
-    "eq": 98842.14,
+    "eq": 98993.0,
     "n": 8
    },
    {
@@ -4359,7 +4360,7 @@
     "ind": 1.288,
     "usa": -1.486,
     "all": -0.022,
-    "eq": 98819.93,
+    "eq": 98970.76,
     "n": 9
    },
    {
@@ -4367,7 +4368,7 @@
     "ind": 0.279,
     "usa": -3.048,
     "all": -0.069,
-    "eq": 98752.05,
+    "eq": 98902.77,
     "n": 5
    },
    {
@@ -4375,7 +4376,7 @@
     "ind": 2.635,
     "usa": 9.1,
     "all": 0.192,
-    "eq": 98941.27,
+    "eq": 99092.28,
     "n": 3
    },
    {
@@ -4383,7 +4384,7 @@
     "ind": 1.73,
     "usa": 4.913,
     "all": 0.101,
-    "eq": 99041.22,
+    "eq": 99192.39,
     "n": 4
    },
    {
@@ -4391,7 +4392,7 @@
     "ind": 1.492,
     "usa": 3.17,
     "all": 0.088,
-    "eq": 99128.83,
+    "eq": 99280.13,
     "n": 7
    },
    {
@@ -4399,7 +4400,7 @@
     "ind": 0.117,
     "usa": 0.0,
     "all": 0.005,
-    "eq": 99133.48,
+    "eq": 99284.79,
     "n": 2
    },
    {
@@ -4407,7 +4408,7 @@
     "ind": -0.019,
     "usa": 2.774,
     "all": 0.055,
-    "eq": 99188.1,
+    "eq": 99339.49,
     "n": 4
    },
    {
@@ -4415,7 +4416,7 @@
     "ind": -2.813,
     "usa": 3.889,
     "all": 0.066,
-    "eq": 99253.77,
+    "eq": 99405.26,
     "n": 3
    },
    {
@@ -4423,7 +4424,7 @@
     "ind": -1.504,
     "usa": 3.901,
     "all": 0.012,
-    "eq": 99265.58,
+    "eq": 99417.09,
     "n": 3
    },
    {
@@ -4431,7 +4432,7 @@
     "ind": 0.026,
     "usa": 0.937,
     "all": 0.017,
-    "eq": 99282.11,
+    "eq": 99433.64,
     "n": 7
    },
    {
@@ -4439,7 +4440,7 @@
     "ind": 1.35,
     "usa": 0.0,
     "all": 0.054,
-    "eq": 99335.72,
+    "eq": 99487.34,
     "n": 4
    },
    {
@@ -4447,7 +4448,7 @@
     "ind": -1.249,
     "usa": 4.504,
     "all": -0.004,
-    "eq": 99331.82,
+    "eq": 99483.43,
     "n": 5
    },
    {
@@ -4455,7 +4456,7 @@
     "ind": 0.431,
     "usa": 6.722,
     "all": 0.089,
-    "eq": 99420.36,
+    "eq": 99572.11,
     "n": 7
    },
    {
@@ -4463,7 +4464,7 @@
     "ind": -0.156,
     "usa": 5.957,
     "all": 0.099,
-    "eq": 99518.35,
+    "eq": 99670.25,
     "n": 7
    },
    {
@@ -4471,7 +4472,7 @@
     "ind": 1.441,
     "usa": 1.078,
     "all": 0.05,
-    "eq": 99568.5,
+    "eq": 99720.47,
     "n": 6
    },
    {
@@ -4479,7 +4480,7 @@
     "ind": 3.488,
     "usa": 5.418,
     "all": 0.186,
-    "eq": 99753.54,
+    "eq": 99905.79,
     "n": 5
    },
    {
@@ -4487,7 +4488,7 @@
     "ind": -0.848,
     "usa": 2.881,
     "all": -0.004,
-    "eq": 99749.46,
+    "eq": 99901.71,
     "n": 5
    },
    {
@@ -4495,7 +4496,7 @@
     "ind": 0.018,
     "usa": 1.6,
     "all": 0.019,
-    "eq": 99768.2,
+    "eq": 99920.48,
     "n": 7
    },
    {
@@ -4503,7 +4504,7 @@
     "ind": -2.972,
     "usa": -0.834,
     "all": -0.072,
-    "eq": 99696.14,
+    "eq": 99848.3,
     "n": 11
    },
    {
@@ -4511,7 +4512,7 @@
     "ind": -2.851,
     "usa": 2.414,
     "all": -0.009,
-    "eq": 99687.41,
+    "eq": 99839.56,
     "n": 14
    },
    {
@@ -4519,7 +4520,7 @@
     "ind": 0.729,
     "usa": 0.0,
     "all": 0.029,
-    "eq": 99716.47,
+    "eq": 99868.67,
     "n": 3
    },
    {
@@ -4527,7 +4528,7 @@
     "ind": -0.352,
     "usa": -1.357,
     "all": -0.03,
-    "eq": 99686.41,
+    "eq": 99838.56,
     "n": 5
    },
    {
@@ -4535,7 +4536,7 @@
     "ind": -0.504,
     "usa": 3.264,
     "all": 0.07,
-    "eq": 99756.45,
+    "eq": 99908.71,
     "n": 5
    },
    {
@@ -4543,7 +4544,7 @@
     "ind": 0.241,
     "usa": 3.346,
     "all": 0.079,
-    "eq": 99834.9,
+    "eq": 99987.28,
     "n": 9
    },
    {
@@ -4551,7 +4552,7 @@
     "ind": 0.78,
     "usa": -0.021,
     "all": 0.017,
-    "eq": 99852.33,
+    "eq": 100004.74,
     "n": 7
    },
    {
@@ -4559,7 +4560,7 @@
     "ind": -0.468,
     "usa": -1.129,
     "all": -0.032,
-    "eq": 99820.45,
+    "eq": 99972.8,
     "n": 2
    },
    {
@@ -4567,7 +4568,7 @@
     "ind": -1.214,
     "usa": -1.722,
     "all": -0.059,
-    "eq": 99761.83,
+    "eq": 99914.09,
     "n": 8
    },
    {
@@ -4575,7 +4576,7 @@
     "ind": -2.44,
     "usa": -2.529,
     "all": -0.1,
-    "eq": 99661.93,
+    "eq": 99814.05,
     "n": 7
    },
    {
@@ -4583,7 +4584,7 @@
     "ind": -2.283,
     "usa": 6.561,
     "all": -0.021,
-    "eq": 99641.43,
+    "eq": 99793.51,
     "n": 5
    },
    {
@@ -4591,7 +4592,7 @@
     "ind": -2.792,
     "usa": 0.248,
     "all": -0.063,
-    "eq": 99578.61,
+    "eq": 99730.6,
     "n": 5
    },
    {
@@ -4599,7 +4600,7 @@
     "ind": -1.168,
     "usa": -0.558,
     "all": -0.035,
-    "eq": 99544.23,
+    "eq": 99696.17,
     "n": 8
    },
    {
@@ -4607,7 +4608,7 @@
     "ind": 0.472,
     "usa": 0.411,
     "all": 0.017,
-    "eq": 99561.58,
+    "eq": 99713.54,
     "n": 5
    },
    {
@@ -4615,7 +4616,7 @@
     "ind": 2.905,
     "usa": -3.593,
     "all": -0.1,
-    "eq": 99461.63,
+    "eq": 99613.44,
     "n": 6
    },
    {
@@ -4623,7 +4624,7 @@
     "ind": -0.294,
     "usa": -1.915,
     "all": -0.064,
-    "eq": 99398.34,
+    "eq": 99550.06,
     "n": 5
    },
    {
@@ -4631,7 +4632,7 @@
     "ind": 1.056,
     "usa": -2.319,
     "all": -0.042,
-    "eq": 99356.45,
+    "eq": 99508.1,
     "n": 8
    },
    {
@@ -4639,7 +4640,7 @@
     "ind": 1.128,
     "usa": -1.846,
     "all": -0.014,
-    "eq": 99342.19,
+    "eq": 99493.81,
     "n": 6
    },
    {
@@ -4647,7 +4648,7 @@
     "ind": -1.128,
     "usa": -0.304,
     "all": -0.029,
-    "eq": 99313.74,
+    "eq": 99465.32,
     "n": 2
    },
    {
@@ -4655,7 +4656,7 @@
     "ind": -0.167,
     "usa": 1.009,
     "all": 0.022,
-    "eq": 99335.13,
+    "eq": 99486.75,
     "n": 5
    },
    {
@@ -4663,7 +4664,7 @@
     "ind": 0.824,
     "usa": 4.111,
     "all": 0.052,
-    "eq": 99386.54,
+    "eq": 99538.24,
     "n": 7
    },
    {
@@ -4671,7 +4672,7 @@
     "ind": -0.505,
     "usa": -5.313,
     "all": -0.044,
-    "eq": 99342.56,
+    "eq": 99494.19,
     "n": 8
    },
    {
@@ -4679,7 +4680,7 @@
     "ind": -0.634,
     "usa": -0.941,
     "all": -0.027,
-    "eq": 99315.83,
+    "eq": 99467.42,
     "n": 8
    },
    {
@@ -4687,7 +4688,7 @@
     "ind": -1.406,
     "usa": 1.318,
     "all": -0.013,
-    "eq": 99303.26,
+    "eq": 99454.83,
     "n": 5
    },
    {
@@ -4695,7 +4696,7 @@
     "ind": -2.642,
     "usa": 3.689,
     "all": -0.021,
-    "eq": 99282.14,
+    "eq": 99433.68,
     "n": 3
    },
    {
@@ -4703,7 +4704,7 @@
     "ind": 0.815,
     "usa": -0.029,
     "all": 0.016,
-    "eq": 99297.74,
+    "eq": 99449.3,
     "n": 4
    },
    {
@@ -4711,7 +4712,7 @@
     "ind": -0.747,
     "usa": -0.474,
     "all": -0.026,
-    "eq": 99271.69,
+    "eq": 99423.21,
     "n": 6
    },
    {
@@ -4719,7 +4720,7 @@
     "ind": -0.076,
     "usa": -1.057,
     "all": -0.016,
-    "eq": 99255.7,
+    "eq": 99407.19,
     "n": 6
    },
    {
@@ -4727,7 +4728,7 @@
     "ind": -1.74,
     "usa": -1.89,
     "all": -0.073,
-    "eq": 99183.03,
+    "eq": 99334.41,
     "n": 5
    },
    {
@@ -4735,7 +4736,7 @@
     "ind": -2.147,
     "usa": -0.058,
     "all": -0.052,
-    "eq": 99131.0,
+    "eq": 99282.31,
     "n": 5
    },
    {
@@ -4743,7 +4744,7 @@
     "ind": -2.167,
     "usa": -0.624,
     "all": -0.062,
-    "eq": 99069.54,
+    "eq": 99220.75,
     "n": 5
    },
    {
@@ -4751,7 +4752,7 @@
     "ind": -1.365,
     "usa": 0.16,
     "all": -0.03,
-    "eq": 99039.64,
+    "eq": 99190.8,
     "n": 5
    },
    {
@@ -4759,7 +4760,7 @@
     "ind": -0.79,
     "usa": -1.292,
     "all": -0.043,
-    "eq": 98996.99,
+    "eq": 99148.09,
     "n": 7
    },
    {
@@ -4767,7 +4768,7 @@
     "ind": 0.0,
     "usa": 0.343,
     "all": 0.014,
-    "eq": 99010.56,
+    "eq": 99161.68,
     "n": 2
    },
    {
@@ -4775,7 +4776,7 @@
     "ind": 0.561,
     "usa": 0.911,
     "all": 0.033,
-    "eq": 99043.18,
+    "eq": 99194.35,
     "n": 4
    },
    {
@@ -4783,7 +4784,7 @@
     "ind": -1.632,
     "usa": -2.021,
     "all": -0.076,
-    "eq": 98968.25,
+    "eq": 99119.31,
     "n": 3
    },
    {
@@ -4791,7 +4792,7 @@
     "ind": 1.836,
     "usa": 2.978,
     "all": 0.104,
-    "eq": 99071.07,
+    "eq": 99222.29,
     "n": 6
    },
    {
@@ -4799,7 +4800,7 @@
     "ind": -1.764,
     "usa": 2.987,
     "all": 0.072,
-    "eq": 99142.39,
+    "eq": 99293.71,
     "n": 4
    },
    {
@@ -4807,7 +4808,7 @@
     "ind": 0.441,
     "usa": 0.763,
     "all": 0.025,
-    "eq": 99167.54,
+    "eq": 99318.9,
     "n": 5
    },
    {
@@ -4815,7 +4816,7 @@
     "ind": 4.21,
     "usa": 1.179,
     "all": 0.077,
-    "eq": 99244.37,
+    "eq": 99395.85,
     "n": 4
    },
    {
@@ -4823,7 +4824,7 @@
     "ind": -2.259,
     "usa": 1.761,
     "all": 0.038,
-    "eq": 99282.36,
+    "eq": 99433.9,
     "n": 5
    },
    {
@@ -4831,7 +4832,7 @@
     "ind": -0.839,
     "usa": 0.994,
     "all": 0.021,
-    "eq": 99303.62,
+    "eq": 99455.19,
     "n": 4
    },
    {
@@ -4839,7 +4840,7 @@
     "ind": -0.221,
     "usa": 2.296,
     "all": 0.042,
-    "eq": 99344.84,
+    "eq": 99496.48,
     "n": 4
    },
    {
@@ -4847,7 +4848,7 @@
     "ind": 0.0,
     "usa": -0.103,
     "all": -0.004,
-    "eq": 99340.74,
+    "eq": 99492.36,
     "n": 2
    },
    {
@@ -4855,7 +4856,7 @@
     "ind": -2.786,
     "usa": 3.154,
     "all": 0.024,
-    "eq": 99364.9,
+    "eq": 99516.56,
     "n": 7
    },
    {
@@ -4863,7 +4864,7 @@
     "ind": -4.137,
     "usa": -1.872,
     "all": -0.105,
-    "eq": 99260.48,
+    "eq": 99411.98,
     "n": 6
    },
    {
@@ -4871,7 +4872,7 @@
     "ind": -2.753,
     "usa": -2.678,
     "all": -0.108,
-    "eq": 99152.96,
+    "eq": 99304.3,
     "n": 5
    },
    {
@@ -4879,7 +4880,7 @@
     "ind": 0.0,
     "usa": 0.701,
     "all": 0.028,
-    "eq": 99180.77,
+    "eq": 99332.15,
     "n": 4
    },
    {
@@ -4887,7 +4888,7 @@
     "ind": -1.678,
     "usa": 0.0,
     "all": -0.067,
-    "eq": 99114.2,
+    "eq": 99265.48,
     "n": 1
    },
    {
@@ -4895,7 +4896,7 @@
     "ind": 0.0,
     "usa": -0.724,
     "all": -0.029,
-    "eq": 99085.49,
+    "eq": 99236.72,
     "n": 5
    },
    {
@@ -4903,7 +4904,7 @@
     "ind": 0.141,
     "usa": -0.257,
     "all": -0.008,
-    "eq": 99077.92,
+    "eq": 99229.15,
     "n": 6
    },
    {
@@ -4911,7 +4912,7 @@
     "ind": -0.112,
     "usa": -0.682,
     "all": -0.023,
-    "eq": 99054.65,
+    "eq": 99205.84,
     "n": 6
    },
    {
@@ -4919,7 +4920,7 @@
     "ind": 0.0,
     "usa": -2.15,
     "all": -0.086,
-    "eq": 98969.48,
+    "eq": 99120.53,
     "n": 3
    },
    {
@@ -4927,7 +4928,7 @@
     "ind": 0.0,
     "usa": -4.203,
     "all": -0.168,
-    "eq": 98803.09,
+    "eq": 98953.9,
     "n": 1
    },
    {
@@ -4935,31 +4936,31 @@
     "ind": 2.974,
     "usa": -1.535,
     "all": -0.025,
-    "eq": 98778.06,
+    "eq": 98928.83,
     "n": 5
    },
    {
     "date": "2026-09-16",
-    "ind": 0.0,
+    "ind": 2.08,
     "usa": 2.631,
-    "all": 0.105,
-    "eq": 98882.01,
-    "n": 3
+    "all": 0.1,
+    "eq": 99027.49,
+    "n": 4
    }
   ],
-  "total": -1.12,
-  "annualized": -0.9,
+  "total": -0.97,
+  "annualized": -0.8,
   "maxdd": -2.3,
-  "winRate": 44.9,
+  "winRate": 45.0,
   "tips": 1720,
-  "avg": -0.14,
+  "avg": -0.13,
   "rr": null,
   "markets": {
    "india": {
     "tips": 853,
-    "win": 39.5,
+    "win": 39.6,
     "avg": -0.52,
-    "ret": -17.87
+    "ret": -17.63
    },
    "usa": {
     "tips": 867,
@@ -4975,11 +4976,11 @@
    ],
    [
     "Energy",
-    -0.44
+    -0.28
    ],
    [
     "Financials",
-    -1.85
+    -1.77
    ],
    [
     "Communication",
@@ -5003,9 +5004,9 @@
    },
    "medium": {
     "tips": 849,
-    "win": 43.8,
-    "avg": -0.19,
-    "ret": -6.29
+    "win": 43.9,
+    "avg": -0.18,
+    "ret": -6.05
    }
   },
   "best": {
@@ -5018,7 +5019,7 @@
    "ret": -8.87,
    "d": "2026-01-28"
   },
-  "assumptions": "Backtest, not a live track record. The same rule engine was replayed over 305 sessions of real Yahoo Finance history across a 26-name universe. A setup counts only if price actually traded into the entry zone within two sessions; it exits on the real low breaching the stop, the real high reaching Target 1, or the close after 5 sessions. Sizing assumes ~4% of capital per call. No costs, slippage, taxes or borrowing are modelled, and the universe is fixed today, so it carries survivorship bias. Past behaviour does not predict future results.",
+  "assumptions": "Backtest, not a live track record. The same rule engine was replayed over 304 sessions of real Yahoo Finance history across a 26-name universe. A setup counts only if price actually traded into the entry zone within two sessions; it exits on the real low breaching the stop, the real high reaching Target 1, or the close after 5 sessions. Sizing assumes ~4% of capital per call. No costs, slippage, taxes or borrowing are modelled, and the universe is fixed today, so it carries survivorship bias. Past behaviour does not predict future results.",
   "hold": 5,
   "outcomes": {
    "TARGET HIT": 98,
