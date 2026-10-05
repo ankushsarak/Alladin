@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-05T22:06:09.464757+05:30",
- "generated_utc": "2026-10-05T16:37:38.107399+00:00",
+ "generated": "2026-10-06T00:51:08.384729+05:30",
+ "generated_utc": "2026-10-05T19:24:00.376343+00:00",
  "sources": {
   "prices": "Yahoo Finance chart API (public)",
   "news": "Google News RSS (public)",
@@ -15,6 +15,7 @@
    "price": 22555.75,
    "chg": 0.6,
    "spark": [
+    24636.0,
     24570.65,
     24583.8,
     24471.7,
@@ -53,8 +54,7 @@
     22780.25,
     22716.2,
     22620.45,
-    22421.95,
-    22555.75
+    22421.95
    ]
   },
   {
@@ -64,6 +64,7 @@
    "price": 54714.1,
    "chg": 0.48,
    "spark": [
+    58063.65,
     57746.45,
     57686.95,
     57446.25,
@@ -102,16 +103,15 @@
     54471.65,
     54259.95,
     54633.05,
-    54450.75,
-    54714.1
+    54450.75
    ]
   },
   {
    "symbol": "^GSPC",
    "label": "S&P 500",
    "market": "USA",
-   "price": 7766.44,
-   "chg": 0.57,
+   "price": 7793.32,
+   "chg": 0.91,
    "spark": [
     7753.11,
     7728.2,
@@ -152,15 +152,15 @@
     7651.54,
     7666.45,
     7722.72,
-    7766.44
+    7793.32
    ]
   },
   {
    "symbol": "^IXIC",
    "label": "NASDAQ",
    "market": "USA",
-   "price": 27412.21,
-   "chg": 0.81,
+   "price": 27538.81,
+   "chg": 1.28,
    "spark": [
     26605.36,
     26445.45,
@@ -201,7 +201,7 @@
     26861.06,
     26871.6,
     27190.86,
-    27412.21
+    27538.81
    ]
   }
  ],
@@ -220,36 +220,36 @@
     "mode": "BUY NOW",
     "conviction": "HIGH",
     "score": 83,
-    "price": 416.0,
+    "price": 418.35,
     "chg": -0.56,
     "entry": [
-     414.75,
-     418.08
+     417.09,
+     420.44
     ],
     "window": "First 60–90 minutes of the session",
     "stop": 393.91,
     "targets": [
-     445.67,
-     465.92,
-     492.93
+     451.08,
+     473.44,
+     503.27
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 5.4,
+    "risk_pct": 5.94,
     "size": 5.0,
     "scores": {
      "Technical": 5,
      "Momentum": 2,
      "Volume": 5,
-     "Location": 5
+     "Location": 4
     },
     "indicators": {
-     "rsi": 47.3,
-     "sma20": 413.61,
-     "sma50": 406.1,
-     "sma200": 399.21,
-     "macd_hist": -0.291,
-     "atr": 9.52,
-     "vol_ratio": 2.13,
+     "rsi": 49.4,
+     "sma20": 414.04,
+     "sma50": 405.47,
+     "sma200": 399.3,
+     "macd_hist": -0.629,
+     "atr": 8.76,
+     "vol_ratio": 2.16,
      "resistance": 435.6,
      "support": 394.7,
      "hi52": 460.38,
@@ -257,52 +257,56 @@
     },
     "thesis": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "RSI at 47 — momentum is recovering from neutral.",
-     "Recent volume is running 2.13× the 20-day average — participation is confirming.",
-     "Price sits +0.6% from its 20-day average — a reasonable entry zone."
+     "RSI at 49 — momentum is recovering from neutral.",
+     "Recent volume is running 2.16× the 20-day average — participation is confirming.",
+     "Price sits +1.0% from its 20-day average — a reasonable entry zone."
     ],
     "sections": {
-     "THE CHART": "Last price 416.00. The 20-day average sits at 413.61 and the 50-day at 406.10, putting price +0.6% from its short-term mean. RSI(14) reads 47 and the MACD histogram is -0.29. Nearest resistance from the last 60 sessions is 435.60; the 20-session swing low is 394.70. Average true range is 9.52 (2.3% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 418.35. The 20-day average sits at 414.04 and the 50-day at 405.47, putting price +1.0% from its short-term mean. RSI(14) reads 49 and the MACD histogram is -0.63. Nearest resistance from the last 60 sessions is 435.60; the 20-session swing low is 394.70. Average true range is 8.76 (2.1% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Kotak Mahindra Bank sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved -2.0% against its own trend, and +3.0% over the last five. Its 52-week range is 335.81 to 460.38, so price is currently 64% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved -0.7% against its own trend, and +3.3% over the last five. Its 52-week range is 335.81 to 460.38, so price is currently 66% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 393.91, which is 5.4% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 393.91, which is 5.9% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
-      "h": "Stocks to Watch for October 6: Axis Bank, Kotak Mahindra Bank, Vedanta and more",
+      "h": "Stocks to Watch for October 6: Axis Bank, Kotak Mahindra Bank, Vedanta, Trent and more",
       "src": "CNBC TV18",
-      "time": "2h ago",
+      "time": "5h ago",
       "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOSEEtZGxEVmc4cUF2NWFZQlcxYmFCUklDRGtuS0V3SlhnZkR2Q2NyQmk0YUR1dVZCaG4wOHp0ZThfc2FXRXdCNDVxellRaDBneXBHZkdMQnZEXzI4Y0dMeU0zUDluMFdzaGMwTUlFaUh4ZEJCTWRrTEVxM2pTYVE1QWZlTEtQMXZvUlZqRC1WTzMtQUtETlctaHJSbEZaOUMydUlBZlFFMG5rMHgydjItb3FfVEJmb2VkYlM2ZVdEdmhveGFUZlNtc2cwUdIB0AFBVV95cUxONGc0elhsZGZhWWhDVU55OTJPRHhJaW5FTFA2MG9hUXRKRUNrbU40STh1blBEajBwdzFqVWxjWDJieWdpNl84eld5UzdVU3MyQ0U0NlBKejlDTXdfNFVndWxrOURCb0N6NmNDYnM0YVdXVllaaFFBMjhldnV2NWp2UjVNVW1fTHZjNkFPa01Xczl1d3BJSV83c3pTelI2ZTZ2SEQzZHJwYTZ3VmI0Mlp4V3BxOWQwOWtXZEh3QlFKTk1pNTdtajVfX3FaUW9BRl96?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "Top stocks in focus tomorrow: Investors must watch Trent, Kotak Mahindra Bank, Vedanta shares on Tue, 6 Oct | Triggers",
       "src": "Livemint",
-      "time": "2h ago",
+      "time": "5h ago",
       "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPcWs3czUybmZOLXpWblYtbU1VS3g2bk9lcnNRdE9xR0o5eFhHbk9XVnlkOGQ2LTVUQUZ4akRoc2lOdkNOa3lOZXczTjl3eWtEMUliS2ROZHNWT2NWUFJHMGp1ZUdJWXEzbFJJQ09rblFCRGpDNWoxYVhuZ0tBTk13Y3Fjb2ozTTZ3VVhWZllMUVJoZjdHMWJYRURyZDZYM0xVaU93dElaZHFuS3B1NkF2QjdUSEFZZGs0ZkgtS1ZoYkJPODVhTHpPbnloVDk5Tmd6eDRYem5mN09xVnJLa1llb3Bta2RaUGZiWDcwV1RRdVhaMnFWc3lGN215ZFd5VkJqZ1Z5Sm92UzF2QU5aZHlv0gGUAkFVX3lxTE1rYnc2cHlUcm5pcGpjblBBSGt4MXlBa1dzenp1eVNsX2dHc0lPZWtNVHZTZzhwUXRIN09KZzFpNHVmbnVBVWZ5VzVTbHFQa3RIN1Z0MmU2OXVyWXNiMDdVeUwyR0JJU1V0SEN5RE5oRG1OWTZHTi1VeFl2b3J2S2ZUb0tPYmVKTS1vdmh3ZVZWMzlmZEdudGUzcGRxOWZUbElYQ1h0Nm5sR0EyN3BWdElHUjNuWjRlNnA1dUxTR3poUk9BYVRtYlNEVnprUnNQWW1vVm5pMHRfMmVoWHQzQUl5elRvaDlHMGJLMzhYZmszcjlQNFpVQ2dXdlpmSkJvN2c5WXpjbHdkNEM3ZFlKMkJKYXFmNw?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Kotak Mahindra Bank’s net advances climb 25% YoY to Rs 5.77 lakh crore; deposits grow 23% in Q2",
-      "src": "The Economic Times",
-      "time": "3h ago",
-      "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNelExT2NNcEJwN0ZycXh4Vk1QSW1IbE11UmM0amlEa1lDWmU5eVo0WVl2TWNMTjNwQWlMVGh2OUlQeWM4ODRkZ1BjQWEyQlYzUUw2d1lYQndxaUhkdjZpbENXUjFIbjV6RGlJdXpkd0JwUVRpNVdjQ0hPUmFvRTlDckN3ZmlBZkJ0cWVjRko2TkRGSDROTDVqQ0pxNXRsMFo3VE9KelIzME0ta3JlaF82OUVaRzZKaDg3cHZTaFh5RkJ0QmpsZm5EbVdrOFpPWnkxUFZacUNaQWJtRkhoY0ZfV2NSazFxanpvY0JSUnRlbXVMUVAwTHo4eVhfeEtjUdIB_gFBVV95cUxNelExT2NNcEJwN0ZycXh4Vk1QSW1IbE11UmM0amlEa1lDWmU5eVo0WVl2TWNMTjNwQWlMVGh2OUlQeWM4ODRkZ1BjQWEyQlYzUUw2d1lYQndxaUhkdjZpbENXUjFIbjV6RGlJdXpkd0JwUVRpNVdjQ0hPUmFvRTlDckN3ZmlBZkJ0cWVjRko2TkRGSDROTDVqQ0pxNXRsMFo3VE9KelIzME0ta3JlaF82OUVaRzZKaDg3cHZTaFh5RkJ0QmpsZm5EbVdrOFpPWnkxUFZacUNaQWJtRkhoY0ZfV2NSazFxanpvY0JSUnRlbXVMUVAwTHo4eVhfeEtjUQ?oc=5",
+      "h": "Indian Stocks In Focus Tomorrow (October 6): Axis Bank, Kotak Mahindra Bank, Vedanta, Trent & More; Check Stocks To Watch & Key Updates",
+      "src": "The Sunday Guardian",
+      "time": "2h ago",
+      "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQYzBub05sbW9nQnJSLVVxUENPRlhyamxZMWRWRjV2NDY5MXBSSFhqOWI4T3JDYzdPM0NtRW5lZ1VGWUFSWUpjSXRXYlR0TFIyNDUzQmdSRGlJcGp2VG1pWWlBTkdGdVNpYUstVkF4QVc0RTRtZ1I2NzkzaTctT2tYY1J1R3Zyd2RqUWtPWlM0X0tqR0pNZWR5WElnWXJMdnVlcEtYRi1WSDNzdmRuQmVuMGlIUzVReGM1NU91WGswWG5CWE4xX3pDYXgxNVRTdWx5RXhEajZXZThiTE42RkhKSWZxMU9UNTN1b19kUDF1QjEyVmktcFFxOTBmZHdSQnB0NXfSAYcCQVVfeXFMUFNWMnFEVFV3VzBOZkZpMFZOWjdrYWtOSDJoWVFNbVltdGZ5UnV6VG1EVnROTlpnOGtaSVNLTmVDeVM2VnktTExteGI2YUFOZnlMc0JTcGp4aGExaXdnS1Q2NzVTdmNDbWpORXBPMkdEOXVkOEpST1lMb0xPYzhJRllESld2WklWaTk4NmUwTVU2NUVSWUtIWG5Oa194MlFhckpEU29HQjFPQjJiQVA2R2xNaHAzd2tLTk16Sllua0JUQWJfaFNfVHY2QzNIZkxvelhQbGdyUkxsQnZ6R05tV0Q5NlZoUWFZM2dIbHRQTzJKRV9xTGRHbFpfakRGN3dmMTR2RHo0M2s?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
     "workcase": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "The long-term 200-day trend is still up.",
-     "RSI at 47 — momentum is recovering from neutral.",
-     "Recent volume is running 2.13× the 20-day average — participation is confirming."
+     "RSI at 49 — momentum is recovering from neutral.",
+     "Recent volume is running 2.16× the 20-day average — participation is confirming."
     ],
     "failcase": [
      "MACD remains below its signal line."
     ],
     "invalidation": "A daily close below ₹393.91.",
     "chart": [
+     {
+      "d": "2026-06-26",
+      "c": 409.0
+     },
      {
       "d": "2026-06-29",
       "c": 395.5
@@ -578,388 +582,384 @@
      {
       "d": "2026-10-01",
       "c": 418.35
-     },
-     {
-      "d": "2026-10-05",
-      "c": 416.0
      }
     ]
    },
    {
-    "id": "itc",
-    "symbol": "ITC.NS",
-    "ticker": "ITC",
-    "name": "ITC Limited",
+    "id": "hdfcbank",
+    "symbol": "HDFCBANK.NS",
+    "ticker": "HDFCBANK",
+    "name": "HDFC Bank",
     "market": "INDIA",
-    "sector": "Consumer",
-    "art": "tech",
+    "sector": "Financials",
+    "art": "finance",
     "cur": "₹",
     "action": "BUY",
-    "mode": "BUY ON BREAKOUT",
-    "conviction": "HIGH",
-    "score": 74,
-    "price": 268.9,
-    "chg": 5.08,
+    "mode": "BUY NOW",
+    "conviction": "MEDIUM",
+    "score": 67,
+    "price": 721.2,
+    "chg": -2.27,
     "entry": [
-     271.32,
-     273.22
+     719.04,
+     724.81
     ],
-    "window": "On a close above 271.05",
-    "stop": 254.14,
+    "window": "First 60–90 minutes of the session",
+    "stop": 680.54,
     "targets": [
-     295.84,
-     312.15,
-     333.91
+     775.73,
+     812.98,
+     862.65
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 6.66,
+    "risk_pct": 5.73,
     "size": 5.0,
     "scores": {
      "Technical": 3,
      "Momentum": 4,
-     "Volume": 5,
-     "Location": 3
+     "Volume": 4,
+     "Location": 5
     },
     "indicators": {
-     "rsi": 58.5,
-     "sma20": 263.76,
-     "sma50": 270.81,
-     "sma200": 300.97,
-     "macd_hist": 0.439,
-     "atr": 5.6,
-     "vol_ratio": 1.61,
-     "resistance": 271.05,
-     "support": 254.65,
-     "hi52": 495.85,
-     "lo52": 254.65
+     "rsi": 55.8,
+     "sma20": 717.83,
+     "sma50": 724.57,
+     "sma200": 811.89,
+     "macd_hist": 0.461,
+     "atr": 13.77,
+     "vol_ratio": 1.13,
+     "resistance": 749.3,
+     "support": 681.9,
+     "hi52": 1020.5,
+     "lo52": 681.9
     },
     "thesis": [
      "Price has reclaimed the 20-day average but remains under the 50-day.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Recent volume is running 1.61× the 20-day average — participation is confirming.",
-     "Price sits +1.9% from its 20-day average — a reasonable entry zone."
+     "Volume is 1.13× its 20-day average — steady participation.",
+     "Price sits +0.5% from its 20-day average — a reasonable entry zone."
     ],
     "sections": {
-     "THE CHART": "Last price 268.90. The 20-day average sits at 263.76 and the 50-day at 270.81, putting price +1.9% from its short-term mean. RSI(14) reads 58 and the MACD histogram is +0.44. Nearest resistance from the last 60 sessions is 271.05; the 20-session swing low is 254.65. Average true range is 5.60 (2.1% of price), which is what sets the stop distance below.",
-     "THE BUSINESS": "ITC Limited sits in the consumer sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +1.8% against its own trend, and -0.0% over the last five. Its 52-week range is 254.65 to 495.85, so price is currently 6% of the way up that range.",
+     "THE CHART": "Last price 721.20. The 20-day average sits at 717.83 and the 50-day at 724.57, putting price +0.5% from its short-term mean. RSI(14) reads 56 and the MACD histogram is +0.46. Nearest resistance from the last 60 sessions is 749.30; the 20-session swing low is 681.90. Average true range is 13.77 (1.9% of price), which is what sets the stop distance below.",
+     "THE BUSINESS": "HDFC Bank sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +2.1% against its own trend, and -1.1% over the last five. Its 52-week range is 681.90 to 1,020.50, so price is currently 12% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 254.14, which is 6.7% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 680.54, which is 5.7% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
-      "h": "ITC shares jump as Citi turns bullish after 34% fall; Here's why - CNBC TV18",
-      "src": "LinkedIn",
-      "time": "5h ago",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxONklLTVlmbnM2NFhBR3lMbjZRRndieE5Za1FsbDl0dldDSFlMUUNGM1Y5aHAxZUdDQWZ1RUdhb1R5VlF3M05HU3JNdHQ4ZmtVdGNXeTVpdTlQUUFJb1AyZUN2UC1ZSlpISnVYbGU1WDRjbjVtRGFzUk5SVFpsbVZwNDJNdjZYSVNaUmI2cW0zRFNCeDA2cVUyVGJudWpzd2RCcXlWZ1NlT2N2TWJTalhjMC16UVpkMXE0ZEE?oc=5",
+      "h": "HDFC Bank shares end 2.3% lower after reversing early gains; Anup Bagchi appointment in focus",
+      "src": "Moneycontrol.com",
+      "time": "14h ago",
+      "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPRmQ0Z2N2NkZoTGF3b3FiVHJGOHV6cFRFWXIzMDVvZE5FZmFQSDBBSXJYY0JzZVQxWVF0dHhzQjBCTFdBZUNRZ3E0RXJkaWxQQ0kwY0tlMEJiVVQtZFZBT3JXVzFfWm5XTTRkeFpzRlhoc3pjM2JpMkN5S2MwUDZuQjgxSlVHOGVfY1JPaC05M1BlX2VKS01ROUVZRnNtMmxObmxOUFZTQVRPZFlNanlTdzVFTC1FcnMxSmxKSHBoUFZUb0xhNWZ1UVRuT1RoVlNGcHhDRzJoR1hMYVhFS2E1NkhUbHAtNnBUVElyZnlZekFTcEJKUTU00gH8AUFVX3lxTFBXM09WeldlSWQySFlsQ2pfRjF6V3BYVUQ1OEd1ZTFKR2N6NzkzRUVGS0FneEtOMGFNZEItdnFuZFlyY3I0NTZTM1ZLLWF6NXZlQ0p6MkpFR3owUThLeDBnajhwWTBORzdvUFVVUnhiYnk5RjlBeTZwQ3M4dVRNakZ6S3M5VS1YYVBQd1VPX2IzTjlTbTF1ekxfRlJuMUI5eWJPN0ZpUXJfNzh3b2t5SlJRamZBTGt4dmhmT0hYMTJ5d3U2RjNFMTNhUDFIamY2TVl6bWtYN09LRll1djE4SWQ1QURLdXlmVDB3R2diVmVDSWpDN1hGWjk1MlE4Tg?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "360 ONE sets INR 440 target for ITC stock",
-      "src": "AD HOC NEWS",
-      "time": "12h ago",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPclJUTWFvYUg5SFBCV0NlcllLTmNLeGQ4Q0FtWWVWbzFhbnIxN3pwVVRURXVnbGpObno3Rk1rRDNjQ1JSXzIyN0R0ZkJSZS1uUG1STjFXZ3NKcnphaVdyTVl4eFFHU0Y2QS1POE1yZ0FmWVZjbmRQQjZFN2w5dzRWWlM5MUtSVjFCbHdaM2U4VTRwSF9POHp6R2hRSWZJOGVBS2c?oc=5",
+      "h": "Here's why HDFC Bank shares fell over 2% today despite optimism over appointment of new CEO",
+      "src": "Moneycontrol.com",
+      "time": "8h ago",
+      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOOVFsbldZVnUwWWJYV1NWVlFaRU1HME9IbHFuQ05zY0xkUThtV2FuSkRvcGFCQ1BidGRIRnY5MUhoUUJETUc3bTF0cVA3d3ZaX2h1elhITjhoS1U3d2RncXNSVDlyMUxWbkZCWUdIOGJCNDl5ZEV5bmJBbkhXMkdPa0pGcVhMYjNZNFRoRUUtaWNCam91Q1FHb2hMV00tXzRNb3FlR2JwY0FWLTlSbmxoTTZtdnNFaXQzNWN0MGRzUzk1aDlicG80dlBVanYxMGJNTnZvbDNwdkswWFRkTEh6aTFXOXhld0NOTGZN0gHwAUFVX3lxTE50UlVjZWtYMHRtWFJYbEFPZktnQzN3VThNTFdxaVpGV1IxLVBCaEtWWFdRQ3g2akd5TWlJRjdTc0ljclJSeHNvYVpmX3ZKZlotZ21KN3VnZWp4elJwWkpYQXNLMHNuUDA3dkhianJUY1U2MkVRd2VuX1dPZHRXMHhPNm9RQ1M5Nm56bFpESGpoY3VmV3VMNWppZ29YeVlYUDFCRE1QdW5MRWpHRlozQnViR1NUSUFqS21jWGZvUEQ3d2FsUXlOX0hXM0ktcjZmY2duNmdrZU5xa0JjamxldGhrZVlBNk41MTVsdEU5WlF5Qg?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "ITC jumps 5% as Citi upgrades rating, target. What prompted bullish view?",
-      "src": "Business Standard",
-      "time": "9h ago",
-      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNMS14bExENkRXTjY3YWxLclowLUc2aXA3X2N3WGVLZmlEZUpVVzVQbkttbXpPOW5HYnUteHNMcE5JMGRVZTN1dE9ZTGU4S1JtYnFrSUdaNXZUQlR3ZDBwSmstdHIwNmhUYkFRUmNVS0Q1NUhpVGJOcEszQmlvZjhuX2dsY3BfaDV1ZmswSUJCYmFKcFhzd0NRMEZTMUlmdFY2eXJLSExEYUlCUDY5clpuUGFENy1aeFRIRElLUlRfbk9ZYXE5Q3ZxWFVvaU1pNnZQMFFOdmpIN0MyUdIB3wFBVV95cUxPejlNYVhKeHdSSm5CTzFDa3l6NFExNmNCWFh5MDBTNVdadWF2QkpIdHBQbVpVbTFJT2dUTDRndDgzMUlaTzZDVDkyLXR3Z2ExT1plNGptdnlPMVF2SWhlemNqdnJyaTMyM1A2SnlicHVDVWJTTE1mZ0hPMklfdUxvdUFQbGc0Mzl2d1l5N09KVi0wWHg1TTEzTHptbXAwWVlOeXdJV2xpZ2RpYUwwVWVoRXBETmQtMmwybGZjRl9pZjlVUW1ZWWFMN2F6MmxVUXk5V1RJYnJNeEFDRVdWdTZF?oc=5",
+      "h": "Stocks in news: HDFC Bank, Infosys, Yes Bank, Hindustan Zinc and RVNL",
+      "src": "The Economic Times",
+      "time": "18h ago",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQUWVuY21ZSFBRNFZZVWpYQmVDbFJRY1Z5M2VnMndiT1NCbmh4US1uYksxRDVRMmdkaGZPLWNBYnAwb2dqMXdNMG9iREsyRjNpenEzVmZrY2x1Vk85VDd3REFUWTJqZ0o0WkhKenlmb3dRUGtiOURyZWtPNjBlanJlYVE1T0g2UTB5SUd2bmVndk4xcVBsMVdGa1VxWlFnbVlfbzd6WHU5Vnk2aFM5OG5BRlc0bDdiWGxjM3FRZV9WVDBNTDdsS1BHNDlVUHNONkVLUmQ0T0Vn0gHbAUFVX3lxTFA1TGxHYzBfeWVsYUxsaEw3SDMxLVVCd1ZsVVBmSGZvb3dGb2h2Y2NxcWdVZlBrN202Z3FEMzZTSW9zTUotRFRONHg2NE50OF9JckxncWtvTGF4bzNUeUtIZFk5UGpDVkFpLUxZOU9TZ2ZUdWtDLWVHLTQ0VnZDQWFiN3lUQVBtX2c0b0o2R0JNbm92YkZLZ3lEOE1yUTA3dmF3VXljWjRtMHZrbkNpS2E2NENOY1hTcHZSWmd5aWtpX0RXd1pycmxfRFpQSmNuVHJvbUt0dWU3SEFHYw?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
     "workcase": [
      "Price has reclaimed the 20-day average but remains under the 50-day.",
-     "RSI at 58 — strength with room left before exhaustion.",
+     "RSI at 56 — strength with room left before exhaustion.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Recent volume is running 1.61× the 20-day average — participation is confirming."
+     "Volume is 1.13× its 20-day average — steady participation."
     ],
     "failcase": [
      "Price is below its 200-day average — the primary trend is not supportive."
     ],
-    "invalidation": "A daily close below ₹254.14.",
+    "invalidation": "A daily close below ₹680.54.",
     "chart": [
      {
+      "d": "2026-06-26",
+      "c": 796.3
+     },
+     {
       "d": "2026-06-29",
-      "c": 290.7
+      "c": 798.9
      },
      {
       "d": "2026-06-30",
-      "c": 286.95
+      "c": 797.95
      },
      {
       "d": "2026-07-01",
-      "c": 290.3
+      "c": 796.15
      },
      {
       "d": "2026-07-02",
-      "c": 289.9
+      "c": 795.9
      },
      {
       "d": "2026-07-03",
-      "c": 289.95
+      "c": 801.05
      },
      {
       "d": "2026-07-06",
-      "c": 288.25
+      "c": 829.85
      },
      {
       "d": "2026-07-07",
-      "c": 288.75
+      "c": 829.3
      },
      {
       "d": "2026-07-08",
-      "c": 280.65
+      "c": 810.3
      },
      {
       "d": "2026-07-09",
-      "c": 282.05
+      "c": 817.55
      },
      {
       "d": "2026-07-10",
-      "c": 281.75
+      "c": 824.95
      },
      {
       "d": "2026-07-13",
-      "c": 279.65
+      "c": 817.95
      },
      {
       "d": "2026-07-14",
-      "c": 275.55
+      "c": 809.4
      },
      {
       "d": "2026-07-15",
-      "c": 276.65
+      "c": 815.45
      },
      {
       "d": "2026-07-16",
-      "c": 279.35
+      "c": 808.3
      },
      {
       "d": "2026-07-17",
-      "c": 280.7
+      "c": 819.6
      },
      {
       "d": "2026-07-20",
-      "c": 282.7
+      "c": 777.6
      },
      {
       "d": "2026-07-21",
-      "c": 281.0
+      "c": 761.45
      },
      {
       "d": "2026-07-22",
-      "c": 280.8
+      "c": 753.15
      },
      {
       "d": "2026-07-23",
-      "c": 281.3
+      "c": 747.25
      },
      {
       "d": "2026-07-24",
-      "c": 283.45
+      "c": 742.8
      },
      {
       "d": "2026-07-27",
-      "c": 285.85
+      "c": 739.55
      },
      {
       "d": "2026-07-28",
-      "c": 284.65
+      "c": 735.4
      },
      {
       "d": "2026-07-29",
-      "c": 286.25
+      "c": 748.2
      },
      {
       "d": "2026-07-30",
-      "c": 285.05
+      "c": 753.95
      },
      {
       "d": "2026-07-31",
-      "c": 281.0
+      "c": 748.15
      },
      {
       "d": "2026-08-03",
-      "c": 287.0
+      "c": 753.0
      },
      {
       "d": "2026-08-04",
-      "c": 289.0
+      "c": 742.0
      },
      {
       "d": "2026-08-05",
-      "c": 286.95
+      "c": 735.0
      },
      {
       "d": "2026-08-06",
-      "c": 285.9
+      "c": 734.3
      },
      {
       "d": "2026-08-07",
-      "c": 286.1
+      "c": 731.0
      },
      {
       "d": "2026-08-10",
-      "c": 282.65
+      "c": 731.0
      },
      {
       "d": "2026-08-11",
-      "c": 279.0
+      "c": 729.0
      },
      {
       "d": "2026-08-12",
-      "c": 276.15
+      "c": 729.0
      },
      {
       "d": "2026-08-13",
-      "c": 278.5
+      "c": 725.0
      },
      {
       "d": "2026-08-14",
-      "c": 278.2
+      "c": 727.0
      },
      {
       "d": "2026-08-17",
-      "c": 273.05
+      "c": 729.0
      },
      {
       "d": "2026-08-18",
-      "c": 270.0
+      "c": 723.0
      },
      {
       "d": "2026-08-19",
-      "c": 267.05
+      "c": 720.0
      },
      {
       "d": "2026-08-20",
-      "c": 271.65
+      "c": 725.05
      },
      {
       "d": "2026-08-21",
-      "c": 269.4
+      "c": 726.95
      },
      {
       "d": "2026-08-24",
-      "c": 269.7
+      "c": 729.0
      },
      {
       "d": "2026-08-25",
-      "c": 271.4
+      "c": 727.5
      },
      {
       "d": "2026-08-26",
-      "c": 270.25
+      "c": 727.2
      },
      {
       "d": "2026-08-27",
-      "c": 269.0
+      "c": 711.0
      },
      {
       "d": "2026-08-28",
-      "c": 266.0
+      "c": 720.3
      },
      {
       "d": "2026-08-31",
-      "c": 255.5
+      "c": 709.0
      },
      {
       "d": "2026-09-01",
-      "c": 266.6
+      "c": 711.9
      },
      {
       "d": "2026-09-02",
-      "c": 266.3
+      "c": 700.8
      },
      {
       "d": "2026-09-03",
-      "c": 263.0
+      "c": 706.65
      },
      {
       "d": "2026-09-04",
-      "c": 264.1
+      "c": 712.1
      },
      {
       "d": "2026-09-07",
-      "c": 263.5
+      "c": 710.5
      },
      {
       "d": "2026-09-08",
-      "c": 263.5
+      "c": 703.0
      },
      {
       "d": "2026-09-09",
-      "c": 260.8
+      "c": 687.1
      },
      {
       "d": "2026-09-10",
-      "c": 259.3
+      "c": 693.8
      },
      {
       "d": "2026-09-11",
-      "c": 259.85
+      "c": 708.25
      },
      {
       "d": "2026-09-14",
-      "c": 259.85
+      "c": 708.25
      },
      {
       "d": "2026-09-15",
-      "c": 258.0
+      "c": 716.55
      },
      {
       "d": "2026-09-16",
-      "c": 264.15
+      "c": 721.5
      },
      {
       "d": "2026-09-17",
-      "c": 266.2
+      "c": 713.0
      },
      {
       "d": "2026-09-18",
-      "c": 262.3
+      "c": 731.0
      },
      {
       "d": "2026-09-21",
-      "c": 267.0
+      "c": 739.5
      },
      {
       "d": "2026-09-22",
-      "c": 265.8
+      "c": 738.6
      },
      {
       "d": "2026-09-23",
-      "c": 270.15
+      "c": 737.25
      },
      {
       "d": "2026-09-24",
-      "c": 268.0
+      "c": 728.9
      },
      {
       "d": "2026-09-25",
-      "c": 269.0
+      "c": 735.6
      },
      {
       "d": "2026-09-28",
-      "c": 265.2
+      "c": 719.05
      },
      {
       "d": "2026-09-29",
-      "c": 265.1
+      "c": 722.7
      },
      {
       "d": "2026-09-30",
-      "c": 262.75
+      "c": 708.7
      },
      {
       "d": "2026-10-01",
-      "c": 255.9
-     },
-     {
-      "d": "2026-10-05",
-      "c": 268.9
+      "c": 721.2
      }
     ]
    }
@@ -978,21 +978,21 @@
     "mode": "BUY NOW",
     "conviction": "HIGH",
     "score": 77,
-    "price": 334.49,
-    "chg": 0.24,
+    "price": 333.92,
+    "chg": 0.07,
     "entry": [
-     333.49,
-     336.17
+     332.92,
+     335.59
     ],
     "window": "First 60–90 minutes of the session",
     "stop": 309.28,
     "targets": [
-     368.04,
-     391.04,
-     421.7
+     366.72,
+     389.2,
+     419.17
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 7.63,
+    "risk_pct": 7.47,
     "size": 5.0,
     "scores": {
      "Technical": 5,
@@ -1001,13 +1001,13 @@
      "Location": 5
     },
     "indicators": {
-     "rsi": 53.8,
-     "sma20": 332.62,
-     "sma50": 322.45,
+     "rsi": 53.2,
+     "sma20": 332.59,
+     "sma50": 322.43,
      "sma200": 289.46,
-     "macd_hist": -0.967,
+     "macd_hist": -1.003,
      "atr": 6.49,
-     "vol_ratio": 0.83,
+     "vol_ratio": 0.85,
      "resistance": 345.34,
      "support": 309.9,
      "hi52": 345.34,
@@ -1015,46 +1015,46 @@
     },
     "thesis": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "RSI at 54 — strength with room left before exhaustion.",
-     "Price sits +0.6% from its 20-day average — a reasonable entry zone.",
+     "RSI at 53 — strength with room left before exhaustion.",
+     "Price sits +0.4% from its 20-day average — a reasonable entry zone.",
      "The long-term 200-day trend is still up."
     ],
     "sections": {
-     "THE CHART": "Last price 334.49. The 20-day average sits at 332.62 and the 50-day at 322.45, putting price +0.6% from its short-term mean. RSI(14) reads 54 and the MACD histogram is -0.97. Nearest resistance from the last 60 sessions is 345.34; the 20-session swing low is 309.90. Average true range is 6.49 (1.9% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 333.92. The 20-day average sits at 332.59 and the 50-day at 322.43, putting price +0.4% from its short-term mean. RSI(14) reads 53 and the MACD histogram is -1.00. Nearest resistance from the last 60 sessions is 345.34; the 20-session swing low is 309.90. Average true range is 6.49 (1.9% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Apple sits in the technology sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +4.5% against its own trend, and -1.2% over the last five. Its 52-week range is 169.21 to 345.34, so price is currently 94% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +4.4% against its own trend, and -1.3% over the last five. Its 52-week range is 169.21 to 345.34, so price is currently 94% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 309.28, which is 7.6% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 309.28, which is 7.5% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
-      "h": "Will Siri Overhaul Help Apple (AAPL) Restore Its AI Credibility?",
-      "src": "Yahoo Finance Singapore",
-      "time": "3h ago",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPakJYY3dPZlVHQThGaTJHd0twT2tBakNlSDk3bHY1XzRTbEdWQi1oNTR2bDM0UlVpR25yc0RLaE5OaTFtdHRzQjJQXzQwTDc5UDFIbkFFWDNZeTBQZEhLQ2M1X05CYnpwa0JfTlpHQWM0b3E3Nlpnc2dmY1BvdUpBTzFZSXo?oc=5",
+      "h": "Dear Apple Stock Fans, Mark Your Calendars for October 13",
+      "src": "Yahoo Finance",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPdUVDVm1xRkxkN2pTX2NpQTFDTTQyZ1gxNFgwb0h2Mkl1eVRfbUd0VmpOSnpubm1tMmhWOEI1NHVhcUVkYWV3elJvZjh5ZFgxSXd1d0M1SEl0cmlNUWo2SUtweUJ2WkdpZmpSV2dSQldaeGJmanF5U2prUEVoY01GWDZXOHpmMGZEb2pCODIzSG9PSW0zSEE?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Apple Is Dealing With New Problems Now",
-      "src": "Trefis",
-      "time": "1h ago",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPZk93YTFqWVhHc0pWU0tHNWtVMnU2eHZ5U1g5YUxabVVrMTgwMlJITnNDNGJyUV85bHN2R1JfWVAxc3A4c3poRU5UVEtDT0RYSlV0SUxFLXVsazB3bXBzbnFnc1BYcUdlMm03QWk4YWxJZUlUNm9od2FOSW1MZHptRVB3cFNjZFFZMlZtYXZJeEFrZVBuQVpwRVZSQ3BLblVf?oc=5",
+      "h": "Dear Apple Stock Fans, Mark Your Calendars for October 13",
+      "src": "Barchart.com",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOWVI0S0QwbmlsbHVVbEVUMEx3b1RxSFppMmNReUd0T1Q2Mlk4a0luY3NDQmJXSU9iRVIwRVUxR0tJTE5aN3hLZjVLXy02VWhoN1hMX242V21MZWJCU2RqZVk1dTZ2ekQxeWs5S084T25QcG9lS1dBcWFxZHl4SEQ5SGVxRXJkVE0xRFZyZzRvdmd2bklmeDRrRU1WdktYZFBCMEE?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Prediction: By the End of 2027, Microsoft Will Be More Valuable Than Apple",
-      "src": "theglobeandmail.com",
-      "time": "1h ago",
-      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQMHNoR0ZlSFFZeEFOOFgxNHotVm9QUENrc0hFUGVuVTBPZVdhZUFGNDBtYU1ZcFd6RUpMYVdRLVkzV3RCRWpaaXNwSHc3T09aZFRyMFRPejEzbGxqUnlWbkpxSEpWUjhLOERDQ0pkb3Q3cU9mUWlwNnBtNjVBUFpDNWpGZk5LUGE3U1Z6TFUtS0ZlSkt6VERteXBHVmZYN05pNW5WTFRDX25kZXc3dndERHZyNlZfbmFYZVotY3hNN0V6ZVRTUGFZT0oyb1d4VWw0SEo1ekpIX1VYMFhIZXhkY09zZVJZRFc3S19zcnZ3?oc=5",
+      "h": "What Has Changed In Apple’s Story?",
+      "src": "Forbes",
+      "time": "2h ago",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQSGtNNVhnNTVPWU5YWlR3NzRGYlNEMVlyZE55TjhpQUhpdktWeFNHczBrQ3BHd1UtNlZBTXM0dmd0TzJOQ001cUF2VEVHLVVYN09yQ2lBVnJVV2VRQ2JuVF8xTjhlVTdwdWNSS0ptZjRNbXM1d2VmYjVwQjlNV1cyN25ZMk1oUk1OLThua3BTZFNpTjQ4OFE?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
     "workcase": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "The long-term 200-day trend is still up.",
-     "RSI at 54 — strength with room left before exhaustion.",
-     "Price sits +0.6% from its 20-day average — a reasonable entry zone."
+     "RSI at 53 — strength with room left before exhaustion.",
+     "Price sits +0.4% from its 20-day average — a reasonable entry zone."
     ],
     "failcase": [
      "MACD remains below its signal line."
@@ -1339,7 +1339,7 @@
      },
      {
       "d": "2026-10-05",
-      "c": 334.49
+      "c": 333.92
      }
     ]
    },
@@ -1354,23 +1354,23 @@
     "cur": "$",
     "action": "BUY",
     "mode": "BUY NOW",
-    "conviction": "MEDIUM",
-    "score": 68,
-    "price": 345.47,
-    "chg": 0.57,
+    "conviction": "HIGH",
+    "score": 75,
+    "price": 347.92,
+    "chg": 1.29,
     "entry": [
-     344.43,
-     347.2
+     346.88,
+     349.66
     ],
     "window": "First 60–90 minutes of the session",
     "stop": 327.08,
     "targets": [
-     370.16,
-     387.02,
-     409.5
+     375.81,
+     394.88,
+     420.3
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 5.42,
+    "risk_pct": 6.08,
     "size": 5.0,
     "scores": {
      "Technical": 3,
@@ -1379,13 +1379,13 @@
      "Location": 4
     },
     "indicators": {
-     "rsi": 50.4,
-     "sma20": 342.97,
-     "sma50": 344.88,
-     "sma200": 339.11,
-     "macd_hist": 0.075,
-     "atr": 8.95,
-     "vol_ratio": 0.93,
+     "rsi": 52.5,
+     "sma20": 343.09,
+     "sma50": 344.93,
+     "sma200": 339.12,
+     "macd_hist": 0.232,
+     "atr": 9.1,
+     "vol_ratio": 0.95,
      "resistance": 364.17,
      "support": 327.74,
      "hi52": 408.61,
@@ -1394,29 +1394,29 @@
     "thesis": [
      "Price holds above the 50-day average, though the short-term average has not confirmed.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Price sits +0.7% from its 20-day average — a reasonable entry zone.",
+     "Price sits +1.4% from its 20-day average — a reasonable entry zone.",
      "The long-term 200-day trend is still up."
     ],
     "sections": {
-     "THE CHART": "Last price 345.47. The 20-day average sits at 342.97 and the 50-day at 344.88, putting price +0.7% from its short-term mean. RSI(14) reads 50 and the MACD histogram is +0.08. Nearest resistance from the last 60 sessions is 364.17; the 20-session swing low is 327.74. Average true range is 8.95 (2.6% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 347.92. The 20-day average sits at 343.09 and the 50-day at 344.93, putting price +1.4% from its short-term mean. RSI(14) reads 52 and the MACD histogram is +0.23. Nearest resistance from the last 60 sessions is 364.17; the 20-session swing low is 327.74. Average true range is 9.10 (2.6% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Alphabet sits in the communication sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +2.1% against its own trend, and +0.8% over the last five. Its 52-week range is 140.53 to 408.61, so price is currently 76% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +2.8% against its own trend, and +1.5% over the last five. Its 52-week range is 140.53 to 408.61, so price is currently 77% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 327.08, which is 5.4% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 327.08, which is 6.1% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
       "h": "Why Gemini 4 Failed To Ignite Google Stock Ahead Of Q3 Earnings",
       "src": "Investor's Business Daily",
-      "time": "4h ago",
+      "time": "7h ago",
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNRkdSWjBMaFJnZ2k1ZmpOMFdTcGVQQkFCR2J6UkFLN2ZZNEI2SUVNamVoZDFYdUN0eU5oc0Y4TTR6U0Q4RUtCMHhSZk1BeEVvR2ZDbm5xazRZWWxnWmk3WS15SkEzMExCRFFuWEQ1MFdlaExHc2plenJWcHo0OG5RaHRvOUFGYmVfcTU4SUNiMVFNYzcteXZKcllHekJEN0RPZEE?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "Alphabet Appears To Be The Easiest AI Trade Of The Year Before Its Q3 Print (NASDAQ:GOOG)",
       "src": "Seeking Alpha",
-      "time": "14h ago",
+      "time": "17h ago",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQejBNRE83eGhzNG1xclhvdTZvajVZUzFaME8xbkJCNldTaHk3VDVMeEJ2OU9RWW5yNmp1VVZGeU0xdDNLUW5pREs4eHdaYXNwSjFReGZtVFBtRXZoUkhXNjZtcWUwUnFqWVpMMkpvUjdOYWJLa1JPMDlCclFPT2l2cWlaQmoxS2ExbmN2VnVNb1E5ODI5LV9nd3VwV3FHZ201NTdoTVRXR0ppRkdwMmpTMnJyRTZzZTQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
@@ -1431,7 +1431,7 @@
     "workcase": [
      "Price holds above the 50-day average, though the short-term average has not confirmed.",
      "The long-term 200-day trend is still up.",
-     "RSI at 50 — momentum is recovering from neutral.",
+     "RSI at 52 — strength with room left before exhaustion.",
      "MACD sits above its signal line — the momentum cross is positive."
     ],
     "failcase": [
@@ -1717,7 +1717,7 @@
      },
      {
       "d": "2026-10-05",
-      "c": 345.47
+      "c": 347.92
      }
     ]
    },
@@ -1731,24 +1731,24 @@
     "art": "tech",
     "cur": "$",
     "action": "BUY",
-    "mode": "BUY NOW",
+    "mode": "BUY ON BREAKOUT",
     "conviction": "MEDIUM",
     "score": 67,
-    "price": 252.96,
-    "chg": 0.57,
+    "price": 253.62,
+    "chg": 0.84,
     "entry": [
-     252.2,
-     254.22
+     259.75,
+     261.57
     ],
-    "window": "First 60–90 minutes of the session",
+    "window": "On a close above 259.49",
     "stop": 243.81,
     "targets": [
-     265.43,
-     273.89,
-     285.17
+     282.56,
+     297.73,
+     317.95
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 3.71,
+    "risk_pct": 6.46,
     "size": 5.0,
     "scores": {
      "Technical": 3,
@@ -1757,13 +1757,13 @@
      "Location": 4
     },
     "indicators": {
-     "rsi": 56.2,
-     "sma20": 251.36,
-     "sma50": 256.96,
-     "sma200": 241.51,
-     "macd_hist": 0.246,
-     "atr": 5.12,
-     "vol_ratio": 0.91,
+     "rsi": 57.0,
+     "sma20": 251.4,
+     "sma50": 256.97,
+     "sma200": 241.52,
+     "macd_hist": 0.288,
+     "atr": 5.23,
+     "vol_ratio": 0.95,
      "resistance": 259.49,
      "support": 244.3,
      "hi52": 287.2,
@@ -1772,25 +1772,18 @@
     "thesis": [
      "Price has reclaimed the 20-day average but remains under the 50-day.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Price sits +0.6% from its 20-day average — a reasonable entry zone.",
+     "Price sits +0.9% from its 20-day average — a reasonable entry zone.",
      "The long-term 200-day trend is still up."
     ],
     "sections": {
-     "THE CHART": "Last price 252.96. The 20-day average sits at 251.36 and the 50-day at 256.96, putting price +0.6% from its short-term mean. RSI(14) reads 56 and the MACD histogram is +0.25. Nearest resistance from the last 60 sessions is 259.49; the 20-session swing low is 244.30. Average true range is 5.12 (2.0% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 253.62. The 20-day average sits at 251.40 and the 50-day at 256.97, putting price +0.9% from its short-term mean. RSI(14) reads 57 and the MACD histogram is +0.29. Nearest resistance from the last 60 sessions is 259.49; the 20-session swing low is 244.30. Average true range is 5.23 (2.1% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Amazon sits in the consumer sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved -2.1% against its own trend, and +2.8% over the last five. Its 52-week range is 161.38 to 287.20, so price is currently 73% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved -1.9% against its own trend, and +3.0% over the last five. Its 52-week range is 161.38 to 287.20, so price is currently 73% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 243.81, which is 3.7% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 243.81, which is 6.5% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
-     {
-      "h": "Should You Buy Amazon Stock (AMZN) in October?",
-      "src": "The Motley Fool",
-      "time": "2d ago",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaGZ0aWlBa0ZjX3ktUTdrOVRES2wycHJBNXdtcXZuc0lBOEdFbzNINE5DSFo3UHNiemFQdTRhd2lFTTdESUpQQ2JKcUJLX1VKVktoWExqWUtSSXc1UExzbTRvYTlJTW80MXhJTXgtdExpRTVBLUlGM2p1S1VFdHZrSXRjYmhXTURMTHlIUUt2cw?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
      {
       "h": "Amazon Stock Is Underperforming Amid Agentic AI Fears. How to Play AMZN Here.",
       "src": "Barchart.com",
@@ -1799,9 +1792,16 @@
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
+      "h": "Amazon stock is trading at its lowest valuation ever as a public company, despite AI boom",
+      "src": "Yahoo Finance",
+      "time": "3h ago",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOVnBpUC1xNzg3ODdja1N3N2tCblJZeERXX1BxbkFhOFh2NzJaUHo3U0t1NVEyOTRrMlJER3hKdXRzUi1EWWFFbUs2eEF3MDA5d0dxMUQ2aDVCV0h5OWNZVEhDZl80Wk1JTUw5dHZoRVA1ZS1WUG16aXhaNFBFYjhuMWU3VlEzbVF6MEtFc2prVEJNbEVVWEZFZVRWXzdvQXRHZi1Ic2h5bEh4RGtyandJeDFGRHZfaDl0dFhvQU8yS3FPZnFrT3N3cjZuY014bFhkSk1jaVJqTVJaLVlhNWkzTmloVEkzQTQ?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
       "h": "TD Cowen reiterates Amazon stock Buy rating on AWS growth outlook",
       "src": "Investing.com",
-      "time": "2h ago",
+      "time": "4h ago",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPNVVXNktZNXJ2Y0xFM1NtTG8tZVE4aGtOUktSb3I4UzZkNm5BcFRIZmMtZkp1R3hNRm5xVEdXeEl4dHJjSHlsZVRaclZadGNCS2RmR1Q2YUVTMnZvUC1VQ3R1anZNOFpqbFlLNkNNb2Q1cXJFczl4Xy04RnByS01BSU5GQjk5UEc5MG9mRnNiQS00NkR0VUZLNTR4YWdYUjhSUUR4WGdqOXhyVjlUNnI5NUhjRVRuMFZvUGFOa2dVWTBzNkU?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
@@ -1809,7 +1809,7 @@
     "workcase": [
      "Price has reclaimed the 20-day average but remains under the 50-day.",
      "The long-term 200-day trend is still up.",
-     "RSI at 56 — strength with room left before exhaustion.",
+     "RSI at 57 — strength with room left before exhaustion.",
      "MACD sits above its signal line — the momentum cross is positive."
     ],
     "failcase": [
@@ -2095,7 +2095,7 @@
      },
      {
       "d": "2026-10-05",
-      "c": 252.96
+      "c": 253.62
      }
     ]
    }
@@ -2106,7 +2106,7 @@
    "ticker": "KOTAKBANK",
    "name": "Kotak Mahindra Bank",
    "cur": "₹",
-   "px": 416.0,
+   "px": 418.35,
    "chg": -0.56,
    "score": 8.3
   },
@@ -2114,56 +2114,56 @@
    "ticker": "AAPL",
    "name": "Apple",
    "cur": "$",
-   "px": 334.49,
-   "chg": 0.24,
+   "px": 333.92,
+   "chg": 0.07,
    "score": 7.7
-  },
-  {
-   "ticker": "ITC",
-   "name": "ITC Limited",
-   "cur": "₹",
-   "px": 268.9,
-   "chg": 5.08,
-   "score": 7.4
   },
   {
    "ticker": "GOOGL",
    "name": "Alphabet",
    "cur": "$",
-   "px": 345.47,
-   "chg": 0.57,
-   "score": 6.8
+   "px": 347.92,
+   "chg": 1.29,
+   "score": 7.5
+  },
+  {
+   "ticker": "HDFCBANK",
+   "name": "HDFC Bank",
+   "cur": "₹",
+   "px": 721.2,
+   "chg": -2.27,
+   "score": 6.7
   },
   {
    "ticker": "AMZN",
    "name": "Amazon",
    "cur": "$",
-   "px": 252.96,
-   "chg": 0.57,
+   "px": 253.62,
+   "chg": 0.84,
    "score": 6.7
-  },
-  {
-   "ticker": "NVDA",
-   "name": "NVIDIA Corp",
-   "cur": "$",
-   "px": 236.18,
-   "chg": 0.95,
-   "score": 6.5
   },
   {
    "ticker": "META",
    "name": "Meta Platforms",
    "cur": "$",
-   "px": 743.38,
-   "chg": 2.1,
+   "px": 743.71,
+   "chg": 2.15,
    "score": 6.2
   },
   {
-   "ticker": "MSFT",
-   "name": "Microsoft",
+   "ticker": "UNH",
+   "name": "UnitedHealth Group",
    "cur": "$",
-   "px": 526.21,
-   "chg": 1.68,
+   "px": 378.2,
+   "chg": 1.69,
+   "score": 6.2
+  },
+  {
+   "ticker": "NVDA",
+   "name": "NVIDIA Corp",
+   "cur": "$",
+   "px": 239.56,
+   "chg": 2.4,
    "score": 6.1
   }
  ],
@@ -2171,18 +2171,18 @@
   "enabled": false,
   "reason": "Every analysis attempt failed; showing computed analysis instead.",
   "errors": [
-   "KOTAKBANK: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "ITC: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "AAPL: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "GOOGL: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "AMZN: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }"
+   "KOTAKBANK: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
+   "HDFCBANK: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
+   "AAPL: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
+   "GOOGL: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }",
+   "AMZN: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }"
   ]
  },
  "live": {
   "started": "2026-09-04",
-  "published": 169,
+  "published": 174,
   "settled": 58,
-  "open": 32,
+  "open": 37,
   "no_fill": 79,
   "outcomes": {
    "TARGET_1": 3,
@@ -2190,7 +2190,7 @@
    "CLOSED": 51,
    "NO_FILL": 79,
    "OPEN": 21,
-   "PENDING": 11
+   "PENDING": 16
   },
   "winRate": 46.6,
   "avg": 0.1,
@@ -2393,6 +2393,241 @@
   "method": "Every call Alladin publishes is written to an append-only ledger and never edited afterwards. A call fills only if price actually traded into the published entry zone within 2 sessions; otherwise it is marked no-fill and excluded from returns. Once filled it is held up to 5 sessions and exits on the real session low breaching the stop, the real session high reaching Target 1, or the close at the end of the window. Returns are measured from the fill against the originally published levels. Costs, slippage and taxes are not modelled."
  },
  "recent_calls": [
+  {
+   "key": "KOTAKBANK.NS|2026-10-06",
+   "ticker": "KOTAKBANK",
+   "name": "Kotak Mahindra Bank",
+   "market": "INDIA",
+   "sector": "Financials",
+   "cur": "₹",
+   "published": "2026-10-06",
+   "original": {
+    "price_at_publish": 418.35,
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "HIGH",
+    "score": 83,
+    "entry": [
+     417.09,
+     420.44
+    ],
+    "stop": 393.91,
+    "targets": [
+     451.08,
+     473.44,
+     503.27
+    ],
+    "risk_pct": 5.94,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "First 60–90 minutes of the session",
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "RSI at 49 — momentum is recovering from neutral."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-06T00:51:08.384729+05:30"
+   }
+  },
+  {
+   "key": "HDFCBANK.NS|2026-10-06",
+   "ticker": "HDFCBANK",
+   "name": "HDFC Bank",
+   "market": "INDIA",
+   "sector": "Financials",
+   "cur": "₹",
+   "published": "2026-10-06",
+   "original": {
+    "price_at_publish": 721.2,
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "MEDIUM",
+    "score": 67,
+    "entry": [
+     719.04,
+     724.81
+    ],
+    "stop": 680.54,
+    "targets": [
+     775.73,
+     812.98,
+     862.65
+    ],
+    "risk_pct": 5.73,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "First 60–90 minutes of the session",
+    "thesis": [
+     "Price has reclaimed the 20-day average but remains under the 50-day.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-06T00:51:08.384729+05:30"
+   }
+  },
+  {
+   "key": "GOOGL|2026-10-06",
+   "ticker": "GOOGL",
+   "name": "Alphabet",
+   "market": "USA",
+   "sector": "Communication",
+   "cur": "$",
+   "published": "2026-10-06",
+   "original": {
+    "price_at_publish": 347.92,
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "HIGH",
+    "score": 75,
+    "entry": [
+     346.88,
+     349.66
+    ],
+    "stop": 327.08,
+    "targets": [
+     375.81,
+     394.88,
+     420.3
+    ],
+    "risk_pct": 6.08,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "First 60–90 minutes of the session",
+    "thesis": [
+     "Price holds above the 50-day average, though the short-term average has not confirmed.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-06T00:51:08.384729+05:30"
+   }
+  },
+  {
+   "key": "AMZN|2026-10-06",
+   "ticker": "AMZN",
+   "name": "Amazon",
+   "market": "USA",
+   "sector": "Consumer",
+   "cur": "$",
+   "published": "2026-10-06",
+   "original": {
+    "price_at_publish": 253.62,
+    "action": "BUY",
+    "mode": "BUY ON BREAKOUT",
+    "conviction": "MEDIUM",
+    "score": 67,
+    "entry": [
+     259.75,
+     261.57
+    ],
+    "stop": 243.81,
+    "targets": [
+     282.56,
+     297.73,
+     317.95
+    ],
+    "risk_pct": 6.46,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "On a close above 259.49",
+    "thesis": [
+     "Price has reclaimed the 20-day average but remains under the 50-day.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-06T00:51:08.384729+05:30"
+   }
+  },
+  {
+   "key": "AAPL|2026-10-06",
+   "ticker": "AAPL",
+   "name": "Apple",
+   "market": "USA",
+   "sector": "Technology",
+   "cur": "$",
+   "published": "2026-10-06",
+   "original": {
+    "price_at_publish": 333.92,
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "HIGH",
+    "score": 77,
+    "entry": [
+     332.92,
+     335.59
+    ],
+    "stop": 309.28,
+    "targets": [
+     366.72,
+     389.2,
+     419.17
+    ],
+    "risk_pct": 7.47,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "First 60–90 minutes of the session",
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "RSI at 53 — strength with room left before exhaustion."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-06T00:51:08.384729+05:30"
+   }
+  },
   {
    "key": "NVDA|2026-10-05",
    "ticker": "NVDA",
@@ -2720,241 +2955,6 @@
     "bars_held": 0,
     "note": null,
     "last_checked": "2026-10-05T14:11:04.370442+05:30"
-   }
-  },
-  {
-   "key": "NVDA|2026-10-03",
-   "ticker": "NVDA",
-   "name": "NVIDIA Corp",
-   "market": "USA",
-   "sector": "Technology",
-   "cur": "$",
-   "published": "2026-10-03",
-   "original": {
-    "price_at_publish": 230.86,
-    "action": "BUY",
-    "mode": "BUY ON BREAKOUT",
-    "conviction": "HIGH",
-    "score": 83,
-    "entry": [
-     234.99,
-     236.64
-    ],
-    "stop": 219.31,
-    "targets": [
-     257.27,
-     272.13,
-     291.94
-    ],
-    "risk_pct": 7.0,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a close above 234.76",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "OPEN",
-    "filled_on": "2026-10-05",
-    "fill_price": 235.81,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": 0.15,
-    "mfe": 0.87,
-    "mae": -0.28,
-    "bars_held": 1,
-    "note": null,
-    "last_checked": "2026-10-05T22:06:09.464757+05:30"
-   }
-  },
-  {
-   "key": "MSFT|2026-10-03",
-   "ticker": "MSFT",
-   "name": "Microsoft",
-   "market": "USA",
-   "sector": "Technology",
-   "cur": "$",
-   "published": "2026-10-03",
-   "original": {
-    "price_at_publish": 512.8,
-    "action": "BUY",
-    "mode": "BUY ON BREAKOUT",
-    "conviction": "HIGH",
-    "score": 93,
-    "entry": [
-     523.37,
-     527.03
-    ],
-    "stop": 485.03,
-    "targets": [
-     577.42,
-     613.58,
-     661.78
-    ],
-    "risk_pct": 7.65,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a close above 522.85",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "OPEN",
-    "filled_on": "2026-10-05",
-    "fill_price": 521.82,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": 0.84,
-    "mfe": 2.02,
-    "mae": -0.05,
-    "bars_held": 1,
-    "note": null,
-    "last_checked": "2026-10-05T22:06:09.464757+05:30"
-   }
-  },
-  {
-   "key": "META|2026-10-03",
-   "ticker": "META",
-   "name": "Meta Platforms",
-   "market": "USA",
-   "sector": "Communication",
-   "cur": "$",
-   "published": "2026-10-03",
-   "original": {
-    "price_at_publish": 725.93,
-    "action": "BUY",
-    "mode": "WAIT",
-    "conviction": "HIGH",
-    "score": 77,
-    "entry": [
-     686.6,
-     693.5
-    ],
-    "stop": 641.75,
-    "targets": [
-     752.84,
-     796.32,
-     854.28
-    ],
-    "risk_pct": 7.0,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a pullback to the 20-day average",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "PENDING",
-    "filled_on": null,
-    "fill_price": null,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": null,
-    "mfe": null,
-    "mae": null,
-    "bars_held": 0,
-    "note": null,
-    "last_checked": "2026-10-03T05:35:56.906487+05:30"
-   }
-  },
-  {
-   "key": "KOTAKBANK.NS|2026-10-03",
-   "ticker": "KOTAKBANK",
-   "name": "Kotak Mahindra Bank",
-   "market": "INDIA",
-   "sector": "Financials",
-   "cur": "₹",
-   "published": "2026-10-03",
-   "original": {
-    "price_at_publish": 418.35,
-    "action": "BUY",
-    "mode": "BUY NOW",
-    "conviction": "HIGH",
-    "score": 83,
-    "entry": [
-     417.09,
-     420.44
-    ],
-    "stop": 393.91,
-    "targets": [
-     451.08,
-     473.44,
-     503.27
-    ],
-    "risk_pct": 5.94,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "First 60–90 minutes of the session",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "RSI at 49 — momentum is recovering from neutral."
-    ]
-   },
-   "result": {
-    "status": "OPEN",
-    "filled_on": "2026-10-05",
-    "fill_price": 418.76,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": -0.66,
-    "mfe": 1.36,
-    "mae": -1.2,
-    "bars_held": 1,
-    "note": null,
-    "last_checked": "2026-10-05T22:06:09.464757+05:30"
-   }
-  },
-  {
-   "key": "HDFCBANK.NS|2026-10-03",
-   "ticker": "HDFCBANK",
-   "name": "HDFC Bank",
-   "market": "INDIA",
-   "sector": "Financials",
-   "cur": "₹",
-   "published": "2026-10-03",
-   "original": {
-    "price_at_publish": 721.2,
-    "action": "BUY",
-    "mode": "BUY NOW",
-    "conviction": "MEDIUM",
-    "score": 67,
-    "entry": [
-     719.04,
-     724.81
-    ],
-    "stop": 680.54,
-    "targets": [
-     775.73,
-     812.98,
-     862.65
-    ],
-    "risk_pct": 5.73,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "First 60–90 minutes of the session",
-    "thesis": [
-     "Price has reclaimed the 20-day average but remains under the 50-day.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "OPEN",
-    "filled_on": "2026-10-05",
-    "fill_price": 731.95,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": -3.71,
-    "mfe": 0.31,
-    "mae": -4.19,
-    "bars_held": 1,
-    "note": null,
-    "last_checked": "2026-10-05T22:06:09.464757+05:30"
    }
   }
  ],
@@ -5379,18 +5379,18 @@
    {
     "date": "2026-09-28",
     "ind": 0.0,
-    "usa": 1.663,
-    "all": 0.067,
-    "eq": 98903.32,
+    "usa": 2.35,
+    "all": 0.094,
+    "eq": 98930.49,
     "n": 4
    }
   ],
-  "total": -1.1,
+  "total": -1.07,
   "annualized": -0.9,
   "maxdd": -2.3,
   "winRate": 45.2,
   "tips": 1712,
-  "avg": -0.14,
+  "avg": -0.13,
   "rr": null,
   "markets": {
    "india": {
@@ -5403,17 +5403,17 @@
     "tips": 872,
     "win": 50.2,
     "avg": 0.22,
-    "ret": 7.71
+    "ret": 7.82
    }
   },
   "sectors": [
    [
     "Industrials",
-    4.93
+    4.95
    ],
    [
     "Energy",
-    0.3
+    0.31
    ],
    [
     "Financials",
@@ -5421,7 +5421,7 @@
    ],
    [
     "Communication",
-    -2.82
+    -2.79
    ],
    [
     "Healthcare",
@@ -5429,7 +5429,7 @@
    ],
    [
     "Technology",
-    -3.35
+    -3.29
    ]
   ],
   "conviction": {
@@ -5437,13 +5437,13 @@
     "tips": 866,
     "win": 46.1,
     "avg": -0.1,
-    "ret": -3.49
+    "ret": -3.43
    },
    "medium": {
     "tips": 846,
     "win": 44.3,
     "avg": -0.17,
-    "ret": -5.85
+    "ret": -5.8
    }
   },
   "best": {
