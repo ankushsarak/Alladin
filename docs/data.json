@@ -1,11 +1,11 @@
 {
- "generated": "2026-10-28T22:14:47.351522+05:30",
- "generated_utc": "2026-10-28T16:52:04.346621+00:00",
+ "generated": "2026-10-29T06:03:00.728058+05:30",
+ "generated_utc": "2026-10-29T00:37:29.796947+00:00",
  "sources": {
   "prices": "Yahoo Finance chart API (public)",
   "news": "Google News RSS (public)",
   "engine": "Deterministic rule engine over computed indicators — selection and every price level",
-  "analysis": "Computed from the indicators (no model available this build)"
+  "analysis": "Written by Google Gemini"
  },
  "indices": [
   {
@@ -15,6 +15,7 @@
    "price": 22698.85,
    "chg": -0.22,
    "spark": [
+    24175.65,
     24080.4,
     24055.8,
     23914.45,
@@ -53,8 +54,7 @@
     22687.65,
     22600.0,
     22753.2,
-    22749.75,
-    22698.85
+    22749.75
    ]
   },
   {
@@ -64,6 +64,7 @@
    "price": 54267.4,
    "chg": 0.54,
    "spark": [
+    57496.3,
     58024.95,
     57409.6,
     57172.0,
@@ -102,16 +103,15 @@
     54925.7,
     54287.35,
     54366.7,
-    53974.9,
-    54267.4
+    53974.9
    ]
   },
   {
    "symbol": "^GSPC",
    "label": "S&P 500",
    "market": "USA",
-   "price": 7738.12,
-   "chg": 0.2,
+   "price": 7743.98,
+   "chg": 0.28,
    "spark": [
     7666.6,
     7747.71,
@@ -152,15 +152,15 @@
     7623.68,
     7676.77,
     7722.6,
-    7738.12
+    7743.98
    ]
   },
   {
    "symbol": "^IXIC",
    "label": "NASDAQ",
    "market": "USA",
-   "price": 26470.89,
-   "chg": -0.03,
+   "price": 26549.85,
+   "chg": 0.27,
    "spark": [
     26217.83,
     26584.06,
@@ -201,12 +201,391 @@
     25955.34,
     26169.38,
     26477.81,
-    26470.89
+    26549.85
    ]
   }
  ],
  "tips": {
   "india": [
+   {
+    "id": "kotakbank",
+    "symbol": "KOTAKBANK.NS",
+    "ticker": "KOTAKBANK",
+    "name": "Kotak Mahindra Bank",
+    "market": "INDIA",
+    "sector": "Financials",
+    "art": "finance",
+    "cur": "₹",
+    "action": "BUY",
+    "mode": "BUY ON BREAKOUT",
+    "conviction": "HIGH",
+    "score": 72,
+    "price": 442.5,
+    "chg": -0.56,
+    "entry": [
+     453.55,
+     456.72
+    ],
+    "window": "On a close above 453.10",
+    "stop": 423.28,
+    "targets": [
+     496.55,
+     525.23,
+     563.46
+    ],
+    "rr": "1 : 2.2",
+    "risk_pct": 7.0,
+    "size": 5.0,
+    "scores": {
+     "Technical": 5,
+     "Momentum": 2,
+     "Volume": 2,
+     "Location": 3
+    },
+    "indicators": {
+     "rsi": 58.0,
+     "sma20": 432.67,
+     "sma50": 419.82,
+     "sma200": 400.29,
+     "macd_hist": -0.516,
+     "atr": 9.3,
+     "vol_ratio": 0.75,
+     "resistance": 453.1,
+     "support": 394.7,
+     "hi52": 460.38,
+     "lo52": 335.81
+    },
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "RSI at 58 — strength with room left before exhaustion.",
+     "Price sits +2.3% from its 20-day average — a reasonable entry zone.",
+     "The long-term 200-day trend is still up."
+    ],
+    "sections": {
+     "THE CHART": "Last price 442.50. The 20-day average sits at 432.67 and the 50-day at 419.82, putting price +2.3% from its short-term mean. RSI(14) reads 58 and the MACD histogram is -0.52. Nearest resistance from the last 60 sessions is 453.10; the 20-session swing low is 394.70. Average true range is 9.30 (2.1% of price), which is what sets the stop distance below.",
+     "THE BUSINESS": "Kotak Mahindra Bank sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +9.5% against its own trend, and +0.0% over the last five. Its 52-week range is 335.81 to 460.38, so price is currently 86% of the way up that range.",
+     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
+     "THE RISKS": "The setup fails on a close below 423.28, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
+    },
+    "news": [
+     {
+      "h": "Kotak Mahindra Bank stock jumps 2%, among top Nifty gainers after Q2 results; JPMorgan raises target price",
+      "src": "Moneycontrol.com",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxONWRyOXZubWx4SVZGNms3T1R3Xy1DS0JkN0QtN1Y5NnJGUERNRHhWbFZIdTNOSUpjcjhRb3Z6cVc2bkpORWdZRnZSTFJVd2RDMTM1VkhRSExMLVZsRm1ZYU1jSmQ2aGxJWWFpWWdra3duMXlyMy1MTE5ORWZTakZxVzNDczI5b2luOFh5dTF3TWRNR0xyZ2NtUWgzNkZxY1cxVEFBLUwyRUpTc3Z6MWpKSGFsVnRtXzAwRDM0Nm1mYU03WVg3ZWNoT3NEckI5UzZCSFR6MEE4UjhLd2FsRDRvWkIzZDRQbXI2SUlTZm4wVzVLZ0FIUVhhcXl0TmLSAYICQVVfeXFMTnRVQnpiMkYwVXA5c0YtSlNac1poMXU1emh0eTFuOEkzdEFOX3Y4SFZvNy10RC1kdkxBa29UcWhENkxKb3lVM1RtUzhjeWJkZUpKek1vbFNOM3l1dWpqejNXRTYzTWhvTGV5N0hRNkR4TWdxeF9IZDhVMzVZX2NmZk9GZ09ZdnRUWXhPYUtycXRpNVFiR3ZlYUM1a01qLXJWenRWcEpuS0VWMVlZMjI1V0N4dnY2Qm12S2hxMXNIdlFac1o4OElKTDBTVXdsOUJNSWVjZ3JSRFpobjdRVWxYZ2RjZ01pQ0xuTFNVTTRnU0t3OXVXWkozNk1FT2J4elprZVZR?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "Kotak Mahindra Bank, JSW Steel, Jindal Steel, Shree Cement, Nuvoco, AU SFB: Brokerage outlook, share price targets",
+      "src": "Business Today",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxOaWF1eHh6V3hoUGRoZFZSUkpJYVRkOGpXZEpTeWNWZk5JVHg0QThuQnIxTkZ3Tnh6MWwtaGFVYkRicVhGdmNCS0lJa051Qmk5MEd6cG1fNVdlcTU3OEphWmRMR1FJT2V3dEtKMXdJMHY3UklEQjFVX0RPOFJlekdXUVA1b2s4TWdyUW9BQWdYSXktNDhqaFJTVFlSY3ROY2xJMjR4QmFKWWJ2MkE2ZTlsdHhyZkZneUI2anpBaC1EZkJaQWFRY29QS01KSjRKWlRPUFM2bWVtdkVybGMxRWY1SUFwaC1OelJnMTdpZlBKanVoS2NWdjlEczZNWG4tWG0wOGNPUHNjSdIBjAJBVV95cUxPcW0tYm5FNlNkcE5qMFBhZDdCNFFBTFlsYm0xdy14eGFwVE5HM2JoZDNyb25DYy1LWlItcVcyems1eEZrbWJqX2JFYmlvUmdXaG9PcmJ4S1ZDQ1M2cTFyVmprekFkV05QRXhXR0k1RmFRTlNfczE1VnRuLWRMZGZoS0I0MkVZR2VjdW1pbXcyNzgwMDdfTGxoajlOcDk1VVNTR1l1LVJmdG4yNXhnb2RLYTFsaXgwajNYa3VzNUF6UVpvYktrQUZpMWpiSFVhSVlqbmlwSUF2Mzk0bzlCNDI1Q1lQS2JoWkFIa3NTOWxiYmYxN19wWDZSSWRVZzNUaGFwaXlISW81ZUM0M29y?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "Stocks in news: Infosys, Kotak Mahindra Bank, YES Bank, Raymond, BPCL, Coforge and Senco Gold",
+      "src": "The Economic Times",
+      "time": "3d ago",
+      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNelZJWXMxMnlESnJZNGlRcHU1cE5OMEhWWXNjVm90SE4zWUEtYjY1MDZXT3BnbTdCSklUakx4UFcwYU5hRjUwRXdyamh4RVp6eTQ3QUs3bDk4czlSRTdHNDlRWHpCQkRtcENkbFdyeUQ0RVZ0NVJXVG1ZV2N1TUs3VEozdDBtZkFmNi1QZzJMVHprVzFGSFJaNVpqWWFPWTdoTXE5bVJseXFLNVFnVVcxRWc4QzJBNlRKSGVmUWVNNDNJV0hHcmZ6YUxndW51X19kZlk3b29meEVkYnoxWHhIenFxMW5GZU1mcW5vQl9wenpjb0HSAfgBQVVfeXFMTkprekpyUm9kV1dlMGxXalhtNmQxSnFPdFpqODI1ajJ6Z3FCZHd2bFNlbW5VODhfa1hpYTM0WU1Jb0RXcFlGczdzRk1ZcEhsbUw2U1NfMkdNbUFfVXc3VlZVMHJ6cXFnZjB1WVh2Y2E5ejdGV3hyX29rVG1QMGoyMWh0eEljdzJtS01nejlSVWhPNVlxakNId2ptVkVWTWlVMFVMQ2N1U0x5S3JuTzk5dzVhZFNKRmR5aE81cS00NTJoUkdOQ0x2N0poQTF2N0RWalptT3A1NlkxU1l3S05fVThyeV8yMkltNnBsVWVqWDFJYmsxQWxmQ0o?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     }
+    ],
+    "workcase": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "The long-term 200-day trend is still up.",
+     "RSI at 58 — strength with room left before exhaustion.",
+     "Price sits +2.3% from its 20-day average — a reasonable entry zone."
+    ],
+    "failcase": [
+     "MACD remains below its signal line.",
+     "Volume is only 0.75× average — conviction behind the move is thin."
+    ],
+    "invalidation": "A daily close below ₹423.28.",
+    "chart": [
+     {
+      "d": "2026-07-17",
+      "c": 389.95
+     },
+     {
+      "d": "2026-07-20",
+      "c": 382.05
+     },
+     {
+      "d": "2026-07-21",
+      "c": 385.95
+     },
+     {
+      "d": "2026-07-22",
+      "c": 381.15
+     },
+     {
+      "d": "2026-07-23",
+      "c": 383.35
+     },
+     {
+      "d": "2026-07-24",
+      "c": 384.75
+     },
+     {
+      "d": "2026-07-27",
+      "c": 384.65
+     },
+     {
+      "d": "2026-07-28",
+      "c": 385.3
+     },
+     {
+      "d": "2026-07-29",
+      "c": 390.2
+     },
+     {
+      "d": "2026-07-30",
+      "c": 389.4
+     },
+     {
+      "d": "2026-07-31",
+      "c": 390.3
+     },
+     {
+      "d": "2026-08-03",
+      "c": 397.5
+     },
+     {
+      "d": "2026-08-04",
+      "c": 398.0
+     },
+     {
+      "d": "2026-08-05",
+      "c": 400.0
+     },
+     {
+      "d": "2026-08-06",
+      "c": 394.0
+     },
+     {
+      "d": "2026-08-07",
+      "c": 390.75
+     },
+     {
+      "d": "2026-08-10",
+      "c": 393.5
+     },
+     {
+      "d": "2026-08-11",
+      "c": 392.9
+     },
+     {
+      "d": "2026-08-12",
+      "c": 390.5
+     },
+     {
+      "d": "2026-08-13",
+      "c": 392.4
+     },
+     {
+      "d": "2026-08-14",
+      "c": 391.15
+     },
+     {
+      "d": "2026-08-17",
+      "c": 392.7
+     },
+     {
+      "d": "2026-08-18",
+      "c": 387.65
+     },
+     {
+      "d": "2026-08-19",
+      "c": 390.25
+     },
+     {
+      "d": "2026-08-20",
+      "c": 397.35
+     },
+     {
+      "d": "2026-08-21",
+      "c": 402.8
+     },
+     {
+      "d": "2026-08-24",
+      "c": 401.45
+     },
+     {
+      "d": "2026-08-25",
+      "c": 401.6
+     },
+     {
+      "d": "2026-08-26",
+      "c": 416.7
+     },
+     {
+      "d": "2026-08-27",
+      "c": 424.2
+     },
+     {
+      "d": "2026-08-28",
+      "c": 423.7
+     },
+     {
+      "d": "2026-08-31",
+      "c": 419.4
+     },
+     {
+      "d": "2026-09-01",
+      "c": 425.0
+     },
+     {
+      "d": "2026-09-02",
+      "c": 423.5
+     },
+     {
+      "d": "2026-09-03",
+      "c": 421.15
+     },
+     {
+      "d": "2026-09-04",
+      "c": 424.5
+     },
+     {
+      "d": "2026-09-07",
+      "c": 422.1
+     },
+     {
+      "d": "2026-09-08",
+      "c": 419.25
+     },
+     {
+      "d": "2026-09-09",
+      "c": 414.0
+     },
+     {
+      "d": "2026-09-10",
+      "c": 416.55
+     },
+     {
+      "d": "2026-09-11",
+      "c": 419.0
+     },
+     {
+      "d": "2026-09-15",
+      "c": 409.8
+     },
+     {
+      "d": "2026-09-16",
+      "c": 415.0
+     },
+     {
+      "d": "2026-09-17",
+      "c": 416.5
+     },
+     {
+      "d": "2026-09-18",
+      "c": 412.5
+     },
+     {
+      "d": "2026-09-21",
+      "c": 414.8
+     },
+     {
+      "d": "2026-09-22",
+      "c": 412.65
+     },
+     {
+      "d": "2026-09-23",
+      "c": 413.25
+     },
+     {
+      "d": "2026-09-24",
+      "c": 405.0
+     },
+     {
+      "d": "2026-09-25",
+      "c": 404.0
+     },
+     {
+      "d": "2026-09-28",
+      "c": 401.55
+     },
+     {
+      "d": "2026-09-29",
+      "c": 406.0
+     },
+     {
+      "d": "2026-09-30",
+      "c": 417.0
+     },
+     {
+      "d": "2026-10-01",
+      "c": 418.35
+     },
+     {
+      "d": "2026-10-05",
+      "c": 416.0
+     },
+     {
+      "d": "2026-10-06",
+      "c": 431.9
+     },
+     {
+      "d": "2026-10-07",
+      "c": 440.0
+     },
+     {
+      "d": "2026-10-08",
+      "c": 435.0
+     },
+     {
+      "d": "2026-10-09",
+      "c": 441.0
+     },
+     {
+      "d": "2026-10-12",
+      "c": 443.4
+     },
+     {
+      "d": "2026-10-13",
+      "c": 439.0
+     },
+     {
+      "d": "2026-10-14",
+      "c": 438.05
+     },
+     {
+      "d": "2026-10-15",
+      "c": 447.95
+     },
+     {
+      "d": "2026-10-16",
+      "c": 447.4
+     },
+     {
+      "d": "2026-10-19",
+      "c": 442.3
+     },
+     {
+      "d": "2026-10-21",
+      "c": 437.8
+     },
+     {
+      "d": "2026-10-22",
+      "c": 437.0
+     },
+     {
+      "d": "2026-10-23",
+      "c": 430.5
+     },
+     {
+      "d": "2026-10-26",
+      "c": 440.75
+     },
+     {
+      "d": "2026-10-27",
+      "c": 442.5
+     }
+    ]
+   },
    {
     "id": "bhartiartl",
     "symbol": "BHARTIARTL.NS",
@@ -256,31 +635,30 @@
      "lo52": 1511.0
     },
     "thesis": [
-     "Price holds above the 50-day average, though the short-term average has not confirmed.",
-     "MACD sits above its signal line — the momentum cross is positive.",
-     "Volume is 1.16× its 20-day average — steady participation.",
-     "The long-term 200-day trend is still up."
+     "Price at 1948.1 sits 5.8% above its 20-day moving average of 1842.02, making current levels extended.",
+     "Momentum is positive with a MACD histogram of 17.238 and an RSI of 65.2, but the stock trades directly beneath 60-day resistance at 1978.8.",
+     "The entry model demands patience, requiring a pullback to the 1832.81–1851.24 zone before offering an acceptable risk-reward profile toward target…"
     ],
     "sections": {
-     "THE CHART": "Last price 1,948.10. The 20-day average sits at 1,842.02 and the 50-day at 1,855.40, putting price +5.8% from its short-term mean. RSI(14) reads 65 and the MACD histogram is +17.24. Nearest resistance from the last 60 sessions is 1,978.80; the 20-session swing low is 1,726.30. Average true range is 51.21 (2.6% of price), which is what sets the stop distance below.",
+     "THE CHART": "The stock trades above its 20-day (1842.02), 50-day (1855.40), and 200-day (1890.47) moving averages, though the averages themselves remain inverted from a prior correction. RSI at 65.2 reflects firm upward momentum without extreme overbought readings. Volume is running slightly above trend at 1.16 times the 20-day average. Overhead resistance looms closely at 1978.8, while 60-day support sits well below at 1726.3.",
      "THE BUSINESS": "Bharti Airtel sits in the communication sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +10.0% against its own trend, and +3.0% over the last five. Its 52-week range is 1,511.00 to 2,174.50, so price is currently 66% of the way up that range.",
-     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 1,722.85, which is 6.5% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
-     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
+     "THE MACRO": "The stock trades in the upper half of its 52-week range of 1511.0 to 2174.5. It has recovered above its 200-day moving average of 1890.47 after an extended consolidation.",
+     "THE CATALYST": "Headlines highlight recent relative outperformance and technical tests near the 2000 mark. Mentions of Jio Platforms market activity introduce competitive noise, but no concrete corporate event or dated catalyst is present.",
+     "THE RISKS": "Buying at current levels leaves exposure to an immediate reversal off 1978.8 resistance. The engine is blind to telecom regulatory decisions, spectrum dues developments, and competitive pricing responses around peer market debuts.",
+     "THE SIGNAL": "A composite score of 71 reflects constructive momentum and volume expansion. It measures price strength over recent sessions but does not account for the poor entry reward-to-risk ratio prior to a retracement."
     },
     "news": [
      {
       "h": "Stock Radar: Bharti Airtel stock takes support above 100-weeks WMA; will it cross 2,000 levels?",
       "src": "The Economic Times",
-      "time": "17h ago",
+      "time": "1d ago",
       "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOTXhoVHlZVERsMWRndWplV0FVdXZhQXlBMmdqd3lKVWR4OWdQazFjYU9vamRidG5xTWhCUXNRejktb3h1N01oOXRBWmRMMnd4OVA2RDhHVEJPY1RKd3lQR3M3aVY4eUlZRHkxNkpCakh2Q3FrZldmS1NCbXZEWUdSd2c0a3RCTjhBUndLMFczSTVUdXlTYWtoZ1JkcWNjN0dNVFIzb2dmQ2hIdE1RTzFtZXFLSnV2RXFWcVJJcUd1bnlHRjNBdTBBeGVWQVFrRExLM2dwX1RfRklFeXBzbXJWdzluVzhuSTFFYXZpUXNsTnF6aFVQeGFzN9IB_gFBVV95cUxNOENvSU1vRUVuVFRVNHFzazhIMnRpTXdDSGU3Ul9kSkJzYTljUjlLaUx4UEkycnZReEVhVXctYmhsQmFVZmliNnN1SGtNU3U3bW9nYkNESG5xbXM4UjVqbFNXbXpYZUZ4NUxsc29XMkFCMlNjYnlXVFpTU0hBdmp0S2UzUkRjUkZjN1hLdDdEMGhRYVZ5bk5JWHhaYVJKSnBpeElScHZWUzNfSk1iSVRVUUkyOWs4NXk5UXd5VkNnTU1IamNwZjJnZ3l1eUFLVzhESDZtS0ItQ1psQVRub2hmRHpOWjllaFZQZmczOWJ1YzhWaFc5Q1R5dFFUVU1YUQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "How to trade Bharti Airtel stock: Analyst's advice amid Jio Platform's market debut",
       "src": "Business Today",
-      "time": "5h ago",
+      "time": "12h ago",
       "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNNlJHQzE2bUQzMzRpREV6VThqODBxXzlDelZpamVrVlhJRDUwdVJ3MEFuc1Uwa21tRUxYZC01X29iYjVJVFlpUm44c0N4eDljRm1NajhfazJLbEc3cUMwZUpmNTBHMlBRUFhGRWxXejg4Uk9wV05mdWVNbFlZamllNExsanpRcDEyTmRUUC1xRXJyUTNBVXpsWDlmWVdOdVVRN2xaU0VjQ2pXRHAxaVVWbExhRlpfMDdaXzVVMVE5T3FmSnZYWDBVWDhVN1plRTk5TkRmcUExVmZ2M1AwZG9qUGh30gHnAUFVX3lxTE5GaVBTRW9ad3VfVWZXWUJMYzhKRU85MzdOUnpSeDdmajQxeGdWY0dud2xPWko0RlJWRVlabm5WUU5RQTVzSDZJRUJjdWc2Z1BuQ0x2SFR4RElvam5kMl93S3huRk55R29oZ3F4anlCSGYwMmZnM0g4bVBNZ3NFNkYtT2oxa3VvN1lMRkw1dlJZWXZqVUZFNm5jYUZiYTI3d1A0dkNHZ0JHN3hqY1ZIMnRyLXVvRXRPb1RsUzZEOXBSR01UMWJlalhtbzBsTldzZV9YNEQ1Mm5fSk5nRVpxbUctZGtVS3IzNA?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
@@ -293,15 +671,16 @@
      }
     ],
     "workcase": [
-     "Price holds above the 50-day average, though the short-term average has not confirmed.",
-     "The long-term 200-day trend is still up.",
-     "RSI at 65 — strength with room left before exhaustion.",
-     "MACD sits above its signal line — the momentum cross is positive."
+     "A controlled retracement to the 1832.81–1851.24 entry zone resets extension while preserving the positive MACD histogram.",
+     "Clearance of 1978.8 resistance opens a path toward 2104.22 and the 52-week high of 2174.5.",
+     "Volume expansion of 1.16x confirms institutional accumulation on the advance."
     ],
     "failcase": [
-     "Price is 5.8% extended above its 20-day average."
+     "Immediate rejection at 1978.8 triggers a sharp mean-reversion without stabilizing in the entry pocket.",
+     "The moving average stack remains structurally disordered, with the 20-day average still below the 200-day average.",
+     "A decline below 1726.3 invalidates the medium-term recovery structure."
     ],
-    "invalidation": "A daily close below ₹1,722.85.",
+    "invalidation": "A close below the fixed stop at 1722.85 completely breaks the 60-day support structure and terminates the setup.",
     "chart": [
      {
       "d": "2026-07-20",
@@ -583,7 +962,13 @@
       "d": "2026-10-28",
       "c": 1948.1
      }
-    ]
+    ],
+    "critique": "Action is WAIT for good reason: buying here requires accepting a 5.8% extension directly into 1978.8 resistance, forcing an unfavorable risk profile unless the stock pulls back over 5% into the specified entry zone.",
+    "news_read": {
+     "verdict": "CORROBORATES",
+     "detail": "Press coverage focuses on the stock's recent October momentum and psychological resistance at 2000, aligning with the technical proximity to 1978.8 resistance."
+    },
+    "analyst": "Google Gemini"
    },
    {
     "id": "icicibank",
@@ -634,24 +1019,24 @@
      "lo52": 1186.0
     },
     "thesis": [
-     "Price has reclaimed the 20-day average but remains under the 50-day.",
-     "MACD sits above its signal line — the momentum cross is positive.",
-     "Price sits +1.2% from its 20-day average — a reasonable entry zone.",
-     "The long-term 200-day trend is still up."
+     "The stock trades at 1377.6, compressed tightly between its 20-day SMA of 1360.61 and its 50-day SMA of 1378.84.",
+     "Long-term trend support remains intact with price holding above the 200-day SMA of 1355.15.",
+     "Momentum is positive with a MACD histogram of 4.845 and RSI at 55.0, yet the breakout requires clearing nearest resistance at 1411.8.",
+     "The trigger demands entry between 1413.21 and 1423.09, establishing a 7.0% risk distance to the 1318.88 stop."
     ],
     "sections": {
-     "THE CHART": "Last price 1,377.60. The 20-day average sits at 1,360.61 and the 50-day at 1,378.84, putting price +1.2% from its short-term mean. RSI(14) reads 55 and the MACD histogram is +4.84. Nearest resistance from the last 60 sessions is 1,411.80; the 20-session swing low is 1,291.00. Average true range is 27.06 (2.0% of price), which is what sets the stop distance below.",
+     "THE CHART": "The chart shows consolidation just under the 50-day average of 1378.84. MACD histogram at 4.845 confirms positive momentum, and RSI at 55.0 reflects moderate strength without overbought conditions. Volume is subdued, with 5-day volume tracking at 0.95 of the 20-day average. The structure is boxed between 60-day support at 1291.0 and 60-day resistance at 1411.8.",
      "THE BUSINESS": "ICICI Bank sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +5.8% against its own trend, and -0.5% over the last five. Its 52-week range is 1,186.00 to 1,500.00, so price is currently 61% of the way up that range.",
-     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 1,318.88, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
-     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
+     "THE MACRO": "The stock trades roughly midway between its 52-week low of 1186.0 and 52-week high of 1500.0, maintaining an overall primary uptrend above its 200-day moving average.",
+     "THE CATALYST": "Recent headlines focus on routine price tracking and stale post-earnings commentary from nine days ago; no fresh corporate or regulatory catalysts are visible in the feed.",
+     "THE RISKS": "A failure to breach resistance at 1411.8 leaves the stock exposed to mean reversion toward 1291.0 support. Additionally, the quantitative engine does not account for credit quality shifts, regulatory scrutiny, or systemic banking sector headwinds.",
+     "THE SIGNAL": "A score of 67 captures intact multi-month trend alignment and positive short-term momentum, but it is constrained by overhead resistance and below-average volume."
     },
     "news": [
      {
       "h": "ICICI Bank Share Price Today, ICICI Bank Stock Price Live NSE/BSE Updates",
       "src": "The Economic Times",
-      "time": "17h ago",
+      "time": "1d ago",
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQX203dWxrZzRtNEZVQVFkRUVXMVdIblBYdzRjQmw5em14S3g4MVlqQkZreTRzdUtfR2oxdEplVnQ3dW1WSWl3bjNPeG5EWVhwU3dBanNmT2RReDRoRWZnRkdOamNfdTdDMUJaYmFreW0tUEduS1NmRjFUX1dyelVSbXd5bw?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
@@ -671,15 +1056,16 @@
      }
     ],
     "workcase": [
-     "Price has reclaimed the 20-day average but remains under the 50-day.",
-     "The long-term 200-day trend is still up.",
-     "RSI at 55 — strength with room left before exhaustion.",
-     "MACD sits above its signal line — the momentum cross is positive."
+     "A daily close above 1411.8 confirms resistance absorption and triggers the entry corridor.",
+     "MACD histogram expansion from 4.845 accelerates upside momentum toward the 1547.2 target.",
+     "Price remains supported above the converging 20-day and 200-day moving averages."
     ],
     "failcase": [
-     "No disqualifying signal, but no setup is certain."
+     "Rejection at the 50-day SMA of 1378.84 forces price back below the 20-day SMA.",
+     "Volume ratio of 0.95 indicates insufficient institutional demand to absorb supply near 1411.8.",
+     "A breach below 1318.88 terminates the setup and exposes 60-day support at 1291.0."
     ],
-    "invalidation": "A daily close below ₹1,318.88.",
+    "invalidation": "A close below the fixed stop level of 1318.88 invalidates the bullish structure.",
     "chart": [
      {
       "d": "2026-07-20",
@@ -961,385 +1347,13 @@
       "d": "2026-10-28",
       "c": 1377.6
      }
-    ]
-   },
-   {
-    "id": "maruti",
-    "symbol": "MARUTI.NS",
-    "ticker": "MARUTI",
-    "name": "Maruti Suzuki",
-    "market": "INDIA",
-    "sector": "Consumer",
-    "art": "tech",
-    "cur": "₹",
-    "action": "BUY",
-    "mode": "BUY NOW",
-    "conviction": "MEDIUM",
-    "score": 67,
-    "price": 11579.0,
-    "chg": 1.13,
-    "entry": [
-     11544.26,
-     11636.89
     ],
-    "window": "First 60–90 minutes of the session",
-    "stop": 10963.03,
-    "targets": [
-     12406.38,
-     12971.17,
-     13724.23
-    ],
-    "rr": "1 : 2.2",
-    "risk_pct": 5.41,
-    "size": 5.0,
-    "scores": {
-     "Technical": 3,
-     "Momentum": 3,
-     "Volume": 3,
-     "Location": 4
+    "critique": "The setup requires paying up for a breakout above 1411.8 when recent volume is running below average at 0.95 and price has yet to sustainably clear its own 50-day moving average.",
+    "news_read": {
+     "verdict": "IRRELEVANT",
+     "detail": "The available headlines consist of routine price trackers and backward-looking earnings commentary that offer no forward technical or fundamental guidance."
     },
-    "indicators": {
-     "rsi": 53.8,
-     "sma20": 11424.05,
-     "sma50": 12280.2,
-     "sma200": 13535.39,
-     "macd_hist": 74.152,
-     "atr": 266.36,
-     "vol_ratio": 1.02,
-     "resistance": 12065.0,
-     "support": 10985.0,
-     "hi52": 17370.0,
-     "lo52": 10725.0
-    },
-    "thesis": [
-     "Price has reclaimed the 20-day average but remains under the 50-day.",
-     "MACD sits above its signal line — the momentum cross is positive.",
-     "Volume is 1.02× its 20-day average — steady participation.",
-     "Price sits +1.4% from its 20-day average — a reasonable entry zone."
-    ],
-    "sections": {
-     "THE CHART": "Last price 11,579.00. The 20-day average sits at 11,424.05 and the 50-day at 12,280.20, putting price +1.4% from its short-term mean. RSI(14) reads 54 and the MACD histogram is +74.15. Nearest resistance from the last 60 sessions is 12,065.00; the 20-session swing low is 10,985.00. Average true range is 266.36 (2.3% of price), which is what sets the stop distance below.",
-     "THE BUSINESS": "Maruti Suzuki sits in the consumer sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved -3.6% against its own trend, and +3.4% over the last five. Its 52-week range is 10,725.00 to 17,370.00, so price is currently 13% of the way up that range.",
-     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 10,963.03, which is 5.4% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
-     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
-    },
-    "news": [
-     {
-      "h": "Stock Picks Today: Maruti Suzuki, Bajaj Auto, L&T, Paytm, SBI Life, And More On Brokerages' Radar",
-      "src": "NDTV Profit",
-      "time": "15h ago",
-      "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxPT182MzJPX3M0VWkxR0pETEt4YXlfQU13VndDNmtEaDNwMUlLZ2RPaHRNaHctcktYTFdlUnhmRGNFcEFnMF9DNHlBcWsyaHBOdy1BbTRDN0paYk9kV2hkM3hjZmNUUTBRcUpQLXJCcGJNRnpBcEktelNVZ0hiZWowWXN6WEhwb0xFdFdPdW83OTNJVjMtYmJ0R3hONEZRLTQxclp2Wkx2VmliMWJmbEpocFNvVU9JZ0lydFBwSWJvVk1WSGtTMWRWZWtsMkhJUWhuTGk3N21IdHBJdUs3LW9KYXZKWngxWGh4V2doNVZMX1JEaV9FOTdDY2NneEVzc0dvMVBhRDlQcnVucWM0TUhPMkk5a3BiYWhkSl9PYm1aQdIBpwJBVV95cUxQa0l1U3k0cTJ6c2dhNUstNUVOZi1NVmJaaXNJbVJ1VlgzX0xoXzlPSjZrOE5fcm1hWG52eXkzYkZUZXJSbW1Ob1h2d2lGWXgzMG44R3ZWRHFWanFWOUd3N1FfUk5qRlRObDVNNnpmSXhPdXZrQmE0cWxnUjRneDZKblA5SFZDTllBMkJIRWxKRF9TZFUwckxDcF9PYzVIVVp4eDJ5cngtYTIzcnBIc0tNUmVMOTFpeXk5QVZqdkRHSE0wNEQwWXkxMDA0ZG5SbE1fanhERFNuU2NQT0gyVzFJWDRyTTdNVVZSeWVOWWRjR1JzclVkMFRWVEJqM1ZMYnhQa2ZVZVQ0cHZLLU1SWVRpSFN4M3NTQlVIQndZcjNjYlBGUGtuQi1R?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Maruti Suzuki shares see target price cuts by Jefferies, Nomura, other brokerages after Q2 net profit drop",
-      "src": "The Economic Times",
-      "time": "10h ago",
-      "url": "https://news.google.com/rss/articles/CBMipAJBVV95cUxQdEtXUHRyQnE5UFlrUDQ2RURQUmhxWXEtSTZQTDF6UHJyTzRDeHgtTEJYbHBPNFlHVmNwV1dobkdIYlMzTHlRRGtYYVJsYUtUNTRWVl85bExxamFQX0NtN3B6R2poTkc0RlF3RWJDeFJtb3VFMEliSjc1OXpfLUpjckRfZHFfcmJ3OC1kbUdTTkxFSWF6M3hSNDNrSklSSUFTdmtDOTExRHRMRzZqbDFIT09VTGtrOGd4eUdpYkRzSkF4MDNtcDFUcGhveTB3WFBITTJmQzdVLUFnV0ZLY0VMODdGZTlXOHlVRVpGY3ZQYld1LVY4VHFVaUNERFZSUzNkWGlyZmV2QUo2UElCZ3ZPOWpXakN4RExIZTU5R3JxajNvSV9R0gGqAkFVX3lxTE9yM2NHbXRRTG5VRlRfUWVfMVBYcW91eEQtc3N2bE82OHc2QTdkMTZCUEtqeDhja25zN0tXSnFtOUI2X0tyZkhKMDdjSTVtdDFQU0pxM3BiUlZpUGU2bGhJZDUxX3NfU014NTdQaUJhMlpxd0Y4X3JzSTlqRVpmRFotaWZWSGlqekhCemVLU1k3eHEwZ0R3SWs5czliOXJuZ2RMbEoxVFJyMDFXS0ZOVXlEREpQWlVpVDREZkh2MFN5MWczcmszR1VnLXBVak1tSU92RHdOMHNVLTdfYThxRXAwTTRmN1E1MkY4OWNyM2lJUnU0N0dRem9xUkJpZUJsS1NrLUExMzVITHkwNmJHX1Y4SDd6M2pWS0tHdFUzXzNSRFNVbW5iZkwybGc?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Maruti Suzuki shares slip marginally after missing estimates in Q2; brokerages divided on stock outlook,...",
-      "src": "Moneycontrol.com",
-      "time": "9h ago",
-      "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxPZll3OWNWM0t2OEFjMS1oVG9hRkNmQ0JBbkkwZHV0d28tTFFndkdWdk1yaDFXeW1vV0E5TElXNVR4X1VvRHRRNnpNUlJFLXd4ZVNpR1V1TGdwZlBZd0YxX0xIek1ZSFp1dzNvQTNTbG9Ha0hqY1E4bGIwWGRkVjBIQXQzOFkyd3l4LU04OE1zY2JwcHVhZGVoR0ZCb0MtSUJZRFZDTjgzOUZLNURZQnh5Rzk1Yy0weFA1N0R2Q3JYX1FOWEdzRnVfbFpCczhtQWxvVG1tVTVNTUI4NVBrMzFCMW5CQzZkdDU3dWZyYUtnOVB5Y2tPM0xFaDdoclE2TkJZTnNkX3Bfel9DSTBKNlo2a1hGVjhaUdIBmwJBVV95cUxNbDVKVlpyWjgwNks4dWZoclRCLTFNLTQxMUYxR3YzRkNIbGFiVi1IQnZPbUpMeFJtRmJBeS1IM2c5YXRJMHc5VVhwU1I3ZEVyLWtFYVVyMnl4ekFLdXJ4VWVreElYYU5ock5veC1najMtTEtZUjUwTWI3OGwxeXVDcUtQaTQ4eF9IZFVnTDM3OHZGLTNMRFNkWGU3S29uS2h6RFotR3M2cUNGVXJTd2dtRG92QXhOQk5YN2NiSUdFMTVxSlVBQTJmVjBPUnJ4SjZ4cUFOdnhDcGU5VG50VXBzak9vU1FPTU44cjFSd1JkMWZ1NXBfYlRNTkl4ZUE1M0gxMkJqUlUzeDd1ZF95VU4tc2otMUliOVhGazgw?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     }
-    ],
-    "workcase": [
-     "Price has reclaimed the 20-day average but remains under the 50-day.",
-     "RSI at 54 — strength with room left before exhaustion.",
-     "MACD sits above its signal line — the momentum cross is positive.",
-     "Volume is 1.02× its 20-day average — steady participation."
-    ],
-    "failcase": [
-     "Price is below its 200-day average — the primary trend is not supportive."
-    ],
-    "invalidation": "A daily close below ₹10,963.03.",
-    "chart": [
-     {
-      "d": "2026-07-20",
-      "c": 13514.0
-     },
-     {
-      "d": "2026-07-21",
-      "c": 13597.0
-     },
-     {
-      "d": "2026-07-22",
-      "c": 13545.0
-     },
-     {
-      "d": "2026-07-23",
-      "c": 13403.0
-     },
-     {
-      "d": "2026-07-24",
-      "c": 13442.0
-     },
-     {
-      "d": "2026-07-27",
-      "c": 13730.0
-     },
-     {
-      "d": "2026-07-28",
-      "c": 13802.0
-     },
-     {
-      "d": "2026-07-29",
-      "c": 13948.0
-     },
-     {
-      "d": "2026-07-30",
-      "c": 14188.0
-     },
-     {
-      "d": "2026-07-31",
-      "c": 14234.0
-     },
-     {
-      "d": "2026-08-03",
-      "c": 14150.0
-     },
-     {
-      "d": "2026-08-04",
-      "c": 14168.0
-     },
-     {
-      "d": "2026-08-05",
-      "c": 14190.0
-     },
-     {
-      "d": "2026-08-06",
-      "c": 14080.0
-     },
-     {
-      "d": "2026-08-07",
-      "c": 14037.0
-     },
-     {
-      "d": "2026-08-10",
-      "c": 14097.0
-     },
-     {
-      "d": "2026-08-11",
-      "c": 13990.0
-     },
-     {
-      "d": "2026-08-12",
-      "c": 13875.0
-     },
-     {
-      "d": "2026-08-13",
-      "c": 13905.0
-     },
-     {
-      "d": "2026-08-14",
-      "c": 13834.0
-     },
-     {
-      "d": "2026-08-17",
-      "c": 13760.0
-     },
-     {
-      "d": "2026-08-18",
-      "c": 13691.0
-     },
-     {
-      "d": "2026-08-19",
-      "c": 13690.0
-     },
-     {
-      "d": "2026-08-20",
-      "c": 13809.0
-     },
-     {
-      "d": "2026-08-21",
-      "c": 13565.0
-     },
-     {
-      "d": "2026-08-24",
-      "c": 13620.0
-     },
-     {
-      "d": "2026-08-25",
-      "c": 13678.0
-     },
-     {
-      "d": "2026-08-26",
-      "c": 13520.0
-     },
-     {
-      "d": "2026-08-27",
-      "c": 13440.0
-     },
-     {
-      "d": "2026-08-28",
-      "c": 13376.0
-     },
-     {
-      "d": "2026-08-31",
-      "c": 13547.0
-     },
-     {
-      "d": "2026-09-01",
-      "c": 12950.0
-     },
-     {
-      "d": "2026-09-02",
-      "c": 12849.0
-     },
-     {
-      "d": "2026-09-03",
-      "c": 12857.0
-     },
-     {
-      "d": "2026-09-04",
-      "c": 12694.0
-     },
-     {
-      "d": "2026-09-07",
-      "c": 12760.0
-     },
-     {
-      "d": "2026-09-08",
-      "c": 12641.0
-     },
-     {
-      "d": "2026-09-09",
-      "c": 12618.0
-     },
-     {
-      "d": "2026-09-10",
-      "c": 12590.0
-     },
-     {
-      "d": "2026-09-11",
-      "c": 12400.0
-     },
-     {
-      "d": "2026-09-15",
-      "c": 12231.0
-     },
-     {
-      "d": "2026-09-16",
-      "c": 12166.0
-     },
-     {
-      "d": "2026-09-17",
-      "c": 12338.0
-     },
-     {
-      "d": "2026-09-18",
-      "c": 12103.0
-     },
-     {
-      "d": "2026-09-21",
-      "c": 12153.0
-     },
-     {
-      "d": "2026-09-22",
-      "c": 12190.0
-     },
-     {
-      "d": "2026-09-23",
-      "c": 12230.0
-     },
-     {
-      "d": "2026-09-24",
-      "c": 11990.0
-     },
-     {
-      "d": "2026-09-25",
-      "c": 12065.0
-     },
-     {
-      "d": "2026-09-28",
-      "c": 12008.0
-     },
-     {
-      "d": "2026-09-29",
-      "c": 11877.0
-     },
-     {
-      "d": "2026-09-30",
-      "c": 11967.0
-     },
-     {
-      "d": "2026-10-01",
-      "c": 11386.0
-     },
-     {
-      "d": "2026-10-05",
-      "c": 11532.0
-     },
-     {
-      "d": "2026-10-06",
-      "c": 11625.0
-     },
-     {
-      "d": "2026-10-07",
-      "c": 11450.0
-     },
-     {
-      "d": "2026-10-08",
-      "c": 11228.0
-     },
-     {
-      "d": "2026-10-09",
-      "c": 11420.0
-     },
-     {
-      "d": "2026-10-12",
-      "c": 11315.0
-     },
-     {
-      "d": "2026-10-13",
-      "c": 11245.0
-     },
-     {
-      "d": "2026-10-14",
-      "c": 11178.0
-     },
-     {
-      "d": "2026-10-15",
-      "c": 11445.0
-     },
-     {
-      "d": "2026-10-16",
-      "c": 11489.0
-     },
-     {
-      "d": "2026-10-19",
-      "c": 11475.0
-     },
-     {
-      "d": "2026-10-21",
-      "c": 11200.0
-     },
-     {
-      "d": "2026-10-22",
-      "c": 11170.0
-     },
-     {
-      "d": "2026-10-23",
-      "c": 11230.0
-     },
-     {
-      "d": "2026-10-26",
-      "c": 11220.0
-     },
-     {
-      "d": "2026-10-27",
-      "c": 11450.0
-     },
-     {
-      "d": "2026-10-28",
-      "c": 11579.0
-     }
-    ]
+    "analyst": "Google Gemini"
    }
   ],
   "usa": [
@@ -1355,9 +1369,9 @@
     "action": "BUY",
     "mode": "BUY ON BREAKOUT",
     "conviction": "HIGH",
-    "score": 77,
-    "price": 345.82,
-    "chg": -0.37,
+    "score": 93,
+    "price": 347.1,
+    "chg": -0.94,
     "entry": [
      352.08,
      354.54
@@ -1374,18 +1388,18 @@
     "size": 5.0,
     "scores": {
      "Technical": 5,
-     "Momentum": 2,
+     "Momentum": 4,
      "Volume": 3,
-     "Location": 4
+     "Location": 3
     },
     "indicators": {
-     "rsi": 57.9,
-     "sma20": 340.71,
-     "sma50": 331.77,
-     "sma200": 295.7,
-     "macd_hist": -0.019,
-     "atr": 6.14,
-     "vol_ratio": 0.97,
+     "rsi": 64.3,
+     "sma20": 340.07,
+     "sma50": 331.06,
+     "sma200": 295.28,
+     "macd_hist": 0.096,
+     "atr": 6.36,
+     "vol_ratio": 1.05,
      "resistance": 351.73,
      "support": 325.81,
      "hi52": 351.73,
@@ -1393,52 +1407,56 @@
     },
     "thesis": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "RSI at 58 — strength with room left before exhaustion.",
-     "Price sits +1.5% from its 20-day average — a reasonable entry zone.",
-     "The long-term 200-day trend is still up."
+     "MACD sits above its signal line — the momentum cross is positive.",
+     "Volume is 1.05× its 20-day average — steady participation.",
+     "Price sits +2.1% from its 20-day average — a reasonable entry zone."
     ],
     "sections": {
-     "THE CHART": "Last price 345.82. The 20-day average sits at 340.71 and the 50-day at 331.77, putting price +1.5% from its short-term mean. RSI(14) reads 58 and the MACD histogram is -0.02. Nearest resistance from the last 60 sessions is 351.73; the 20-session swing low is 325.81. Average true range is 6.14 (1.8% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 347.10. The 20-day average sits at 340.07 and the 50-day at 331.06, putting price +2.1% from its short-term mean. RSI(14) reads 64 and the MACD histogram is +0.10. Nearest resistance from the last 60 sessions is 351.73; the 20-session swing low is 325.81. Average true range is 6.36 (1.8% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Apple sits in the technology sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +3.8% against its own trend, and +0.5% over the last five. Its 52-week range is 169.21 to 351.73, so price is currently 97% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +5.4% against its own trend, and +2.2% over the last five. Its 52-week range is 169.21 to 351.73, so price is currently 97% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
      "THE RISKS": "The setup fails on a close below 325.16, which is 8.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
-      "h": "Apple and Alphabet Stocks Look Vulnerable. Here’s How Far They Could Drop.",
-      "src": "Barron's",
+      "h": "Apple Could Lose Its $5 Trillion Valuation as iPhone Duo Screens Crack",
+      "src": "Yahoo Finance",
       "time": "1d ago",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPWFRDWkpkcWFLUzZrMk9TOXUxenRUSVZtM3pkWkI4OEk2YWZUQnp6SVdYWmJIZEFSRUpwR3hqTzViNzFjZzd1NFBDZ1hianhzX05pUGgycUhmNV9hYTROSHl5QlE2WDRKdzFlX0VGeUNMZVBfRzF4OE1BNXA2Z1EtNFNpVVRvQ0k?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "In 1985, He Was Forced Out of the Company He Founded. Months Later He Bet $10 Million On A Graphics Unit He Bought From George Lucas. By 2006, That Bet Was Worth Far More Than His Apple Stock",
-      "src": "24/7 Wall St.",
-      "time": "3d ago",
-      "url": "https://news.google.com/rss/articles/CBMizwJBVV95cUxNNWZXS0ctWHRseUF1UlFGWXM4M2xJb2V6cVBHSWt0T0VWMXhRWWZDNkRTODExaDNxVUFIRFlhRFBlMFhXS1Y2WWlUVTM1STBHRGp1U3VqTTI4OXE3QlNoM1NGbG1oLWlCUmEtbTFuQUZxT05ELThUajRJamJJVnJrYWt6dFBtOVF4UGYwa2xrOWtNQWw1bEFjQkNtYlN5dkNMWjIzNFF4UUFTSV9fQzliaExjQV9selBpbEJiT1FTcUJmdnhNWFFUcFlBZjFtTl9LYzlnU0ladEJFQTdLSWVSVUZZeTZqNlRvdFZURFl6Q0J2d2hIVlp5MVFLX0F2SnllYzkzVEdNSUhnM2I1ODdieHBnNm5uSFkxZ1dhQXhkUlBNLTlHMW12bFI3NGVsSzlzRHVKUzloSnN3X0N5NnNoZlJfWUJlZVROT1Y1aTl0VQ?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQWVJsZjZTaGJ2bk9OS3N3N09PRFJuamk2S1VNNlZlRmJtbG9vQ3ctMkV6bFpHQmw4OWlkd0NJZGlXUU5WbThtRmw2S3p6NC1PRWtyRjRGUlpQUXczYUV6QVFpdzA0WHJyTmp6Vm5XT3R5UkFWb3VicTRXVmxDRU1lVHF4QUcxekZ6ejROdFd4LVd3TFA3ekl3?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "If You'd Invested $10,000 in Apple Stock 10 Years Ago, Here's How Much You'd Have Today",
+      "src": "The Motley Fool",
+      "time": "10h ago",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOUm5Vd0xUXzJvVXJaXzNwSlNUZUQ4TlMxM25kUUNhNnRxMFo5ZFRSRzJTMDk0MzFEbVNVNzRZbkJSVGRGZkZWTEpFSG1VV3F1bGtCbkJnVVQ2bGdCanFiNjlfZy13NmxpekQ5R29rMlpfVjJMaVI5bWh4TXdkRDVqNENUWkZFdDJWbm4zY195a0I3NnU2NlNlcg?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "Apple Stock And Other Quality Growth Names For Higher Rates",
       "src": "Yahoo Finance",
-      "time": "3h ago",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOdmp2TDBVa0tldGg2Ml9xWEVuekZLdkJ3Sy0xOGJ6LVAzVGJiYzBjYzllRkNhZ29NTGNuU2o1MGNsQU82NzQ3MG5TLWV3bDNpTVA4eWNwd1FwazFFUGlUZkF0REpVV1RyY0cwVzBlb0lha1Z5ZHF4OUZjTE0tOE95d0NWc1pPcXdlYXhES084ellEYjRKWkE?oc=5",
+      "time": "2h ago",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQU3l0eW50TWVRWXNwTHdTdE9ZcTAwRWpjd05JY21naFdmaW96dGNwZzFDR19GdnkyeEp0QXE1dmxwaGV6VFZmTS01NHdZY1NvU2xQQ2xxRXN5WWlvWDNHS1VnWGpNaTU1UGZpaFl6S2wxLXMwa2FLLWhmVEJwcWZzZWF2Q1Q2bzd4RldRWGJBNTZSb2NCVFJuZm9UUEVGUQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
     "workcase": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "The long-term 200-day trend is still up.",
-     "RSI at 58 — strength with room left before exhaustion.",
-     "Price sits +1.5% from its 20-day average — a reasonable entry zone."
+     "RSI at 64 — strength with room left before exhaustion.",
+     "MACD sits above its signal line — the momentum cross is positive."
     ],
     "failcase": [
-     "MACD remains below its signal line."
+     "No disqualifying signal, but no setup is certain."
     ],
     "invalidation": "A daily close below $325.16.",
     "chart": [
+     {
+      "d": "2026-07-21",
+      "c": 327.74
+     },
      {
       "d": "2026-07-22",
       "c": 325.89
@@ -1714,10 +1732,385 @@
      {
       "d": "2026-10-27",
       "c": 347.1
+     }
+    ]
+   },
+   {
+    "id": "xom",
+    "symbol": "XOM",
+    "ticker": "XOM",
+    "name": "Exxon Mobil",
+    "market": "USA",
+    "sector": "Energy",
+    "art": "energy",
+    "cur": "$",
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "MEDIUM",
+    "score": 71,
+    "price": 179.91,
+    "chg": 1.17,
+    "entry": [
+     179.37,
+     180.81
+    ],
+    "window": "First 60–90 minutes of the session",
+    "stop": 167.48,
+    "targets": [
+     196.48,
+     207.82,
+     222.95
+    ],
+    "rr": "1 : 2.2",
+    "risk_pct": 7.0,
+    "size": 5.0,
+    "scores": {
+     "Technical": 5,
+     "Momentum": 5,
+     "Volume": 3,
+     "Location": 2
+    },
+    "indicators": {
+     "rsi": 74.8,
+     "sma20": 172.88,
+     "sma50": 166.64,
+     "sma200": 153.74,
+     "macd_hist": 0.712,
+     "atr": 4.05,
+     "vol_ratio": 1.03,
+     "resistance": 184.88,
+     "support": 160.81,
+     "hi52": 184.88,
+     "lo52": 97.8
+    },
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "MACD sits above its signal line — the momentum cross is positive.",
+     "Volume is 1.03× its 20-day average — steady participation.",
+     "The long-term 200-day trend is still up."
+    ],
+    "sections": {
+     "THE CHART": "Last price 179.91. The 20-day average sits at 172.88 and the 50-day at 166.64, putting price +4.1% from its short-term mean. RSI(14) reads 75 and the MACD histogram is +0.71. Nearest resistance from the last 60 sessions is 184.88; the 20-session swing low is 160.81. Average true range is 4.05 (2.3% of price), which is what sets the stop distance below.",
+     "THE BUSINESS": "Exxon Mobil sits in the energy sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +11.5% against its own trend, and +1.2% over the last five. Its 52-week range is 97.80 to 184.88, so price is currently 94% of the way up that range.",
+     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
+     "THE RISKS": "The setup fails on a close below 167.48, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
+    },
+    "news": [
+     {
+      "h": "ExxonMobil (XOM) Stock Still Looks Undervalued On Its 231% Run",
+      "src": "Yahoo Finance",
+      "time": "7h ago",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNN21QSjdiYjNtRFlRdm9Kc29iZ3E5RG1leko3TnJvZFFEamdDbGpnemxRMF9XLTBmWGxnTjFrdHdQS2s1NFYwdm02QlJhV3htZURmdFppYW5SbDV2Y0k2UXl5U0M1bjRGT3RvV04tSTNPVFVaeTU1LTJiNGVpa09zaVZMZU9XNG9DSFJLLWNfZXNVWkhGUEdIMnlhSTc2Zw?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "d": "2026-10-28",
-      "c": 345.82
+      "h": "Ahead of ExxonMobil Earnings, Here's What Barchart Data Says Comes Next for XOM Stock",
+      "src": "Barchart.com",
+      "time": "3h ago",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNOHZabnlXaVRaZWN1V0lvRElhZHlFN0xoTER4UncwU2RhSUtYWk4tcElrd0FNSjQ0UEg1eXhDLWdNa1FSNldlbFNhVmFDdkFGeC1IcElmajN4TVFfaXppU2RjaWNBaTVQQkpYXzVkb3dlTGY1UzRpNExhTnRFa1NCdHFvcjllZi1kMlpsZVlqX1ZIU0E4aVBmczBaRmoyVXdoaFdWVWNwSHVxS09rUC1rWVlSUExHMk0xWkgySXo5Nnl2N3dsWW4w?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "Has The Story Under ExxonMobil Stock Run Out?",
+      "src": "Trefis",
+      "time": "23d ago",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNdmMyNF9sVHU4eHJOUjd0dGN0UHhwUzNQcDhFZTB6Q3c5cm9GVnV6RjRLZDREVnM2T2R6NVc1Wno4RHZXczl1OXNWWml6bnB6ODU1UGk0ODNHckVaRXFKdFRXczBaMEs2b1pLWVd4b08tN3JmZzlnUXZ3MlNnaTQ1ZTNLR1ZnWEc3WEZsNUloZEVBbzgwZWQ5ZVI0RWR2OXdxU2VsOEE4OA?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     }
+    ],
+    "workcase": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "The long-term 200-day trend is still up.",
+     "MACD sits above its signal line — the momentum cross is positive.",
+     "Volume is 1.03× its 20-day average — steady participation."
+    ],
+    "failcase": [
+     "RSI at 75 is overbought; entries here carry pullback risk.",
+     "Price is 4.1% extended above its 20-day average."
+    ],
+    "invalidation": "A daily close below $167.48.",
+    "chart": [
+     {
+      "d": "2026-07-21",
+      "c": 151.71
+     },
+     {
+      "d": "2026-07-22",
+      "c": 154.45
+     },
+     {
+      "d": "2026-07-23",
+      "c": 156.89
+     },
+     {
+      "d": "2026-07-24",
+      "c": 156.94
+     },
+     {
+      "d": "2026-07-27",
+      "c": 154.77
+     },
+     {
+      "d": "2026-07-28",
+      "c": 153.04
+     },
+     {
+      "d": "2026-07-29",
+      "c": 156.75
+     },
+     {
+      "d": "2026-07-30",
+      "c": 156.97
+     },
+     {
+      "d": "2026-07-31",
+      "c": 155.44
+     },
+     {
+      "d": "2026-08-03",
+      "c": 155.06
+     },
+     {
+      "d": "2026-08-04",
+      "c": 153.96
+     },
+     {
+      "d": "2026-08-05",
+      "c": 151.63
+     },
+     {
+      "d": "2026-08-06",
+      "c": 154.84
+     },
+     {
+      "d": "2026-08-07",
+      "c": 153.04
+     },
+     {
+      "d": "2026-08-10",
+      "c": 159.79
+     },
+     {
+      "d": "2026-08-11",
+      "c": 159.8
+     },
+     {
+      "d": "2026-08-12",
+      "c": 159.75
+     },
+     {
+      "d": "2026-08-13",
+      "c": 158.61
+     },
+     {
+      "d": "2026-08-14",
+      "c": 160.1
+     },
+     {
+      "d": "2026-08-17",
+      "c": 161.46
+     },
+     {
+      "d": "2026-08-18",
+      "c": 165.56
+     },
+     {
+      "d": "2026-08-19",
+      "c": 164.77
+     },
+     {
+      "d": "2026-08-20",
+      "c": 166.15
+     },
+     {
+      "d": "2026-08-21",
+      "c": 165.11
+     },
+     {
+      "d": "2026-08-24",
+      "c": 164.05
+     },
+     {
+      "d": "2026-08-25",
+      "c": 160.64
+     },
+     {
+      "d": "2026-08-26",
+      "c": 158.19
+     },
+     {
+      "d": "2026-08-27",
+      "c": 156.44
+     },
+     {
+      "d": "2026-08-28",
+      "c": 156.71
+     },
+     {
+      "d": "2026-08-31",
+      "c": 160.95
+     },
+     {
+      "d": "2026-09-01",
+      "c": 164.55
+     },
+     {
+      "d": "2026-09-02",
+      "c": 164.15
+     },
+     {
+      "d": "2026-09-03",
+      "c": 162.21
+     },
+     {
+      "d": "2026-09-04",
+      "c": 159.47
+     },
+     {
+      "d": "2026-09-08",
+      "c": 160.66
+     },
+     {
+      "d": "2026-09-09",
+      "c": 164.23
+     },
+     {
+      "d": "2026-09-10",
+      "c": 165.23
+     },
+     {
+      "d": "2026-09-11",
+      "c": 165.99
+     },
+     {
+      "d": "2026-09-14",
+      "c": 165.08
+     },
+     {
+      "d": "2026-09-15",
+      "c": 169.32
+     },
+     {
+      "d": "2026-09-16",
+      "c": 163.32
+     },
+     {
+      "d": "2026-09-17",
+      "c": 163.27
+     },
+     {
+      "d": "2026-09-18",
+      "c": 163.54
+     },
+     {
+      "d": "2026-09-21",
+      "c": 158.3
+     },
+     {
+      "d": "2026-09-22",
+      "c": 158.71
+     },
+     {
+      "d": "2026-09-23",
+      "c": 161.23
+     },
+     {
+      "d": "2026-09-24",
+      "c": 162.14
+     },
+     {
+      "d": "2026-09-25",
+      "c": 160.59
+     },
+     {
+      "d": "2026-09-28",
+      "c": 162.52
+     },
+     {
+      "d": "2026-09-29",
+      "c": 161.35
+     },
+     {
+      "d": "2026-09-30",
+      "c": 162.75
+     },
+     {
+      "d": "2026-10-01",
+      "c": 163.82
+     },
+     {
+      "d": "2026-10-02",
+      "c": 164.01
+     },
+     {
+      "d": "2026-10-05",
+      "c": 164.0
+     },
+     {
+      "d": "2026-10-06",
+      "c": 164.48
+     },
+     {
+      "d": "2026-10-07",
+      "c": 164.05
+     },
+     {
+      "d": "2026-10-08",
+      "c": 168.5
+     },
+     {
+      "d": "2026-10-09",
+      "c": 168.94
+     },
+     {
+      "d": "2026-10-12",
+      "c": 172.15
+     },
+     {
+      "d": "2026-10-13",
+      "c": 174.08
+     },
+     {
+      "d": "2026-10-14",
+      "c": 177.01
+     },
+     {
+      "d": "2026-10-15",
+      "c": 174.68
+     },
+     {
+      "d": "2026-10-16",
+      "c": 178.98
+     },
+     {
+      "d": "2026-10-19",
+      "c": 178.28
+     },
+     {
+      "d": "2026-10-20",
+      "c": 177.86
+     },
+     {
+      "d": "2026-10-21",
+      "c": 178.09
+     },
+     {
+      "d": "2026-10-22",
+      "c": 178.23
+     },
+     {
+      "d": "2026-10-23",
+      "c": 183.21
+     },
+     {
+      "d": "2026-10-26",
+      "c": 184.54
+     },
+     {
+      "d": "2026-10-27",
+      "c": 179.91
      }
     ]
    },
@@ -1732,20 +2125,20 @@
     "cur": "$",
     "action": "BUY",
     "mode": "BUY NOW",
-    "conviction": "HIGH",
-    "score": 75,
-    "price": 402.36,
-    "chg": 0.12,
+    "conviction": "MEDIUM",
+    "score": 71,
+    "price": 401.86,
+    "chg": -0.31,
     "entry": [
-     401.15,
-     404.37
+     400.65,
+     403.87
     ],
     "window": "First 60–90 minutes of the session",
-    "stop": 374.57,
+    "stop": 374.1,
     "targets": [
-     439.41,
-     464.79,
-     498.62
+     438.87,
+     464.21,
+     498.0
     ],
     "rr": "1 : 2.2",
     "risk_pct": 7.0,
@@ -1754,16 +2147,16 @@
      "Technical": 5,
      "Momentum": 5,
      "Volume": 3,
-     "Location": 3
+     "Location": 2
     },
     "indicators": {
-     "rsi": 72.2,
-     "sma20": 391.03,
-     "sma50": 379.49,
-     "sma200": 341.38,
-     "macd_hist": 0.471,
-     "atr": 7.49,
-     "vol_ratio": 0.99,
+     "rsi": 73.3,
+     "sma20": 388.88,
+     "sma50": 378.73,
+     "sma200": 341.08,
+     "macd_hist": 1.118,
+     "atr": 7.42,
+     "vol_ratio": 1.03,
      "resistance": 414.6,
      "support": 356.75,
      "hi52": 414.6,
@@ -1772,37 +2165,37 @@
     "thesis": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Price sits +2.9% from its 20-day average — a reasonable entry zone.",
+     "Volume is 1.03× its 20-day average — steady participation.",
      "The long-term 200-day trend is still up."
     ],
     "sections": {
-     "THE CHART": "Last price 402.36. The 20-day average sits at 391.03 and the 50-day at 379.49, putting price +2.9% from its short-term mean. RSI(14) reads 72 and the MACD histogram is +0.47. Nearest resistance from the last 60 sessions is 414.60; the 20-session swing low is 356.75. Average true range is 7.49 (1.9% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 401.86. The 20-day average sits at 388.88 and the 50-day at 378.73, putting price +3.3% from its short-term mean. RSI(14) reads 73 and the MACD histogram is +1.12. Nearest resistance from the last 60 sessions is 414.60; the 20-session swing low is 356.75. Average true range is 7.42 (1.8% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Visa sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +12.0% against its own trend, and -1.3% over the last five. Its 52-week range is 281.35 to 414.60, so price is currently 91% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +9.8% against its own trend, and -1.2% over the last five. Its 52-week range is 281.35 to 414.60, so price is currently 90% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 374.57, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 374.10, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
+      "h": "Visa Stock Inches Lower Despite Revenue Beat",
+      "src": "Yahoo Finance",
+      "time": "12h ago",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOQ0JtM0JOc2NMd2VBVV9JUTJLaDhRVVgwZ2h4d1JXQ3ZrYUFKMEVsamN3Wmk5WlNEamZTWkFtZ1NJQWtLTkdkeUJNVGY4aWdaT0ZWdHF3ZkU2U2VzdWtQd1Uzb1pselhZRGc3eEl5ZzN5WGtYY1hxUUlnV1FLRGdhYm4wTkt6MjhDdmhWOEJTYjhFT2NaY1NUdUQwdjA?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
       "h": "Visa, IBD Stock Of The Day, Shows Bullish Action After Earnings Report",
       "src": "Investor's Business Daily",
-      "time": "just now",
+      "time": "7h ago",
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOb0dyMXRNWWZvcXlhQXNPVEJsUjAzaWRzV3Y1NGhicm9mU3JGNmx2NnM1M0tnWTNreTlDU2ROYlJtcG5QYUhxbXJLbmg2VjFKamFpVG9ReGwtVDdsaW9GUHVaZ0tLY3FkeUhYZjlxZUdValVxYlpqS1Q3UWhEMFBHUFJR?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Visa Beats Fourth-Quarter Views as Payments Volume Increases",
-      "src": "Yahoo Finance",
-      "time": "19h ago",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPN0hBS1d0dVNWRXlsOWw5dS1xX25objlicXh1LTJiR0pjZWhnMnFza0VxQTV0QnVBWnpFd0ZEQUtSLXQ3UmZPQTh4OGZldXFWeldRWFNEQjNTRnlySmRYSE5DV0tnMmV5NFBSVGszWTN3SU4wRDBwQzdkS3JUZS1DT2JBODFuWTBqZndzeFNjM2dEZnRpTXRwanJXZVU?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Visa Earnings Were Solid. We Still Like the Stock.",
-      "src": "Barron's",
-      "time": "1h ago",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNbURIWG8xNjBMazE5R3c2MTNiN3RZYml1c2VSVkdhbEp0VEhQQlJsQTNrNUtFanFqdzVyNGpNNkZTQzUyUHcxb1BaMFpoaTZtQy1oMXpzYm5WTmFuekZ3cmtmYWVlbkpjdUpqSVNmeDA1emV6QVpIMDlaSW40NG9ITWZ6MTNjN0I3?oc=5",
+      "h": "Visa results beat estimates as resilient customers keep up spending",
+      "src": "Reuters",
+      "time": "1d ago",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTks0TEhNcDhhU2VhLXNYanZDVXI2eWRLVVVULUd4M3JueFQ1TDNCTFJ6YkxFVjk0SW1iblY5Q21oRDJaczVBTTBtYXA1dmR3WHFNT1dtQm1vSUg2Z3RxcDMxSjBzMk9yR3JiaDdKNmpKMnMwRWl6Y3Y1RWRxcDlZQWhFYk1zdDRYY1llZy1iUGlJWGwtSVA0MVBYMnpHVkFkTnBTRw?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
@@ -1810,13 +2203,18 @@
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "The long-term 200-day trend is still up.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Price sits +2.9% from its 20-day average — a reasonable entry zone."
+     "Volume is 1.03× its 20-day average — steady participation."
     ],
     "failcase": [
-     "RSI at 72 is overbought; entries here carry pullback risk."
+     "RSI at 73 is overbought; entries here carry pullback risk.",
+     "Price is 3.3% extended above its 20-day average."
     ],
-    "invalidation": "A daily close below $374.57.",
+    "invalidation": "A daily close below $374.10.",
     "chart": [
+     {
+      "d": "2026-07-21",
+      "c": 355.82
+     },
      {
       "d": "2026-07-22",
       "c": 353.42
@@ -2092,388 +2490,6 @@
      {
       "d": "2026-10-27",
       "c": 401.86
-     },
-     {
-      "d": "2026-10-28",
-      "c": 402.36
-     }
-    ]
-   },
-   {
-    "id": "msft",
-    "symbol": "MSFT",
-    "ticker": "MSFT",
-    "name": "Microsoft",
-    "market": "USA",
-    "sector": "Technology",
-    "art": "tech",
-    "cur": "$",
-    "action": "BUY",
-    "mode": "BUY NOW",
-    "conviction": "MEDIUM",
-    "score": 65,
-    "price": 527.36,
-    "chg": -0.75,
-    "entry": [
-     525.78,
-     530.0
-    ],
-    "window": "First 60–90 minutes of the session",
-    "stop": 511.0,
-    "targets": [
-     549.85,
-     565.05,
-     585.32
-    ],
-    "rr": "1 : 2.2",
-    "risk_pct": 3.2,
-    "size": 5.0,
-    "scores": {
-     "Technical": 3,
-     "Momentum": 2,
-     "Volume": 3,
-     "Location": 5
-    },
-    "indicators": {
-     "rsi": 52.9,
-     "sma20": 529.71,
-     "sma50": 511.11,
-     "sma200": 437.3,
-     "macd_hist": -2.012,
-     "atr": 10.56,
-     "vol_ratio": 0.84,
-     "resistance": 551.15,
-     "support": 512.17,
-     "hi52": 555.45,
-     "lo52": 344.79
-    },
-    "thesis": [
-     "Price holds above the 50-day average, though the short-term average has not confirmed.",
-     "RSI at 53 — strength with room left before exhaustion.",
-     "Price sits -0.4% from its 20-day average — a reasonable entry zone.",
-     "The long-term 200-day trend is still up."
-    ],
-    "sections": {
-     "THE CHART": "Last price 527.36. The 20-day average sits at 529.71 and the 50-day at 511.11, putting price -0.4% from its short-term mean. RSI(14) reads 53 and the MACD histogram is -2.01. Nearest resistance from the last 60 sessions is 551.15; the 20-session swing low is 512.17. Average true range is 10.56 (2.0% of price), which is what sets the stop distance below.",
-     "THE BUSINESS": "Microsoft sits in the technology sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +2.8% against its own trend, and -1.0% over the last five. Its 52-week range is 344.79 to 555.45, so price is currently 87% of the way up that range.",
-     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 511.00, which is 3.2% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
-     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
-    },
-    "news": [
-     {
-      "h": "Tech rises for third day in a row ahead of Microsoft, Alphabet earnings, Fed decision in focus: AlphaCheck",
-      "src": "Yahoo Finance",
-      "time": "2h ago",
-      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPNjVlRGJ4WGsyclFhTmFzT0NTQmlUaTFzcjItQndoOHcyQ2RyTjVvZjNuaVNCTTR3bUNZa1EzTUxGVC1QQmhBd0V0b09sU0c1YnFfcnZ5MmVQdkQ5SU9wQTJhM1M4bXEteWdhTEpXUTdnSncwRWk1bnNlci1mdmV5c0xmVl9RUDBNMENrelZNelVPQWw0N0pPMlNqWDdsT1NkcjJob25hUWNIV3RjcnRwZThtUjJMb3owMkZMWU9PTmE0NjlCdWlGSHpsWGdDRXV4dmliZWpNdWp0YVNXcnJfX285bF9QcmstZ3Q4eGFnM3EyQQ?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Wall Street rises as traders await Fed decision, Alphabet and Microsoft earnings (COMP:IND:)",
-      "src": "Seeking Alpha",
-      "time": "2h ago",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNTUpjMDk2Q3hVRnpRYmpJeFRPdUd3RzF0R2J5bnZrajFza3QtZmtmLUxmY2JUZnpud1RuQk1hc1VhVXF2N21GazRrbXc2YktHTFVVcFlSWl90V3J0elhBcl9qc0ExU3BKVWNuNGNHUXAyRUJqMnQ2ZnQwV2U1cWZZaGRhbklfMTZt?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Fed decision and Alphabet, Microsoft, Amazon earnings could shake up the AI trade over the next 48 hours",
-      "src": "Business Insider",
-      "time": "5h ago",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQTGMyNlVMOV9mTHQ1ZEd2MWZiZDZsYUZ3U1dYQVVoeDBsbVd4V3BhemNaeTV1UjgxTDUwNEZsMzEyWjB4cUExZTBYS3d0b2dUX2NWa3p3N3RpWE9yZ1dpekd6cjNyOThHRDJST3dXaEs0R084Wk1kdmY3cHA2SXdFTEs1a1ByQ3RpZTNxUllGczdDMnktd1pmdnRON1duQ0Z2VHhRMF9iU3E?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     }
-    ],
-    "workcase": [
-     "Price holds above the 50-day average, though the short-term average has not confirmed.",
-     "The long-term 200-day trend is still up.",
-     "RSI at 53 — strength with room left before exhaustion.",
-     "Price sits -0.4% from its 20-day average — a reasonable entry zone."
-    ],
-    "failcase": [
-     "MACD remains below its signal line."
-    ],
-    "invalidation": "A daily close below $511.00.",
-    "chart": [
-     {
-      "d": "2026-07-22",
-      "c": 390.34
-     },
-     {
-      "d": "2026-07-23",
-      "c": 381.58
-     },
-     {
-      "d": "2026-07-24",
-      "c": 381.7
-     },
-     {
-      "d": "2026-07-27",
-      "c": 389.1
-     },
-     {
-      "d": "2026-07-28",
-      "c": 393.35
-     },
-     {
-      "d": "2026-07-29",
-      "c": 390.54
-     },
-     {
-      "d": "2026-07-30",
-      "c": 451.1
-     },
-     {
-      "d": "2026-07-31",
-      "c": 464.72
-     },
-     {
-      "d": "2026-08-03",
-      "c": 487.65
-     },
-     {
-      "d": "2026-08-04",
-      "c": 492.81
-     },
-     {
-      "d": "2026-08-05",
-      "c": 487.46
-     },
-     {
-      "d": "2026-08-06",
-      "c": 499.86
-     },
-     {
-      "d": "2026-08-07",
-      "c": 499.99
-     },
-     {
-      "d": "2026-08-10",
-      "c": 506.06
-     },
-     {
-      "d": "2026-08-11",
-      "c": 503.81
-     },
-     {
-      "d": "2026-08-12",
-      "c": 492.43
-     },
-     {
-      "d": "2026-08-13",
-      "c": 496.88
-     },
-     {
-      "d": "2026-08-14",
-      "c": 495.4
-     },
-     {
-      "d": "2026-08-17",
-      "c": 480.35
-     },
-     {
-      "d": "2026-08-18",
-      "c": 481.63
-     },
-     {
-      "d": "2026-08-19",
-      "c": 484.31
-     },
-     {
-      "d": "2026-08-20",
-      "c": 481.15
-     },
-     {
-      "d": "2026-08-21",
-      "c": 483.24
-     },
-     {
-      "d": "2026-08-24",
-      "c": 487.31
-     },
-     {
-      "d": "2026-08-25",
-      "c": 491.71
-     },
-     {
-      "d": "2026-08-26",
-      "c": 496.37
-     },
-     {
-      "d": "2026-08-27",
-      "c": 505.06
-     },
-     {
-      "d": "2026-08-28",
-      "c": 513.53
-     },
-     {
-      "d": "2026-08-31",
-      "c": 507.29
-     },
-     {
-      "d": "2026-09-01",
-      "c": 501.02
-     },
-     {
-      "d": "2026-09-02",
-      "c": 496.82
-     },
-     {
-      "d": "2026-09-03",
-      "c": 510.12
-     },
-     {
-      "d": "2026-09-04",
-      "c": 499.7
-     },
-     {
-      "d": "2026-09-08",
-      "c": 493.95
-     },
-     {
-      "d": "2026-09-09",
-      "c": 491.65
-     },
-     {
-      "d": "2026-09-10",
-      "c": 492.44
-     },
-     {
-      "d": "2026-09-11",
-      "c": 495.63
-     },
-     {
-      "d": "2026-09-14",
-      "c": 505.41
-     },
-     {
-      "d": "2026-09-15",
-      "c": 497.12
-     },
-     {
-      "d": "2026-09-16",
-      "c": 490.3
-     },
-     {
-      "d": "2026-09-17",
-      "c": 497.75
-     },
-     {
-      "d": "2026-09-18",
-      "c": 493.78
-     },
-     {
-      "d": "2026-09-21",
-      "c": 501.61
-     },
-     {
-      "d": "2026-09-22",
-      "c": 498.0
-     },
-     {
-      "d": "2026-09-23",
-      "c": 500.59
-     },
-     {
-      "d": "2026-09-24",
-      "c": 497.93
-     },
-     {
-      "d": "2026-09-25",
-      "c": 516.17
-     },
-     {
-      "d": "2026-09-28",
-      "c": 509.22
-     },
-     {
-      "d": "2026-09-29",
-      "c": 508.96
-     },
-     {
-      "d": "2026-09-30",
-      "c": 512.9
-     },
-     {
-      "d": "2026-10-01",
-      "c": 512.8
-     },
-     {
-      "d": "2026-10-02",
-      "c": 517.53
-     },
-     {
-      "d": "2026-10-05",
-      "c": 525.18
-     },
-     {
-      "d": "2026-10-06",
-      "c": 529.3
-     },
-     {
-      "d": "2026-10-07",
-      "c": 529.76
-     },
-     {
-      "d": "2026-10-08",
-      "c": 522.61
-     },
-     {
-      "d": "2026-10-09",
-      "c": 535.07
-     },
-     {
-      "d": "2026-10-12",
-      "c": 541.15
-     },
-     {
-      "d": "2026-10-13",
-      "c": 543.45
-     },
-     {
-      "d": "2026-10-14",
-      "c": 533.69
-     },
-     {
-      "d": "2026-10-15",
-      "c": 539.44
-     },
-     {
-      "d": "2026-10-16",
-      "c": 529.05
-     },
-     {
-      "d": "2026-10-19",
-      "c": 533.52
-     },
-     {
-      "d": "2026-10-20",
-      "c": 531.87
-     },
-     {
-      "d": "2026-10-21",
-      "c": 532.95
-     },
-     {
-      "d": "2026-10-22",
-      "c": 521.08
-     },
-     {
-      "d": "2026-10-23",
-      "c": 524.51
-     },
-     {
-      "d": "2026-10-26",
-      "c": 532.6
-     },
-     {
-      "d": "2026-10-27",
-      "c": 531.33
-     },
-     {
-      "d": "2026-10-28",
-      "c": 527.36
      }
     ]
    }
@@ -2484,17 +2500,17 @@
    "ticker": "AAPL",
    "name": "Apple",
    "cur": "$",
-   "px": 345.82,
-   "chg": -0.37,
-   "score": 7.7
+   "px": 347.1,
+   "chg": -0.94,
+   "score": 9.3
   },
   {
-   "ticker": "V",
-   "name": "Visa",
-   "cur": "$",
-   "px": 402.36,
-   "chg": 0.12,
-   "score": 7.5
+   "ticker": "KOTAKBANK",
+   "name": "Kotak Mahindra Bank",
+   "cur": "₹",
+   "px": 442.5,
+   "chg": -0.56,
+   "score": 7.2
   },
   {
    "ticker": "BHARTIARTL",
@@ -2505,6 +2521,30 @@
    "score": 7.1
   },
   {
+   "ticker": "XOM",
+   "name": "Exxon Mobil",
+   "cur": "$",
+   "px": 179.91,
+   "chg": 1.17,
+   "score": 7.1
+  },
+  {
+   "ticker": "V",
+   "name": "Visa",
+   "cur": "$",
+   "px": 401.86,
+   "chg": -0.31,
+   "score": 7.1
+  },
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "cur": "$",
+   "px": 531.33,
+   "chg": -0.06,
+   "score": 7.0
+  },
+  {
    "ticker": "ICICIBANK",
    "name": "ICICI Bank",
    "cur": "₹",
@@ -2513,55 +2553,32 @@
    "score": 6.7
   },
   {
-   "ticker": "MARUTI",
-   "name": "Maruti Suzuki",
-   "cur": "₹",
-   "px": 11579.0,
-   "chg": 1.13,
-   "score": 6.7
-  },
-  {
-   "ticker": "KOTAKBANK",
-   "name": "Kotak Mahindra Bank",
-   "cur": "₹",
-   "px": 440.0,
-   "chg": -0.56,
-   "score": 6.5
-  },
-  {
-   "ticker": "MSFT",
-   "name": "Microsoft",
+   "ticker": "JPM",
+   "name": "JPMorgan Chase",
    "cur": "$",
-   "px": 527.36,
-   "chg": -0.75,
-   "score": 6.5
-  },
-  {
-   "ticker": "XOM",
-   "name": "Exxon Mobil",
-   "cur": "$",
-   "px": 183.34,
-   "chg": 1.91,
-   "score": 6.5
+   "px": 335.79,
+   "chg": 1.04,
+   "score": 6.2
   }
  ],
  "analysis": {
-  "enabled": false,
-  "reason": "Every analysis attempt failed; showing computed analysis instead.",
-  "errors": [
-   "BHARTIARTL: RuntimeError: The read operation timed out",
-   "ICICIBANK: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-   "MARUTI: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
+  "enabled": true,
+  "model": "Google Gemini",
+  "provider": "gemini",
+  "analysed": 2,
+  "failed": [
+   "KOTAKBANK: ValueError: no JSON object in response",
    "AAPL: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-   "V: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-   "MSFT: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a"
-  ]
+   "XOM: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
+   "V: RuntimeError: The read operation timed out"
+  ],
+  "scope": "Google Gemini wrote the thesis, the analysis sections, the bull and bear cases, the news read and the critique. It never chose a stock and never set a price — every level on this page is arithmetic from the rule engine."
  },
  "live": {
   "started": "2026-09-04",
-  "published": 330,
+  "published": 336,
   "settled": 140,
-  "open": 22,
+  "open": 28,
   "no_fill": 168,
   "outcomes": {
    "TARGET_1": 8,
@@ -2569,7 +2586,7 @@
    "CLOSED": 122,
    "NO_FILL": 168,
    "OPEN": 9,
-   "PENDING": 13
+   "PENDING": 19
   },
   "winRate": 50.0,
   "avg": 0.22,
@@ -2930,6 +2947,288 @@
  },
  "recent_calls": [
   {
+   "key": "XOM|2026-10-29",
+   "ticker": "XOM",
+   "name": "Exxon Mobil",
+   "market": "USA",
+   "sector": "Energy",
+   "cur": "$",
+   "published": "2026-10-29",
+   "original": {
+    "price_at_publish": 179.91,
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "MEDIUM",
+    "score": 71,
+    "entry": [
+     179.37,
+     180.81
+    ],
+    "stop": 167.48,
+    "targets": [
+     196.48,
+     207.82,
+     222.95
+    ],
+    "risk_pct": 7.0,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "First 60–90 minutes of the session",
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-29T06:03:00.728058+05:30"
+   }
+  },
+  {
+   "key": "V|2026-10-29",
+   "ticker": "V",
+   "name": "Visa",
+   "market": "USA",
+   "sector": "Financials",
+   "cur": "$",
+   "published": "2026-10-29",
+   "original": {
+    "price_at_publish": 401.86,
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "MEDIUM",
+    "score": 71,
+    "entry": [
+     400.65,
+     403.87
+    ],
+    "stop": 374.1,
+    "targets": [
+     438.87,
+     464.21,
+     498.0
+    ],
+    "risk_pct": 7.0,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "First 60–90 minutes of the session",
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-29T06:03:00.728058+05:30"
+   }
+  },
+  {
+   "key": "KOTAKBANK.NS|2026-10-29",
+   "ticker": "KOTAKBANK",
+   "name": "Kotak Mahindra Bank",
+   "market": "INDIA",
+   "sector": "Financials",
+   "cur": "₹",
+   "published": "2026-10-29",
+   "original": {
+    "price_at_publish": 442.5,
+    "action": "BUY",
+    "mode": "BUY ON BREAKOUT",
+    "conviction": "HIGH",
+    "score": 72,
+    "entry": [
+     453.55,
+     456.72
+    ],
+    "stop": 423.28,
+    "targets": [
+     496.55,
+     525.23,
+     563.46
+    ],
+    "risk_pct": 7.0,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "On a close above 453.10",
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "RSI at 58 — strength with room left before exhaustion."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-29T06:03:00.728058+05:30"
+   }
+  },
+  {
+   "key": "ICICIBANK.NS|2026-10-29",
+   "ticker": "ICICIBANK",
+   "name": "ICICI Bank",
+   "market": "INDIA",
+   "sector": "Financials",
+   "cur": "₹",
+   "published": "2026-10-29",
+   "original": {
+    "price_at_publish": 1377.6,
+    "action": "BUY",
+    "mode": "BUY ON BREAKOUT",
+    "conviction": "MEDIUM",
+    "score": 67,
+    "entry": [
+     1413.21,
+     1423.09
+    ],
+    "stop": 1318.88,
+    "targets": [
+     1547.2,
+     1636.55,
+     1755.67
+    ],
+    "risk_pct": 7.0,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "On a close above 1,411.80",
+    "thesis": [
+     "The stock trades at 1377.6, compressed tightly between its 20-day SMA of 1360.61 and its 50-day SMA of 1378.84.",
+     "Long-term trend support remains intact with price holding above the 200-day SMA of 1355.15."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-29T06:03:00.728058+05:30"
+   }
+  },
+  {
+   "key": "BHARTIARTL.NS|2026-10-29",
+   "ticker": "BHARTIARTL",
+   "name": "Bharti Airtel",
+   "market": "INDIA",
+   "sector": "Communication",
+   "cur": "₹",
+   "published": "2026-10-29",
+   "original": {
+    "price_at_publish": 1948.1,
+    "action": "BUY",
+    "mode": "WAIT",
+    "conviction": "MEDIUM",
+    "score": 71,
+    "entry": [
+     1832.81,
+     1851.24
+    ],
+    "stop": 1722.85,
+    "targets": [
+     1996.96,
+     2104.22,
+     2247.23
+    ],
+    "risk_pct": 6.47,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "On a pullback to the 20-day average",
+    "thesis": [
+     "Price at 1948.1 sits 5.8% above its 20-day moving average of 1842.02, making current levels extended.",
+     "Momentum is positive with a MACD histogram of 17.238 and an RSI of 65.2, but the stock trades directly beneath 60-day resistance at 1978.8."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-29T06:03:00.728058+05:30"
+   }
+  },
+  {
+   "key": "AAPL|2026-10-29",
+   "ticker": "AAPL",
+   "name": "Apple",
+   "market": "USA",
+   "sector": "Technology",
+   "cur": "$",
+   "published": "2026-10-29",
+   "original": {
+    "price_at_publish": 347.1,
+    "action": "BUY",
+    "mode": "BUY ON BREAKOUT",
+    "conviction": "HIGH",
+    "score": 93,
+    "entry": [
+     352.08,
+     354.54
+    ],
+    "stop": 325.16,
+    "targets": [
+     389.91,
+     415.24,
+     449.03
+    ],
+    "risk_pct": 7.97,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "On a close above 351.73",
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-10-29T06:03:00.728058+05:30"
+   }
+  },
+  {
    "key": "XOM|2026-10-28",
    "ticker": "XOM",
    "name": "Exxon Mobil",
@@ -3210,288 +3509,6 @@
     "note": null,
     "last_checked": "2026-10-28T05:42:30.502496+05:30"
    }
-  },
-  {
-   "key": "BHARTIARTL.NS|2026-10-28",
-   "ticker": "BHARTIARTL",
-   "name": "Bharti Airtel",
-   "market": "INDIA",
-   "sector": "Communication",
-   "cur": "₹",
-   "published": "2026-10-28",
-   "original": {
-    "price_at_publish": 1954.7,
-    "action": "BUY",
-    "mode": "WAIT",
-    "conviction": "MEDIUM",
-    "score": 61,
-    "entry": [
-     1833.14,
-     1851.57
-    ],
-    "stop": 1722.85,
-    "targets": [
-     1997.71,
-     2105.27,
-     2248.68
-    ],
-    "risk_pct": 6.49,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a pullback to the 20-day average",
-    "thesis": [
-     "Price holds above the 50-day average, though the short-term average has not confirmed.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "PENDING",
-    "filled_on": null,
-    "fill_price": null,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": null,
-    "mfe": null,
-    "mae": null,
-    "bars_held": 0,
-    "note": null,
-    "last_checked": "2026-10-28T13:34:39.326438+05:30"
-   }
-  },
-  {
-   "key": "AAPL|2026-10-28",
-   "ticker": "AAPL",
-   "name": "Apple",
-   "market": "USA",
-   "sector": "Technology",
-   "cur": "$",
-   "published": "2026-10-28",
-   "original": {
-    "price_at_publish": 343.91,
-    "action": "BUY",
-    "mode": "BUY ON BREAKOUT",
-    "conviction": "HIGH",
-    "score": 93,
-    "entry": [
-     352.08,
-     354.54
-    ],
-    "stop": 325.16,
-    "targets": [
-     389.91,
-     415.24,
-     449.03
-    ],
-    "risk_pct": 7.97,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a close above 351.73",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "PENDING",
-    "filled_on": null,
-    "fill_price": null,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": null,
-    "mfe": null,
-    "mae": null,
-    "bars_held": 0,
-    "note": null,
-    "last_checked": "2026-10-28T05:42:30.502496+05:30"
-   }
-  },
-  {
-   "key": "XOM|2026-10-27",
-   "ticker": "XOM",
-   "name": "Exxon Mobil",
-   "market": "USA",
-   "sector": "Energy",
-   "cur": "$",
-   "published": "2026-10-27",
-   "original": {
-    "price_at_publish": 183.21,
-    "action": "BUY",
-    "mode": "WAIT",
-    "conviction": "MEDIUM",
-    "score": 61,
-    "entry": [
-     170.0,
-     171.7
-    ],
-    "stop": 158.95,
-    "targets": [
-     186.32,
-     197.03,
-     211.31
-    ],
-    "risk_pct": 6.96,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a pullback to the 20-day average",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "PENDING",
-    "filled_on": null,
-    "fill_price": null,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": null,
-    "mfe": null,
-    "mae": null,
-    "bars_held": 0,
-    "note": null,
-    "last_checked": "2026-10-27T05:40:21.661520+05:30"
-   }
-  },
-  {
-   "key": "V|2026-10-27",
-   "ticker": "V",
-   "name": "Visa",
-   "market": "USA",
-   "sector": "Financials",
-   "cur": "$",
-   "published": "2026-10-27",
-   "original": {
-    "price_at_publish": 407.92,
-    "action": "BUY",
-    "mode": "WAIT",
-    "conviction": "MEDIUM",
-    "score": 71,
-    "entry": [
-     383.33,
-     387.19
-    ],
-    "stop": 356.04,
-    "targets": [
-     423.25,
-     449.55,
-     484.62
-    ],
-    "risk_pct": 7.59,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a pullback to the 20-day average",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "PENDING",
-    "filled_on": null,
-    "fill_price": null,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": null,
-    "mfe": null,
-    "mae": null,
-    "bars_held": 0,
-    "note": null,
-    "last_checked": "2026-10-27T05:40:21.661520+05:30"
-   }
-  },
-  {
-   "key": "MSFT|2026-10-27",
-   "ticker": "MSFT",
-   "name": "Microsoft",
-   "market": "USA",
-   "sector": "Technology",
-   "cur": "$",
-   "published": "2026-10-27",
-   "original": {
-    "price_at_publish": 532.6,
-    "action": "BUY",
-    "mode": "BUY NOW",
-    "conviction": "MEDIUM",
-    "score": 70,
-    "entry": [
-     531.0,
-     535.26
-    ],
-    "stop": 501.4,
-    "targets": [
-     574.39,
-     602.95,
-     641.03
-    ],
-    "risk_pct": 5.95,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "First 60–90 minutes of the session",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "RSI at 52 — momentum is recovering from neutral."
-    ]
-   },
-   "result": {
-    "status": "OPEN",
-    "filled_on": "2026-10-28",
-    "fill_price": 533.13,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": -1.08,
-    "mfe": 0.27,
-    "mae": -1.15,
-    "bars_held": 1,
-    "note": null,
-    "last_checked": "2026-10-28T22:14:47.351522+05:30"
-   }
-  },
-  {
-   "key": "KOTAKBANK.NS|2026-10-27",
-   "ticker": "KOTAKBANK",
-   "name": "Kotak Mahindra Bank",
-   "market": "INDIA",
-   "sector": "Financials",
-   "cur": "₹",
-   "published": "2026-10-27",
-   "original": {
-    "price_at_publish": 430.5,
-    "action": "BUY",
-    "mode": "BUY NOW",
-    "conviction": "HIGH",
-    "score": 72,
-    "entry": [
-     429.21,
-     432.65
-    ],
-    "stop": 393.91,
-    "targets": [
-     479.06,
-     512.37,
-     556.8
-    ],
-    "risk_pct": 8.59,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "First 60–90 minutes of the session",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "RSI at 58 — strength with room left before exhaustion."
-    ]
-   },
-   "result": {
-    "status": "PENDING",
-    "filled_on": null,
-    "fill_price": null,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": null,
-    "mfe": null,
-    "mae": null,
-    "bars_held": 0,
-    "note": null,
-    "last_checked": "2026-10-27T05:40:21.661520+05:30"
-   }
   }
  ],
  "performance": {
@@ -3499,17 +3516,17 @@
    {
     "date": "2025-08-18",
     "ind": 0.695,
-    "usa": -1.932,
-    "all": -0.007,
-    "eq": 99992.79,
-    "n": 3
+    "usa": 0.0,
+    "all": 0.028,
+    "eq": 100027.82,
+    "n": 2
    },
    {
     "date": "2025-08-19",
     "ind": -1.298,
     "usa": 0.248,
     "all": -0.04,
-    "eq": 99953.24,
+    "eq": 99988.26,
     "n": 5
    },
    {
@@ -3517,7 +3534,7 @@
     "ind": -2.515,
     "usa": 3.13,
     "all": -0.025,
-    "eq": 99927.93,
+    "eq": 99962.94,
     "n": 6
    },
    {
@@ -3525,7 +3542,7 @@
     "ind": -1.684,
     "usa": 2.963,
     "all": 0.057,
-    "eq": 99984.46,
+    "eq": 100019.48,
     "n": 6
    },
    {
@@ -3533,7 +3550,7 @@
     "ind": 0.645,
     "usa": -0.21,
     "all": 0.003,
-    "eq": 99987.46,
+    "eq": 100022.49,
     "n": 3
    },
    {
@@ -3541,7 +3558,7 @@
     "ind": -0.052,
     "usa": -1.591,
     "all": -0.043,
-    "eq": 99944.36,
+    "eq": 99979.37,
     "n": 6
    },
    {
@@ -3549,7 +3566,7 @@
     "ind": 0.0,
     "usa": -1.176,
     "all": -0.047,
-    "eq": 99897.35,
+    "eq": 99932.35,
     "n": 2
    },
    {
@@ -3557,7 +3574,7 @@
     "ind": 0.0,
     "usa": 1.611,
     "all": 0.064,
-    "eq": 99961.71,
+    "eq": 99996.73,
     "n": 2
    },
    {
@@ -3565,7 +3582,7 @@
     "ind": -1.106,
     "usa": -2.715,
     "all": -0.066,
-    "eq": 99896.05,
+    "eq": 99931.05,
     "n": 3
    },
    {
@@ -3573,7 +3590,7 @@
     "ind": -1.39,
     "usa": 0.756,
     "all": -0.021,
-    "eq": 99874.81,
+    "eq": 99909.8,
     "n": 5
    },
    {
@@ -3581,7 +3598,7 @@
     "ind": -1.847,
     "usa": 0.0,
     "all": -0.074,
-    "eq": 99801.04,
+    "eq": 99836.01,
     "n": 5
    },
    {
@@ -3589,7 +3606,7 @@
     "ind": -0.913,
     "usa": 0.778,
     "all": 0.002,
-    "eq": 99803.17,
+    "eq": 99838.14,
     "n": 7
    },
    {
@@ -3597,7 +3614,7 @@
     "ind": -1.824,
     "usa": -2.095,
     "all": -0.078,
-    "eq": 99724.94,
+    "eq": 99759.88,
     "n": 6
    },
    {
@@ -3605,7 +3622,7 @@
     "ind": -1.037,
     "usa": -1.244,
     "all": -0.047,
-    "eq": 99678.07,
+    "eq": 99712.99,
     "n": 6
    },
    {
@@ -3613,7 +3630,7 @@
     "ind": -2.107,
     "usa": 0.761,
     "all": 0.002,
-    "eq": 99679.83,
+    "eq": 99714.76,
     "n": 4
    },
    {
@@ -3621,7 +3638,7 @@
     "ind": -1.733,
     "usa": 1.186,
     "all": 0.018,
-    "eq": 99698.02,
+    "eq": 99732.95,
     "n": 4
    },
    {
@@ -3629,7 +3646,7 @@
     "ind": -2.264,
     "usa": 2.015,
     "all": 0.012,
-    "eq": 99710.12,
+    "eq": 99745.05,
     "n": 5
    },
    {
@@ -3637,7 +3654,7 @@
     "ind": -1.774,
     "usa": 1.378,
     "all": 0.008,
-    "eq": 99717.93,
+    "eq": 99752.87,
     "n": 8
    },
    {
@@ -3645,7 +3662,7 @@
     "ind": -0.942,
     "usa": 2.476,
     "all": 0.082,
-    "eq": 99799.65,
+    "eq": 99834.62,
     "n": 8
    },
    {
@@ -3653,7 +3670,7 @@
     "ind": 1.368,
     "usa": 2.567,
     "all": 0.087,
-    "eq": 99886.19,
+    "eq": 99921.18,
     "n": 9
    },
    {
@@ -3661,7 +3678,7 @@
     "ind": 1.368,
     "usa": 1.119,
     "all": 0.048,
-    "eq": 99934.21,
+    "eq": 99969.22,
     "n": 9
    },
    {
@@ -3669,7 +3686,7 @@
     "ind": -1.697,
     "usa": 0.623,
     "all": -0.016,
-    "eq": 99917.89,
+    "eq": 99952.9,
     "n": 9
    },
    {
@@ -3677,7 +3694,7 @@
     "ind": -2.902,
     "usa": -1.284,
     "all": -0.08,
-    "eq": 99837.82,
+    "eq": 99872.8,
     "n": 9
    },
    {
@@ -3685,7 +3702,7 @@
     "ind": -1.81,
     "usa": -1.096,
     "all": -0.051,
-    "eq": 99786.93,
+    "eq": 99821.89,
     "n": 8
    },
    {
@@ -3693,7 +3710,7 @@
     "ind": -1.904,
     "usa": 0.197,
     "all": -0.034,
-    "eq": 99752.87,
+    "eq": 99787.81,
     "n": 4
    },
    {
@@ -3701,7 +3718,7 @@
     "ind": -0.907,
     "usa": -0.578,
     "all": -0.027,
-    "eq": 99725.44,
+    "eq": 99760.38,
     "n": 6
    },
    {
@@ -3709,7 +3726,7 @@
     "ind": -2.082,
     "usa": -0.193,
     "all": -0.04,
-    "eq": 99685.44,
+    "eq": 99720.37,
     "n": 7
    },
    {
@@ -3717,7 +3734,7 @@
     "ind": -1.995,
     "usa": 0.389,
     "all": -0.025,
-    "eq": 99660.2,
+    "eq": 99695.12,
     "n": 7
    },
    {
@@ -3725,7 +3742,7 @@
     "ind": 0.194,
     "usa": -0.411,
     "all": -0.012,
-    "eq": 99648.65,
+    "eq": 99683.56,
     "n": 5
    },
    {
@@ -3733,7 +3750,7 @@
     "ind": 0.901,
     "usa": 2.387,
     "all": 0.072,
-    "eq": 99720.11,
+    "eq": 99755.05,
     "n": 5
    },
    {
@@ -3741,7 +3758,7 @@
     "ind": 2.137,
     "usa": 1.94,
     "all": 0.081,
-    "eq": 99800.87,
+    "eq": 99835.84,
     "n": 7
    },
    {
@@ -3749,7 +3766,7 @@
     "ind": 1.951,
     "usa": 3.399,
     "all": 0.114,
-    "eq": 99914.89,
+    "eq": 99949.89,
     "n": 8
    },
    {
@@ -3757,7 +3774,7 @@
     "ind": 1.188,
     "usa": 0.269,
     "all": 0.029,
-    "eq": 99944.0,
+    "eq": 99979.01,
     "n": 8
    },
    {
@@ -3765,7 +3782,7 @@
     "ind": 0.0,
     "usa": -1.216,
     "all": -0.049,
-    "eq": 99895.37,
+    "eq": 99930.37,
     "n": 4
    },
    {
@@ -3773,7 +3790,7 @@
     "ind": 1.24,
     "usa": -2.746,
     "all": -0.057,
-    "eq": 99838.73,
+    "eq": 99873.7,
     "n": 6
    },
    {
@@ -3781,7 +3798,7 @@
     "ind": 0.606,
     "usa": -1.034,
     "all": -0.019,
-    "eq": 99819.26,
+    "eq": 99854.23,
     "n": 6
    },
    {
@@ -3789,7 +3806,7 @@
     "ind": 0.0,
     "usa": -1.987,
     "all": -0.079,
-    "eq": 99739.94,
+    "eq": 99774.89,
     "n": 2
    },
    {
@@ -3797,7 +3814,7 @@
     "ind": -0.269,
     "usa": -2.212,
     "all": -0.024,
-    "eq": 99716.28,
+    "eq": 99751.21,
     "n": 6
    },
    {
@@ -3805,7 +3822,7 @@
     "ind": -0.001,
     "usa": -5.426,
     "all": -0.031,
-    "eq": 99685.31,
+    "eq": 99720.23,
     "n": 7
    },
    {
@@ -3813,7 +3830,7 @@
     "ind": -1.695,
     "usa": 0.212,
     "all": -0.03,
-    "eq": 99655.73,
+    "eq": 99690.64,
     "n": 4
    },
    {
@@ -3821,7 +3838,7 @@
     "ind": -0.389,
     "usa": 0.977,
     "all": 0.012,
-    "eq": 99667.46,
+    "eq": 99702.38,
     "n": 4
    },
    {
@@ -3829,7 +3846,7 @@
     "ind": 2.268,
     "usa": 1.143,
     "all": 0.073,
-    "eq": 99739.93,
+    "eq": 99774.87,
     "n": 10
    },
    {
@@ -3837,7 +3854,7 @@
     "ind": 0.706,
     "usa": -0.261,
     "all": 0.015,
-    "eq": 99755.24,
+    "eq": 99790.19,
     "n": 12
    },
    {
@@ -3845,7 +3862,7 @@
     "ind": -0.457,
     "usa": -0.3,
     "all": -0.017,
-    "eq": 99738.58,
+    "eq": 99773.53,
     "n": 12
    },
    {
@@ -3853,7 +3870,7 @@
     "ind": 0.516,
     "usa": 1.415,
     "all": 0.033,
-    "eq": 99771.12,
+    "eq": 99806.08,
     "n": 12
    },
    {
@@ -3861,7 +3878,7 @@
     "ind": -0.773,
     "usa": 2.114,
     "all": 0.019,
-    "eq": 99789.65,
+    "eq": 99824.61,
     "n": 14
    },
    {
@@ -3869,7 +3886,7 @@
     "ind": -1.237,
     "usa": 3.96,
     "all": 0.02,
-    "eq": 99809.43,
+    "eq": 99844.39,
     "n": 12
    },
    {
@@ -3877,7 +3894,7 @@
     "ind": 0.0,
     "usa": 2.896,
     "all": 0.116,
-    "eq": 99925.04,
+    "eq": 99960.05,
     "n": 7
    },
    {
@@ -3885,7 +3902,7 @@
     "ind": 0.628,
     "usa": 1.032,
     "all": 0.037,
-    "eq": 99961.87,
+    "eq": 99996.9,
     "n": 11
    },
    {
@@ -3893,7 +3910,7 @@
     "ind": -1.354,
     "usa": -0.094,
     "all": -0.031,
-    "eq": 99930.99,
+    "eq": 99966.0,
     "n": 13
    },
    {
@@ -3901,7 +3918,7 @@
     "ind": -1.492,
     "usa": 0.741,
     "all": -0.009,
-    "eq": 99922.36,
+    "eq": 99957.37,
     "n": 14
    },
    {
@@ -3909,7 +3926,7 @@
     "ind": -2.349,
     "usa": 3.172,
     "all": -0.006,
-    "eq": 99916.75,
+    "eq": 99951.75,
     "n": 5
    },
    {
@@ -3917,7 +3934,7 @@
     "ind": -3.502,
     "usa": -0.588,
     "all": -0.117,
-    "eq": 99800.09,
+    "eq": 99835.05,
     "n": 5
    },
    {
@@ -3925,7 +3942,7 @@
     "ind": -2.64,
     "usa": -4.046,
     "all": -0.115,
-    "eq": 99685.34,
+    "eq": 99720.26,
     "n": 6
    },
    {
@@ -3933,7 +3950,7 @@
     "ind": -0.98,
     "usa": -3.05,
     "all": -0.056,
-    "eq": 99629.75,
+    "eq": 99664.66,
     "n": 5
    },
    {
@@ -3941,7 +3958,7 @@
     "ind": -1.265,
     "usa": 0.259,
     "all": -0.03,
-    "eq": 99599.6,
+    "eq": 99634.49,
     "n": 9
    },
    {
@@ -3949,7 +3966,7 @@
     "ind": 0.041,
     "usa": -0.646,
     "all": -0.011,
-    "eq": 99588.78,
+    "eq": 99623.67,
     "n": 11
    },
    {
@@ -3957,7 +3974,7 @@
     "ind": 0.0,
     "usa": 0.039,
     "all": 0.002,
-    "eq": 99590.32,
+    "eq": 99625.21,
     "n": 4
    },
    {
@@ -3965,7 +3982,7 @@
     "ind": 1.557,
     "usa": 0.453,
     "all": 0.036,
-    "eq": 99625.95,
+    "eq": 99660.85,
     "n": 5
    },
    {
@@ -3973,7 +3990,7 @@
     "ind": 3.13,
     "usa": 0.239,
     "all": 0.067,
-    "eq": 99693.08,
+    "eq": 99728.0,
     "n": 6
    },
    {
@@ -3981,7 +3998,7 @@
     "ind": 1.32,
     "usa": -1.709,
     "all": 0.009,
-    "eq": 99701.79,
+    "eq": 99736.72,
     "n": 11
    },
    {
@@ -3989,7 +4006,7 @@
     "ind": -0.263,
     "usa": -5.003,
     "all": -0.058,
-    "eq": 99644.04,
+    "eq": 99678.95,
     "n": 8
    },
    {
@@ -3997,7 +4014,7 @@
     "ind": 2.473,
     "usa": -3.571,
     "all": 0.038,
-    "eq": 99682.4,
+    "eq": 99717.32,
     "n": 4
    },
    {
@@ -4005,7 +4022,7 @@
     "ind": 0.465,
     "usa": -1.585,
     "all": -0.036,
-    "eq": 99646.45,
+    "eq": 99681.36,
     "n": 6
    },
    {
@@ -4013,7 +4030,7 @@
     "ind": 1.344,
     "usa": -3.875,
     "all": 0.002,
-    "eq": 99648.02,
+    "eq": 99682.93,
     "n": 8
    },
    {
@@ -4021,7 +4038,7 @@
     "ind": 0.44,
     "usa": 2.968,
     "all": 0.058,
-    "eq": 99705.88,
+    "eq": 99740.81,
     "n": 10
    },
    {
@@ -4029,7 +4046,7 @@
     "ind": -0.713,
     "usa": 0.0,
     "all": -0.029,
-    "eq": 99677.46,
+    "eq": 99712.38,
     "n": 7
    },
    {
@@ -4037,7 +4054,7 @@
     "ind": -0.034,
     "usa": -2.298,
     "all": -0.014,
-    "eq": 99663.19,
+    "eq": 99698.11,
     "n": 7
    },
    {
@@ -4045,7 +4062,7 @@
     "ind": -0.645,
     "usa": -1.041,
     "all": -0.028,
-    "eq": 99635.21,
+    "eq": 99670.11,
     "n": 7
    },
    {
@@ -4053,7 +4070,7 @@
     "ind": -0.661,
     "usa": 0.57,
     "all": -0.012,
-    "eq": 99622.88,
+    "eq": 99657.79,
     "n": 7
    },
    {
@@ -4061,7 +4078,7 @@
     "ind": -0.11,
     "usa": 2.037,
     "all": 0.028,
-    "eq": 99650.59,
+    "eq": 99685.5,
     "n": 8
    },
    {
@@ -4069,7 +4086,7 @@
     "ind": -0.808,
     "usa": 4.287,
     "all": -0.007,
-    "eq": 99643.78,
+    "eq": 99678.69,
     "n": 8
    },
    {
@@ -4077,7 +4094,7 @@
     "ind": -0.71,
     "usa": 1.257,
     "all": 0.008,
-    "eq": 99651.67,
+    "eq": 99686.58,
     "n": 13
    },
    {
@@ -4085,7 +4102,7 @@
     "ind": -0.941,
     "usa": 0.0,
     "all": -0.038,
-    "eq": 99614.16,
+    "eq": 99649.06,
     "n": 6
    },
    {
@@ -4093,7 +4110,7 @@
     "ind": -0.701,
     "usa": 0.048,
     "all": -0.013,
-    "eq": 99601.13,
+    "eq": 99636.02,
     "n": 8
    },
    {
@@ -4101,7 +4118,7 @@
     "ind": 0.155,
     "usa": 1.482,
     "all": 0.033,
-    "eq": 99633.74,
+    "eq": 99668.64,
     "n": 6
    },
    {
@@ -4109,7 +4126,7 @@
     "ind": -0.039,
     "usa": -0.722,
     "all": -0.008,
-    "eq": 99626.13,
+    "eq": 99661.03,
     "n": 9
    },
    {
@@ -4117,7 +4134,7 @@
     "ind": -0.585,
     "usa": 0.314,
     "all": -0.016,
-    "eq": 99609.97,
+    "eq": 99644.87,
     "n": 10
    },
    {
@@ -4125,7 +4142,7 @@
     "ind": -0.333,
     "usa": 0.447,
     "all": -0.006,
-    "eq": 99604.46,
+    "eq": 99639.36,
     "n": 8
    },
    {
@@ -4133,7 +4150,7 @@
     "ind": 0.86,
     "usa": 2.312,
     "all": 0.063,
-    "eq": 99667.65,
+    "eq": 99702.57,
     "n": 4
    },
    {
@@ -4141,7 +4158,7 @@
     "ind": 1.12,
     "usa": -3.272,
     "all": -0.043,
-    "eq": 99624.75,
+    "eq": 99659.65,
     "n": 4
    },
    {
@@ -4149,7 +4166,7 @@
     "ind": 0.701,
     "usa": -2.818,
     "all": -0.032,
-    "eq": 99592.58,
+    "eq": 99627.47,
     "n": 7
    },
    {
@@ -4157,7 +4174,7 @@
     "ind": 0.379,
     "usa": -1.213,
     "all": -0.013,
-    "eq": 99579.48,
+    "eq": 99614.37,
     "n": 9
    },
    {
@@ -4165,7 +4182,7 @@
     "ind": -0.503,
     "usa": -3.826,
     "all": -0.126,
-    "eq": 99453.57,
+    "eq": 99488.41,
     "n": 5
    },
    {
@@ -4173,7 +4190,7 @@
     "ind": -2.846,
     "usa": -1.916,
     "all": -0.084,
-    "eq": 99369.95,
+    "eq": 99404.76,
     "n": 5
    },
    {
@@ -4181,7 +4198,7 @@
     "ind": -2.913,
     "usa": -0.177,
     "all": -0.034,
-    "eq": 99335.72,
+    "eq": 99370.52,
     "n": 4
    },
    {
@@ -4189,7 +4206,7 @@
     "ind": 0.721,
     "usa": -1.677,
     "all": -0.043,
-    "eq": 99292.89,
+    "eq": 99327.68,
     "n": 4
    },
    {
@@ -4197,7 +4214,7 @@
     "ind": 0.374,
     "usa": 2.919,
     "all": 0.049,
-    "eq": 99341.44,
+    "eq": 99376.24,
     "n": 6
    },
    {
@@ -4205,7 +4222,7 @@
     "ind": 0.298,
     "usa": 1.878,
     "all": 0.044,
-    "eq": 99384.67,
+    "eq": 99419.49,
     "n": 8
    },
    {
@@ -4213,7 +4230,7 @@
     "ind": -1.195,
     "usa": 0.169,
     "all": -0.017,
-    "eq": 99367.29,
+    "eq": 99402.11,
     "n": 9
    },
    {
@@ -4221,7 +4238,7 @@
     "ind": -0.815,
     "usa": -0.367,
     "all": -0.022,
-    "eq": 99345.07,
+    "eq": 99379.88,
     "n": 7
    },
    {
@@ -4229,7 +4246,7 @@
     "ind": -0.041,
     "usa": -1.057,
     "all": -0.032,
-    "eq": 99313.17,
+    "eq": 99347.96,
     "n": 8
    },
    {
@@ -4237,7 +4254,7 @@
     "ind": 1.748,
     "usa": -0.439,
     "all": -0.008,
-    "eq": 99305.37,
+    "eq": 99340.17,
     "n": 9
    },
    {
@@ -4245,7 +4262,7 @@
     "ind": 0.53,
     "usa": 1.309,
     "all": 0.041,
-    "eq": 99345.76,
+    "eq": 99380.57,
     "n": 8
    },
    {
@@ -4253,7 +4270,7 @@
     "ind": 0.151,
     "usa": 0.851,
     "all": 0.022,
-    "eq": 99367.66,
+    "eq": 99402.47,
     "n": 7
    },
    {
@@ -4261,7 +4278,7 @@
     "ind": 0.079,
     "usa": 0.233,
     "all": 0.006,
-    "eq": 99373.33,
+    "eq": 99408.15,
     "n": 12
    },
    {
@@ -4269,7 +4286,7 @@
     "ind": -0.012,
     "usa": -0.42,
     "all": -0.007,
-    "eq": 99366.63,
+    "eq": 99401.44,
     "n": 13
    },
    {
@@ -4277,7 +4294,7 @@
     "ind": -1.813,
     "usa": 0.0,
     "all": -0.073,
-    "eq": 99294.58,
+    "eq": 99329.37,
     "n": 8
    },
    {
@@ -4285,7 +4302,7 @@
     "ind": -2.42,
     "usa": 0.452,
     "all": -0.044,
-    "eq": 99251.11,
+    "eq": 99285.88,
     "n": 13
    },
    {
@@ -4293,7 +4310,7 @@
     "ind": -0.265,
     "usa": -1.691,
     "all": -0.039,
-    "eq": 99212.28,
+    "eq": 99247.04,
     "n": 12
    },
    {
@@ -4301,7 +4318,7 @@
     "ind": -1.068,
     "usa": 1.961,
     "all": 0.027,
-    "eq": 99238.58,
+    "eq": 99273.35,
     "n": 7
    },
    {
@@ -4309,7 +4326,7 @@
     "ind": -3.247,
     "usa": 1.221,
     "all": -0.002,
-    "eq": 99236.37,
+    "eq": 99271.14,
     "n": 7
    },
    {
@@ -4317,7 +4334,7 @@
     "ind": -3.255,
     "usa": 3.304,
     "all": 0.001,
-    "eq": 99237.35,
+    "eq": 99272.12,
     "n": 4
    },
    {
@@ -4325,7 +4342,7 @@
     "ind": -0.232,
     "usa": 1.983,
     "all": 0.035,
-    "eq": 99272.11,
+    "eq": 99306.89,
     "n": 6
    },
    {
@@ -4333,7 +4350,7 @@
     "ind": -2.555,
     "usa": -1.365,
     "all": -0.078,
-    "eq": 99194.29,
+    "eq": 99229.04,
     "n": 8
    },
    {
@@ -4341,7 +4358,7 @@
     "ind": 1.037,
     "usa": 3.899,
     "all": 0.11,
-    "eq": 99303.56,
+    "eq": 99338.35,
     "n": 5
    },
    {
@@ -4349,7 +4366,7 @@
     "ind": 0.516,
     "usa": 2.233,
     "all": 0.066,
-    "eq": 99369.52,
+    "eq": 99404.33,
     "n": 3
    },
    {
@@ -4357,7 +4374,7 @@
     "ind": 0.011,
     "usa": 1.847,
     "all": 0.044,
-    "eq": 99413.73,
+    "eq": 99448.56,
     "n": 5
    },
    {
@@ -4365,7 +4382,7 @@
     "ind": -2.346,
     "usa": 3.222,
     "all": -0.02,
-    "eq": 99394.24,
+    "eq": 99429.07,
     "n": 6
    },
    {
@@ -4373,7 +4390,7 @@
     "ind": -2.91,
     "usa": 0.0,
     "all": -0.116,
-    "eq": 99278.56,
+    "eq": 99313.34,
     "n": 3
    },
    {
@@ -4381,7 +4398,7 @@
     "ind": -0.252,
     "usa": 0.009,
     "all": -0.005,
-    "eq": 99273.73,
+    "eq": 99308.51,
     "n": 6
    },
    {
@@ -4389,7 +4406,7 @@
     "ind": 0.199,
     "usa": -2.389,
     "all": -0.033,
-    "eq": 99240.53,
+    "eq": 99275.3,
     "n": 5
    },
    {
@@ -4397,7 +4414,7 @@
     "ind": 2.808,
     "usa": 5.067,
     "all": 0.18,
-    "eq": 99419.26,
+    "eq": 99454.09,
     "n": 4
    },
    {
@@ -4405,7 +4422,7 @@
     "ind": 0.0,
     "usa": 3.713,
     "all": 0.149,
-    "eq": 99566.94,
+    "eq": 99601.82,
     "n": 5
    },
    {
@@ -4413,7 +4430,7 @@
     "ind": 0.0,
     "usa": 4.721,
     "all": 0.189,
-    "eq": 99754.95,
+    "eq": 99789.9,
     "n": 4
    },
    {
@@ -4421,7 +4438,7 @@
     "ind": 1.269,
     "usa": 2.863,
     "all": 0.102,
-    "eq": 99856.48,
+    "eq": 99891.47,
     "n": 5
    },
    {
@@ -4429,7 +4446,7 @@
     "ind": 0.46,
     "usa": -5.747,
     "all": -0.106,
-    "eq": 99750.89,
+    "eq": 99785.84,
     "n": 4
    },
    {
@@ -4437,7 +4454,7 @@
     "ind": 0.0,
     "usa": -3.836,
     "all": -0.153,
-    "eq": 99597.83,
+    "eq": 99632.72,
     "n": 4
    },
    {
@@ -4445,7 +4462,7 @@
     "ind": 3.456,
     "usa": -0.841,
     "all": 0.031,
-    "eq": 99628.52,
+    "eq": 99663.42,
     "n": 8
    },
    {
@@ -4453,7 +4470,7 @@
     "ind": 0.0,
     "usa": -5.8,
     "all": -0.232,
-    "eq": 99397.37,
+    "eq": 99432.2,
     "n": 2
    },
    {
@@ -4461,7 +4478,7 @@
     "ind": 1.065,
     "usa": -4.236,
     "all": -0.021,
-    "eq": 99376.49,
+    "eq": 99411.31,
     "n": 10
    },
    {
@@ -4469,7 +4486,7 @@
     "ind": 0.487,
     "usa": -2.74,
     "all": -0.016,
-    "eq": 99360.86,
+    "eq": 99395.67,
     "n": 11
    },
    {
@@ -4477,7 +4494,7 @@
     "ind": 0.593,
     "usa": -4.976,
     "all": -0.032,
-    "eq": 99329.1,
+    "eq": 99363.9,
     "n": 8
    },
    {
@@ -4485,7 +4502,7 @@
     "ind": -1.754,
     "usa": -3.635,
     "all": -0.092,
-    "eq": 99238.06,
+    "eq": 99272.83,
     "n": 14
    },
    {
@@ -4493,7 +4510,7 @@
     "ind": -2.116,
     "usa": -7.0,
     "all": -0.117,
-    "eq": 99121.75,
+    "eq": 99156.48,
     "n": 6
    },
    {
@@ -4501,7 +4518,7 @@
     "ind": -2.4,
     "usa": -2.799,
     "all": -0.104,
-    "eq": 99018.68,
+    "eq": 99053.37,
     "n": 8
    },
    {
@@ -4509,7 +4526,7 @@
     "ind": -1.337,
     "usa": -2.728,
     "all": -0.077,
-    "eq": 98942.12,
+    "eq": 98976.78,
     "n": 7
    },
    {
@@ -4517,7 +4534,7 @@
     "ind": 1.138,
     "usa": 1.44,
     "all": 0.052,
-    "eq": 98993.13,
+    "eq": 99027.81,
     "n": 2
    },
    {
@@ -4525,7 +4542,7 @@
     "ind": 0.618,
     "usa": 0.0,
     "all": 0.025,
-    "eq": 99017.61,
+    "eq": 99052.3,
     "n": 4
    },
    {
@@ -4533,7 +4550,7 @@
     "ind": 2.039,
     "usa": 0.0,
     "all": 0.082,
-    "eq": 99098.36,
+    "eq": 99133.08,
     "n": 2
    },
    {
@@ -4541,7 +4558,7 @@
     "ind": 0.548,
     "usa": 4.156,
     "all": 0.058,
-    "eq": 99155.83,
+    "eq": 99190.56,
     "n": 4
    },
    {
@@ -4549,7 +4566,7 @@
     "ind": 0.921,
     "usa": 3.927,
     "all": 0.067,
-    "eq": 99222.17,
+    "eq": 99256.93,
     "n": 4
    },
    {
@@ -4557,7 +4574,7 @@
     "ind": 1.484,
     "usa": -1.701,
     "all": 0.038,
-    "eq": 99260.01,
+    "eq": 99294.79,
     "n": 6
    },
    {
@@ -4565,7 +4582,7 @@
     "ind": -0.202,
     "usa": 0.0,
     "all": -0.008,
-    "eq": 99252.0,
+    "eq": 99286.77,
     "n": 4
    },
    {
@@ -4573,7 +4590,7 @@
     "ind": -2.34,
     "usa": -2.403,
     "all": -0.094,
-    "eq": 99158.26,
+    "eq": 99193.0,
     "n": 6
    },
    {
@@ -4581,7 +4598,7 @@
     "ind": -3.593,
     "usa": -2.853,
     "all": -0.126,
-    "eq": 99033.36,
+    "eq": 99068.06,
     "n": 5
    },
    {
@@ -4589,7 +4606,7 @@
     "ind": -6.154,
     "usa": 0.409,
     "all": -0.181,
-    "eq": 98854.56,
+    "eq": 98889.19,
     "n": 4
    },
    {
@@ -4597,7 +4614,7 @@
     "ind": -5.903,
     "usa": -0.9,
     "all": -0.116,
-    "eq": 98739.84,
+    "eq": 98774.43,
     "n": 5
    },
    {
@@ -4605,7 +4622,7 @@
     "ind": 3.949,
     "usa": -3.972,
     "all": -0.053,
-    "eq": 98687.26,
+    "eq": 98721.83,
     "n": 3
    },
    {
@@ -4613,7 +4630,7 @@
     "ind": -0.289,
     "usa": -2.549,
     "all": -0.042,
-    "eq": 98646.11,
+    "eq": 98680.67,
     "n": 3
    },
    {
@@ -4621,7 +4638,7 @@
     "ind": 0.0,
     "usa": -2.533,
     "all": -0.101,
-    "eq": 98546.15,
+    "eq": 98580.68,
     "n": 1
    },
    {
@@ -4629,7 +4646,7 @@
     "ind": -1.074,
     "usa": -6.21,
     "all": -0.094,
-    "eq": 98453.2,
+    "eq": 98487.69,
     "n": 4
    },
    {
@@ -4637,7 +4654,7 @@
     "ind": -0.891,
     "usa": -0.255,
     "all": -0.023,
-    "eq": 98430.65,
+    "eq": 98465.13,
     "n": 4
    },
    {
@@ -4645,7 +4662,7 @@
     "ind": -2.59,
     "usa": -0.977,
     "all": -0.065,
-    "eq": 98366.79,
+    "eq": 98401.25,
     "n": 5
    },
    {
@@ -4653,7 +4670,7 @@
     "ind": -2.16,
     "usa": 0.36,
     "all": -0.026,
-    "eq": 98341.31,
+    "eq": 98375.76,
     "n": 5
    },
    {
@@ -4661,7 +4678,7 @@
     "ind": -2.825,
     "usa": -2.341,
     "all": -0.1,
-    "eq": 98242.89,
+    "eq": 98277.31,
     "n": 6
    },
    {
@@ -4669,7 +4686,7 @@
     "ind": 0.0,
     "usa": -1.519,
     "all": -0.061,
-    "eq": 98183.21,
+    "eq": 98217.61,
     "n": 5
    },
    {
@@ -4677,7 +4694,7 @@
     "ind": 0.0,
     "usa": -0.19,
     "all": -0.008,
-    "eq": 98175.75,
+    "eq": 98210.15,
     "n": 2
    },
    {
@@ -4685,7 +4702,7 @@
     "ind": 0.0,
     "usa": -0.412,
     "all": -0.016,
-    "eq": 98159.59,
+    "eq": 98193.98,
     "n": 1
    },
    {
@@ -4693,7 +4710,7 @@
     "ind": -1.489,
     "usa": 0.499,
     "all": -0.02,
-    "eq": 98140.14,
+    "eq": 98174.53,
     "n": 2
    },
    {
@@ -4701,7 +4718,7 @@
     "ind": -2.388,
     "usa": -5.767,
     "all": -0.163,
-    "eq": 97980.08,
+    "eq": 98014.41,
     "n": 2
    },
    {
@@ -4709,7 +4726,7 @@
     "ind": 0.861,
     "usa": 1.297,
     "all": 0.043,
-    "eq": 98022.36,
+    "eq": 98056.7,
     "n": 2
    },
    {
@@ -4717,7 +4734,7 @@
     "ind": 0.0,
     "usa": 0.907,
     "all": 0.036,
-    "eq": 98057.91,
+    "eq": 98092.26,
     "n": 2
    },
    {
@@ -4725,7 +4742,7 @@
     "ind": -1.219,
     "usa": 6.811,
     "all": 0.165,
-    "eq": 98220.08,
+    "eq": 98254.49,
     "n": 3
    },
    {
@@ -4733,7 +4750,7 @@
     "ind": -1.798,
     "usa": -3.371,
     "all": -0.103,
-    "eq": 98118.52,
+    "eq": 98152.9,
     "n": 2
    },
    {
@@ -4741,7 +4758,7 @@
     "ind": -3.249,
     "usa": -1.141,
     "all": -0.074,
-    "eq": 98046.16,
+    "eq": 98080.51,
     "n": 3
    },
    {
@@ -4749,7 +4766,7 @@
     "ind": -4.931,
     "usa": 0.677,
     "all": -0.048,
-    "eq": 97999.4,
+    "eq": 98033.73,
     "n": 3
    },
    {
@@ -4757,7 +4774,7 @@
     "ind": 0.0,
     "usa": 6.631,
     "all": 0.265,
-    "eq": 98259.32,
+    "eq": 98293.75,
     "n": 1
    },
    {
@@ -4765,7 +4782,7 @@
     "ind": -4.835,
     "usa": 9.224,
     "all": 0.088,
-    "eq": 98345.56,
+    "eq": 98380.02,
     "n": 2
    },
    {
@@ -4773,7 +4790,7 @@
     "ind": 0.0,
     "usa": 9.171,
     "all": 0.367,
-    "eq": 98706.32,
+    "eq": 98740.9,
     "n": 2
    },
    {
@@ -4781,7 +4798,7 @@
     "ind": 6.546,
     "usa": 3.665,
     "all": 0.17,
-    "eq": 98873.77,
+    "eq": 98908.41,
     "n": 5
    },
    {
@@ -4789,7 +4806,7 @@
     "ind": 3.955,
     "usa": 3.417,
     "all": 0.146,
-    "eq": 99018.04,
+    "eq": 99052.73,
     "n": 7
    },
    {
@@ -4797,7 +4814,7 @@
     "ind": 1.731,
     "usa": 3.222,
     "all": 0.095,
-    "eq": 99111.91,
+    "eq": 99146.63,
     "n": 7
    },
    {
@@ -4805,7 +4822,7 @@
     "ind": 4.648,
     "usa": 6.065,
     "all": 0.214,
-    "eq": 99324.25,
+    "eq": 99359.04,
     "n": 2
    },
    {
@@ -4813,7 +4830,7 @@
     "ind": -0.383,
     "usa": 9.102,
     "all": 0.111,
-    "eq": 99434.66,
+    "eq": 99469.49,
     "n": 3
    },
    {
@@ -4821,7 +4838,7 @@
     "ind": 1.343,
     "usa": 7.743,
     "all": 0.139,
-    "eq": 99572.93,
+    "eq": 99607.82,
     "n": 3
    },
    {
@@ -4829,7 +4846,7 @@
     "ind": 0.527,
     "usa": 0.0,
     "all": 0.021,
-    "eq": 99593.92,
+    "eq": 99628.81,
     "n": 3
    },
    {
@@ -4837,7 +4854,7 @@
     "ind": 3.291,
     "usa": 3.675,
     "all": 0.137,
-    "eq": 99730.14,
+    "eq": 99765.08,
     "n": 3
    },
    {
@@ -4845,7 +4862,7 @@
     "ind": 0.0,
     "usa": -0.13,
     "all": -0.005,
-    "eq": 99724.96,
+    "eq": 99759.9,
     "n": 2
    },
    {
@@ -4853,7 +4870,7 @@
     "ind": 2.317,
     "usa": 2.216,
     "all": 0.091,
-    "eq": 99816.03,
+    "eq": 99851.0,
     "n": 3
    },
    {
@@ -4861,7 +4878,7 @@
     "ind": 0.445,
     "usa": -0.898,
     "all": -0.009,
-    "eq": 99806.98,
+    "eq": 99841.95,
     "n": 6
    },
    {
@@ -4869,7 +4886,7 @@
     "ind": -4.992,
     "usa": 0.0,
     "all": -0.2,
-    "eq": 99607.68,
+    "eq": 99642.58,
     "n": 2
    },
    {
@@ -4877,7 +4894,7 @@
     "ind": -3.873,
     "usa": 0.0,
     "all": -0.155,
-    "eq": 99453.36,
+    "eq": 99488.21,
     "n": 3
    },
    {
@@ -4885,7 +4902,7 @@
     "ind": 0.0,
     "usa": 0.649,
     "all": 0.026,
-    "eq": 99479.19,
+    "eq": 99514.04,
     "n": 2
    },
    {
@@ -4893,7 +4910,7 @@
     "ind": 0.0,
     "usa": 7.636,
     "all": 0.305,
-    "eq": 99783.05,
+    "eq": 99818.01,
     "n": 1
    },
    {
@@ -4901,7 +4918,7 @@
     "ind": 0.0,
     "usa": 3.536,
     "all": 0.141,
-    "eq": 99924.17,
+    "eq": 99959.18,
     "n": 2
    },
    {
@@ -4909,7 +4926,7 @@
     "ind": 0.941,
     "usa": 4.077,
     "all": 0.1,
-    "eq": 100024.44,
+    "eq": 100059.48,
     "n": 4
    },
    {
@@ -4917,7 +4934,7 @@
     "ind": 0.117,
     "usa": 2.984,
     "all": 0.043,
-    "eq": 100067.37,
+    "eq": 100102.43,
     "n": 9
    },
    {
@@ -4925,7 +4942,7 @@
     "ind": 0.318,
     "usa": -0.759,
     "all": 0.007,
-    "eq": 100073.93,
+    "eq": 100108.99,
     "n": 7
    },
    {
@@ -4933,7 +4950,7 @@
     "ind": -3.695,
     "usa": 1.725,
     "all": -0.076,
-    "eq": 99998.33,
+    "eq": 100033.36,
     "n": 3
    },
    {
@@ -4941,7 +4958,7 @@
     "ind": -2.341,
     "usa": 1.477,
     "all": -0.002,
-    "eq": 99996.33,
+    "eq": 100031.36,
     "n": 5
    },
    {
@@ -4949,7 +4966,7 @@
     "ind": 0.0,
     "usa": 1.238,
     "all": 0.05,
-    "eq": 100045.86,
+    "eq": 100080.91,
     "n": 3
    },
    {
@@ -4957,7 +4974,7 @@
     "ind": -0.502,
     "usa": 1.819,
     "all": 0.046,
-    "eq": 100092.11,
+    "eq": 100127.17,
     "n": 7
    },
    {
@@ -4965,7 +4982,7 @@
     "ind": -1.99,
     "usa": -0.812,
     "all": -0.044,
-    "eq": 100047.8,
+    "eq": 100082.85,
     "n": 4
    },
    {
@@ -4973,7 +4990,7 @@
     "ind": -1.034,
     "usa": 2.421,
     "all": 0.042,
-    "eq": 100089.37,
+    "eq": 100124.44,
     "n": 5
    },
    {
@@ -4981,7 +4998,7 @@
     "ind": -0.649,
     "usa": 0.285,
     "all": -0.014,
-    "eq": 100075.84,
+    "eq": 100110.9,
     "n": 3
    },
    {
@@ -4989,7 +5006,7 @@
     "ind": -0.114,
     "usa": 2.082,
     "all": 0.025,
-    "eq": 100100.58,
+    "eq": 100135.65,
     "n": 3
    },
    {
@@ -4997,7 +5014,7 @@
     "ind": -2.128,
     "usa": 2.608,
     "all": -0.047,
-    "eq": 100053.29,
+    "eq": 100088.34,
     "n": 5
    },
    {
@@ -5005,7 +5022,7 @@
     "ind": 0.0,
     "usa": -2.535,
     "all": -0.101,
-    "eq": 99951.84,
+    "eq": 99986.86,
     "n": 1
    },
    {
@@ -5013,7 +5030,7 @@
     "ind": 0.0,
     "usa": 1.388,
     "all": 0.056,
-    "eq": 100007.35,
+    "eq": 100042.39,
     "n": 3
    },
    {
@@ -5021,7 +5038,7 @@
     "ind": -1.115,
     "usa": 0.74,
     "all": -0.007,
-    "eq": 99999.85,
+    "eq": 100034.88,
     "n": 6
    },
    {
@@ -5029,7 +5046,7 @@
     "ind": -2.858,
     "usa": -0.089,
     "all": -0.04,
-    "eq": 99959.38,
+    "eq": 99994.4,
     "n": 6
    },
    {
@@ -5037,7 +5054,7 @@
     "ind": 0.0,
     "usa": 1.057,
     "all": 0.042,
-    "eq": 100001.63,
+    "eq": 100036.66,
     "n": 3
    },
    {
@@ -5045,7 +5062,7 @@
     "ind": -0.442,
     "usa": -1.4,
     "all": -0.045,
-    "eq": 99956.57,
+    "eq": 99991.58,
     "n": 7
    },
    {
@@ -5053,7 +5070,7 @@
     "ind": -1.486,
     "usa": -0.843,
     "all": -0.042,
-    "eq": 99914.28,
+    "eq": 99949.29,
     "n": 9
    },
    {
@@ -5061,7 +5078,7 @@
     "ind": -1.374,
     "usa": -0.748,
     "all": -0.037,
-    "eq": 99877.56,
+    "eq": 99912.55,
     "n": 11
    },
    {
@@ -5069,7 +5086,7 @@
     "ind": -1.816,
     "usa": -0.235,
     "all": -0.036,
-    "eq": 99841.85,
+    "eq": 99876.83,
     "n": 12
    },
    {
@@ -5077,7 +5094,7 @@
     "ind": -0.693,
     "usa": 0.0,
     "all": -0.028,
-    "eq": 99814.17,
+    "eq": 99849.14,
     "n": 5
    },
    {
@@ -5085,7 +5102,7 @@
     "ind": -3.421,
     "usa": -0.294,
     "all": -0.04,
-    "eq": 99774.69,
+    "eq": 99809.65,
     "n": 9
    },
    {
@@ -5093,7 +5110,7 @@
     "ind": -3.377,
     "usa": -1.707,
     "all": -0.091,
-    "eq": 99684.36,
+    "eq": 99719.28,
     "n": 6
    },
    {
@@ -5101,7 +5118,7 @@
     "ind": 0.0,
     "usa": 1.505,
     "all": 0.06,
-    "eq": 99744.36,
+    "eq": 99779.3,
     "n": 5
    },
    {
@@ -5109,7 +5126,7 @@
     "ind": -1.271,
     "usa": 0.759,
     "all": -0.01,
-    "eq": 99734.16,
+    "eq": 99769.1,
     "n": 4
    },
    {
@@ -5117,7 +5134,7 @@
     "ind": -2.345,
     "usa": -1.177,
     "all": -0.067,
-    "eq": 99667.25,
+    "eq": 99702.16,
     "n": 7
    },
    {
@@ -5125,7 +5142,7 @@
     "ind": 0.397,
     "usa": -4.613,
     "all": -0.064,
-    "eq": 99603.18,
+    "eq": 99638.08,
     "n": 5
    },
    {
@@ -5133,7 +5150,7 @@
     "ind": -0.292,
     "usa": -6.212,
     "all": -0.113,
-    "eq": 99490.47,
+    "eq": 99525.33,
     "n": 7
    },
    {
@@ -5141,7 +5158,7 @@
     "ind": -3.055,
     "usa": -3.546,
     "all": -0.132,
-    "eq": 99359.12,
+    "eq": 99393.93,
     "n": 8
    },
    {
@@ -5149,7 +5166,7 @@
     "ind": 1.288,
     "usa": -1.486,
     "all": -0.022,
-    "eq": 99336.79,
+    "eq": 99371.59,
     "n": 9
    },
    {
@@ -5157,7 +5174,7 @@
     "ind": -1.557,
     "usa": -3.048,
     "all": -0.092,
-    "eq": 99245.3,
+    "eq": 99280.07,
     "n": 6
    },
    {
@@ -5165,7 +5182,7 @@
     "ind": 2.635,
     "usa": 9.1,
     "all": 0.192,
-    "eq": 99435.46,
+    "eq": 99470.3,
     "n": 3
    },
    {
@@ -5173,7 +5190,7 @@
     "ind": 1.73,
     "usa": 4.913,
     "all": 0.101,
-    "eq": 99535.91,
+    "eq": 99570.79,
     "n": 4
    },
    {
@@ -5181,7 +5198,7 @@
     "ind": 1.934,
     "usa": 3.17,
     "all": 0.102,
-    "eq": 99637.52,
+    "eq": 99672.43,
     "n": 6
    },
    {
@@ -5189,7 +5206,7 @@
     "ind": -0.535,
     "usa": 0.0,
     "all": -0.021,
-    "eq": 99616.2,
+    "eq": 99651.1,
     "n": 3
    },
    {
@@ -5197,7 +5214,7 @@
     "ind": -0.019,
     "usa": 2.774,
     "all": 0.055,
-    "eq": 99671.09,
+    "eq": 99706.01,
     "n": 4
    },
    {
@@ -5205,7 +5222,7 @@
     "ind": -2.813,
     "usa": 3.889,
     "all": 0.066,
-    "eq": 99737.08,
+    "eq": 99772.02,
     "n": 3
    },
    {
@@ -5213,7 +5230,7 @@
     "ind": -1.504,
     "usa": 3.901,
     "all": 0.012,
-    "eq": 99748.94,
+    "eq": 99783.89,
     "n": 3
    },
    {
@@ -5221,7 +5238,7 @@
     "ind": -0.211,
     "usa": 0.937,
     "all": 0.011,
-    "eq": 99760.15,
+    "eq": 99795.1,
     "n": 7
    },
    {
@@ -5229,7 +5246,7 @@
     "ind": 0.805,
     "usa": 0.0,
     "all": 0.032,
-    "eq": 99792.26,
+    "eq": 99827.22,
     "n": 4
    },
    {
@@ -5237,7 +5254,7 @@
     "ind": -0.437,
     "usa": 4.504,
     "all": 0.022,
-    "eq": 99814.25,
+    "eq": 99849.22,
     "n": 5
    },
    {
@@ -5245,7 +5262,7 @@
     "ind": 1.648,
     "usa": 6.722,
     "all": 0.124,
-    "eq": 99937.93,
+    "eq": 99972.94,
     "n": 7
    },
    {
@@ -5253,7 +5270,7 @@
     "ind": 0.281,
     "usa": 5.957,
     "all": 0.109,
-    "eq": 100046.4,
+    "eq": 100081.45,
     "n": 7
    },
    {
@@ -5261,7 +5278,7 @@
     "ind": 3.139,
     "usa": 1.078,
     "all": 0.084,
-    "eq": 100130.78,
+    "eq": 100165.86,
     "n": 6
    },
    {
@@ -5269,7 +5286,7 @@
     "ind": 0.0,
     "usa": 5.418,
     "all": 0.217,
-    "eq": 100347.78,
+    "eq": 100382.94,
     "n": 3
    },
    {
@@ -5277,7 +5294,7 @@
     "ind": 0.22,
     "usa": 2.881,
     "all": 0.027,
-    "eq": 100374.4,
+    "eq": 100409.57,
     "n": 6
    },
    {
@@ -5285,7 +5302,7 @@
     "ind": -0.777,
     "usa": 1.6,
     "all": 0.001,
-    "eq": 100375.03,
+    "eq": 100410.19,
     "n": 6
    },
    {
@@ -5293,7 +5310,7 @@
     "ind": -2.72,
     "usa": -0.834,
     "all": -0.074,
-    "eq": 100300.77,
+    "eq": 100335.91,
     "n": 13
    },
    {
@@ -5301,7 +5318,7 @@
     "ind": -2.815,
     "usa": 2.414,
     "all": -0.008,
-    "eq": 100292.71,
+    "eq": 100327.85,
     "n": 14
    },
    {
@@ -5309,7 +5326,7 @@
     "ind": 0.433,
     "usa": 0.0,
     "all": 0.017,
-    "eq": 100310.1,
+    "eq": 100345.24,
     "n": 4
    },
    {
@@ -5317,7 +5334,7 @@
     "ind": -0.352,
     "usa": -1.357,
     "all": -0.03,
-    "eq": 100279.85,
+    "eq": 100314.98,
     "n": 5
    },
    {
@@ -5325,7 +5342,7 @@
     "ind": -0.504,
     "usa": 3.264,
     "all": 0.07,
-    "eq": 100350.31,
+    "eq": 100385.47,
     "n": 5
    },
    {
@@ -5333,7 +5350,7 @@
     "ind": 0.241,
     "usa": 3.346,
     "all": 0.079,
-    "eq": 100429.23,
+    "eq": 100464.41,
     "n": 9
    },
    {
@@ -5341,7 +5358,7 @@
     "ind": 0.78,
     "usa": -0.021,
     "all": 0.017,
-    "eq": 100446.77,
+    "eq": 100481.96,
     "n": 7
    },
    {
@@ -5349,7 +5366,7 @@
     "ind": -0.468,
     "usa": -1.129,
     "all": -0.032,
-    "eq": 100414.69,
+    "eq": 100449.87,
     "n": 2
    },
    {
@@ -5357,7 +5374,7 @@
     "ind": -1.214,
     "usa": -1.722,
     "all": -0.059,
-    "eq": 100355.72,
+    "eq": 100390.88,
     "n": 8
    },
    {
@@ -5365,7 +5382,7 @@
     "ind": -2.251,
     "usa": -2.529,
     "all": -0.097,
-    "eq": 100258.4,
+    "eq": 100293.52,
     "n": 8
    },
    {
@@ -5373,7 +5390,7 @@
     "ind": -2.316,
     "usa": 6.561,
     "all": -0.022,
-    "eq": 100236.71,
+    "eq": 100271.82,
     "n": 5
    },
    {
@@ -5381,7 +5398,7 @@
     "ind": -2.792,
     "usa": 0.248,
     "all": -0.063,
-    "eq": 100173.51,
+    "eq": 100208.61,
     "n": 5
    },
    {
@@ -5389,7 +5406,7 @@
     "ind": -1.168,
     "usa": -0.558,
     "all": -0.035,
-    "eq": 100138.93,
+    "eq": 100174.01,
     "n": 8
    },
    {
@@ -5397,7 +5414,7 @@
     "ind": 0.472,
     "usa": 0.411,
     "all": 0.017,
-    "eq": 100156.38,
+    "eq": 100191.46,
     "n": 5
    },
    {
@@ -5405,7 +5422,7 @@
     "ind": 2.905,
     "usa": -3.593,
     "all": -0.1,
-    "eq": 100055.83,
+    "eq": 100090.89,
     "n": 6
    },
    {
@@ -5413,7 +5430,7 @@
     "ind": -0.294,
     "usa": -1.915,
     "all": -0.064,
-    "eq": 99992.17,
+    "eq": 100027.2,
     "n": 5
    },
    {
@@ -5421,7 +5438,7 @@
     "ind": 1.056,
     "usa": -2.319,
     "all": -0.042,
-    "eq": 99950.03,
+    "eq": 99985.05,
     "n": 8
    },
    {
@@ -5429,7 +5446,7 @@
     "ind": 1.128,
     "usa": -1.846,
     "all": -0.014,
-    "eq": 99935.68,
+    "eq": 99970.69,
     "n": 6
    },
    {
@@ -5437,7 +5454,7 @@
     "ind": -1.128,
     "usa": -0.304,
     "all": -0.029,
-    "eq": 99907.06,
+    "eq": 99942.06,
     "n": 2
    },
    {
@@ -5445,7 +5462,7 @@
     "ind": -0.167,
     "usa": 1.009,
     "all": 0.022,
-    "eq": 99928.58,
+    "eq": 99963.59,
     "n": 5
    },
    {
@@ -5453,7 +5470,7 @@
     "ind": 0.824,
     "usa": 4.111,
     "all": 0.052,
-    "eq": 99980.3,
+    "eq": 100015.33,
     "n": 7
    },
    {
@@ -5461,7 +5478,7 @@
     "ind": -0.505,
     "usa": -5.313,
     "all": -0.044,
-    "eq": 99936.05,
+    "eq": 99971.06,
     "n": 8
    },
    {
@@ -5469,7 +5486,7 @@
     "ind": -0.634,
     "usa": -0.941,
     "all": -0.027,
-    "eq": 99909.16,
+    "eq": 99944.16,
     "n": 8
    },
    {
@@ -5477,7 +5494,7 @@
     "ind": -1.406,
     "usa": 1.318,
     "all": -0.013,
-    "eq": 99896.52,
+    "eq": 99931.51,
     "n": 5
    },
    {
@@ -5485,7 +5502,7 @@
     "ind": -1.952,
     "usa": 3.689,
     "all": -0.022,
-    "eq": 99874.88,
+    "eq": 99909.87,
     "n": 4
    },
    {
@@ -5493,7 +5510,7 @@
     "ind": 0.815,
     "usa": -0.029,
     "all": 0.016,
-    "eq": 99890.57,
+    "eq": 99925.56,
     "n": 4
    },
    {
@@ -5501,7 +5518,7 @@
     "ind": -0.747,
     "usa": -0.474,
     "all": -0.026,
-    "eq": 99864.36,
+    "eq": 99899.35,
     "n": 6
    },
    {
@@ -5509,7 +5526,7 @@
     "ind": -0.076,
     "usa": -1.057,
     "all": -0.016,
-    "eq": 99848.28,
+    "eq": 99883.26,
     "n": 6
    },
    {
@@ -5517,7 +5534,7 @@
     "ind": -1.74,
     "usa": -1.89,
     "all": -0.073,
-    "eq": 99775.17,
+    "eq": 99810.13,
     "n": 5
    },
    {
@@ -5525,7 +5542,7 @@
     "ind": -2.147,
     "usa": -0.058,
     "all": -0.052,
-    "eq": 99722.84,
+    "eq": 99757.77,
     "n": 5
    },
    {
@@ -5533,7 +5550,7 @@
     "ind": -2.167,
     "usa": -0.624,
     "all": -0.062,
-    "eq": 99661.01,
+    "eq": 99695.93,
     "n": 5
    },
    {
@@ -5541,7 +5558,7 @@
     "ind": -1.365,
     "usa": 0.16,
     "all": -0.03,
-    "eq": 99630.92,
+    "eq": 99665.83,
     "n": 5
    },
    {
@@ -5549,7 +5566,7 @@
     "ind": -0.79,
     "usa": -1.292,
     "all": -0.043,
-    "eq": 99588.02,
+    "eq": 99622.91,
     "n": 7
    },
    {
@@ -5557,7 +5574,7 @@
     "ind": 0.0,
     "usa": 0.343,
     "all": 0.014,
-    "eq": 99601.67,
+    "eq": 99636.57,
     "n": 2
    },
    {
@@ -5565,7 +5582,7 @@
     "ind": 0.561,
     "usa": 0.911,
     "all": 0.033,
-    "eq": 99634.49,
+    "eq": 99669.39,
     "n": 4
    },
    {
@@ -5573,7 +5590,7 @@
     "ind": -1.632,
     "usa": -2.021,
     "all": -0.076,
-    "eq": 99559.12,
+    "eq": 99594.0,
     "n": 3
    },
    {
@@ -5581,7 +5598,7 @@
     "ind": 1.836,
     "usa": 2.978,
     "all": 0.104,
-    "eq": 99662.55,
+    "eq": 99697.47,
     "n": 6
    },
    {
@@ -5589,7 +5606,7 @@
     "ind": -1.764,
     "usa": 2.987,
     "all": 0.072,
-    "eq": 99734.29,
+    "eq": 99769.23,
     "n": 4
    },
    {
@@ -5597,7 +5614,7 @@
     "ind": 0.441,
     "usa": 0.763,
     "all": 0.025,
-    "eq": 99759.59,
+    "eq": 99794.54,
     "n": 5
    },
    {
@@ -5605,7 +5622,7 @@
     "ind": 4.21,
     "usa": 1.179,
     "all": 0.077,
-    "eq": 99836.88,
+    "eq": 99871.86,
     "n": 4
    },
    {
@@ -5613,7 +5630,7 @@
     "ind": -2.259,
     "usa": 1.761,
     "all": 0.038,
-    "eq": 99875.1,
+    "eq": 99910.09,
     "n": 5
    },
    {
@@ -5621,7 +5638,7 @@
     "ind": -0.839,
     "usa": 0.994,
     "all": 0.021,
-    "eq": 99896.49,
+    "eq": 99931.49,
     "n": 4
    },
    {
@@ -5629,7 +5646,7 @@
     "ind": -0.221,
     "usa": 2.296,
     "all": 0.042,
-    "eq": 99937.95,
+    "eq": 99972.97,
     "n": 4
    },
    {
@@ -5637,7 +5654,7 @@
     "ind": 0.0,
     "usa": -0.103,
     "all": -0.004,
-    "eq": 99933.82,
+    "eq": 99968.83,
     "n": 2
    },
    {
@@ -5645,7 +5662,7 @@
     "ind": -2.786,
     "usa": 3.154,
     "all": 0.024,
-    "eq": 99958.13,
+    "eq": 99993.15,
     "n": 7
    },
    {
@@ -5653,7 +5670,7 @@
     "ind": -4.137,
     "usa": -1.872,
     "all": -0.105,
-    "eq": 99853.08,
+    "eq": 99888.07,
     "n": 6
    },
    {
@@ -5661,7 +5678,7 @@
     "ind": -2.753,
     "usa": -2.678,
     "all": -0.108,
-    "eq": 99744.93,
+    "eq": 99779.87,
     "n": 5
    },
    {
@@ -5669,7 +5686,7 @@
     "ind": 0.0,
     "usa": 0.701,
     "all": 0.028,
-    "eq": 99772.9,
+    "eq": 99807.86,
     "n": 4
    },
    {
@@ -5677,7 +5694,7 @@
     "ind": -3.501,
     "usa": 0.0,
     "all": -0.14,
-    "eq": 99633.18,
+    "eq": 99668.09,
     "n": 1
    },
    {
@@ -5685,7 +5702,7 @@
     "ind": 0.0,
     "usa": -0.724,
     "all": -0.029,
-    "eq": 99604.32,
+    "eq": 99639.22,
     "n": 5
    },
    {
@@ -5693,7 +5710,7 @@
     "ind": 0.503,
     "usa": -0.257,
     "all": -0.005,
-    "eq": 99599.12,
+    "eq": 99634.02,
     "n": 6
    },
    {
@@ -5701,7 +5718,7 @@
     "ind": -1.071,
     "usa": -0.682,
     "all": -0.03,
-    "eq": 99569.36,
+    "eq": 99604.24,
     "n": 6
    },
    {
@@ -5709,7 +5726,7 @@
     "ind": 0.0,
     "usa": -2.15,
     "all": -0.086,
-    "eq": 99483.74,
+    "eq": 99518.59,
     "n": 3
    },
    {
@@ -5717,7 +5734,7 @@
     "ind": 0.0,
     "usa": -4.203,
     "all": -0.168,
-    "eq": 99316.49,
+    "eq": 99351.29,
     "n": 1
    },
    {
@@ -5725,7 +5742,7 @@
     "ind": 1.785,
     "usa": -1.501,
     "all": -0.016,
-    "eq": 99300.38,
+    "eq": 99335.17,
     "n": 6
    },
    {
@@ -5733,7 +5750,7 @@
     "ind": 0.78,
     "usa": 1.628,
     "all": 0.054,
-    "eq": 99353.83,
+    "eq": 99388.63,
     "n": 6
    },
    {
@@ -5741,7 +5758,7 @@
     "ind": -2.858,
     "usa": -1.307,
     "all": -0.068,
-    "eq": 99286.48,
+    "eq": 99321.27,
     "n": 4
    },
    {
@@ -5749,7 +5766,7 @@
     "ind": -2.138,
     "usa": 0.305,
     "all": -0.02,
-    "eq": 99266.24,
+    "eq": 99301.02,
     "n": 6
    },
    {
@@ -5757,7 +5774,7 @@
     "ind": -2.896,
     "usa": -2.062,
     "all": -0.095,
-    "eq": 99171.95,
+    "eq": 99206.69,
     "n": 8
    },
    {
@@ -5765,7 +5782,7 @@
     "ind": 0.0,
     "usa": 1.16,
     "all": 0.046,
-    "eq": 99217.95,
+    "eq": 99252.71,
     "n": 3
    },
    {
@@ -5773,7 +5790,7 @@
     "ind": 0.0,
     "usa": 1.029,
     "all": 0.041,
-    "eq": 99258.8,
+    "eq": 99293.57,
     "n": 4
    },
    {
@@ -5781,7 +5798,7 @@
     "ind": -1.155,
     "usa": 0.094,
     "all": -0.003,
-    "eq": 99255.45,
+    "eq": 99290.22,
     "n": 7
    },
    {
@@ -5789,7 +5806,7 @@
     "ind": 0.0,
     "usa": 0.903,
     "all": 0.036,
-    "eq": 99291.3,
+    "eq": 99326.08,
     "n": 2
    },
    {
@@ -5797,7 +5814,7 @@
     "ind": -1.156,
     "usa": 1.937,
     "all": 0.053,
-    "eq": 99343.66,
+    "eq": 99378.46,
     "n": 5
    },
    {
@@ -5805,7 +5822,7 @@
     "ind": -2.857,
     "usa": 2.83,
     "all": 0.068,
-    "eq": 99410.92,
+    "eq": 99445.75,
     "n": 5
    },
    {
@@ -5813,7 +5830,7 @@
     "ind": 1.44,
     "usa": 2.58,
     "all": 0.097,
-    "eq": 99507.02,
+    "eq": 99541.88,
     "n": 7
    },
    {
@@ -5821,7 +5838,7 @@
     "ind": 1.638,
     "usa": -0.393,
     "all": 0.007,
-    "eq": 99514.48,
+    "eq": 99549.34,
     "n": 7
    },
    {
@@ -5829,7 +5846,7 @@
     "ind": 0.0,
     "usa": 1.855,
     "all": 0.074,
-    "eq": 99588.31,
+    "eq": 99623.2,
     "n": 3
    },
    {
@@ -5837,7 +5854,7 @@
     "ind": 0.0,
     "usa": 2.383,
     "all": 0.095,
-    "eq": 99683.23,
+    "eq": 99718.15,
     "n": 6
    },
    {
@@ -5845,7 +5862,7 @@
     "ind": 0.329,
     "usa": 2.734,
     "all": 0.096,
-    "eq": 99778.54,
+    "eq": 99813.5,
     "n": 7
    },
    {
@@ -5853,7 +5870,7 @@
     "ind": -1.866,
     "usa": 0.461,
     "all": -0.002,
-    "eq": 99776.32,
+    "eq": 99811.27,
     "n": 9
    },
    {
@@ -5861,7 +5878,7 @@
     "ind": 2.369,
     "usa": -0.035,
     "all": 0.026,
-    "eq": 99802.33,
+    "eq": 99837.29,
     "n": 7
    },
    {
@@ -5869,7 +5886,7 @@
     "ind": 4.085,
     "usa": -0.977,
     "all": 0.028,
-    "eq": 99830.69,
+    "eq": 99865.67,
     "n": 9
    },
    {
@@ -5877,7 +5894,7 @@
     "ind": 1.161,
     "usa": -1.69,
     "all": -0.035,
-    "eq": 99795.73,
+    "eq": 99830.69,
     "n": 7
    },
    {
@@ -5885,7 +5902,7 @@
     "ind": 0.299,
     "usa": -3.912,
     "all": -0.044,
-    "eq": 99751.63,
+    "eq": 99786.58,
     "n": 3
    },
    {
@@ -5893,7 +5910,7 @@
     "ind": -3.871,
     "usa": -1.965,
     "all": -0.104,
-    "eq": 99647.89,
+    "eq": 99682.8,
     "n": 6
    },
    {
@@ -5901,7 +5918,7 @@
     "ind": -1.768,
     "usa": -4.344,
     "all": -0.122,
-    "eq": 99526.08,
+    "eq": 99560.95,
     "n": 6
    },
    {
@@ -5909,7 +5926,7 @@
     "ind": -2.762,
     "usa": -1.726,
     "all": -0.097,
-    "eq": 99429.87,
+    "eq": 99464.7,
     "n": 6
    },
    {
@@ -5917,7 +5934,7 @@
     "ind": 0.763,
     "usa": -3.121,
     "all": -0.032,
-    "eq": 99398.42,
+    "eq": 99433.24,
     "n": 5
    },
    {
@@ -5925,37 +5942,37 @@
     "ind": 0.0,
     "usa": 0.664,
     "all": 0.027,
-    "eq": 99424.84,
+    "eq": 99459.67,
     "n": 3
    },
    {
     "date": "2026-10-21",
-    "ind": -1.956,
-    "usa": -0.303,
-    "all": -0.039,
-    "eq": 99386.49,
-    "n": 5
+    "ind": -4.314,
+    "usa": 0.0,
+    "all": -0.173,
+    "eq": 99288.05,
+    "n": 1
    }
   ],
-  "total": -0.61,
-  "annualized": -0.5,
+  "total": -0.71,
+  "annualized": -0.6,
   "maxdd": -2.0,
   "winRate": 45.6,
-  "tips": 1756,
+  "tips": 1751,
   "avg": -0.13,
   "rr": null,
   "markets": {
    "india": {
-    "tips": 851,
+    "tips": 850,
     "win": 39.8,
     "avg": -0.54,
-    "ret": -18.46
+    "ret": -18.48
    },
    "usa": {
-    "tips": 905,
-    "win": 51.0,
+    "tips": 901,
+    "win": 51.2,
     "avg": 0.26,
-    "ret": 9.28
+    "ret": 9.39
    }
   },
   "sectors": [
@@ -5973,29 +5990,29 @@
    ],
    [
     "Financials",
-    -2.5
+    -2.57
    ],
    [
     "Technology",
-    -2.82
+    -2.73
    ],
    [
     "Communication",
-    -3.23
+    -3.15
    ]
   ],
   "conviction": {
    "high": {
-    "tips": 872,
-    "win": 46.2,
+    "tips": 870,
+    "win": 46.3,
     "avg": -0.12,
-    "ret": -4.29
+    "ret": -4.17
    },
    "medium": {
-    "tips": 884,
-    "win": 45.0,
+    "tips": 881,
+    "win": 44.9,
     "avg": -0.14,
-    "ret": -4.89
+    "ret": -4.92
    }
   },
   "best": {
@@ -6013,7 +6030,7 @@
   "outcomes": {
    "TARGET HIT": 96,
    "STOPPED": 165,
-   "CLOSED": 1495
+   "CLOSED": 1490
   }
  },
  "universe_size": 26
