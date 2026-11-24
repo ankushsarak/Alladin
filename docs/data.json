@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-24T03:38:31.422868+05:30",
- "generated_utc": "2026-11-23T22:10:00.859919+00:00",
+ "generated": "2026-11-24T10:35:57.957705+05:30",
+ "generated_utc": "2026-11-24T05:09:56.192723+00:00",
  "sources": {
   "prices": "Yahoo Finance chart API (public)",
   "news": "Google News RSS (public)",
@@ -15,7 +15,6 @@
    "price": 25349.65,
    "chg": -1.75,
    "spark": [
-    23446.8,
     23063.1,
     23140.5,
     22780.25,
@@ -54,7 +53,8 @@
     25387.4,
     25227.95,
     25514.3,
-    25800.6
+    25800.6,
+    25349.65
    ]
   },
   {
@@ -64,7 +64,6 @@
    "price": 62585.35,
    "chg": -3.17,
    "spark": [
-    56548.9,
     55438.5,
     55580.4,
     54471.65,
@@ -103,7 +102,8 @@
     62273.25,
     62038.65,
     63063.0,
-    64635.2
+    64635.2,
+    62585.35
    ]
   },
   {
@@ -208,6 +208,384 @@
  "tips": {
   "india": [
    {
+    "id": "lt",
+    "symbol": "LT.NS",
+    "ticker": "LT",
+    "name": "Larsen & Toubro",
+    "market": "INDIA",
+    "sector": "Industrials",
+    "art": "finance",
+    "cur": "₹",
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "HIGH",
+    "score": 82,
+    "price": 4099.9,
+    "chg": -2.59,
+    "entry": [
+     4087.6,
+     4120.4
+    ],
+    "window": "First 60–90 minutes of the session",
+    "stop": 3816.72,
+    "targets": [
+     4477.46,
+     4736.02,
+     5080.75
+    ],
+    "rr": "1 : 2.2",
+    "risk_pct": 7.0,
+    "size": 5.0,
+    "scores": {
+     "Technical": 5,
+     "Momentum": 4,
+     "Volume": 2,
+     "Location": 4
+    },
+    "indicators": {
+     "rsi": 65.0,
+     "sma20": 4026.5,
+     "sma50": 3869.18,
+     "sma200": 3949.96,
+     "macd_hist": 5.884,
+     "atr": 83.06,
+     "vol_ratio": 0.74,
+     "resistance": 4259.0,
+     "support": 3615.1,
+     "hi52": 4440.0,
+     "lo52": 2965.3
+    },
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "MACD sits above its signal line — the momentum cross is positive.",
+     "Price sits +1.8% from its 20-day average — a reasonable entry zone.",
+     "The long-term 200-day trend is still up."
+    ],
+    "sections": {
+     "THE CHART": "Last price 4,099.90. The 20-day average sits at 4,026.50 and the 50-day at 3,869.18, putting price +1.8% from its short-term mean. RSI(14) reads 65 and the MACD histogram is +5.88. Nearest resistance from the last 60 sessions is 4,259.00; the 20-session swing low is 3,615.10. Average true range is 83.06 (2.0% of price), which is what sets the stop distance below.",
+     "THE BUSINESS": "Larsen & Toubro sits in the industrials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +12.4% against its own trend, and -1.0% over the last five. Its 52-week range is 2,965.30 to 4,440.00, so price is currently 77% of the way up that range.",
+     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
+     "THE RISKS": "The setup fails on a close below 3,816.72, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
+    },
+    "news": [
+     {
+      "h": "Larsen & Toubro Share Price - Live NSE: LT Stock Price & Chart",
+      "src": "Upstox",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9kVmU3ankyakd3LWZkTXJmN2xacmxRYlhfdjZlWmpWUzRKYjFZS1IzZ1RuOUxaSHVhS05NWHNGUVRKNTZ4VWEzc3V4RjdoMlJsWUNDSW5fY0hLZGR2bDN0TDM2Q1hYV2M?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "L&T Group Company Secures Large AI Cluster Order to Deploy NVIDIA B300 GPUs at Its Chennai Data Centre",
+      "src": "Kotak Neo",
+      "time": "22h ago",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPbzhxTUh0bHNZNUFmZkxkMUg2bzRuNUZuY3pqV1MzWHZVbTdRM1hZRlVPN2FPTHpuNFAwR0w5X1ZzZDJqVzJDUDZvU1NuLVh3ODlaaGRkcURxZUxSRURLQ21fWXhvTW15MVR2WHQ4SEsxeVFLRHNaRVdSSTJUOTgtU0tIaHZ1RnlwQnN1RFNBRDdKTTZJdzNXY1duNTlwTWVoM082SmVxbjBIbS1rYUdFb1Y2Z3ItTjdfU1dtY0Y1bTQ2ZlBqUHc?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "Larsen & Toubro Unit Secures Order for Deploying 3,300 NVIDIA B300 GPUs; Shares Fall 0.45%",
+      "src": "HDFC Sky",
+      "time": "23h ago",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZGdNQXl2SG92d2xCbzNhcXQtNld0M213N1R0WDM3dTBKWWpxM2U0Ukc0QjFQUDlkLXZKR0ZpSXNyNkdUOE5JU29qV2xJWkpKdzM1Q2hhOVFRQ0JoMmNCNTN4clhmaENtb1pDdnl5amRBTGF5ajhieDhGZFM1YllaUVZWdnVfSHNLVkFyNGVMZHJmQk1oODUzcXlFcnVpOGl3SUpHQVZBbWJNdw?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     }
+    ],
+    "workcase": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "The long-term 200-day trend is still up.",
+     "RSI at 65 — strength with room left before exhaustion.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ],
+    "failcase": [
+     "Volume is only 0.74× average — conviction behind the move is thin."
+    ],
+    "invalidation": "A daily close below ₹3,816.72.",
+    "chart": [
+     {
+      "d": "2026-08-12",
+      "c": 4020.0
+     },
+     {
+      "d": "2026-08-13",
+      "c": 4070.7
+     },
+     {
+      "d": "2026-08-14",
+      "c": 4057.0
+     },
+     {
+      "d": "2026-08-17",
+      "c": 4086.7
+     },
+     {
+      "d": "2026-08-18",
+      "c": 4064.3
+     },
+     {
+      "d": "2026-08-19",
+      "c": 4041.3
+     },
+     {
+      "d": "2026-08-20",
+      "c": 4081.0
+     },
+     {
+      "d": "2026-08-21",
+      "c": 4093.0
+     },
+     {
+      "d": "2026-08-24",
+      "c": 4090.0
+     },
+     {
+      "d": "2026-08-25",
+      "c": 4119.0
+     },
+     {
+      "d": "2026-08-26",
+      "c": 4038.1
+     },
+     {
+      "d": "2026-08-27",
+      "c": 4027.0
+     },
+     {
+      "d": "2026-08-28",
+      "c": 4045.8
+     },
+     {
+      "d": "2026-08-31",
+      "c": 4044.9
+     },
+     {
+      "d": "2026-09-01",
+      "c": 3980.1
+     },
+     {
+      "d": "2026-09-02",
+      "c": 3981.0
+     },
+     {
+      "d": "2026-09-03",
+      "c": 3975.0
+     },
+     {
+      "d": "2026-09-04",
+      "c": 3964.1
+     },
+     {
+      "d": "2026-09-07",
+      "c": 3999.0
+     },
+     {
+      "d": "2026-09-08",
+      "c": 3946.1
+     },
+     {
+      "d": "2026-09-09",
+      "c": 3922.6
+     },
+     {
+      "d": "2026-09-10",
+      "c": 3955.0
+     },
+     {
+      "d": "2026-09-11",
+      "c": 3930.7
+     },
+     {
+      "d": "2026-09-15",
+      "c": 3850.7
+     },
+     {
+      "d": "2026-09-16",
+      "c": 3807.7
+     },
+     {
+      "d": "2026-09-17",
+      "c": 3836.2
+     },
+     {
+      "d": "2026-09-18",
+      "c": 3885.0
+     },
+     {
+      "d": "2026-09-21",
+      "c": 3904.8
+     },
+     {
+      "d": "2026-09-22",
+      "c": 3866.4
+     },
+     {
+      "d": "2026-09-23",
+      "c": 3929.9
+     },
+     {
+      "d": "2026-09-24",
+      "c": 3858.4
+     },
+     {
+      "d": "2026-09-25",
+      "c": 3876.2
+     },
+     {
+      "d": "2026-09-28",
+      "c": 3766.4
+     },
+     {
+      "d": "2026-09-29",
+      "c": 3749.1
+     },
+     {
+      "d": "2026-09-30",
+      "c": 3760.0
+     },
+     {
+      "d": "2026-10-01",
+      "c": 3693.4
+     },
+     {
+      "d": "2026-10-05",
+      "c": 3750.0
+     },
+     {
+      "d": "2026-10-06",
+      "c": 3770.0
+     },
+     {
+      "d": "2026-10-07",
+      "c": 3701.5
+     },
+     {
+      "d": "2026-10-08",
+      "c": 3625.1
+     },
+     {
+      "d": "2026-10-09",
+      "c": 3703.3
+     },
+     {
+      "d": "2026-10-12",
+      "c": 3627.5
+     },
+     {
+      "d": "2026-10-13",
+      "c": 3675.0
+     },
+     {
+      "d": "2026-10-14",
+      "c": 3642.0
+     },
+     {
+      "d": "2026-10-15",
+      "c": 3632.0
+     },
+     {
+      "d": "2026-10-16",
+      "c": 3627.1
+     },
+     {
+      "d": "2026-10-19",
+      "c": 3661.9
+     },
+     {
+      "d": "2026-10-21",
+      "c": 3636.0
+     },
+     {
+      "d": "2026-10-22",
+      "c": 3638.3
+     },
+     {
+      "d": "2026-10-23",
+      "c": 3647.0
+     },
+     {
+      "d": "2026-10-26",
+      "c": 3680.0
+     },
+     {
+      "d": "2026-10-27",
+      "c": 3665.1
+     },
+     {
+      "d": "2026-10-28",
+      "c": 3801.3
+     },
+     {
+      "d": "2026-10-29",
+      "c": 3837.1
+     },
+     {
+      "d": "2026-10-30",
+      "c": 3871.7
+     },
+     {
+      "d": "2026-11-02",
+      "c": 3939.9
+     },
+     {
+      "d": "2026-11-03",
+      "c": 3948.2
+     },
+     {
+      "d": "2026-11-04",
+      "c": 3944.4
+     },
+     {
+      "d": "2026-11-05",
+      "c": 4050.0
+     },
+     {
+      "d": "2026-11-06",
+      "c": 4117.7
+     },
+     {
+      "d": "2026-11-09",
+      "c": 4185.0
+     },
+     {
+      "d": "2026-11-11",
+      "c": 4212.0
+     },
+     {
+      "d": "2026-11-12",
+      "c": 4159.2
+     },
+     {
+      "d": "2026-11-13",
+      "c": 4143.8
+     },
+     {
+      "d": "2026-11-16",
+      "c": 4140.0
+     },
+     {
+      "d": "2026-11-17",
+      "c": 4155.5
+     },
+     {
+      "d": "2026-11-18",
+      "c": 4159.0
+     },
+     {
+      "d": "2026-11-19",
+      "c": 4211.0
+     },
+     {
+      "d": "2026-11-20",
+      "c": 4209.1
+     },
+     {
+      "d": "2026-11-23",
+      "c": 4099.9
+     }
+    ]
+   },
+   {
     "id": "axisbank",
     "symbol": "AXISBANK.NS",
     "ticker": "AXISBANK",
@@ -220,75 +598,75 @@
     "mode": "WAIT",
     "conviction": "MEDIUM",
     "score": 68,
-    "price": 1446.0,
+    "price": 1388.6,
     "chg": -3.97,
     "entry": [
-     1283.6,
-     1296.5
+     1292.11,
+     1305.1
     ],
     "window": "On a pullback to the 20-day average",
-    "stop": 1194.51,
+    "stop": 1197.6,
     "targets": [
-     1414.26,
-     1500.25,
-     1614.9
+     1429.91,
+     1520.82,
+     1642.02
     ],
     "rr": "1 : 2.2",
-    "risk_pct": 7.41,
+    "risk_pct": 7.78,
     "size": 5.0,
     "scores": {
      "Technical": 5,
      "Momentum": 5,
-     "Volume": 4,
+     "Volume": 5,
      "Location": 1
     },
     "indicators": {
-     "rsi": 86.6,
-     "sma20": 1290.05,
-     "sma50": 1259.72,
-     "sma200": 1285.31,
-     "macd_hist": 15.081,
-     "atr": 33.54,
-     "vol_ratio": 1.35,
-     "resistance": 1450.0,
-     "support": 1196.9,
-     "hi52": 1450.0,
+     "rsi": 74.8,
+     "sma20": 1298.6,
+     "sma50": 1262.59,
+     "sma200": 1285.44,
+     "macd_hist": 12.426,
+     "atr": 37.14,
+     "vol_ratio": 1.47,
+     "resistance": 1458.9,
+     "support": 1200.0,
+     "hi52": 1458.9,
      "lo52": 933.5
     },
     "thesis": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Recent volume is running 1.35× the 20-day average — participation is confirming.",
+     "Recent volume is running 1.47× the 20-day average — participation is confirming.",
      "The long-term 200-day trend is still up."
     ],
     "sections": {
-     "THE CHART": "Last price 1,446.00. The 20-day average sits at 1,290.05 and the 50-day at 1,259.72, putting price +12.1% from its short-term mean. RSI(14) reads 87 and the MACD histogram is +15.08. Nearest resistance from the last 60 sessions is 1,450.00; the 20-session swing low is 1,196.90. Average true range is 33.54 (2.3% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 1,388.60. The 20-day average sits at 1,298.60 and the 50-day at 1,262.59, putting price +6.9% from its short-term mean. RSI(14) reads 75 and the MACD histogram is +12.43. Nearest resistance from the last 60 sessions is 1,458.90; the 20-session swing low is 1,200.00. Average true range is 37.14 (2.7% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Axis Bank sits in the financials sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +19.3% against its own trend, and +8.6% over the last five. Its 52-week range is 933.50 to 1,450.00, so price is currently 99% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +14.1% against its own trend, and +3.4% over the last five. Its 52-week range is 933.50 to 1,458.90, so price is currently 87% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 1,194.51, which is 7.4% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 1,197.60, which is 7.8% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
+      "h": "Axis Bank Share Price - Live NSE: AXISBANK Stock Price & Chart",
+      "src": "Upstox",
+      "time": "3d ago",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1sRHdudklyeHpNVkNfMmpDYkhZLVo3VXBVUjByU0JkekxYNUVNMFphV0R5Vi1vQUd1YVBRU3llVDRCLTcwSnRTMnktT2VvaTVHVWZkSXB6Ylh2cnRpU0J6Y2pJOUVPRDQ?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
       "h": "Bank Nifty Crashes Nearly 1,000 Points in Early Trade as Banking Stocks Sell Off; Axis Bank, SBI Lead Losses",
       "src": "Kotak Neo",
-      "time": "14h ago",
+      "time": "21h ago",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPUS1KaVZic1poX1EwQnF2ejNiZVdaZ1JweFBMQlBhVUxyZ041TW95VkZOeTVmWTdneEFlMFNMUHUtWXZKRGQ3V1FIMEpidHZzLXo4c2dDeGJQSm5LTTZjaWkxSzJ4cEtjT3NtM3MyVXBRSjRnTlNpbmJjay1ab3ZuNEhtY2xHc1kxVW03a1cwcktsTFVnSEpxNWFYZ00?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Axis Bank to Apollo Hospitals: 6 NIFTY100 stocks hit 52-week high despite stock market fall",
-      "src": "Upstox",
-      "time": "14h ago",
-      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPVmdubUR1bnZnNEUyeWM3NUYxSk45VUkySVk0c1FiSFRuMlRzb3UwZ1RVTHhUOGxreGNKc1BHSkxVUUtDWVhaSXNla2FxR09RRG1XZXFRNnI1MmZfYUF5MUEtRHJJTXUzOFJxci1MSFhubmZaeFU2VG9GRkxmRDdGM2tOSmxPb2ctZFRXZUdlTy1XLU5VYUdNQ3RLMU1qOURCTmVJY0REcjFXYko1QXFrME9qVEVjUExIbFRLaXJDUnRBVk5JWExGZEhFWFA3cjB4eXZpZDBGaXNsOTRYRnlMT2xtZ2dNMXNiNGc?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Bank Nifty plunges nearly 1,000 points; Axis Bank, ICICI Bank, SBI among top losers as banking stocks slide",
-      "src": "TradingView",
-      "time": "17h ago",
-      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxPZjdQNDQxX2lkYUZDa2Jna2I1TVFvN2VJX2ZoWnRxbGVUWDYzWC1YQ0VLeWl6TF95dHluUUFqelBCMExydHh6ZjVIQ0tmaWhiT25hU0lHdVpZeG1DNFlVbzFwTlFYQjl5ZVVnRFlyT0UyUXU2X0N2UUpZOV8yYlZQMFp6R0xxN0FhcGVZT3FZeUZqdlN5N043OV9ZNldaLWN5MV8yUTRvaWh0VEszV1FWeWpqaGVpZ0RXbmN6MUU3YnB1azdQWFhvN0VrRmFFVnE0SGxpUUdoWE1OWnRMQnlFSHp1N2tPUUczQ0M1TzVzak1kcGpFcUhoMDF2cw?oc=5",
+      "h": "BFSI stocks in a week: Bank Nifty hits record high; PNB, Axis Bank lead gains, FinTechs slide",
+      "src": "bfsi.economictimes.indiatimes.com",
+      "time": "3d ago",
+      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOUGZsRkxqMEtGOXNlMlVRMTZkcVUxVFRnUm1HQTRXXzBTUmVXMDhwZXJmZW5RdE1WX1J1aHA5YmI2TlJMcVhIVF9DWHVablV6VXlLb3VyUnNfWGxsMEZ4LXl2TXpsekoyOC1wRl84aVU3NG13azhvSE1aSUlDMkdXbm5lZXdoU05FZHhhVDVOVEU1UVZYcUV4bk5CR2ZULWk3Z3VUdUVfazdsWHFVYnpjdW9XTVVxeVVOcFBpTHJNVW16cnlzSmN4c2RuVVc1b3QtYnQ4ZkowMDZvc1VLWnN4VllOZ3fSAeoBQVVfeXFMTTNJMWt0eVJacGtKa0Z4NVZFNlVUc21sSkJMdlhSUXFSYkc3aUV2WDJxVFpnNTA1WG1xME9RQWhYWnphZ0Vpa19xX1p6YzJCSy1tTWhrY2d1V0N5aHdEdG9DSE9NX3pTcUtibjh2MExrSG9iUm1EZEYzMVBfdVJEWnV0Qk1paXlReF84Zm95MFdKaFQ4QXVBa2RCcUVWVDdiV0oyTjBRUDJsbnRRMzdrWUpnWFdSeDdRd3JwRjZVcHpUWHNBcXdDOWNSMDUwLVhOc3VrbU5kcTc5UEplV28ybF9LZmtkcnBEem5R?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
@@ -296,18 +674,14 @@
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "The long-term 200-day trend is still up.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Recent volume is running 1.35× the 20-day average — participation is confirming."
+     "Recent volume is running 1.47× the 20-day average — participation is confirming."
     ],
     "failcase": [
-     "RSI at 87 is overbought; entries here carry pullback risk.",
-     "Price is 12.1% above its 20-day average — chasing here is poor location."
+     "RSI at 75 is overbought; entries here carry pullback risk.",
+     "Price is 6.9% above its 20-day average — chasing here is poor location."
     ],
-    "invalidation": "A daily close below ₹1,194.51.",
+    "invalidation": "A daily close below ₹1,197.60.",
     "chart": [
-     {
-      "d": "2026-08-11",
-      "c": 1229.8
-     },
      {
       "d": "2026-08-12",
       "c": 1230.0
@@ -583,6 +957,10 @@
      {
       "d": "2026-11-20",
       "c": 1446.0
+     },
+     {
+      "d": "2026-11-23",
+      "c": 1388.6
      }
     ]
    },
@@ -599,18 +977,18 @@
     "mode": "WAIT",
     "conviction": "MEDIUM",
     "score": 68,
-    "price": 14011.0,
+    "price": 14010.0,
     "chg": -0.01,
     "entry": [
-     12271.29,
-     12394.61
+     12409.59,
+     12534.31
     ],
     "window": "On a pullback to the 20-day average",
-    "stop": 11469.64,
+    "stop": 11598.91,
     "targets": [
-     13455.25,
-     14232.22,
-     15268.19
+     13606.9,
+     14392.63,
+     15440.27
     ],
     "rr": "1 : 2.2",
     "risk_pct": 7.0,
@@ -618,56 +996,56 @@
     "scores": {
      "Technical": 5,
      "Momentum": 5,
-     "Volume": 4,
+     "Volume": 5,
      "Location": 1
     },
     "indicators": {
-     "rsi": 84.0,
-     "sma20": 12332.95,
-     "sma50": 12027.68,
-     "sma200": 13253.2,
-     "macd_hist": 160.233,
-     "atr": 391.71,
-     "vol_ratio": 1.37,
-     "resistance": 14047.0,
-     "support": 11000.0,
+     "rsi": 82.8,
+     "sma20": 12471.95,
+     "sma50": 12055.06,
+     "sma200": 13250.74,
+     "macd_hist": 175.364,
+     "atr": 389.71,
+     "vol_ratio": 1.45,
+     "resistance": 14333.0,
+     "support": 11102.0,
      "hi52": 17370.0,
      "lo52": 10725.0
     },
     "thesis": [
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Recent volume is running 1.37× the 20-day average — participation is confirming.",
+     "Recent volume is running 1.45× the 20-day average — participation is confirming.",
      "The long-term 200-day trend is still up."
     ],
     "sections": {
-     "THE CHART": "Last price 14,011.00. The 20-day average sits at 12,332.95 and the 50-day at 12,027.68, putting price +13.6% from its short-term mean. RSI(14) reads 84 and the MACD histogram is +160.23. Nearest resistance from the last 60 sessions is 14,047.00; the 20-session swing low is 11,000.00. Average true range is 391.71 (2.8% of price), which is what sets the stop distance below.",
+     "THE CHART": "Last price 14,010.00. The 20-day average sits at 12,471.95 and the 50-day at 12,055.06, putting price +12.3% from its short-term mean. RSI(14) reads 83 and the MACD histogram is +175.36. Nearest resistance from the last 60 sessions is 14,333.00; the 20-session swing low is 11,102.00. Average true range is 389.71 (2.8% of price), which is what sets the stop distance below.",
      "THE BUSINESS": "Maruti Suzuki sits in the consumer sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +25.4% against its own trend, and +9.0% over the last five. Its 52-week range is 10,725.00 to 17,370.00, so price is currently 49% of the way up that range.",
+     "THE MACRO": "Over the last 20 sessions the stock has moved +24.8% against its own trend, and +11.4% over the last five. Its 52-week range is 10,725.00 to 17,370.00, so price is currently 49% of the way up that range.",
      "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 11,469.64, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
+     "THE RISKS": "The setup fails on a close below 11,598.91, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
      "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
     },
     "news": [
      {
       "h": "Maruti Suzuki gains 2% on price hike; stock up 14% in one week",
       "src": "Business Standard",
-      "time": "16h ago",
+      "time": "23h ago",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQTFNUZ1dFekdmN3N1ZDJkbkdQaHQ2S1BQZ3lQUjhZdkZaT0gxNDN2R3Q2dVA3ZG1tY2pWTEkzTFY5Ynd3dnFYTXpmMURVQXhCU1JXQTdCYW1ueU9BamowSF95bU5tcHdKdFIxNGpCZFZuMU9RMVBvSmdqcmhmb01EMmgwcExBUEhvcWJNS0pwODRTZDVVbjhYelgxMWZMcG1Ed21VTENMenJRc2w2azY5Zkt0Rk1BVzNBRkl6aS1PZ1FsajVJ0gHKAUFVX3lxTFBwZ1lMSmlYYURvbGIxbHNlR0hqdmRiWnhndDVpMmwyX1FTdEx6NXplUzV1RDdBcjNVdTE4eHgzeW5PSmhHZTNKYm41RG1oZ3JJRkZBTnN4WC04OVEtZVBrTmtWMjdzUHYzdDd1SlJjRmpEdDR3dUFqT3dwbnJoQS1vMmEzb0Rpb2F1Y3pZR2NRVkNtaEFHZWdBVFM3QngwU0w1Q1Z3RUljT2FTNl9lNjRzMTh1LUtPOXFsSHUwQjNOOGt5QlNxa2Zncnc?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "SENSEX crashes over 1,100 points, NIFTY below 25,500; Maruti Suzuki, Sterling & Wilson among buzzing stocks",
       "src": "Upstox",
-      "time": "14h ago",
+      "time": "20h ago",
       "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQUENUcElPSF93VzlmcE9pVkhpNjY1NllSaERNdXI3R1lwNGdrM0dYNXhXaXl5M0cta01INU5wRlZiSkM0LXRqZjhpSlBlQkFsOFo3R0JTNEpCdzJiUDBQanZDU25jVzVULXRtSTNFOXBhSzF3bVNUVy1ELVhSdHRnLVNORDZubDZvaW5NdkpuWV9ONzdRZnZsbmZjSWVCamlsTTRtUWkydnBqMEdpOVdlUEdrLXpLWUpiZDlfU084OHdyN250Z3NGcGpqVUNmcmJpdjdSamZ0LWpjSlpsaGlleFpZUGkwLUxFOEpKeXJBVVo5cVJVSmpBOQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
-      "h": "Stocks to Watch Today: Adani Energy, RVNL, Maruti",
-      "src": "HDFC Sky",
-      "time": "18h ago",
-      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOZ1BEMjJRVmhYZWd3SEF4WjkwYk5uQ2x6V0Ftb3k3SWxfclFIdm5xMUFyTUhqUEVYRXl1WEZJUTVPYVp4cDNQZWZTdWZielk3T1JsdU9RbjhzNzJnUVl6UE5qaExaZTY0Y2h1OU9IMlhJSFRhd25HMElYdHBQRnpjb1hmUHNERjlzLVpJSmNwZW43UklHMm85TzMtdDdlRl9FRUpkb3ZuV2YzM1NrTjB5RXdYMW9zbC1GUlNnNFRiZ0FNUDFZbVhBbllaOE83UFhtSFBUaGJIN0hNWWRvSTZyZDFyRzlEcHM2bzFYbnBn?oc=5",
+      "h": "Maruti Suzuki shares jump 5%, M&M, Tata Motors, Eicher Motors rally as Nifty Auto surges 2.6%",
+      "src": "Moneycontrol.com",
+      "time": "5d ago",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQN21KNmJoLVNDaTBMM2pBS2lZZFNRMktzMUpUTlNNZzNxZWJTV1QycWV6UmVpQjNQRUlCeDZtZ3lxYXlHNmV4LUR2eVNEQXhDYXZNbTh1RkFLM0gzSG40clZqMGhkdzhVTUY0Q1BWck94R3EzdmJkSjg4S3J2Z1VDV0xHamZBbVE1TkMyMzRQUzM3TFpJYjJhWXRmTUlxbU5kV0dpcTVkRzBkaWtaNDBfcVYyU0ZlN2gzSW5lZ2l4RkloMVRuOXZ2OFNHdHI3WU9pMVpORThYOURBaTNnMG1IZG9rNVlqalU20gHuAUFVX3lxTFAzcVVIdzFRWWlLX3hDNjRyZjJ3b3VxR3NWQVJtNE1LaEJ1VGNDdWFQVzFvb21DNklmV2xhZTN1V1FxVFlDYjVwLTQ4U1NyUVNzaGgzaWVEalZRY2NMdVZvY1BYb092dFJDdW1oQmk2OVBGZlNXNl8wU3JpS1U0aTBqU1ZtV1R6dFZWcEYwMC1Bd0xJWVQ4TDdVZFV0SU8yZkkyeF9LX0d5anM2RHdHUUFoSmtWczBYNloyRFpkWUE2ZnhDRHdXOTJFTUZ0SnNlVGlnUnZsQVVEQmw5RnpvUHVWV1RfazF6R0VNWGpsYlE?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
@@ -675,18 +1053,14 @@
      "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
      "The long-term 200-day trend is still up.",
      "MACD sits above its signal line — the momentum cross is positive.",
-     "Recent volume is running 1.37× the 20-day average — participation is confirming."
+     "Recent volume is running 1.45× the 20-day average — participation is confirming."
     ],
     "failcase": [
-     "RSI at 84 is overbought; entries here carry pullback risk.",
-     "Price is 13.6% above its 20-day average — chasing here is poor location."
+     "RSI at 83 is overbought; entries here carry pullback risk.",
+     "Price is 12.3% above its 20-day average — chasing here is poor location."
     ],
-    "invalidation": "A daily close below ₹11,469.64.",
+    "invalidation": "A daily close below ₹11,598.91.",
     "chart": [
-     {
-      "d": "2026-08-11",
-      "c": 13990.0
-     },
      {
       "d": "2026-08-12",
       "c": 13875.0
@@ -962,385 +1336,10 @@
      {
       "d": "2026-11-20",
       "c": 14011.0
-     }
-    ]
-   },
-   {
-    "id": "itc",
-    "symbol": "ITC.NS",
-    "ticker": "ITC",
-    "name": "ITC Limited",
-    "market": "INDIA",
-    "sector": "Consumer",
-    "art": "tech",
-    "cur": "₹",
-    "action": "BUY",
-    "mode": "WAIT",
-    "conviction": "MEDIUM",
-    "score": 61,
-    "price": 299.1,
-    "chg": 0.64,
-    "entry": [
-     277.05,
-     279.83
-    ],
-    "window": "On a pullback to the 20-day average",
-    "stop": 258.95,
-    "targets": [
-     303.78,
-     321.32,
-     344.71
-    ],
-    "rr": "1 : 2.2",
-    "risk_pct": 7.0,
-    "size": 5.0,
-    "scores": {
-     "Technical": 5,
-     "Momentum": 5,
-     "Volume": 4,
-     "Location": 1
-    },
-    "indicators": {
-     "rsi": 81.1,
-     "sma20": 278.44,
-     "sma50": 269.27,
-     "sma200": 288.75,
-     "macd_hist": 2.402,
-     "atr": 7.18,
-     "vol_ratio": 1.22,
-     "resistance": 301.85,
-     "support": 252.8,
-     "hi52": 472.79,
-     "lo52": 252.8
-    },
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive.",
-     "Volume is 1.22× its 20-day average — steady participation.",
-     "The long-term 200-day trend is still up."
-    ],
-    "sections": {
-     "THE CHART": "Last price 299.10. The 20-day average sits at 278.44 and the 50-day at 269.27, putting price +7.4% from its short-term mean. RSI(14) reads 81 and the MACD histogram is +2.40. Nearest resistance from the last 60 sessions is 301.85; the 20-session swing low is 252.80. Average true range is 7.18 (2.4% of price), which is what sets the stop distance below.",
-     "THE BUSINESS": "ITC Limited sits in the consumer sector. Alladin's engine scores price behaviour, not company filings — fundamentals are not modelled here, so treat this as a technical read and pair it with your own view of the business.",
-     "THE MACRO": "Over the last 20 sessions the stock has moved +15.5% against its own trend, and +4.9% over the last five. Its 52-week range is 252.80 to 472.79, so price is currently 21% of the way up that range.",
-     "THE CATALYST": "Alladin does not model scheduled events. Check the headlines below and the company's own calendar before entering — an earnings date inside the holding window changes the risk materially.",
-     "THE RISKS": "The setup fails on a close below 258.95, which is 7.0% under the entry midpoint. That level is placed beneath the recent swing low and roughly 1.6 ATR away, so normal volatility should not trigger it — but a gap through it will fill worse than the stop price.",
-     "THE SIGNAL": "Composite score reflects trend, momentum, volume and entry location computed from real OHLCV. The plan below is arithmetic on those levels: stop from swing low and ATR, targets at 1.3, 2.2 and 3.4 times the risk distance."
-    },
-    "news": [
-     {
-      "h": "Weekly Recap: Quarterly profit falls 20.1% and cigarette prices rise",
-      "src": "TradingView",
-      "time": "21h ago",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNZExMcDBFNnhCYXRRUDFuUjBWX3JnY0ttTUtEdFN0bjVqcmc1VlNCbDJsVUQ3NzhkWUo2ZHcyRmhqZG9rQU1SMTV6Tnh0Mm52NmEzaGQtMGhtZXhmb0lEUEZWY0lqcWZYbHNNUE1Pd19rNDBNZ1p1U0lvbFZHeWNNQlhVSVhYTjh0RkRxd0J0YXprVFRkSXdXdkpPc0dMWWljV09IRlNLeDFQdkJIVE1zVDZFb2E1dzl1bFIzTndxVG1hRzBpRDdn?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "ITC shares are on course for their best monthly run in over two years; Is the stock now a buy? - CNBC TV18",
-      "src": "LinkedIn",
-      "time": "6d ago",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNMzJjMHlhOTBjVUo2c2I5U3gwYzZXR05GMkpkZHptNHJZbmZLalhTVWFSTG1Fa09wU0FNcTVvcW9PYVJHTTQzUGsxbTZ3UXlldVNKRnphSXZVejd2eGxJQTR4ZGZSam81TnlvUG1QUGVna0dwWHJzMldjVWFNWHpDYldRTFlBWEJpTG00WmJMWVcxdXpYdWdKNk5QQUQ4Yl9YQXprWEk4YjFzWjN1VjhINVNWNGRBdk0xc0Y0bUlONA?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "ITC shares gain modestly after Q2 results; analysts split on outlook",
-      "src": "BusinessLine",
-      "time": "20d ago",
-      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNb3FGcDZiRFl1UHdLd0F3Sk5aczRLSXZ5blRXQUxrZ2NDODRDQU1sY2NIdndxcHVUalFIOG54anpvdHpXUWIyaTJtQXFxLXVEdEJLZVc0NU1yWFR0NnU4MTdKNU5mVy01VE9xVkh0ZTJuMWs2MkdYZXZGckFTMldBVk5fU2o0N01uamNqUFRzNlBqSFdlTjJIM21pWlBqZXowOHhlY2tjMDdVR0trWU9hOU52YlJRZnp0Vk5MUjhOMTBjbm5lZjFPOVduWWFvR09XX1VfZFlhNNIB3gFBVV95cUxQWHVVWDFUSXR6SVNmbzNMemVCTTY5ZGhmN2hWSFFwaXFxSk1PQTQ4MFYwTTVFU2poR1hpX1NkTGx2anJlRnpBT3dzbDZzQlZPZWdKbnhGV0hwR1F3RUVzQkRlQTZzY2xPai1HSmhudTcxNEVBc2VkaEtLa0RBVFVfcm5DSTh2blFtVlZWN3Nfczdmd2lKUFRtb2hscml4ck5qVzMtT2dKZVo1MWdLdHdXa2J4YV9VSkx4SWxHTjlmZnVBT0pyYW5Ub1U2akEtb3JGVmVKZklLcFJIX1ZQZVE?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     }
-    ],
-    "workcase": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "The long-term 200-day trend is still up.",
-     "MACD sits above its signal line — the momentum cross is positive.",
-     "Volume is 1.22× its 20-day average — steady participation."
-    ],
-    "failcase": [
-     "RSI at 81 is overbought; entries here carry pullback risk.",
-     "Price is 7.4% above its 20-day average — chasing here is poor location."
-    ],
-    "invalidation": "A daily close below ₹258.95.",
-    "chart": [
-     {
-      "d": "2026-08-11",
-      "c": 279.0
-     },
-     {
-      "d": "2026-08-12",
-      "c": 276.15
-     },
-     {
-      "d": "2026-08-13",
-      "c": 278.5
-     },
-     {
-      "d": "2026-08-14",
-      "c": 278.2
-     },
-     {
-      "d": "2026-08-17",
-      "c": 273.05
-     },
-     {
-      "d": "2026-08-18",
-      "c": 270.0
-     },
-     {
-      "d": "2026-08-19",
-      "c": 267.05
-     },
-     {
-      "d": "2026-08-20",
-      "c": 271.65
-     },
-     {
-      "d": "2026-08-21",
-      "c": 269.4
-     },
-     {
-      "d": "2026-08-24",
-      "c": 269.7
-     },
-     {
-      "d": "2026-08-25",
-      "c": 271.4
-     },
-     {
-      "d": "2026-08-26",
-      "c": 270.25
-     },
-     {
-      "d": "2026-08-27",
-      "c": 269.0
-     },
-     {
-      "d": "2026-08-28",
-      "c": 266.0
-     },
-     {
-      "d": "2026-08-31",
-      "c": 255.5
-     },
-     {
-      "d": "2026-09-01",
-      "c": 266.6
-     },
-     {
-      "d": "2026-09-02",
-      "c": 266.3
-     },
-     {
-      "d": "2026-09-03",
-      "c": 263.0
-     },
-     {
-      "d": "2026-09-04",
-      "c": 264.1
-     },
-     {
-      "d": "2026-09-07",
-      "c": 263.5
-     },
-     {
-      "d": "2026-09-08",
-      "c": 263.5
-     },
-     {
-      "d": "2026-09-09",
-      "c": 260.8
-     },
-     {
-      "d": "2026-09-10",
-      "c": 259.3
-     },
-     {
-      "d": "2026-09-11",
-      "c": 259.85
-     },
-     {
-      "d": "2026-09-15",
-      "c": 258.0
-     },
-     {
-      "d": "2026-09-16",
-      "c": 264.15
-     },
-     {
-      "d": "2026-09-17",
-      "c": 266.2
-     },
-     {
-      "d": "2026-09-18",
-      "c": 262.3
-     },
-     {
-      "d": "2026-09-21",
-      "c": 267.0
-     },
-     {
-      "d": "2026-09-22",
-      "c": 265.8
-     },
-     {
-      "d": "2026-09-23",
-      "c": 270.15
-     },
-     {
-      "d": "2026-09-24",
-      "c": 268.0
-     },
-     {
-      "d": "2026-09-25",
-      "c": 269.0
-     },
-     {
-      "d": "2026-09-28",
-      "c": 265.2
-     },
-     {
-      "d": "2026-09-29",
-      "c": 265.1
-     },
-     {
-      "d": "2026-09-30",
-      "c": 262.75
-     },
-     {
-      "d": "2026-10-01",
-      "c": 255.9
-     },
-     {
-      "d": "2026-10-05",
-      "c": 268.9
-     },
-     {
-      "d": "2026-10-06",
-      "c": 266.7
-     },
-     {
-      "d": "2026-10-07",
-      "c": 265.7
-     },
-     {
-      "d": "2026-10-08",
-      "c": 255.0
-     },
-     {
-      "d": "2026-10-09",
-      "c": 266.0
-     },
-     {
-      "d": "2026-10-12",
-      "c": 257.9
-     },
-     {
-      "d": "2026-10-13",
-      "c": 261.0
-     },
-     {
-      "d": "2026-10-14",
-      "c": 261.5
-     },
-     {
-      "d": "2026-10-15",
-      "c": 263.9
-     },
-     {
-      "d": "2026-10-16",
-      "c": 263.5
-     },
-     {
-      "d": "2026-10-19",
-      "c": 260.8
-     },
-     {
-      "d": "2026-10-21",
-      "c": 262.0
-     },
-     {
-      "d": "2026-10-22",
-      "c": 258.9
-     },
-     {
-      "d": "2026-10-23",
-      "c": 257.9
-     },
-     {
-      "d": "2026-10-26",
-      "c": 260.5
-     },
-     {
-      "d": "2026-10-27",
-      "c": 260.0
-     },
-     {
-      "d": "2026-10-28",
-      "c": 259.5
-     },
-     {
-      "d": "2026-10-29",
-      "c": 265.0
-     },
-     {
-      "d": "2026-10-30",
-      "c": 265.6
-     },
-     {
-      "d": "2026-11-02",
-      "c": 266.4
-     },
-     {
-      "d": "2026-11-03",
-      "c": 273.9
-     },
-     {
-      "d": "2026-11-04",
-      "c": 280.0
-     },
-     {
-      "d": "2026-11-05",
-      "c": 278.85
-     },
-     {
-      "d": "2026-11-06",
-      "c": 283.15
-     },
-     {
-      "d": "2026-11-09",
-      "c": 278.8
-     },
-     {
-      "d": "2026-11-11",
-      "c": 285.0
-     },
-     {
-      "d": "2026-11-12",
-      "c": 284.05
-     },
-     {
-      "d": "2026-11-13",
-      "c": 285.0
-     },
-     {
-      "d": "2026-11-16",
-      "c": 295.1
-     },
-     {
-      "d": "2026-11-17",
-      "c": 293.3
-     },
-     {
-      "d": "2026-11-18",
-      "c": 296.6
-     },
-     {
-      "d": "2026-11-19",
-      "c": 301.0
      },
      {
-      "d": "2026-11-20",
-      "c": 299.1
+      "d": "2026-11-23",
+      "c": 14010.0
      }
     ]
    }
@@ -1388,7 +1387,7 @@
      "sma200": 303.6,
      "macd_hist": -0.763,
      "atr": 9.16,
-     "vol_ratio": 0.99,
+     "vol_ratio": 1.0,
      "resistance": 360.83,
      "support": 325.33,
      "hi52": 360.83,
@@ -1412,22 +1411,22 @@
      {
       "h": "Apple Is Now 25% of Berkshire Hathaway's Stock Portfolio. Here's What Holding Every Share Tells Investors.",
       "src": "Yahoo Finance",
-      "time": "23h ago",
+      "time": "1d ago",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQTGlwRjNCLVc0LW1XMUY3VjVfSW5NSlp2UUx2NFVhN04yMlg5aVg2elF6cG9VbHFmSXU1cWpWd3ZYajhaSFppRzRRTC1pVmdJOTVHZDRPb25lRzhQNlJFU2wyUlIwSG96QzM5RXJ5RmtfYVpxLXltdlM5Vm9xWnNjejFpTlVzQUx0UENUVVI2WktjQkxRTjlQcGlpVENnQQ?oc=5",
-      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
-     },
-     {
-      "h": "Apple Is Now 25% of Berkshire Hathaway's Stock Portfolio. Here's What Holding Every Share Tells Investors.",
-      "src": "The Motley Fool",
-      "time": "23h ago",
-      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOa0FNZkJwV3ZJbVFSRFZZUXh2dzAzZktiSkNOY3NYc1E5M1prdTVaUTVZZlFZUmY5dFlaTTJNWFVHQnNrODB5VFlIUmR6eXh3WFc5bUhGbEVtSjR1SHY0Y1dZX0VMN2ZsRHBEMlYxU0ljOWVhek5DU2ZKOG1uZmlMTndWUld6eXlhTEx0SnBKV1Z1bDcyRjdQTHdiSmh2T2FMcWJfNDNyYW9BN0hFRG11XzVLdGNTcTZIQk9HOWpSS3g1UlFlWTFiaDg1LWd2QXFxcVRabER5QmtqQXpyb1B3?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
       "h": "A Decade Later, Apple Remains Berkshire's Biggest Stock Bet",
       "src": "MacRumors",
-      "time": "5h ago",
+      "time": "12h ago",
       "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPVFFMbTdHMVRNWXpnSjF5RjNOX1BHeWtjUHJ2azdsQjdoNExlS1lIZVN5bGtoUUhfRWJkbW1fRDVYWGhTcHRDcnlEaFZ2dVhKR3hkcnp4UHdnc3lFRFFEUzZyTElRb0x3RGYyckZYQ2lwelRXaTk5NHVYckUzOVVtWFVIT3htZHM?oc=5",
+      "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
+     },
+     {
+      "h": "GTA 6’s $3.79 billion debut sends Apple stock investors an unmistakable signal",
+      "src": "TheStreet",
+      "time": "2d ago",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4yZVltc2dNT1VEcjFfZkJlLXQ4UlpsZC1Xa0kydHRfTHh5T3FFSVNsSGc4clV6MUFiUkdoaXUtU0xJM1FFb0JoTGlEY1gwZVhiSVEyTWpRVWRESGp6RkdBRkh2NG16M2l6aFJLZmt3b3BrZTg?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      }
     ],
@@ -1766,7 +1765,7 @@
      "sma200": 245.38,
      "macd_hist": -1.116,
      "atr": 11.92,
-     "vol_ratio": 0.96,
+     "vol_ratio": 0.97,
      "resistance": 275.34,
      "support": 229.36,
      "hi52": 287.2,
@@ -1788,10 +1787,10 @@
     },
     "news": [
      {
-      "h": "Amazon Makes AI Chip Move; Stock Climbs Alongside Nvidia Relief Rally",
-      "src": "Investor's Business Daily",
-      "time": "3h ago",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxONGNWcWFkazVXMUhqYkdVOXN3UUJFbVppRWw4RUZaVFA1ci1TLWlXUk5xOG1pUWJ0X1VKZEN4SVRpYUpzbVlsSnVhVW1fM3dDdGp3NHFiMXVraHVvUXZBOUExZy0yVWdscE5wZWNUd256d1U0bzh6b0Uwell0NXRqekVVOEo?oc=5",
+      "h": "Jeff Bezos predicts Amazon will eventually 'go bankrupt' and shares 30-year rule behind it",
+      "src": "Yahoo Finance",
+      "time": "1d ago",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOeWdMeV82cExKX1NFdklKcjc5eUNDOGJGdmJjNXZRVXFIRTJWSktvNHlDREY4THJtMmNwN1YtSXNRNFM0MDIzdno3VDcyZmN4YlI5SWNJZW9ZREpPeC0wMURzOVJSYlNwWmw0cHpfa25hb1ZBWDlCWWJKTkZsYUdUWGtDc0dvOEhERjBHYTN5TTNEa29SYmdSQk4xUExKRkt2b001MQ?oc=5",
       "why": "Context only — Alladin's score is computed from price and volume, not from this headline. Read it before you act."
      },
      {
@@ -2106,6 +2105,14 @@
  },
  "watchlist": [
   {
+   "ticker": "LT",
+   "name": "Larsen & Toubro",
+   "cur": "₹",
+   "px": 4099.9,
+   "chg": -2.59,
+   "score": 8.2
+  },
+  {
    "ticker": "AAPL",
    "name": "Apple",
    "cur": "$",
@@ -2117,7 +2124,7 @@
    "ticker": "AXISBANK",
    "name": "Axis Bank",
    "cur": "₹",
-   "px": 1446.0,
+   "px": 1388.6,
    "chg": -3.97,
    "score": 6.8
   },
@@ -2125,9 +2132,33 @@
    "ticker": "MARUTI",
    "name": "Maruti Suzuki",
    "cur": "₹",
-   "px": 14011.0,
+   "px": 14010.0,
    "chg": -0.01,
    "score": 6.8
+  },
+  {
+   "ticker": "ICICIBANK",
+   "name": "ICICI Bank",
+   "cur": "₹",
+   "px": 1585.5,
+   "chg": -3.32,
+   "score": 6.5
+  },
+  {
+   "ticker": "KOTAKBANK",
+   "name": "Kotak Mahindra Bank",
+   "cur": "₹",
+   "px": 502.85,
+   "chg": -2.51,
+   "score": 6.5
+  },
+  {
+   "ticker": "TITAN",
+   "name": "Titan Company",
+   "cur": "₹",
+   "px": 4680.0,
+   "chg": 1.3,
+   "score": 6.5
   },
   {
    "ticker": "AMZN",
@@ -2136,56 +2167,24 @@
    "px": 255.39,
    "chg": 3.47,
    "score": 6.5
-  },
-  {
-   "ticker": "ITC",
-   "name": "ITC Limited",
-   "cur": "₹",
-   "px": 299.1,
-   "chg": 0.64,
-   "score": 6.1
-  },
-  {
-   "ticker": "LT",
-   "name": "Larsen & Toubro",
-   "cur": "₹",
-   "px": 4209.1,
-   "chg": -2.59,
-   "score": 6.0
-  },
-  {
-   "ticker": "SUNPHARMA",
-   "name": "Sun Pharmaceutical",
-   "cur": "₹",
-   "px": 1884.9,
-   "chg": -1.32,
-   "score": 6.0
-  },
-  {
-   "ticker": "BHARTIARTL",
-   "name": "Bharti Airtel",
-   "cur": "₹",
-   "px": 2161.7,
-   "chg": -1.54,
-   "score": 6.0
   }
  ],
  "analysis": {
   "enabled": false,
   "reason": "Every analysis attempt failed; showing computed analysis instead.",
   "errors": [
-   "AXISBANK: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "MARUTI: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "ITC: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "AAPL: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }",
-   "AMZN: RuntimeError: HTTP 400: { \"error\": { \"code\": 400, \"message\": \"Developer instruction is not enabled for this model\", \"status\": \"INVALID_ARGUMENT\" } }"
+   "LT: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/do",
+   "AXISBANK: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/do",
+   "MARUTI: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/do",
+   "AAPL: RuntimeError: HTTP 429: { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/do",
+   "AMZN: RuntimeError: HTTP 503: { \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\", \"status\": \"UNAVAILABLE\" } }"
   ]
  },
  "live": {
   "started": "2026-09-04",
-  "published": 522,
+  "published": 523,
   "settled": 206,
-  "open": 27,
+  "open": 28,
   "no_fill": 289,
   "outcomes": {
    "TARGET_1": 22,
@@ -2193,7 +2192,7 @@
    "CLOSED": 168,
    "NO_FILL": 289,
    "OPEN": 12,
-   "PENDING": 15
+   "PENDING": 16
   },
   "winRate": 51.0,
   "avg": 0.44,
@@ -2763,6 +2762,53 @@
    }
   },
   {
+   "key": "LT.NS|2026-11-24",
+   "ticker": "LT",
+   "name": "Larsen & Toubro",
+   "market": "INDIA",
+   "sector": "Industrials",
+   "cur": "₹",
+   "published": "2026-11-24",
+   "original": {
+    "price_at_publish": 4099.9,
+    "action": "BUY",
+    "mode": "BUY NOW",
+    "conviction": "HIGH",
+    "score": 82,
+    "entry": [
+     4087.6,
+     4120.4
+    ],
+    "stop": 3816.72,
+    "targets": [
+     4477.46,
+     4736.02,
+     5080.75
+    ],
+    "risk_pct": 7.0,
+    "rr": "1 : 2.2",
+    "size": 5.0,
+    "window": "First 60–90 minutes of the session",
+    "thesis": [
+     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
+     "MACD sits above its signal line — the momentum cross is positive."
+    ]
+   },
+   "result": {
+    "status": "PENDING",
+    "filled_on": null,
+    "fill_price": null,
+    "exit_on": null,
+    "exit_price": null,
+    "ret": null,
+    "mfe": null,
+    "mae": null,
+    "bars_held": 0,
+    "note": null,
+    "last_checked": "2026-11-24T10:35:57.957705+05:30"
+   }
+  },
+  {
    "key": "ITC.NS|2026-11-24",
    "ticker": "ITC",
    "name": "ITC Limited",
@@ -3182,7 +3228,7 @@
     "mae": -0.1,
     "bars_held": 1,
     "note": null,
-    "last_checked": "2026-11-23T15:59:41.926170+05:30"
+    "last_checked": "2026-11-24T10:35:57.957705+05:30"
    }
   },
   {
@@ -3210,53 +3256,6 @@
      15092.33
     ],
     "risk_pct": 7.0,
-    "rr": "1 : 2.2",
-    "size": 5.0,
-    "window": "On a pullback to the 20-day average",
-    "thesis": [
-     "Price is above both the 20- and 50-day averages, which are stacked bullishly.",
-     "MACD sits above its signal line — the momentum cross is positive."
-    ]
-   },
-   "result": {
-    "status": "PENDING",
-    "filled_on": null,
-    "fill_price": null,
-    "exit_on": null,
-    "exit_price": null,
-    "ret": null,
-    "mfe": null,
-    "mae": null,
-    "bars_held": 0,
-    "note": null,
-    "last_checked": "2026-11-21T00:12:01.433481+05:30"
-   }
-  },
-  {
-   "key": "ITC.NS|2026-11-21",
-   "ticker": "ITC",
-   "name": "ITC Limited",
-   "market": "INDIA",
-   "sector": "Consumer",
-   "cur": "₹",
-   "published": "2026-11-21",
-   "original": {
-    "price_at_publish": 301.0,
-    "action": "BUY",
-    "mode": "WAIT",
-    "conviction": "MEDIUM",
-    "score": 61,
-    "entry": [
-     275.05,
-     277.81
-    ],
-    "stop": 252.29,
-    "targets": [
-     307.81,
-     329.53,
-     358.49
-    ],
-    "risk_pct": 8.73,
     "rr": "1 : 2.2",
     "size": 5.0,
     "window": "On a pullback to the 20-day average",
